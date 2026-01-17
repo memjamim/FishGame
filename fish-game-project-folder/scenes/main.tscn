@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="PackedScene" uid="uid://dwpucejsk2ip7" path="res://scenes/collectable.tscn" id="1_13t8r"]
-[ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://player.tscn" id="2_wtlgb"]
+[ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_wtlgb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -16,7 +16,7 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 [node name="Main" type="Node3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0166724, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8597791, 0)
 mesh = SubResource("PlaneMesh_4pro5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
@@ -26,9 +26,10 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_6uye4")
 
 [node name="Collectable" parent="." instance=ExtResource("1_13t8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49200106, 1.1473517, -1.9697227)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0158763, -2)
 mesh = SubResource("SphereMesh_xjmee")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
@@ -37,4 +38,4 @@ mesh = SubResource("SphereMesh_xjmee")
 shape = SubResource("SphereShape3D_4vypp")
 
 [node name="Player" parent="." instance=ExtResource("2_wtlgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5226922, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8105135, 0.9833269, 5.1511974)
