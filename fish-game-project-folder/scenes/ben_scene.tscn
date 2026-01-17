@@ -54,8 +54,10 @@ shape = SubResource("SphereShape3D_4vypp")
 [node name="Player" parent="." instance=ExtResource("2_x8l0j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8105135, 0.9833269, 5.1511974)
 collision_mask = 3
-buoyancy = 8.0
-breath_recover_rate = 60.0
+swim_speed = 4.0
+swim_accel = 8.0
+swim_drag = 0.0
+breath_recover_rate = 20.0
 
 [node name="Water" type="Area3D" parent="."]
 script = ExtResource("3_fkl8m")
@@ -68,14 +70,21 @@ shape = SubResource("CylinderShape3D_x8l0j")
 script = ExtResource("4_x8l0j")
 
 [node name="Panel" type="Panel" parent="BreathUI"]
-custom_minimum_size = Vector2(16, 16)
-offset_right = 100.0
-offset_bottom = 30.0
+custom_minimum_size = Vector2(25, 25)
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 35.0
 
 [node name="Label" type="Label" parent="BreathUI/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.35635865, 0.70198804, 0.96429056, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = ":3 hi"
 horizontal_alignment = 1
 vertical_alignment = 1
