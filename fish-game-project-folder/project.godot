@@ -15,6 +15,11 @@ run/main_scene="uid://boq60tw26s0p0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+collectable="anything that can be collected by the player"
+enemy="anything that hurt the player"
+
 [input]
 
 foward={
