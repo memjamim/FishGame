@@ -3,6 +3,7 @@ extends CharacterBody3D
 # --- Interaction ---
 @onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
 
+
 var collectables: int = 0
 
 var IS_IN_WATER: bool = false
@@ -38,6 +39,7 @@ func _ready() -> void:
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	emit_signal("breath_updated", breath, breath_max)
+	print('total collectables: ', self.collectables)
 
 func set_in_water(v: bool) -> void:
 	IS_IN_WATER = v
@@ -64,9 +66,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		)
 		camera_pivot.rotation.x = _pitch
 
-func _ready() -> void:
-	print('total collectables: ', self.collectables)
-
 func _physics_process(delta: float) -> void:
 	_update_breath(delta)
 
@@ -90,7 +89,9 @@ func _physics_process(delta: float) -> void:
 	if IS_IN_WATER:
 		_swim_move(wish_dir, delta)
 	else:
+		_land_move(wish_dir, delta)
 
+	# --- Interaction ---
 	# If the raycast sees an object, the player presses E, and the object is a collectable
 	if (
 		ray_cast_3d.is_colliding() 
@@ -104,14 +105,7 @@ func _physics_process(delta: float) -> void:
 		_land_move(wish_dir, delta)
 
 	move_and_slide()
-
-	# --- Interaction ---
-	if ray_cast_3d and ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
-		var collider := ray_cast_3d.get_collider()
-		print(collider)
-		# Optional: if your interactables implement an "interact" method:
-		# if collider and collider.has_method("interact"):
-		#     collider.interact(self)
+	
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
 	# Gravity

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bhaxyhoicidan"
-path="res://.godot/imported/cone.glb-841a8874bfd92edff5cbb3635e2ffb04.scn"
+path="res://.godot/imported/cone.glb-e035fbb181771c7cab382998b26bf3db.scn"
 
 [deps]
 
-source_file="res://cone.glb"
-dest_files=["res://.godot/imported/cone.glb-841a8874bfd92edff5cbb3635e2ffb04.scn"]
+source_file="res://scenes/enemy/cone.glb"
+dest_files=["res://.godot/imported/cone.glb-e035fbb181771c7cab382998b26bf3db.scn"]
 
 [params]
 
