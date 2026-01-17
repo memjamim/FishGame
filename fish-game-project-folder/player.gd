@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var ray_cast_3d: RayCast3D = $Node3D/Camera3D/RayCast3D
+
 var IS_IN_WATER: bool = false
 
 const SPEED = 5.0
@@ -36,5 +38,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		if IS_IN_WATER:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
-
+	
 	move_and_slide()
+	
+	if ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
+		print(ray_cast_3d.get_collider())
