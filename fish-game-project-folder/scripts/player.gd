@@ -96,16 +96,18 @@ func _physics_process(delta: float) -> void:
 	if (
 		ray_cast_3d.is_colliding() 
 		and Input.is_action_just_pressed("interact") 
-		and (ray_cast_3d.get_collider().get_parent().is_in_group('collectable'))
 	):
-		# Increase the total number of collectables and delete the interacted object
-		self.collectables += 1
-		print('total collectables: ', self.collectables)
-		ray_cast_3d.get_collider().get_parent().queue_free()
-		_land_move(wish_dir, delta)
+		var collider = ray_cast_3d.get_collider().get_parent().get_parent()
+		if collider.has_method('_on_interact'):
+			collider._on_interact(self)
+
+		if collider.is_in_group('collectable'):
+			print('total collectables: ', self.collectables)
+		elif collider.is_in_group('interactable'):
+			print('interactable encountered')
 
 	move_and_slide()
-	
+
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
 	# Gravity
