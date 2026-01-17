@@ -1,6 +1,10 @@
 extends CharacterBody3D
 
-var IS_IN_WATER := false
+# --- Interaction ---
+@onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
+
+# --- Water state ---
+var IS_IN_WATER: bool = false
 
 @export var land_speed := 5.0
 @export var swim_speed := 3.0
@@ -52,7 +56,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 
 		# Rotation on pivot
-		_pitch = clamp(_pitch - event.relative.y * mouse_sensitivity, deg_to_rad(-max_pitch_deg), deg_to_rad(max_pitch_deg))
+		_pitch = clamp(
+			_pitch - event.relative.y * mouse_sensitivity,
+			deg_to_rad(-max_pitch_deg),
+			deg_to_rad(max_pitch_deg)
+		)
 		camera_pivot.rotation.x = _pitch
 
 func _physics_process(delta: float) -> void:
@@ -60,8 +68,7 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
 
-	# Shift to go down in water
-	# Space to go up
+	# Vertical swim input: Space up, Shift down
 	var vertical_input := 0.0
 	if IS_IN_WATER:
 		if Input.is_action_pressed("jump"):
@@ -69,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("down"):
 			vertical_input -= 1.0
 
-	# Move relative to player, instead of camera pitch
+	# Move relative to player orientation
 	var wish_dir := (global_transform.basis * Vector3(input_dir.x, 0.0, input_dir.y))
 	wish_dir.y = vertical_input
 
@@ -82,6 +89,14 @@ func _physics_process(delta: float) -> void:
 		_land_move(wish_dir, delta)
 
 	move_and_slide()
+
+	# --- Interaction ---
+	if ray_cast_3d and ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
+		var collider := ray_cast_3d.get_collider()
+		print(collider)
+		# Optional: if your interactables implement an "interact" method:
+		# if collider and collider.has_method("interact"):
+		#     collider.interact(self)
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
 	# Gravity
