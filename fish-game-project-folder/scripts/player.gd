@@ -3,7 +3,8 @@ extends CharacterBody3D
 # --- Interaction ---
 @onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
 
-# --- Water state ---
+var collectables: int = 0
+
 var IS_IN_WATER: bool = false
 
 @export var land_speed := 5.0
@@ -63,6 +64,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		)
 		camera_pivot.rotation.x = _pitch
 
+func _ready() -> void:
+	print('total collectables: ', self.collectables)
+
 func _physics_process(delta: float) -> void:
 	_update_breath(delta)
 
@@ -86,6 +90,17 @@ func _physics_process(delta: float) -> void:
 	if IS_IN_WATER:
 		_swim_move(wish_dir, delta)
 	else:
+
+	# If the raycast sees an object, the player presses E, and the object is a collectable
+	if (
+		ray_cast_3d.is_colliding() 
+		and Input.is_action_just_pressed("interact") 
+		and (ray_cast_3d.get_collider().get_parent().is_in_group('collectable'))
+	):
+		# Increase the total number of collectables and delete the interacted object
+		self.collectables += 1
+		print('total collectables: ', self.collectables)
+		ray_cast_3d.get_collider().get_parent().queue_free()
 		_land_move(wish_dir, delta)
 
 	move_and_slide()
