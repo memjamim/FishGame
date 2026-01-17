@@ -10,4 +10,4 @@ func _ready() -> void:
 func set_breath(current: float, max_value: float) -> void:
 	var secs := int(ceil(clamp(current, 0.0, max_value)))
 	label.text = "Breath: %d:%02d" % [secs / 60, secs % 60]
-	visible = secs < int(max_value) 
+	visible = true# = player.IS_IN_WATER or secs < int(max_value)
