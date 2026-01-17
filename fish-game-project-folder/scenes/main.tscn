@@ -37,3 +37,4 @@ mesh = SubResource("SphereMesh_xjmee")
 shape = SubResource("SphereShape3D_4vypp")
 
 [node name="Player" parent="." instance=ExtResource("2_wtlgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5226922, 0)
