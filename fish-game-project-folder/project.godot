@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 collectable="anything that can be collected by the player"
 enemy="anything that hurt the player"
+interactable="things the player can interact with and will perform an action"
 
 [input]
 
