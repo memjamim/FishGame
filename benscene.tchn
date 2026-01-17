@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://boq60tw26s0p0"]
+
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://water.gd" id="2_quwqr"]
+[ext_resource type="Script" uid="uid://3ird8rnbhrh2" path="res://breath_ui.gd" id="3_gugk2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
+size = Vector2(30, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6uye4"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_quwqr"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0166724, 0)
+mesh = SubResource("PlaneMesh_4pro5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6uye4")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06889, 0)
+
+[node name="Water" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.5493002, -3.9895036)
+script = ExtResource("2_quwqr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, -1.3934962)
+shape = SubResource("SphereShape3D_quwqr")
+
+[node name="BreathUI" type="CanvasLayer" parent="."]
+script = ExtResource("3_gugk2")
+
+[node name="MarginContainer" type="MarginContainer" parent="BreathUI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="BreathUI/MarginContainer"]
+layout_mode = 2
+text = "Hi :3"

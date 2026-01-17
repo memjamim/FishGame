@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8v7kcsljbcru"]
+[gd_scene load_steps=3 format=3 uid="uid://c8v7kcsljbcru"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_067cb"]
 
@@ -17,13 +17,11 @@ mesh = SubResource("CapsuleMesh_quwqr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_gugk2")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.347938)
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 
-[node name="RayCast3D" type="RayCast3D" parent="Node3D/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00133562)
+[node name="RayCast3D" type="RayCast3D" parent="CameraPivot/Camera3D"]
 target_position = Vector3(0, 0, -2)
 debug_shape_custom_color = Color(0, 1, 0, 1)
