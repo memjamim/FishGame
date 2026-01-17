@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://br70m6u84hw2k"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jouek"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jwxsq"]
+radius = 0.3
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrntt"]
+albedo_color = Color(0.9764706, 0.101960786, 0, 1)
+
+[node name="FishPerson" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_jouek")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5635598, 0, 0, 0, 1.2240598, 0, 0, 0, 0.33799785, 0, 0.5478558, -0.5584391)
+mesh = SubResource("SphereMesh_jwxsq")
+surface_material_override/0 = SubResource("StandardMaterial3D_hrntt")
+
+[node name="Area3D" type="Area3D" parent="."]
