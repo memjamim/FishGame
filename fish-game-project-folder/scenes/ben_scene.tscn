@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://ju5geapqatfg"]
+
+[ext_resource type="PackedScene" uid="uid://dwpucejsk2ip7" path="res://scenes/collectable.tscn" id="1_fkl8m"]
+[ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
+[ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
+[ext_resource type="Script" uid="uid://3ird8rnbhrh2" path="res://scripts/BreathUI.gd" id="4_x8l0j"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
+size = Vector2(30, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6uye4"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xjmee"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4vypp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8l0j"]
+height = 6.762
+radius = 5.738
+
+[sub_resource type="TorusMesh" id="TorusMesh_x8l0j"]
+inner_radius = 7.0
+outer_radius = 6.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8l0j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8l0j"]
+
+[node name="Ben" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8597791, 0)
+mesh = SubResource("PlaneMesh_4pro5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_6uye4")
+
+[node name="Collectable" parent="." instance=ExtResource("1_fkl8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49200106, 1.1473517, -1.9697227)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0158763, -2)
+mesh = SubResource("SphereMesh_xjmee")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("SphereShape3D_4vypp")
+
+[node name="Player" parent="." instance=ExtResource("2_x8l0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8105135, 0.9833269, 5.1511974)
+collision_mask = 3
+swim_speed = 4.0
+swim_accel = 8.0
+swim_drag = 0.0
+breath_recover_rate = 20.0
+
+[node name="Water" type="Area3D" parent="."]
+script = ExtResource("3_fkl8m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.052421, 0, -7.446967)
+shape = SubResource("CylinderShape3D_x8l0j")
+
+[node name="BreathUI" type="CanvasLayer" parent="."]
+script = ExtResource("4_x8l0j")
+
+[node name="Panel" type="Panel" parent="BreathUI"]
+custom_minimum_size = Vector2(25, 25)
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 35.0
+
+[node name="Label" type="Label" parent="BreathUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.35635865, 0.70198804, 0.96429056, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = ":3 hi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PoolSide" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.110241, 2.9528008, -8.016467)
+mesh = SubResource("TorusMesh_x8l0j")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PoolSide"]
+physics_material_override = SubResource("PhysicsMaterial_x8l0j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PoolSide/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.827389, -0.694664, 0)
+shape = SubResource("BoxShape3D_x8l0j")

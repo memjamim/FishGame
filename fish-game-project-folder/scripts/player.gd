@@ -3,11 +3,11 @@ extends CharacterBody3D
 # --- Interaction ---
 @onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
 
-
 var collectables: int = 0
 
 var IS_IN_WATER: bool = false
 
+# Movement
 @export var land_speed := 5.0
 @export var swim_speed := 3.0
 
