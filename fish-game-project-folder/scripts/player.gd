@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var ray_cast_3d: RayCast3D = $Node3D/Camera3D/RayCast3D
 
+var collectables: int = 0
+
 var IS_IN_WATER: bool = false
 
 const SPEED = 5.0
@@ -41,5 +43,12 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
-		print(ray_cast_3d.get_collider())
+	if (
+		ray_cast_3d.is_colliding() 
+		and Input.is_action_just_pressed("interact") 
+		and (ray_cast_3d.get_collider().get_parent().is_in_group('collectable'))
+	):
+		self.collectables += 1
+		print('collect')
+		print('total collectables: ', self.collectables)
+		ray_cast_3d.get_collider().get_parent().queue_free()
