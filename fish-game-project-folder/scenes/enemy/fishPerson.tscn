@@ -39,12 +39,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hrntt")
 collision_layer = 0
 
 [node name="Cone" parent="VisionArea" instance=ExtResource("2_iu1bj")]
-transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0.54404783, -5.6607876)
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -3.1232774, 0, 5, -1.365228e-07, 0, 0.54404783, -5.6607876)
 visible = false
 layers = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea"]
-transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0.54404783, -5.6607876)
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -2.9575534, 0, 5, -1.2927876e-07, 0, 0.54404783, -5.6607876)
 shape = SubResource("ConcavePolygonShape3D_be0k6")
 
 [node name="VisionTimer" type="Timer" parent="."]
@@ -52,7 +52,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="VisionRaycast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55166394, 0)
+transform = Transform3D(1, 0, 0, 0, 0.033954978, 0, 0, 0, 0.10827249, 0, 0.55166394, 0)
 target_position = Vector3(0, -1, -100)
 collision_mask = 3
 debug_shape_custom_color = Color(1, 0, 0, 1)
