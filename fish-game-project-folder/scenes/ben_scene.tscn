@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=17 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" path="res://scenes/collectable.tscn" id="1_fkl8m"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
@@ -26,6 +26,26 @@ outer_radius = 6.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8l0j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8l0j"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x8l0j"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mmbh7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8l0j"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.047058824, 0.31764707, 0.53333336, 0.5058824)
+roughness = 0.0
+normal_texture = SubResource("NoiseTexture2D_x8l0j")
+refraction_enabled = true
+refraction_texture = SubResource("NoiseTexture2D_mmbh7")
+uv1_scale = Vector3(0.04, 0.04, 0.04)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8l0j"]
+material = SubResource("StandardMaterial3D_x8l0j")
+size = Vector3(4, 4, 4)
 
 [node name="Ben" type="Node3D"]
 
@@ -106,3 +126,10 @@ physics_material_override = SubResource("PhysicsMaterial_x8l0j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PoolSide/StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.827389, -0.694664, 0)
 shape = SubResource("BoxShape3D_x8l0j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.41469327, 0.78404915, -0.46184027, 0, 0.5075384, 0.8616291, 0.9099613, -0.3573118, 0.21047275, 0, 4.928076, 6.533126)
+
+[node name="WaterMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7589846, 1.8488703, 0)
+mesh = SubResource("BoxMesh_x8l0j")
