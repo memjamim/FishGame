@@ -17,6 +17,7 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 
 [node name="Player" parent="." instance=ExtResource("1_ijls6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00235271, 1.5523158, 4.2327785)
+swim_drag = 3.5
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.221334, 0, 0, 0, 1, 0, 0, 0, 4.221334, 0, -0.0166724, 0)

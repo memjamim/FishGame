@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br70m6u84hw2k"]
+[gd_scene load_steps=9 format=3 uid="uid://br70m6u84hw2k"]
 
 [ext_resource type="PackedScene" uid="uid://4h06f4kdl3ky" path="res://scenes/enemy/cone.tscn" id="2_iu1bj"]
 [ext_resource type="Script" uid="uid://bkdwd4kp5iskt" path="res://scripts/fish_person.gd" id="3_iu1bj"]
@@ -7,6 +7,8 @@
 radius = 0.57958984
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jouek"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v24tm"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_jwxsq"]
 radius = 0.3
@@ -28,6 +30,7 @@ shape = SubResource("CapsuleShape3D_v24tm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jouek")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_v24tm")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5635598, 0, 0, 0, 1.2240598, 0, 0, 0, 0.33799785, 0, 0.5478558, -0.5584391)
