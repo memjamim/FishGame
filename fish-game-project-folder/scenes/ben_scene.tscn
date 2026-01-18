@@ -135,5 +135,5 @@ transform = Transform3D(0.41469327, 0.78404915, -0.46184027, 0, 0.5075384, 0.861
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7589846, 1.8488703, 0)
 mesh = SubResource("BoxMesh_x8l0j")
 
-[node name="Node" type="Node" parent="."]
+[node name="PauseManager" type="Node" parent="."]
 script = ExtResource("4_mmbh7")
