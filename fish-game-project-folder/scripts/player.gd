@@ -6,6 +6,7 @@ extends CharacterBody3D
 var collectables: int = 0
 
 var IS_IN_WATER: bool = false
+signal water_state_changed(is_in_water: bool)
 
 # Movement
 @export var land_speed := 5.0
@@ -24,25 +25,53 @@ var IS_IN_WATER: bool = false
 @export var max_pitch_deg := 85.0
 
 # Breath
-@export var breath_max := 60.0            # 1:00 breath time
-@export var breath_recover_rate := 180.0  # recovery on land
+@export var breath_max := 60.0            # 1:00 breath time / items will likely need to modify this
+@export var breath_recover_rate := 20.0  # recovery on land
 @export var breath_ui_path: NodePath
 signal breath_updated(current: float, max_value: float)
 signal drowned
 
 @onready var camera_pivot: Node3D = $CameraPivot
 
+# --- Head-based water detection ---
+@export var head_node_path: NodePath = NodePath("CameraPivot/Camera3D")
+
+# Set to the layer of water (currently 1, but may change)
+@export var water_collision_mask: int = 1
+
+# Larger = less flicker at the surface.
+@export var water_state_smooth_time := 0.20
+
+# --- Underwater bobbing (visual) ---
+@export var underwater_bob_amplitude := 0.08   # hight of bob
+@export var underwater_bob_frequency := 0.5    # cycles/sec
+@export var underwater_bob_smoothing := 8.0    # higher = snappier
+
 var _pitch := 0.0
 var breath := 60.0
+
+var _head_node: Node3D
+var _water_blend := 0.0
+var _bob_time := 0.0
+var _pivot_base_pos: Vector3
 
 func _ready() -> void:
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	emit_signal("breath_updated", breath, breath_max)
-	print('total collectables: ', self.collectables)
+	print("total collectables: ", self.collectables)
+
+	_head_node = get_node(head_node_path) as Node3D
+	_pivot_base_pos = camera_pivot.position
 
 func set_in_water(v: bool) -> void:
+	if v == IS_IN_WATER:
+		return
+
 	IS_IN_WATER = v
+	emit_signal("water_state_changed", IS_IN_WATER)
+
+	# If we just entered water, avoids popping upward from existing velocity
 	if IS_IN_WATER:
 		velocity.y = min(velocity.y, 0.0)
 
@@ -67,6 +96,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_pivot.rotation.x = _pitch
 
 func _physics_process(delta: float) -> void:
+	_update_water_state(delta)
 	_update_breath(delta)
 
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
@@ -92,22 +122,20 @@ func _physics_process(delta: float) -> void:
 		_land_move(wish_dir, delta)
 
 	# --- Interaction ---
-	# If the raycast sees an object, the player presses E, and the object is a collectable
-	if (
-		ray_cast_3d.is_colliding() 
-		and Input.is_action_just_pressed("interact") 
-	):
+	if ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
 		var collider = ray_cast_3d.get_collider().get_parent().get_parent()
-		if collider.has_method('_on_interact'):
+		if collider.has_method("_on_interact"):
 			collider._on_interact(self)
 
-		if collider.is_in_group('collectable'):
-			print('total collectables: ', self.collectables)
-		elif collider.is_in_group('interactable'):
-			print('interactable encountered')
+		if collider.is_in_group("collectable"):
+			print("total collectables: ", self.collectables)
+		elif collider.is_in_group("interactable"):
+			print("interactable encountered")
 
 	move_and_slide()
 
+	# Visual bob after movement so it feels stable while moving
+	_apply_underwater_bob(delta)
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
 	# Gravity
@@ -144,3 +172,46 @@ func _update_breath(delta: float) -> void:
 		breath = min(breath_max, breath + breath_recover_rate * delta)
 
 	emit_signal("breath_updated", breath, breath_max)
+
+func _update_water_state(delta: float) -> void:
+	# Node3D point query at the head position against Water layer(s)
+	var head_in_water := _is_head_in_water()
+
+	# Smooth around the surface to reduce flicker
+	if water_state_smooth_time <= 0.0:
+		set_in_water(head_in_water)
+		return
+
+	var rate := delta / water_state_smooth_time
+	if head_in_water:
+		_water_blend = min(1.0, _water_blend + rate)
+	else:
+		_water_blend = max(0.0, _water_blend - rate)
+
+	set_in_water(_water_blend >= 0.5)
+
+func _is_head_in_water() -> bool:
+	if _head_node == null:
+		return false
+
+	var params := PhysicsPointQueryParameters3D.new()
+	params.position = _head_node.global_position
+	params.collision_mask = water_collision_mask
+	params.collide_with_areas = true
+	params.collide_with_bodies = false
+
+	var hits := get_world_3d().direct_space_state.intersect_point(params, 8)
+	return hits.size() > 0
+
+func _apply_underwater_bob(delta: float) -> void:
+	var target_offset_y := 0.0
+
+	if IS_IN_WATER:
+		_bob_time += delta
+		target_offset_y = sin(_bob_time * TAU * underwater_bob_frequency) * underwater_bob_amplitude
+	else:
+		_bob_time = 0.0
+
+	var desired := _pivot_base_pos + Vector3(0.0, target_offset_y, 0.0)
+	var t: float = clampf(underwater_bob_smoothing * delta, 0.0, 1.0)
+	camera_pivot.position = camera_pivot.position.lerp(desired, t)

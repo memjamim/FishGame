@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ju5geapqatfg"]
 
-[ext_resource type="PackedScene" uid="uid://dwpucejsk2ip7" path="res://scenes/collectable.tscn" id="1_fkl8m"]
+[ext_resource type="PackedScene" path="res://scenes/collectable.tscn" id="1_fkl8m"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
 [ext_resource type="Script" uid="uid://3ird8rnbhrh2" path="res://scripts/BreathUI.gd" id="4_x8l0j"]
@@ -53,11 +53,18 @@ shape = SubResource("SphereShape3D_4vypp")
 
 [node name="Player" parent="." instance=ExtResource("2_x8l0j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8105135, 0.9833269, 5.1511974)
-collision_mask = 3
+land_speed = 5.0
 swim_speed = 4.0
+land_accel = 18.0
 swim_accel = 8.0
 swim_drag = 0.0
+buoyancy = 1.5
+jump_velocity = 4.5
+mouse_sensitivity = 0.002
+max_pitch_deg = 85.0
+breath_max = 60.0
 breath_recover_rate = 20.0
+breath_ui_path = NodePath("")
 
 [node name="Water" type="Area3D" parent="."]
 script = ExtResource("3_fkl8m")
