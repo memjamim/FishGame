@@ -4,7 +4,6 @@ extends CharacterBody3D
 @onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player= $AnimationPlayer
-@onready var weapon_hitbox = $CameraPivot/Camera3D/WeaponPivot/weapon_mesh_t1/weapon_hitbox_t1
 
 var collectables: int = 0
 
@@ -137,7 +136,7 @@ func _physics_process(delta: float) -> void:
 		var collider = ray_cast_3d.get_collider()
 		if collider.has_method("_on_interact"):
 			collider._on_interact(self)
-
+	
 		if collider.is_in_group("collectable"):
 			print("total collectables: ", self.collectables)
 		elif collider.is_in_group("interactable"):
@@ -146,20 +145,23 @@ func _physics_process(delta: float) -> void:
 			if IS_HOLDING_ITEM == false:
 				self.IS_HOLDING_ITEM = true
 				self.pickup_throw._pick_up(collider)
-				
-	# --- Combat ---
-	if Input.is_action_just_pressed("attack"):
-		anim_player.play("attack")
-		weapon_hitbox.monitoring = true
-	
+				if collider.is_in_group('weapon'):
+					collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
+		
 	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM:
 		self.pickup_throw._charge_throw(delta)
 	
-	if Input.is_action_just_released('throw'):
-		if IS_HOLDING_ITEM:
-			var held_item = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
-			self.pickup_throw._throw(held_item)
-			self.IS_HOLDING_ITEM = false
+	if Input.is_action_just_released('throw') and IS_HOLDING_ITEM:
+		var held_item = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+		self.pickup_throw._throw(held_item)
+		self.IS_HOLDING_ITEM = false
+	
+	# --- Combat ---
+	if Input.is_action_just_pressed("attack") and IS_HOLDING_ITEM:
+		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+		if weapon.is_in_group('weapon'):
+			anim_player.play("attack")
+			weapon.find_child('Hitbox').monitoring = true
 
 	move_and_slide()
 
@@ -255,7 +257,8 @@ func _apply_underwater_bob(delta: float) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "attack"):
 		anim_player.play("idle")
-		weapon_hitbox.monitoring = false
+		var hitbox = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0).find_child('Hitbox')
+		hitbox.monitoring = false
 
 
 func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
