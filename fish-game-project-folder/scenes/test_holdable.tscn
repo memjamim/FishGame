@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnsnij54sy24f"]
+
+[ext_resource type="Script" uid="uid://bcj23cl2pih7k" path="res://scripts/test_holdable.gd" id="1_ariqn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2cyp"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ariqn"]
+material = SubResource("StandardMaterial3D_y2cyp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3svbo"]
+
+[node name="TestHoldable" type="RigidBody3D" groups=["holdable"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ariqn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3svbo")

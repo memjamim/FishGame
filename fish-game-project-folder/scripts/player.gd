@@ -2,10 +2,12 @@ extends CharacterBody3D
 
 # --- Interaction ---
 @onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
+@onready var pickup_throw: Node = $PickupThrow
 
 var collectables: int = 0
 
 var IS_IN_WATER: bool = false
+var IS_HOLDING_ITEM: bool = false
 signal water_state_changed(is_in_water: bool)
 
 # Movement
@@ -55,6 +57,7 @@ var _water_blend := 0.0
 var _bob_time := 0.0
 var _pivot_base_pos: Vector3
 
+
 func _ready() -> void:
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -63,6 +66,7 @@ func _ready() -> void:
 
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
+
 
 func set_in_water(v: bool) -> void:
 	if v == IS_IN_WATER:
@@ -74,6 +78,7 @@ func set_in_water(v: bool) -> void:
 	# If we just entered water, avoids popping upward from existing velocity
 	if IS_IN_WATER:
 		velocity.y = min(velocity.y, 0.0)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Toggle mouse capture (for easier testing in editor)
@@ -94,6 +99,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			deg_to_rad(max_pitch_deg)
 		)
 		camera_pivot.rotation.x = _pitch
+
 
 func _physics_process(delta: float) -> void:
 	_update_water_state(delta)
@@ -123,7 +129,7 @@ func _physics_process(delta: float) -> void:
 
 	# --- Interaction ---
 	if ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
-		var collider = ray_cast_3d.get_collider().get_parent().get_parent()
+		var collider = ray_cast_3d.get_collider()
 		if collider.has_method("_on_interact"):
 			collider._on_interact(self)
 
@@ -131,11 +137,25 @@ func _physics_process(delta: float) -> void:
 			print("total collectables: ", self.collectables)
 		elif collider.is_in_group("interactable"):
 			print("interactable encountered")
+		elif collider.is_in_group('holdable'):
+			if IS_HOLDING_ITEM == false:
+				self.IS_HOLDING_ITEM = true
+				self.pickup_throw._pick_up(collider)
+	
+	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM:
+		self.pickup_throw._charge_throw(delta)
+	
+	if Input.is_action_just_released('throw'):
+		if IS_HOLDING_ITEM:
+			var held_item = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+			self.pickup_throw._throw(held_item)
+			self.IS_HOLDING_ITEM = false
 
 	move_and_slide()
 
 	# Visual bob after movement so it feels stable while moving
 	_apply_underwater_bob(delta)
+
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
 	# Gravity
@@ -151,6 +171,7 @@ func _land_move(wish_dir: Vector3, delta: float) -> void:
 	velocity.x = move_toward(velocity.x, target.x, land_accel * delta)
 	velocity.z = move_toward(velocity.z, target.z, land_accel * delta)
 
+
 func _swim_move(wish_dir: Vector3, delta: float) -> void:
 	# Buoyancy + drag for water movement
 	velocity.y += buoyancy * delta
@@ -162,6 +183,7 @@ func _swim_move(wish_dir: Vector3, delta: float) -> void:
 	velocity.y = move_toward(velocity.y, target.y, swim_accel * delta)
 	velocity.z = move_toward(velocity.z, target.z, swim_accel * delta)
 
+
 func _update_breath(delta: float) -> void:
 	if IS_IN_WATER:
 		breath = max(0.0, breath - delta)
@@ -172,6 +194,7 @@ func _update_breath(delta: float) -> void:
 		breath = min(breath_max, breath + breath_recover_rate * delta)
 
 	emit_signal("breath_updated", breath, breath_max)
+
 
 func _update_water_state(delta: float) -> void:
 	# Node3D point query at the head position against Water layer(s)
@@ -190,6 +213,7 @@ func _update_water_state(delta: float) -> void:
 
 	set_in_water(_water_blend >= 0.5)
 
+
 func _is_head_in_water() -> bool:
 	if _head_node == null:
 		return false
@@ -202,6 +226,7 @@ func _is_head_in_water() -> bool:
 
 	var hits := get_world_3d().direct_space_state.intersect_point(params, 8)
 	return hits.size() > 0
+
 
 func _apply_underwater_bob(delta: float) -> void:
 	var target_offset_y := 0.0

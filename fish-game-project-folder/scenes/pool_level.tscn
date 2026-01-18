@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0rs663k6b7in"]
+[gd_scene load_steps=16 format=3 uid="uid://b0rs663k6b7in"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_hfxg5"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="2_i5atr"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="3_3dqls"]
 [ext_resource type="PackedScene" uid="uid://jhfpml2w5wm4" path="res://scenes/ladder.tscn" id="4_dfc1h"]
+[ext_resource type="PackedScene" path="res://scenes/test_holdable.tscn" id="5_o4yg7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3dqls"]
 
@@ -152,8 +153,11 @@ shape = SubResource("BoxShape3D_i5atr")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9599521, 0.28016412, 0, -0.28016412, 0.9599521, 14.421921, 17.48574, 0)
 
-[node name="TestCollectable" parent="." instance=ExtResource("3_3dqls")]
+[node name="TestCollectable" parent="." groups=["holdable"] instance=ExtResource("3_3dqls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, 6)
 
 [node name="Ladder" parent="." instance=ExtResource("4_dfc1h")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24.708654, 5.6398377, 9.857096)
+
+[node name="TestHoldable" parent="." instance=ExtResource("5_o4yg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.41265, 1.99, 3.1696918)
