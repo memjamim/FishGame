@@ -10,7 +10,18 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
 script = ExtResource("1_067cb")
+land_speed = null
+swim_speed = null
+land_accel = null
+swim_accel = null
+swim_drag = null
 buoyancy = -3.0
+jump_velocity = null
+mouse_sensitivity = null
+max_pitch_deg = null
+breath_max = null
+breath_recover_rate = null
+breath_ui_path = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_quwqr")
