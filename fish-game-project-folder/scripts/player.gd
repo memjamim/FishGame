@@ -83,6 +83,9 @@ func set_in_water(v: bool) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if get_tree().paused:
+		return
+
 	# Toggle mouse capture (for easier testing in editor)
 	if event.is_action_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
