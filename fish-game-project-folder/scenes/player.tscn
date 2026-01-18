@@ -30,3 +30,6 @@ visible = false
 target_position = Vector3(0, 0, -2)
 debug_shape_custom_color = Color(0, 1, 0, 1)
 debug_shape_thickness = 1
+
+[node name="HoldPoint" type="Node3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6329134, -0.5991384, -0.8452022)
