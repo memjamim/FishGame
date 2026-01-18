@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8v7kcsljbcru"]
+[gd_scene load_steps=5 format=3 uid="uid://c8v7kcsljbcru"]
 
 [ext_resource type="Script" uid="uid://db0vh5tiik48j" path="res://scripts/player.gd" id="1_067cb"]
+[ext_resource type="Script" uid="uid://ctmkxp74vlma0" path="res://scripts/pickup_throw.gd" id="2_g2els"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_quwqr"]
 
@@ -10,18 +11,8 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
 script = ExtResource("1_067cb")
-land_speed = null
-swim_speed = null
-land_accel = null
-swim_accel = null
-swim_drag = null
-buoyancy = -3.0
-jump_velocity = null
-mouse_sensitivity = null
-max_pitch_deg = null
-breath_max = null
-breath_recover_rate = null
-breath_ui_path = null
+swim_drag = 0.0
+buoyancy = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_quwqr")
@@ -37,10 +28,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.23598588)
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0075434446, 0)
-visible = false
 target_position = Vector3(0, 0, -2)
 debug_shape_custom_color = Color(0, 1, 0, 1)
 debug_shape_thickness = 1
 
 [node name="HoldPoint" type="Node3D" parent="CameraPivot/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6329134, -0.5991384, -0.8452022)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65947115, -0.7687303, -0.7458478)
+
+[node name="PickupThrow" type="Node" parent="."]
+script = ExtResource("2_g2els")
+max_throw_strength = 15.0

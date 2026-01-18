@@ -10,16 +10,10 @@ material = SubResource("StandardMaterial3D_y2cyp")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3svbo"]
 
-[node name="TestHoldable" type="Node3D"]
-script = ExtResource("1_ariqn")
+[node name="TestHoldable" type="RigidBody3D" groups=["holdable"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ariqn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_3svbo")
-
-[node name="HoldPointSnap" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19427228, 0.14480352, 0.35875833)
