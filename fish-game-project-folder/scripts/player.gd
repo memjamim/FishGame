@@ -59,6 +59,13 @@ var _water_blend := 0.0
 var _bob_time := 0.0
 var _pivot_base_pos: Vector3
 
+const WEAPON_DAMAGE := {
+	1: 20,
+	2: 25,
+	3: 34
+}
+
+var weapon_tier := 1
 
 func _ready() -> void:
 	breath = breath_max
@@ -259,5 +266,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") && body.has_method("apply_damage"):
+		var damage: int = WEAPON_DAMAGE.get(weapon_tier, 10)		
+		body.apply_damage(damage)
 		print("Enemy hit!")
