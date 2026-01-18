@@ -106,3 +106,6 @@ physics_material_override = SubResource("PhysicsMaterial_x8l0j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PoolSide/StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.827389, -0.694664, 0)
 shape = SubResource("BoxShape3D_x8l0j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.41469327, 0.78404915, -0.46184027, 0, 0.5075384, 0.8616291, 0.9099613, -0.3573118, 0.21047275, 0, 4.928076, 6.533126)
