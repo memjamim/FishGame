@@ -3,6 +3,8 @@ extends CharacterBody3D
 # --- Interaction ---
 @onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
 @onready var pickup_throw: Node = $PickupThrow
+@onready var anim_player= $AnimationPlayer
+@onready var weapon_hitbox = $CameraPivot/Camera3D/WeaponPivot/weapon_mesh_t1/weapon_hitbox_t1
 
 var collectables: int = 0
 
@@ -81,6 +83,9 @@ func set_in_water(v: bool) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if get_tree().paused:
+		return
+
 	# Toggle mouse capture (for easier testing in editor)
 	if event.is_action_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -141,6 +146,11 @@ func _physics_process(delta: float) -> void:
 			if IS_HOLDING_ITEM == false:
 				self.IS_HOLDING_ITEM = true
 				self.pickup_throw._pick_up(collider)
+				
+	# --- Combat ---
+	if Input.is_action_just_pressed("attack"):
+		anim_player.play("attack")
+		weapon_hitbox.monitoring = true
 	
 	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM:
 		self.pickup_throw._charge_throw(delta)
@@ -240,3 +250,14 @@ func _apply_underwater_bob(delta: float) -> void:
 	var desired := _pivot_base_pos + Vector3(0.0, target_offset_y, 0.0)
 	var t: float = clampf(underwater_bob_smoothing * delta, 0.0, 1.0)
 	camera_pivot.position = camera_pivot.position.lerp(desired, t)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if (anim_name == "attack"):
+		anim_player.play("idle")
+		weapon_hitbox.monitoring = false
+
+
+func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
+	if body.is_in_group("enemy"):
+		print("Enemy hit!")
