@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo1re71ojesvq"]
+[gd_scene load_steps=8 format=3 uid="uid://bo1re71ojesvq"]
 
-[ext_resource type="PackedScene" uid="uid://dwpucejsk2ip7" path="res://scenes/collectable.tscn" id="1_cn2e8"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_0ragw"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_rb8pp"]
 
@@ -28,9 +27,6 @@ mesh = SubResource("PlaneMesh_4pro5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_6uye4")
-
-[node name="Collectable" parent="." instance=ExtResource("1_cn2e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49200106, 1.1473517, -1.9697227)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0158763, -2)

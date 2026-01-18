@@ -59,6 +59,7 @@ func _throw(holdable: RigidBody3D) -> void:
 	holdable.apply_impulse(
 		forward * throw_force
 	)
+	
 	self.throw_charge = 0
 	
 	print("throwing:", holdable.name)
