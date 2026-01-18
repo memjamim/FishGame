@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://boq60tw26s0p0"]
+[gd_scene load_steps=6 format=3 uid="uid://cdt5tqkmtruxc"]
 
-[ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://player.tscn" id="1_pm37x"]
+[ext_resource type="PackedScene" uid="uid://dthu6lun54n3f" path="res://player.tscn" id="1_pm37x"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(20, 20)
@@ -33,3 +33,4 @@ mesh = SubResource("BoxMesh_btn5c")
 shape = SubResource("BoxShape3D_lv5as")
 
 [node name="Player" parent="." instance=ExtResource("1_pm37x")]
+script = null
