@@ -3,6 +3,10 @@ extends CharacterBody3D
 @export var move_speed := 3.0
 @export var chase_acceleration := 8.0
 
+@export var vision_range := 15.0          
+@export var vision_angle := 60.0          
+
+
 var player: CharacterBody3D = null
 var is_chasing := false
 

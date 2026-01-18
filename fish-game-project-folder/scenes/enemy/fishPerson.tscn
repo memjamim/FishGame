@@ -61,5 +61,6 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="FishPerson" type="Node3D" parent="."]
 
+[connection signal="body_shape_exited" from="VisionArea" to="." method="_on_vision_area_body_shape_exited"]
 [connection signal="timeout" from="VisionTimer" to="FishPerson" method="_on_vision_timer_timeout"]
 [connection signal="timeout" from="VisionTimer" to="." method="_on_vision_timer_timeout"]
