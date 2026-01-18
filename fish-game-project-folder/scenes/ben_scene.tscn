@@ -118,7 +118,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PoolSide" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.110241, 2.9528008, -8.016467)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.110241, 2.9528008, -7.4290648)
 mesh = SubResource("TorusMesh_x8l0j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="PoolSide"]
