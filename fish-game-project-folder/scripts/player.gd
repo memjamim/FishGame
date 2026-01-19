@@ -304,8 +304,12 @@ func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
 		var damage: int = WEAPON_DAMAGE.get(weapon_tier, 10)		
 		body.apply_damage(damage)
 		print("Enemy hit!")
+		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+		weapon.find_child('Hitbox').set_deferred('monitoring', false)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == 'attack':
 		anim_player.play('idle')
+		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+		weapon.find_child('Hitbox').monitoring = false

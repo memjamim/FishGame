@@ -62,4 +62,7 @@ func _throw(holdable: RigidBody3D) -> void:
 	
 	self.throw_charge = 0
 	
+	if holdable.is_in_group('weapon'):
+		holdable.find_child('Hitbox').monitoring = true
+	
 	print("throwing:", holdable.name)

@@ -1,5 +1,8 @@
 extends RigidBody3D
 
+@onready var hitbox: Area3D = $Hitbox
+
+
 signal enemy_hit(body_hit)
 
 ## Called when the node enters the scene tree for the first time.
@@ -16,3 +19,4 @@ signal enemy_hit(body_hit)
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group('enemy'):
 		enemy_hit.emit(body)
+		#hitbox.monitoring = false
