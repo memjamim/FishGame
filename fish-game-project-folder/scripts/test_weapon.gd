@@ -13,5 +13,6 @@ signal enemy_hit(body_hit)
 
 
 
-func _on_hitbox_body_entered(body: CharacterBody3D) -> void:
-	enemy_hit.emit(body)
+func _on_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group('enemy'):
+		enemy_hit.emit(body)
