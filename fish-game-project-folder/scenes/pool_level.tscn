@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="3_3dqls"]
 [ext_resource type="PackedScene" uid="uid://jhfpml2w5wm4" path="res://scenes/ladder.tscn" id="4_dfc1h"]
 [ext_resource type="PackedScene" uid="uid://dnsnij54sy24f" path="res://scenes/test_holdable.tscn" id="5_o4yg7"]
-[ext_resource type="PackedScene" uid="uid://b10ap3dnlda12" path="res://scenes/test_weapon.tscn" id="6_4tqmo"]
+[ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="6_4tqmo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3dqls"]
 
@@ -28,9 +28,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5atr"]
 
 [node name="PoolLevel" type="Node3D"]
-
-[node name="Player" parent="." instance=ExtResource("1_hfxg5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.930353, 2.7002177, 9.078178)
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -165,3 +162,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.41265, 1.99, 3.1696918)
 
 [node name="TestWeapon" parent="." instance=ExtResource("6_4tqmo")]
 transform = Transform3D(1, 0, 0, 0, 0.83436716, 0.5512091, 0, -0.5512091, 0.83436716, 17.029251, 2.0287547, 14.191255)
+
+[node name="Player" parent="." instance=ExtResource("1_hfxg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.930353, 2.7002177, 9.078178)

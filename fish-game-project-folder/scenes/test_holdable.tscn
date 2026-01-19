@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnsnij54sy24f"]
+[gd_scene load_steps=7 format=3 uid="uid://dnsnij54sy24f"]
 
 [ext_resource type="Script" uid="uid://bcj23cl2pih7k" path="res://scripts/test_holdable.gd" id="1_ariqn"]
+[ext_resource type="Shader" uid="uid://bbrktyjunhf2y" path="res://art/shaders/interact.gdshader" id="2_3svbo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qolq"]
+render_priority = 0
+shader = ExtResource("2_3svbo")
+shader_parameter/strength = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2cyp"]
+next_pass = SubResource("ShaderMaterial_3qolq")
 albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ariqn"]
@@ -11,6 +18,7 @@ material = SubResource("StandardMaterial3D_y2cyp")
 [sub_resource type="BoxShape3D" id="BoxShape3D_3svbo"]
 
 [node name="TestHoldable" type="RigidBody3D" groups=["holdable"]]
+script = ExtResource("1_ariqn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ariqn")
