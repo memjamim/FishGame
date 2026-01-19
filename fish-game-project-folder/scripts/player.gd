@@ -3,7 +3,8 @@ extends CharacterBody3D
 # --- Interaction ---
 @onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
 @onready var pickup_throw: Node = $PickupThrow
-@onready var anim_player= $AnimationPlayer
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+
 
 var collectables: int = 0
 
@@ -254,13 +255,11 @@ func _apply_underwater_bob(delta: float) -> void:
 	camera_pivot.position = camera_pivot.position.lerp(desired, t)
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if (anim_name == "attack"):
-		anim_player.play("idle")
-		var hitbox = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0).find_child('Hitbox')
-		hitbox.monitoring = false
-
-
 func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy"):
 		print("Enemy hit!")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == 'attack':
+		anim_player.play('idle')
