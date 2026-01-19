@@ -6,7 +6,38 @@ extends CharacterBody3D
 @onready var anim_player= $AnimationPlayer
 @onready var weapon_hitbox = $CameraPivot/Camera3D/WeaponPivot/weapon_mesh_t1/weapon_hitbox_t1
 
-var collectables: int = 0
+signal collectables_changed(count: int)
+
+# Stuff for future shop
+
+var owned_shop_items: Dictionary = {}
+
+func has_item(item_id: String) -> bool:
+	return owned_shop_items.has(item_id)
+
+func add_item(item_id: String) -> void:
+	owned_shop_items[item_id] = true
+
+func can_afford(cost: int) -> bool:
+	return collectables >= cost
+
+func spend_coins(cost: int) -> bool:
+	if collectables < cost:
+		return false
+	collectables -= cost
+	return true
+	
+var _collectables: int = 0
+var collectables: int:
+	get:
+		return _collectables
+	set(value):
+		value = max(0, value)
+		if value == _collectables:
+			return
+		_collectables = value
+		emit_signal("collectables_changed", _collectables)
+
 
 var IS_IN_WATER: bool = false
 var IS_HOLDING_ITEM: bool = false
@@ -61,13 +92,19 @@ var _pivot_base_pos: Vector3
 
 
 func _ready() -> void:
+	add_to_group("player")
+
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 	emit_signal("breath_updated", breath, breath_max)
-	print("total collectables: ", self.collectables)
+	emit_signal("collectables_changed", collectables)
+
+	print("total collectables: ", collectables)
 
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
+
 
 
 func set_in_water(v: bool) -> void:
