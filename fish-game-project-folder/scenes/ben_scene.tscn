@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=19 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_mmbh7"]
 [ext_resource type="Script" uid="uid://3ird8rnbhrh2" path="res://scripts/BreathUI.gd" id="4_x8l0j"]
+[ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="5_gr04e"]
+[ext_resource type="PackedScene" uid="uid://dnsnij54sy24f" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -59,19 +61,6 @@ mesh = SubResource("PlaneMesh_4pro5")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_6uye4")
 
-[node name="Collectable" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49200106, 1.1473517, -1.9697227)
-script = null
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0158763, -2)
 mesh = SubResource("SphereMesh_xjmee")
@@ -94,26 +83,33 @@ script = ExtResource("3_fkl8m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.052421, 0, -7.446967)
 shape = SubResource("CylinderShape3D_x8l0j")
 
-[node name="BreathUI" type="CanvasLayer" parent="."]
+[node name="PlayerUI" type="CanvasLayer" parent="."]
 script = ExtResource("4_x8l0j")
+panel_path = NodePath("VBoxContainer")
+breath_label_path = NodePath("VBoxContainer/BreathLabel")
+coin_label_path = NodePath("VBoxContainer/CoinLabel")
 
-[node name="Panel" type="Panel" parent="BreathUI"]
-custom_minimum_size = Vector2(25, 25)
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 105.0
-offset_bottom = 35.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 60.0
 
-[node name="Label" type="Label" parent="BreathUI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="BreathLabel" type="Label" parent="PlayerUI/VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.35635865, 0.70198804, 0.96429056, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = ":3 hi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinLabel" type="Label" parent="PlayerUI/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.23137255, 1)
+theme_override_constants/outline_size = 2
+text = ":D hi"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -137,3 +133,18 @@ mesh = SubResource("BoxMesh_x8l0j")
 
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("4_mmbh7")
+
+[node name="TestCollectable" parent="." instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 4.9804173)
+
+[node name="TestHoldable" parent="." instance=ExtResource("6_7vjy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3167062, -0.35977912, 9.927605)
+
+[node name="TestCollectable2" parent="." instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 6.2825403)
+
+[node name="TestCollectable3" parent="." instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91187, -0.31903505, 4.7733936)
+
+[node name="TestCollectable4" parent="." instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.367805, -0.39591622, 7.675935)
