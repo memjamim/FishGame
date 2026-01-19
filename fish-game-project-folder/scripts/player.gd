@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # --- Interaction ---
-@onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
+@onready var player_raycast: RayCast3D = $CameraPivot/Camera3D/PlayerRaycast
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
@@ -177,8 +177,8 @@ func _physics_process(delta: float) -> void:
 		_land_move(wish_dir, delta)
 
 	# --- Interaction ---
-	if ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
-		var collider = ray_cast_3d.get_collider()
+	if player_raycast.is_colliding() and Input.is_action_just_pressed("interact"):
+		var collider = player_raycast.get_collider()
 		if collider.has_method("_on_interact"):
 			collider._on_interact(self)
 	
@@ -191,7 +191,8 @@ func _physics_process(delta: float) -> void:
 				self.IS_HOLDING_ITEM = true
 				self.pickup_throw._pick_up(collider)
 				if collider.is_in_group('weapon'):
-					collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
+					if !collider.is_connected('enemy_hit', _on_weapon_hitbox_t_1_body_entered):
+						collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
 		
 	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM:
 		self.pickup_throw._charge_throw(delta)
