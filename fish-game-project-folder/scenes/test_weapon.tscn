@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://chi4l65p4y4ud"]
+
+[ext_resource type="Script" uid="uid://bu6u344rx41ep" path="res://scripts/test_weapon.gd" id="1_fpn5d"]
+[ext_resource type="Shader" uid="uid://bbrktyjunhf2y" path="res://art/shaders/interact.gdshader" id="2_d44m1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yn38l"]
+render_priority = 0
+shader = ExtResource("2_d44m1")
+shader_parameter/strength = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0g3m"]
+next_pass = SubResource("ShaderMaterial_yn38l")
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fpn5d"]
+material = SubResource("StandardMaterial3D_d0g3m")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d44m1"]
+size = Vector3(0.44866943, 1.5484772, 0.43041992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpn5d"]
+size = Vector3(0.23474121, 1.1260986, 0.20690918)
+
+[node name="TestWeapon" type="RigidBody3D" groups=["holdable", "weapon"]]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_fpn5d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.13092476, 0, 0, 0, 1.1897305, 0, 0, 0, 0.15391153, 0, 0, 0)
+mesh = SubResource("BoxMesh_fpn5d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.29591113, 0, 0, 0, 0.77963495, 0, 0, 0, 0.34722856, 0.00044870377, 0.003929138, -0.0028076172)
+shape = SubResource("BoxShape3D_d44m1")
+
+[node name="Hitbox" type="Area3D" parent="."]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 0.9999753, 0, 0, 0, 0.9999753, 0.006164551, 0.06304862, 0.0038454134)
+shape = SubResource("BoxShape3D_fpn5d")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
