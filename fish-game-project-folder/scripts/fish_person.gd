@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@onready var mesh: MeshInstance3D = $MeshInstance3D
+@onready var mesh: MeshInstance3D = $Armature_001/Skeleton3D/Plane_052
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 @export var move_speed := 2.5
 @export var chase_acceleration := 6.0
@@ -16,6 +17,7 @@ var is_chasing := false
 
 func _ready() -> void:
 	currentHealth = maxHealth
+	anim_player.play("fast_swim")
 
 func _physics_process(delta: float) -> void:
 	if not is_chasing or player == null:
