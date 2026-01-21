@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=8 format=3 uid="uid://c2td7c2d17p1f"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="2_b0xup"]
+[ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="3_u545m"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ijls6"]
 size = Vector2(20, 20)
@@ -17,6 +18,7 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 
 [node name="Player" parent="." instance=ExtResource("1_ijls6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00235271, 1.5523158, 4.2327785)
+swim_drag = 3.5
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.221334, 0, 0, 0, 1, 0, 0, 0, 4.221334, 0, -0.0166724, 0)
@@ -29,6 +31,11 @@ shape = SubResource("ConcavePolygonShape3D_piw3f")
 
 [node name="FishPerson" parent="." instance=ExtResource("2_b0xup")]
 transform = Transform3D(-0.997378, 0, 0.07236792, 0, 1, 0, -0.07236792, 0, -0.997378, 0, 1.1244116, -5.06952)
+move_speed = null
+chase_acceleration = null
+vision_range = null
+vision_angle = null
+maxHealth = null
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.234085, 1.392267, 0)
@@ -45,3 +52,6 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_b0xup")
+
+[node name="TestWeapon" parent="." instance=ExtResource("3_u545m")]
+transform = Transform3D(1, 0, 0, 0, 0.99818766, 0.060177475, 0, -0.060177475, 0.99818766, -0.15725242, 0.58174574, 1.5557015)
