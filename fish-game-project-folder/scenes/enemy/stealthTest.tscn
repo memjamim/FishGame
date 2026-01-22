@@ -31,6 +31,7 @@ shape = SubResource("ConcavePolygonShape3D_piw3f")
 
 [node name="FishPerson" parent="." instance=ExtResource("2_b0xup")]
 transform = Transform3D(-0.997378, 0, 0.07236792, 0, 1, 0, -0.07236792, 0, -0.997378, 0, 1.1244116, -5.06952)
+player_path = NodePath("../Player")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.234085, 1.392267, 0)
@@ -50,3 +51,6 @@ shape = SubResource("BoxShape3D_b0xup")
 
 [node name="TestWeapon" parent="." instance=ExtResource("3_u545m")]
 transform = Transform3D(1, 0, 0, 0, 0.99818766, 0.060177475, 0, -0.060177475, 0.99818766, -0.15725242, 0.58174574, 1.5557015)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9008498, 0.43413085, 0, -0.43413085, 0.9008498, 0, 4.9459248, 0)
