@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=21 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_mmbh7"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="5_gr04e"]
 [ext_resource type="PackedScene" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
+[ext_resource type="AudioStream" uid="uid://bg25xxv3ej766" path="res://assets/Sounds/radio.wav" id="7_7vjy0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -48,6 +49,10 @@ uv1_world_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_x8l0j"]
 material = SubResource("StandardMaterial3D_x8l0j")
 size = Vector3(4, 4, 4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7vjy0"]
+top_radius = 0.0
+height = 1.0
 
 [node name="Ben" type="Node3D"]
 
@@ -134,3 +139,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91187, -0.31903505, 4.77339
 
 [node name="TestCollectable4" parent="." instance=ExtResource("5_gr04e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.367805, -0.39591622, 7.675935)
+
+[node name="Speaker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.41310447, 0.91068363, 0, -0.91068363, -0.41310447, -7.0439386, 1.0158763, 0.7504835)
+mesh = SubResource("CylinderMesh_7vjy0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Speaker"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Speaker/StaticBody3D"]
+shape = SubResource("SphereShape3D_4vypp")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Speaker"]
+stream = ExtResource("7_7vjy0")
+autoplay = true
+max_distance = 25.13
