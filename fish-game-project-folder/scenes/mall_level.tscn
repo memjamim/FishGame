@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_hu4f0"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="2_0erxm"]
-[ext_resource type="Script" uid="uid://3ird8rnbhrh2" path="res://scripts/BreathUI.gd" id="3_ej1wn"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_37o5y"]
+[ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="4_hu4f0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_x8l0j"]
 height = 50.711
@@ -56,35 +56,14 @@ script = ExtResource("2_0erxm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6388092, 0, 0.3383417)
 shape = SubResource("CylinderShape3D_x8l0j")
 
-[node name="BreathUI" type="CanvasLayer" parent="."]
-script = ExtResource("3_ej1wn")
-
-[node name="Panel" type="Panel" parent="BreathUI"]
-custom_minimum_size = Vector2(25, 25)
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 105.0
-offset_bottom = 35.0
-
-[node name="Label" type="Label" parent="BreathUI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.35635865, 0.70198804, 0.96429056, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = ":3 hi"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.41469327, 0.78404915, -0.46184027, 0, 0.5075384, 0.8616291, 0.9099613, -0.3573118, 0.21047275, 0, 4.928076, 6.533126)
 light_energy = 0.273
 
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("4_37o5y")
+
+[node name="PlayerUI" parent="." instance=ExtResource("4_hu4f0")]
 
 [node name="Level" type="Node" parent="."]
 
