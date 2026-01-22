@@ -1,5 +1,5 @@
 extends Control
-
+signal options_requested
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
@@ -14,3 +14,6 @@ func _on_main_menu_button_pressed() -> void:
 	# Kills the pause menu overlay
 	queue_free()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+
+func _on_options_button_pressed() -> void:
+	emit_signal("options_requested")

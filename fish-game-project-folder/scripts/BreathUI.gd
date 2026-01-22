@@ -1,18 +1,32 @@
 extends CanvasLayer
 
-@onready var panel: Control = $Panel
-@onready var label: Label = $Panel/Label
+@export var panel_path: NodePath
+@export var breath_label_path: NodePath
+@export var coin_label_path: NodePath
+
 @onready var player := get_node("/root/Ben/Player")
 
 @export var underwater_tint_color: Color = Color(0.1, 0.35, 0.85, 0.25)
-@export var tint_fade_speed := 6.0 
+@export var tint_fade_speed := 6.0
+
+var panel: Control
+var breath_label: Label
+var coin_label: Label
 
 var _tint: ColorRect
 var _tint_alpha := 0.0
 var _tint_target_alpha := 0.0
 
 func _ready() -> void:
-	# Screen tint overlay (behind UI text/panel)
+	panel = get_node_or_null(panel_path) as Control
+	breath_label = get_node_or_null(breath_label_path) as Label
+	coin_label = get_node_or_null(coin_label_path) as Label
+
+	if panel == null or breath_label == null or coin_label == null:
+		push_error("PlayerUI: One or more UI node paths are not set or invalid. Assign panel_path, breath_label_path, coin_label_path in the Inspector.")
+		return
+
+	# Tint overlay
 	_tint = ColorRect.new()
 	_tint.name = "UnderwaterTint"
 	_tint.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -24,10 +38,14 @@ func _ready() -> void:
 	_tint.z_index = -100
 	add_child(_tint)
 
+	# signals
 	player.breath_updated.connect(set_breath)
 	player.water_state_changed.connect(_on_water_state_changed)
+	player.collectables_changed.connect(_on_collectables_changed)
 
+	# initialize
 	set_breath(player.breath, player.breath_max)
+	_on_collectables_changed(player.collectables)
 	_on_water_state_changed(player.IS_IN_WATER)
 
 func _process(delta: float) -> void:
@@ -41,8 +59,9 @@ func _on_water_state_changed(in_water: bool) -> void:
 
 func set_breath(current: float, max_value: float) -> void:
 	var secs := int(ceil(clamp(current, 0.0, max_value)))
-	label.text = "Breath: %d:%02d" % [secs / 60, secs % 60]
+	var mins := int(secs / 60)
+	breath_label.text = "Breath: %d:%02d" % [mins, secs % 60]
+	panel.visible = true
 
-	# currently breath time is always visible, change later if we want 
-	# it to be off while player is above water
-	panel.visible = true # player.IS_IN_WATER or secs < int(max_value)
+func _on_collectables_changed(count: int) -> void:
+	coin_label.text = "Coins: %d" % count

@@ -1,12 +1,43 @@
 extends CharacterBody3D
 
 # --- Interaction ---
-@onready var ray_cast_3d: RayCast3D = $CameraPivot/Camera3D/RayCast3D
+@onready var player_raycast: RayCast3D = $CameraPivot/Camera3D/PlayerRaycast
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
-var collectables: int = 0
+signal collectables_changed(count: int)
+
+# Stuff for future shop
+
+var owned_shop_items: Dictionary = {}
+
+func has_item(item_id: String) -> bool:
+	return owned_shop_items.has(item_id)
+
+func add_item(item_id: String) -> void:
+	owned_shop_items[item_id] = true
+
+func can_afford(cost: int) -> bool:
+	return collectables >= cost
+
+func spend_coins(cost: int) -> bool:
+	if collectables < cost:
+		return false
+	collectables -= cost
+	return true
+	
+var _collectables: int = 0
+var collectables: int:
+	get:
+		return _collectables
+	set(value):
+		value = max(0, value)
+		if value == _collectables:
+			return
+		_collectables = value
+		emit_signal("collectables_changed", _collectables)
+
 
 var IS_IN_WATER: bool = false
 var IS_HOLDING_ITEM: bool = false
@@ -59,15 +90,37 @@ var _water_blend := 0.0
 var _bob_time := 0.0
 var _pivot_base_pos: Vector3
 
+const WEAPON_DAMAGE := {
+	1: 20,
+	2: 25,
+	3: 34
+}
+
+var weapon_tier := 1
 
 func _ready() -> void:
+	add_to_group("player")
+
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 	emit_signal("breath_updated", breath, breath_max)
-	print("total collectables: ", self.collectables)
+	emit_signal("collectables_changed", collectables)
+
+	print("total collectables: ", collectables)
 
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
+	
+	mouse_sensitivity = Settings.mouse_sensitivity
+	$CameraPivot/Camera3D.fov = Settings.fov
+
+	Settings.changed.connect(_apply_settings)
+
+func _apply_settings() -> void:
+	mouse_sensitivity = Settings.mouse_sensitivity
+	$CameraPivot/Camera3D.fov = Settings.fov
+
 
 
 func set_in_water(v: bool) -> void:
@@ -133,8 +186,8 @@ func _physics_process(delta: float) -> void:
 		_land_move(wish_dir, delta)
 
 	# --- Interaction ---
-	if ray_cast_3d.is_colliding() and Input.is_action_just_pressed("interact"):
-		var collider = ray_cast_3d.get_collider()
+	if player_raycast.is_colliding() and Input.is_action_just_pressed("interact"):
+		var collider = player_raycast.get_collider()
 		if collider.has_method("_on_interact"):
 			collider._on_interact(self)
 	
@@ -147,7 +200,8 @@ func _physics_process(delta: float) -> void:
 				self.IS_HOLDING_ITEM = true
 				self.pickup_throw._pick_up(collider)
 				if collider.is_in_group('weapon'):
-					collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
+					if !collider.is_connected('enemy_hit', _on_weapon_hitbox_t_1_body_entered):
+						collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
 		
 	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM:
 		self.pickup_throw._charge_throw(delta)
@@ -256,10 +310,16 @@ func _apply_underwater_bob(delta: float) -> void:
 
 
 func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") && body.has_method("apply_damage"):
+		var damage: int = WEAPON_DAMAGE.get(weapon_tier, 10)		
+		body.apply_damage(damage)
 		print("Enemy hit!")
+		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+		weapon.find_child('Hitbox').set_deferred('monitoring', false)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == 'attack':
 		anim_player.play('idle')
+		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+		weapon.find_child('Hitbox').monitoring = false
