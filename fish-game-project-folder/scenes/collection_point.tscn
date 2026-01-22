@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6qhy7s6th1a1"]
+
+[ext_resource type="Script" uid="uid://c0njacxtxt2qt" path="res://scripts/collection_point.gd" id="1_iwa1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qig1i"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kvqo1"]
+radius = 0.62841797
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vawu"]
+albedo_color = Color(1, 0.6, 0.22745098, 1)
+
+[node name="CollectionPoint" type="Node3D"]
+script = ExtResource("1_iwa1u")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.27978945, 0, 0, 0, 1, -7.8270593, -0.14557326, 0)
+use_collision = true
+radius = 0.8520508
+height = 1.9829102
+sides = 13
+material = SubResource("StandardMaterial3D_qig1i")
+
+[node name="HoldableHitbox" type="Area3D" parent="CSGCylinder3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCylinder3D/HoldableHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055550575, 0.28746372, 0.102483034)
+shape = SubResource("CylinderShape3D_kvqo1")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.771754, 0.19130135, 0.0928148)
+inner_radius = 0.63432395
+outer_radius = 1.0694113
+sides = 13
+ring_sides = 11
+material = SubResource("StandardMaterial3D_5vawu")
+
+[connection signal="body_entered" from="CSGCylinder3D/HoldableHitbox" to="." method="_on_holdable_hitbox_body_entered"]
