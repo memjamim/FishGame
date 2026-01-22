@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clxqj32ax1t53"
+path="res://.godot/imported/water footsteps.mp3-917d1de37c6fb2e5cad294c025139deb.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/water footsteps.mp3"
+dest_files=["res://.godot/imported/water footsteps.mp3-917d1de37c6fb2e5cad294c025139deb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
