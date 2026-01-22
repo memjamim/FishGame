@@ -45,9 +45,23 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 
 [node name="Player" parent="." instance=ExtResource("1_hu4f0")]
 transform = Transform3D(-0.021012234, 0, -0.9997792, 0, 1, 0, 0.9997792, 0, -0.021012234, -13.102371, 0.9833269, 0.20964909)
+buoyancy = null
+land_speed = null
 swim_speed = 4.0
+land_accel = null
 swim_accel = 8.0
-buoyancy = 1.5
+jump_velocity = null
+mouse_sensitivity = null
+max_pitch_deg = null
+breath_max = null
+breath_recover_rate = null
+breath_ui_path = null
+head_node_path = null
+water_collision_mask = null
+water_state_smooth_time = null
+underwater_bob_amplitude = null
+underwater_bob_frequency = null
+underwater_bob_smoothing = null
 
 [node name="Water" type="Area3D" parent="."]
 script = ExtResource("2_0erxm")
