@@ -113,6 +113,15 @@ func _ready() -> void:
 
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
+	
+	mouse_sensitivity = Settings.mouse_sensitivity
+	$CameraPivot/Camera3D.fov = Settings.fov
+
+	Settings.changed.connect(_apply_settings)
+
+func _apply_settings() -> void:
+	mouse_sensitivity = Settings.mouse_sensitivity
+	$CameraPivot/Camera3D.fov = Settings.fov
 
 
 
