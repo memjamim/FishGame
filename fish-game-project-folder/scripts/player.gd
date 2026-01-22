@@ -90,6 +90,8 @@ var _water_blend := 0.0
 var _bob_time := 0.0
 var _pivot_base_pos: Vector3
 
+var is_attacking: bool = false
+
 const WEAPON_DAMAGE := {
 	1: 20,
 	2: 25,
@@ -203,11 +205,13 @@ func _physics_process(delta: float) -> void:
 		self.IS_HOLDING_ITEM = false
 	
 	# --- Combat ---
-	if Input.is_action_just_pressed("attack") and IS_HOLDING_ITEM:
+	if Input.is_action_just_pressed("attack") and IS_HOLDING_ITEM and !is_attacking:
 		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
 		if weapon.is_in_group('weapon'):
+			is_attacking = true
 			anim_player.play("attack")
 			weapon.find_child('Hitbox').monitoring = true
+
 
 	move_and_slide()
 
@@ -312,5 +316,6 @@ func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == 'attack':
 		anim_player.play('idle')
+		is_attacking = false
 		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
 		weapon.find_child('Hitbox').monitoring = false
