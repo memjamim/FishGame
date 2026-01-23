@@ -84,6 +84,18 @@ signal drowned
 @export var breath_drain_normal := 1.0            # per second in water (normal swim)
 @export var breath_drain_sprint := 3.0            # per second in water while sprinting
 
+# --- Depth-based breath drain ---
+@export var water_surface_y := 0.0              # surface height in world Y (0 = surface)
+@export var bottom_depth_m := 100.0             # meters below surface where max multiplier applies
+@export var depth_breath_multiplier_max := 3.0  # at bottom_depth_m, breath drains this many times faster
+
+# Per-scene markers (assign in Inspector if we need different scaling), currently unused
+@export var surface_marker_path: NodePath
+@export var bottom_marker_path: NodePath
+
+var _surface_marker: Node3D
+var _bottom_marker: Node3D
+
 var _pitch := 0.0
 var breath := 60.0
 
@@ -124,6 +136,10 @@ func _ready() -> void:
 
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
+
+	# Cache optional depth markers
+	_surface_marker = get_node_or_null(surface_marker_path) as Node3D
+	_bottom_marker = get_node_or_null(bottom_marker_path) as Node3D
 
 	mouse_sensitivity = Settings.mouse_sensitivity
 	$CameraPivot/Camera3D.fov = Settings.fov
@@ -193,9 +209,7 @@ func _physics_process(delta: float) -> void:
 	if wish_dir.length() > 0.001:
 		wish_dir = wish_dir.normalized()
 
-	# --- Underwater sprint (hold) ---
-	# Add "sprint" to Input Map (Project Settings -> Input Map).
-	# Underwater only, and only if there's some movement input.
+	# --- Underwater sprint (held) ---
 	is_sprinting_underwater = IS_IN_WATER and Input.is_action_pressed("sprint") and wish_dir.length() > 0.001
 
 	if IS_IN_WATER:
@@ -268,9 +282,29 @@ func _swim_move(wish_dir: Vector3, delta: float) -> void:
 	velocity.y = move_toward(velocity.y, target.y, swim_accel * delta)
 	velocity.z = move_toward(velocity.z, target.z, swim_accel * delta)
 
+func _get_depth_breath_multiplier() -> float:
+	# Determine surface Y
+	var surface_y: float = water_surface_y
+	if _surface_marker != null:
+		surface_y = _surface_marker.global_position.y
+
+	# Determine bottom depth (in meters) either via marker distance or value
+	var depth_max: float = bottom_depth_m
+	if _bottom_marker != null:
+		
+		depth_max = maxf(0.001, surface_y - _bottom_marker.global_position.y)
+	var depth: float = maxf(0.0, surface_y - global_position.y)
+	var t: float = clampf(depth / depth_max, 0.0, 1.0)
+	return lerpf(1.0, depth_breath_multiplier_max, t)
+
+
 func _update_breath(delta: float) -> void:
 	if IS_IN_WATER:
-		var drain_rate := breath_drain_sprint if is_sprinting_underwater else breath_drain_normal
+		# Base drain depends on sprinting, then scaled by depth multiplier
+		var base_drain := breath_drain_sprint if is_sprinting_underwater else breath_drain_normal
+		var depth_mult := _get_depth_breath_multiplier()
+		var drain_rate := base_drain * depth_mult
+
 		breath = max(0.0, breath - drain_rate * delta)
 		if breath <= 0.0:
 			emit_signal("drowned")

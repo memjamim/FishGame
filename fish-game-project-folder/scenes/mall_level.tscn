@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_hu4f0"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="2_0erxm"]
-[ext_resource type="Script" path="res://scripts/PauseManager.gd" id="4_37o5y"]
-[ext_resource type="PackedScene" path="res://scenes/player_ui.tscn" id="4_hu4f0"]
+[ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_37o5y"]
+[ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="4_hu4f0"]
 [ext_resource type="PackedScene" uid="uid://ulvgnq7vbuec" path="res://scenes/levels/mall_level_GB_ONLY.tscn" id="5_0erxm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_x8l0j"]
@@ -14,23 +14,9 @@ radius = 38.222
 
 [node name="Player" parent="." instance=ExtResource("1_hu4f0")]
 transform = Transform3D(-0.021012234, 0, -0.9997792, 0, 1, 0, 0.9997792, 0, -0.021012234, -13.102371, 0.9833269, 0.20964909)
-land_speed = null
 swim_speed = 4.0
-land_accel = null
 swim_accel = 8.0
-buoyancy = null
-jump_velocity = null
-mouse_sensitivity = null
-max_pitch_deg = null
-breath_max = null
-breath_recover_rate = null
-breath_ui_path = null
-head_node_path = null
-water_collision_mask = null
-water_state_smooth_time = null
-underwater_bob_amplitude = null
-underwater_bob_frequency = null
-underwater_bob_smoothing = null
+buoyancy = 1.5
 
 [node name="Water" type="Area3D" parent="."]
 script = ExtResource("2_0erxm")
