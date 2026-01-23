@@ -84,6 +84,25 @@ signal drowned
 @export var breath_drain_normal := 1.0            # per second in water (normal swim)
 @export var breath_drain_sprint := 3.0            # per second in water while sprinting
 
+# --- Depth-based breath drain ---
+@export var water_surface_y := 0.0              # surface height in world Y (0 = surface)
+@export var bottom_depth_m := 100.0             # meters below surface where max multiplier applies
+@export var depth_breath_multiplier_max := 3.0  # at bottom_depth_m, breath drains this many times faster
+
+# Per-scene markers (assign in Inspector if we need different scaling), currently unused
+@export var surface_marker_path: NodePath
+@export var bottom_marker_path: NodePath
+
+var _surface_marker: Node3D
+var _bottom_marker: Node3D
+
+# --- Drowning damage / respawn ---
+@export var drown_damage_amount: int = 1         # damage per tick
+@export var drown_tick_interval: float = 0.1     # seconds between ticks (1 dmg per 0.1s = 10 dmg/sec)
+
+var _drown_tick_timer: float = 0.0
+var _spawn_transform: Transform3D
+
 var _pitch := 0.0
 var breath := 60.0
 
@@ -114,6 +133,9 @@ func _ready() -> void:
 	health = MAX_HEALTH
 	add_to_group("player")
 
+	# Save spawn position/rotation for respawn
+	_spawn_transform = global_transform
+
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -124,6 +146,10 @@ func _ready() -> void:
 
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
+
+	# Cache optional depth markers
+	_surface_marker = get_node_or_null(surface_marker_path) as Node3D
+	_bottom_marker = get_node_or_null(bottom_marker_path) as Node3D
 
 	mouse_sensitivity = Settings.mouse_sensitivity
 	$CameraPivot/Camera3D.fov = Settings.fov
@@ -147,6 +173,8 @@ func set_in_water(v: bool) -> void:
 	else:
 		# Leaving water: ensure sprint state doesn't stick
 		is_sprinting_underwater = false
+		# Also reset drowning tick timer when you get air
+		_drown_tick_timer = 0.0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if get_tree().paused:
@@ -175,6 +203,7 @@ func _physics_process(delta: float) -> void:
 	$TextHP.text = "HP: " + str(health)
 	_update_water_state(delta)
 	_update_breath(delta)
+	_update_drowning_damage(delta)
 
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
 
@@ -193,9 +222,7 @@ func _physics_process(delta: float) -> void:
 	if wish_dir.length() > 0.001:
 		wish_dir = wish_dir.normalized()
 
-	# --- Underwater sprint (hold) ---
-	# Add "sprint" to Input Map (Project Settings -> Input Map).
-	# Underwater only, and only if there's some movement input.
+	# --- Underwater sprint (held) ---
 	is_sprinting_underwater = IS_IN_WATER and Input.is_action_pressed("sprint") and wish_dir.length() > 0.001
 
 	if IS_IN_WATER:
@@ -268,16 +295,71 @@ func _swim_move(wish_dir: Vector3, delta: float) -> void:
 	velocity.y = move_toward(velocity.y, target.y, swim_accel * delta)
 	velocity.z = move_toward(velocity.z, target.z, swim_accel * delta)
 
+func _get_depth_breath_multiplier() -> float:
+	# Determine surface Y
+	var surface_y: float = water_surface_y
+	if _surface_marker != null:
+		surface_y = _surface_marker.global_position.y
+
+	# Determine bottom depth (in meters) either via marker distance or value
+	var depth_max: float = bottom_depth_m
+	if _bottom_marker != null:
+		depth_max = maxf(0.001, surface_y - _bottom_marker.global_position.y)
+
+	# Player depth below surface
+	var depth: float = maxf(0.0, surface_y - global_position.y)
+
+	# Normalize depth into 0..1 where 1 = bottom
+	var t: float = clampf(depth / depth_max, 0.0, 1.0)
+
+	# 1x at surface -> depth_breath_multiplier_max at bottom
+	return lerpf(1.0, depth_breath_multiplier_max, t)
+
 func _update_breath(delta: float) -> void:
 	if IS_IN_WATER:
-		var drain_rate := breath_drain_sprint if is_sprinting_underwater else breath_drain_normal
-		breath = max(0.0, breath - drain_rate * delta)
+		# Base drain depends on sprinting, then scaled by depth multiplier
+		var base_drain: float = breath_drain_sprint if is_sprinting_underwater else breath_drain_normal
+		var depth_mult: float = _get_depth_breath_multiplier()
+		var drain_rate: float = base_drain * depth_mult
+
+		breath = maxf(0.0, breath - drain_rate * delta)
 		if breath <= 0.0:
 			emit_signal("drowned")
 	else:
 		# Fast breath refill when player gets air
-		breath = min(breath_max, breath + breath_recover_rate * delta)
+		breath = minf(breath_max, breath + breath_recover_rate * delta)
 
+	emit_signal("breath_updated", breath, breath_max)
+
+func _update_drowning_damage(delta: float) -> void:
+	# Only take drowning damage when underwater AND breath is fully gone
+	if IS_IN_WATER and breath <= 0.0 and health > 0:
+		_drown_tick_timer += delta
+		while _drown_tick_timer >= drown_tick_interval and health > 0:
+			_drown_tick_timer -= drown_tick_interval
+			health -= drown_damage_amount
+			if health <= 0:
+				_respawn()
+				return
+	else:
+		# If you have breath again or aren't underwater, stop the ticking.
+		_drown_tick_timer = 0.0
+
+func _respawn() -> void:
+	# Reset stats
+	health = MAX_HEALTH
+	breath = breath_max
+	_drown_tick_timer = 0.0
+
+	# Reset movement state
+	velocity = Vector3.ZERO
+	is_sprinting_underwater = false
+	IS_HOLDING_ITEM = false
+
+	# Move player back to spawn
+	global_transform = _spawn_transform
+
+	# Update UI signals immediately
 	emit_signal("breath_updated", breath, breath_max)
 
 func _update_water_state(delta: float) -> void:
@@ -341,3 +423,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func hit(damage, dir):
 	health -= damage
 	velocity += dir * PUSHBACK
+	if health <= 0:
+		_respawn()

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="3_gr04e"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_mmbh7"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="5_gr04e"]
-[ext_resource type="PackedScene" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
+[ext_resource type="PackedScene" uid="uid://dnsnij54sy24f" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
 [ext_resource type="AudioStream" uid="uid://bg25xxv3ej766" path="res://assets/Sounds/radio.wav" id="7_7vjy0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
@@ -77,23 +77,9 @@ shape = SubResource("SphereShape3D_4vypp")
 
 [node name="Player" parent="." instance=ExtResource("2_x8l0j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8105135, 0.9833269, 5.1511974)
-buoyancy = null
-land_speed = null
 swim_speed = 4.0
-land_accel = null
 swim_accel = 8.0
-jump_velocity = null
-mouse_sensitivity = null
-max_pitch_deg = null
-breath_max = null
-breath_recover_rate = null
-breath_ui_path = null
-head_node_path = null
-water_collision_mask = null
-water_state_smooth_time = null
-underwater_bob_amplitude = null
-underwater_bob_frequency = null
-underwater_bob_smoothing = null
+buoyancy = 1.5
 
 [node name="Water" type="Area3D" parent="."]
 script = ExtResource("3_fkl8m")
