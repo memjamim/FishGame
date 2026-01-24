@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=14 format=3 uid="uid://c2td7c2d17p1f"]
 
 [ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="6_qig1i"]
 [ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="8_kvqo1"]
+[ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="9_5vawu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ijls6"]
 size = Vector2(20, 20)
@@ -104,3 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.00
 
 [node name="L3_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
+
+[node name="DenayrouzeNPC" parent="." instance=ExtResource("9_5vawu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.930851, 0.32627904, 0)
+player_path = NodePath("../Player")

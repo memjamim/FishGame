@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dxk6fr5dvi7c1"]
+[gd_scene format=3 uid="uid://dalrjo3mmc6u2"]
 
 [node name="level" type="Node"]
 
@@ -17,20 +17,6 @@ use_collision = true
 [node name="wall_exit" type="CSGBox3D" parent="."]
 transform = Transform3D(-57.40106, 2.1092951e-08, 2.549868e-06, -2.5090799e-06, 4.610011e-16, -58.334183, -5.0181598e-06, -0.24127522, 1.11458274e-13, -1.5454092, 7.458294, -133.12349)
 use_collision = true
-
-[node name="bone_arch" type="CSGTorus3D" parent="."]
-transform = Transform3D(6.4742164e-14, 4.5615474e-07, -30.950787, 33.88426, -4.5615474e-07, 0, -1.4811282e-06, -10.435604, -1.3529018e-06, 0.04881708, 3.5541577, -0.4263687)
-visible = false
-use_collision = true
-inner_radius = 0.64935815
-sides = 9
-
-[node name="bone_arch2" type="CSGTorus3D" parent="."]
-transform = Transform3D(6.4742164e-14, 4.5615474e-07, -30.950787, 33.88426, -4.5615474e-07, 0, -1.4811282e-06, -10.435604, -1.3529018e-06, 0.04881708, 3.5541577, -21.696468)
-visible = false
-use_collision = true
-inner_radius = 0.64935815
-sides = 9
 
 [node name="bone_arch3" type="CSGTorus3D" parent="."]
 transform = Transform3D(6.4742164e-14, 3.1914777e-07, -26.970495, 33.88426, -3.1914777e-07, 0, -1.4811282e-06, -7.30125, -1.1789177e-06, -0.24769878, 3.5541577, -54.50535)

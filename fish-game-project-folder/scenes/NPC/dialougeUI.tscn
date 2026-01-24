@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkoumrhyxgs52"]
+
+[ext_resource type="Script" uid="uid://dru50te8bo7cb" path="res://scenes/NPC/dialougePlayer.gd" id="1_bbnff"]
+
+[node name="DialogueUI" type="Control"]
+z_index = 150
+layout_mode = 3
+anchors_preset = 0
+offset_left = 174.0
+offset_top = 118.0
+offset_right = 214.0
+offset_bottom = 158.0
+script = ExtResource("1_bbnff")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_index = 150
+layout_mode = 0
+offset_left = -184.0
+offset_top = -119.0
+offset_right = 184.0
+offset_bottom = -2.0
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+z_index = 150
+layout_mode = 0
+offset_left = 11.0
+offset_top = 4.0
+offset_right = 294.33334
+offset_bottom = 71.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_shadow_color = Color(0.788499, 0.87787, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Name:"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+z_index = 150
+layout_mode = 0
+offset_left = 13.0
+offset_top = 32.0
+offset_right = 644.11115
+offset_bottom = 196.44446
+scale = Vector2(0.45, 0.45)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.956115, 0.696165, 0.549572, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "Chatting..."
