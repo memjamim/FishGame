@@ -203,7 +203,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_pivot.rotation.x = _pitch
 
 func _physics_process(delta: float) -> void:
-	$TextHP.text = "HP: " + str(health)
+	#$TextHP.text = "HP: " + str(health)
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
@@ -274,8 +274,9 @@ func _physics_process(delta: float) -> void:
 			self.IS_HOLDING_WEAPON = false
 	
 	# --- Combat ---
-	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON:
+	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON and !is_attacking:
 		if IS_HOLDING_WEAPON:
+			is_attacking = true
 			var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
 			anim_player.play("attack")
 			weapon.find_child('Hitbox').monitoring = true
@@ -430,7 +431,7 @@ func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
 		weapon.find_child('Hitbox').set_deferred('monitoring', false)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == 'attack':
+	if anim_name == 'attack' and IS_HOLDING_WEAPON:
 		anim_player.play('idle')
 		is_attacking = false
 		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)

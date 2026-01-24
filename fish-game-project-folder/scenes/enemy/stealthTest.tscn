@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=13 format=3 uid="uid://c2td7c2d17p1f"]
 
 [ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="1_wassk"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="2_b0xup"]
 [ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="3_u545m"]
-[ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="4_o74m4"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="6_qig1i"]
 [ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="8_kvqo1"]
@@ -41,7 +40,7 @@ mesh = SubResource("PlaneMesh_ijls6")
 shape = SubResource("ConcavePolygonShape3D_piw3f")
 
 [node name="FishPerson" parent="." instance=ExtResource("2_b0xup")]
-transform = Transform3D(0.33975595, 0, 0.94051373, 0, 1, 0, -0.94051373, 0, 0.33975595, 18.831865, 2.0841365, -6.6499596)
+transform = Transform3D(0.33975595, 0, 0.94051373, 0, 1, 0, -0.94051373, 0, 0.33975595, 6.679449, 2.0841365, -6.6499596)
 player_path = NodePath("../Player")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -67,8 +66,6 @@ transform = Transform3D(1, 0, 0, 0, 0.99818766, 0.060177475, 0, -0.060177475, 0.
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9008498, 0.43413085, 0, -0.43413085, 0.9008498, 0, 4.9459248, 0)
-
-[node name="PlayerUI" parent="." instance=ExtResource("4_o74m4")]
 
 [node name="TestCollectable" parent="." instance=ExtResource("6_qig1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7240286, 0.4833276, -1.1821183)
