@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="2_i5atr"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="3_3dqls"]
 [ext_resource type="PackedScene" uid="uid://jhfpml2w5wm4" path="res://scenes/ladder.tscn" id="4_dfc1h"]
-[ext_resource type="PackedScene" uid="uid://dnsnij54sy24f" path="res://scenes/test_holdable.tscn" id="5_o4yg7"]
+[ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="5_o4yg7"]
 [ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="6_4tqmo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3dqls"]

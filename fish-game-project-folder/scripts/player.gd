@@ -5,6 +5,10 @@ extends CharacterBody3D
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
+@onready var player_ui: Control = $PlayerUI
+var hp_bar
+var breath_bar
+var coin_counter
 @onready var player_stats: Node = $PlayerStats
 
 signal collectables_changed(count: int)
@@ -135,29 +139,33 @@ var weapon_tier := 1
 func _ready() -> void:
 	health = MAX_HEALTH
 	add_to_group("player")
-
+	
 	# Save spawn position/rotation for respawn
 	_spawn_transform = global_transform
-
+	
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	
 	emit_signal("breath_updated", breath, breath_max)
 	emit_signal("collectables_changed", collectables)
-
+	
 	print("total collectables: ", collectables)
-
+	
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
-
+	
 	# Cache optional depth markers
 	_surface_marker = get_node_or_null(surface_marker_path) as Node3D
 	_bottom_marker = get_node_or_null(bottom_marker_path) as Node3D
-
+	
 	mouse_sensitivity = Settings.mouse_sensitivity
 	$CameraPivot/Camera3D.fov = Settings.fov
-
+	
 	Settings.changed.connect(_apply_settings)
+	
+	self.hp_bar = player_ui.find_child('Hp')
+	self.breath_bar = player_ui.find_child('Breath')
+	self.coin_counter = player_ui.find_child('CoinsCounter')
 
 func _apply_settings() -> void:
 	mouse_sensitivity = Settings.mouse_sensitivity
@@ -203,10 +211,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_pivot.rotation.x = _pitch
 
 func _physics_process(delta: float) -> void:
-	$TextHP.text = "HP: " + str(health)
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
+	_update_ui()
 
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
 
@@ -274,8 +282,9 @@ func _physics_process(delta: float) -> void:
 			self.IS_HOLDING_WEAPON = false
 	
 	# --- Combat ---
-	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON:
+	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON and!is_attacking:
 		if IS_HOLDING_WEAPON:
+			is_attacking = true
 			var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
 			anim_player.play("attack")
 			weapon.find_child('Hitbox').monitoring = true
@@ -344,7 +353,7 @@ func _update_breath(delta: float) -> void:
 	else:
 		# Fast breath refill when player gets air
 		breath = minf(breath_max, breath + breath_recover_rate * delta)
-
+	
 	emit_signal("breath_updated", breath, breath_max)
 
 func _update_drowning_damage(delta: float) -> void:
@@ -430,7 +439,7 @@ func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
 		weapon.find_child('Hitbox').set_deferred('monitoring', false)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == 'attack':
+	if anim_name == 'attack' and IS_HOLDING_WEAPON:
 		anim_player.play('idle')
 		is_attacking = false
 		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
@@ -441,3 +450,9 @@ func hit(damage, dir):
 	velocity += dir * PUSHBACK
 	if health <= 0:
 		_respawn()
+
+
+func _update_ui() -> void:
+	self.breath_bar.value = (self.breath/self.breath_max)*100
+	self.hp_bar.value = 100 - (self.health/self.MAX_HEALTH)*100
+	self.coin_counter.find_child('Label').text = str(self._collectables)
