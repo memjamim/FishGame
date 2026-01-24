@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=14 format=3 uid="uid://c2td7c2d17p1f"]
 
+[ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="1_wassk"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="2_b0xup"]
 [ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="3_u545m"]
 [ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="4_o74m4"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="6_qig1i"]
-[ext_resource type="PackedScene" uid="uid://dnsnij54sy24f" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
+[ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="8_kvqo1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ijls6"]
@@ -20,6 +21,8 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0xup"]
 
 [node name="StealthTest" type="Node3D"]
+script = ExtResource("1_5vawu")
+toy_scene = ExtResource("7_kvqo1")
 
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("1_wassk")
@@ -57,6 +60,8 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_b0xup")
 
+[node name="TestHoldable" parent="." instance=ExtResource("7_kvqo1")]
+
 [node name="TestWeapon" parent="." instance=ExtResource("3_u545m")]
 transform = Transform3D(1, 0, 0, 0, 0.99818766, 0.060177475, 0, -0.060177475, 0.99818766, -0.15725242, 0.58174574, 1.5557015)
 
@@ -71,8 +76,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7240286, 0.4833276, -1.182
 [node name="TestCollectable2" parent="." instance=ExtResource("6_qig1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5782394, 0.4833276, -5.7147436)
 
-[node name="TestHoldable" parent="." instance=ExtResource("7_kvqo1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.852997, 0.48332807, -6.209733)
-
 [node name="CollectionPoint" parent="." instance=ExtResource("8_kvqo1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.235715, 0, 0)
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="L1_Item_Spawn_1" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, 1.4687924)
+
+[node name="L1_Item_Spawn_2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, -0.03506434)
+
+[node name="L1_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, -1.5293468)
+
+[node name="L2_Item_Spawn_1" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, 1.4687924)
+
+[node name="L2_Item_Spawn_2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, -0.038752556)
+
+[node name="L2_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, -1.5360272)
+
+[node name="L3_Item_Spawn_1" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 1.4687924)
+
+[node name="L3_Item_Spawn_2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.002709508)
+
+[node name="L3_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
