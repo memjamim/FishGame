@@ -289,9 +289,14 @@ func _physics_process(delta: float) -> void:
 			print("interactable encountered")
 		# weapons are weapons. duh
 		elif collider.is_in_group("weapon"):
-			if IS_HOLDING_WEAPON == false:
-				self.IS_HOLDING_WEAPON = true
-				self.pickup_throw._pick_up(collider)
+			if !IS_HOLDING_WEAPON:
+				IS_HOLDING_WEAPON = true
+				pickup_throw._pick_up(collider)
+
+				var hitbox = collider.find_child("Hitbox")
+				if hitbox:
+					hitbox.monitoring = false  # start clean
+
 				if !collider.is_connected("enemy_hit", _on_weapon_hitbox_t_1_body_entered):
 					collider.connect("enemy_hit", _on_weapon_hitbox_t_1_body_entered)
 		# holdables are things for the player to pick up to bring back to radical david
@@ -314,6 +319,9 @@ func _physics_process(delta: float) -> void:
 			var held_weapon = self.get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
 			self.pickup_throw._throw(held_weapon)
 			self.IS_HOLDING_WEAPON = false
+			
+			is_attacking = false
+			anim_player.stop()
 
 	# --- Combat ---
 	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON and !is_attacking:
@@ -511,10 +519,12 @@ func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "attack" and IS_HOLDING_WEAPON:
-		anim_player.play("idle")
+	if anim_name == "attack":
 		is_attacking = false
-		var weapon = self.get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
+
+	if IS_HOLDING_WEAPON:
+		anim_player.play("idle")
+		var weapon = $CameraPivot/Camera3D/HoldPoint.get_child(0)
 		weapon.find_child("Hitbox").monitoring = false
 
 

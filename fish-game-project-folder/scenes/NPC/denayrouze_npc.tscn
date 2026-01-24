@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck3e4"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4t548"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ck3e4"]
 
 [node name="DenayrouzeNPC" type="CharacterBody3D"]
 script = ExtResource("1_ck3e4")
@@ -18,10 +18,11 @@ shape = SubResource("CapsuleShape3D_ck3e4")
 transform = Transform3D(1, 0, 0, 0, 2.5519898, 0, 0, 0, 1, 0, 0.6233579, 0)
 
 [node name="interaction_radius" type="Area3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interaction_radius"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.8414104, 0)
-shape = SubResource("CapsuleShape3D_4t548")
+transform = Transform3D(1.7, 0, 0, 0, 0.6955536, 0, 0, 0, 1.7, 0, -0.14700209, 0)
+shape = SubResource("CylinderShape3D_ck3e4")
 
 [node name="DialogueUI" parent="." instance=ExtResource("2_en3g7")]
 

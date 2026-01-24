@@ -8,14 +8,15 @@ var dialogue = []
 var current_dialogue_id = 0
 var d_active = false
 var scholarMet = false
+
 var typing = false
+var auto_advance = false
+
 var full_text = ""
 var current_text = ""
 var text_index = 0
-var typewriter_speed = 0.05  # Adjust speed as needed
-
-var milestoneFlag = false
-var triggered_milestones = []
+var typewriter_speed = 0.05
+var auto_advance_delay = 0.4  # pause after line finishes
 
 func _ready():
 	$NinePatchRect.visible = false
@@ -24,75 +25,41 @@ func start():
 	if d_active:
 		return
 	d_active = true
+	auto_advance = false
 	$NinePatchRect.visible = true
 	dialogue = load_dialogue()
 	current_dialogue_id = -1
 	scholarMet = true
 	next_script()
-	
 
 func load_dialogue():
 	var file = FileAccess.open("res://scenes/NPC/denarouze_dialogue.json", FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
-	
-	var milestones = [20, 40, 60, 80, 100]
-
-	#for milestone in milestones:
-	#	if scoreABS >= milestone and !triggered_milestones.has(milestone):
-	#		triggered_milestones.append(milestone)
-	#		milestoneFlag = true
-	#		return content["milestone%d" % milestone]  
-			
-	#milestoneFlag = false
-		
-	
-	if !scholarMet:
-		return content["intro"]
-	
-#	if is_instance_valid(church) and !church.interacted and church.scholar_in_range:
-#		if church.rebuilt:
-	#		church.interacted = true
-	#		return content["church-rebuilt"]
-#		else:
-#			church.interacted = true
-#			church.queue_free()
-#			return content["church-destroyed"]
-#	if is_instance_valid(prison) and !prison.interacted and prison.scholar_in_range:
-#		if prison.rebuilt:
-#			prison.interacted = true
-#			return content["prison-rebuilt"]
-#		else:
-#			prison.interacted = true
-#			prison.queue_free()
-#			return content["prison-destroyed"]
+	return content["intro"]
 
 func _input(event):
 	if !d_active:
 		return
+
 	if event.is_action_pressed("interact"):
+		# First press enables auto-advance
+		auto_advance = true
+
+		# If currently typing, instantly finish current line
 		if typing:
-			$NinePatchRect/Text.text = full_text
 			typing = false
-		elif current_dialogue_id >= len(dialogue) - 1:
-			d_active = false
-			$NinePatchRect.visible = false
-			emit_signal("dialogue_finished")
-		else:
-			next_script()
+			current_text = full_text
+			$NinePatchRect/Text.text = full_text
 
 func next_script():
 	current_dialogue_id += 1
-	
-	var dialogueComplete = current_dialogue_id == len(dialogue)
 
-	if (current_dialogue_id >= len(dialogue) || dialogueComplete):
-		d_active = false
-		$NinePatchRect.visible = false
-		emit_signal("dialogue_finished")
+	if current_dialogue_id >= dialogue.size():
+		end_dialogue()
 		return
-	
-	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
-	full_text = dialogue[current_dialogue_id]['text']
+
+	$NinePatchRect/Name.text = dialogue[current_dialogue_id]["name"]
+	full_text = dialogue[current_dialogue_id]["text"]
 	current_text = ""
 	text_index = 0
 	typing = true
@@ -107,3 +74,13 @@ func type_text():
 		get_tree().create_timer(typewriter_speed).timeout.connect(type_text)
 	else:
 		typing = false
+
+		# AUTO ADVANCE once line finishes
+		if auto_advance:
+			get_tree().create_timer(auto_advance_delay).timeout.connect(next_script)
+
+func end_dialogue():
+	d_active = false
+	auto_advance = false
+	$NinePatchRect.visible = false
+	emit_signal("dialogue_finished")
