@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://3aatsb485j8g"]
+
+[ext_resource type="Script" uid="uid://orepq5qg6m8e" path="res://shop/Shop.gd" id="1_e2ga4"]
+[ext_resource type="PackedScene" uid="uid://usf7re2305lh" path="res://shop/ShopPickup.tscn" id="2_fppc6"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_nxcqm"]
+[ext_resource type="Resource" uid="uid://d2nimdmapemae" path="res://shop/items/wetsuit_t1.tres" id="3_fppc6"]
+[ext_resource type="Resource" uid="uid://2n4gt3j8fg7t" path="res://shop/items/wetsuit_t2.tres" id="4_5h4pd"]
+[ext_resource type="Resource" uid="uid://d357lhsekacxs" path="res://shop/items/wetsuit_t3.tres" id="5_foht7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_e2ga4"]
+size = Vector3(1, 0.5, 3.5)
+
+[node name="Shop" type="Node3D"]
+script = ExtResource("1_e2ga4")
+pickup_scene = ExtResource("2_fppc6")
+shop_items = Array[ExtResource("2_nxcqm")]([ExtResource("3_fppc6"), ExtResource("4_5h4pd"), ExtResource("5_foht7")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_e2ga4")
+
+[node name="Slots" type="Node3D" parent="."]
+
+[node name="Slot1" type="Node3D" parent="Slots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.25)
+
+[node name="Slot2" type="Node3D" parent="Slots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Slot3" type="Node3D" parent="Slots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.25)
