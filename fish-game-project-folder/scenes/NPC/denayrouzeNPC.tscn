@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4tebujhh2qw4"]
+
+[ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="1_11tr8"]
+
+[node name="DenayrouzeNPC" type="Node3D"]
+
+[node name="DenayrouzeNPC" parent="." instance=ExtResource("1_11tr8")]
