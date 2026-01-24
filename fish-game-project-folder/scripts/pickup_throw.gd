@@ -1,7 +1,9 @@
 extends Node
 
 @onready var player: CharacterBody3D = $".."
-@onready var hold_point: Node3D = $"../CameraPivot/Camera3D/HoldPoint"
+@onready var main_hand: Node3D = $"../CameraPivot/Camera3D/HoldPoint"
+@onready var off_hand: Node3D = $"../CameraPivot/Camera3D/Offhand"
+
 
 # --- Throw ---
 @export var min_throw_strength: float = 0
@@ -25,7 +27,11 @@ func _process(delta: float) -> void:
 
 func _pick_up(holdable: RigidBody3D) -> void:
 	holdable.get_parent().remove_child(holdable)
-	hold_point.add_child(holdable)
+	
+	if holdable.is_in_group('weapon'):
+		main_hand.add_child(holdable)
+	else:
+		off_hand.add_child(holdable)
 	
 	holdable.get_node("CollisionShape3D").disabled = true
 	holdable.freeze = true
