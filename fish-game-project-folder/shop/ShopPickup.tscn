@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://usf7re2305lh"]
+
+[ext_resource type="Script" uid="uid://cl2q8lbrvnk4w" path="res://shop/ShopPickup.gd" id="1_x7i3e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x7i3e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7i3e"]
+
+[node name="ShopPickup" type="Node3D"]
+script = ExtResource("1_x7i3e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_x7i3e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_x7i3e")

@@ -14,7 +14,7 @@ signal collectables_changed(count: int)
 
 # Stuff for shop
 
-# --- Shop ownership (store tier per item family, e.g. "wetsuit" -> 2) ---
+# --- Shop ownership (store tier per item family, like "wetsuit" -> 2) ---
 var owned_shop_items: Dictionary = {} # { "wetsuit": 2, "flippers": 1, ... }
 
 func get_owned_tier(item_family: String) -> int:
@@ -421,6 +421,7 @@ func _update_drowning_damage(delta: float) -> void:
 	# Only take drowning damage when underwater and breath is fully gone
 	if IS_IN_WATER and breath <= 0.0 and health > 0:
 		_drown_tick_timer += delta
+		print('health: ', health)
 		while _drown_tick_timer >= drown_tick_interval and health > 0:
 			_drown_tick_timer -= drown_tick_interval
 			health -= drown_damage_amount
@@ -430,7 +431,6 @@ func _update_drowning_damage(delta: float) -> void:
 	else:
 		# If you have breath again or aren't underwater, stop the ticking.
 		_drown_tick_timer = 0.0
-	print('health: ', health)
 
 
 func _respawn() -> void:
