@@ -124,6 +124,9 @@ var is_sprinting_underwater: bool = false
 
 const MAX_HEALTH = 100
 var health
+@export var health_regen: float = 1		# Hp/sec
+var IS_TAKING_DAMAGE: bool = false
+@onready var can_regen_check: Timer = $CanRegenCheck
 
 const PUSHBACK = 8.0
 
@@ -187,6 +190,8 @@ func _ready() -> void:
 	else:
 		if sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
+	
+	
 
 
 func _apply_settings() -> void:
@@ -299,7 +304,7 @@ func _physics_process(delta: float) -> void:
 			if IS_HOLDING_ITEM == false:
 				self.IS_HOLDING_ITEM = true
 				self.pickup_throw._pick_up(collider)
-
+	
 	if Input.is_action_pressed("throw") and (IS_HOLDING_ITEM or IS_HOLDING_WEAPON):
 		self.pickup_throw._charge_throw(delta)
 
@@ -408,10 +413,10 @@ func _update_drowning_damage(delta: float) -> void:
 			if health <= 0:
 				_respawn()
 				return
+		_set_taking_damage()
 	else:
 		# If you have breath again or aren't underwater, stop the ticking.
 		_drown_tick_timer = 0.0
-	print('health: ', health)
 
 
 func _respawn() -> void:
@@ -518,7 +523,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		weapon.find_child("Hitbox").monitoring = false
 
 
-func hit(damage, dir):
+func hit(damage, dir): 
 	health -= damage
 	velocity += dir * PUSHBACK
 
@@ -529,9 +534,23 @@ func hit(damage, dir):
 
 	if health <= 0:
 		_respawn()
+	
+	_set_taking_damage()
 
 
 func _update_ui() -> void:
 	self.breath_bar.value = (self.breath / self.breath_max) * 100.0
 	self.hp_bar.value = hp_bar.max_value - (float(health) / float(MAX_HEALTH)) * hp_bar.max_value
 	self.coin_counter.find_child("Label").text = str(self._collectables)
+
+
+func _on_regen_cooldown_timeout() -> void:
+	if not IS_TAKING_DAMAGE:
+		self.health += self.health_regen
+
+func _set_taking_damage() -> void:
+	self.IS_TAKING_DAMAGE = true
+	self.can_regen_check.start()
+
+func _on_can_regen_check_timeout() -> void:
+	self.IS_TAKING_DAMAGE = false

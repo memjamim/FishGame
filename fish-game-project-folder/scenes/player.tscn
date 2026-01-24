@@ -170,4 +170,13 @@ stream = ExtResource("6_smehm")
 [node name="Footsteps" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_ur7pv")
 
+[node name="RegenCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="CanRegenCheck" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="RegenCooldown" to="." method="_on_regen_cooldown_timeout"]
+[connection signal="timeout" from="CanRegenCheck" to="." method="_on_can_regen_check_timeout"]

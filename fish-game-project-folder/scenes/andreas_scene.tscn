@@ -16,13 +16,8 @@ size = Vector3(1.5606384, 0.43310547, 8.428741)
 [node name="AndreasScene" type="WorldEnvironment"]
 environment = SubResource("Environment_cn2e8")
 
-[node name="MainPool" parent="." instance=ExtResource("1_tx11n")]
-
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1920929e-07, 0)
-
-[node name="Player" parent="." instance=ExtResource("2_0ragw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2478874, 10.585378)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.205973, 0)
@@ -33,20 +28,27 @@ spot_range = 50.0
 spot_attenuation = 0.1
 spot_angle_attenuation = 0.032351892
 
-[node name="Ladder" parent="." instance=ExtResource("3_cn2e8")]
+[node name="MainPool" parent="." instance=ExtResource("1_tx11n")]
+
+[node name="Player" parent="." instance=ExtResource("2_0ragw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2478874, 10.585378)
+
+[node name="NonMainThings" type="Node" parent="."]
+
+[node name="Ladder" parent="NonMainThings" instance=ExtResource("3_cn2e8")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.007652, -1.2784022, -3.3350277)
 
-[node name="Water" type="Area3D" parent="."]
+[node name="Water" type="Area3D" parent="NonMainThings"]
 script = ExtResource("3_rb8pp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NonMainThings/Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1170807, -3.1378484, -1.5595932)
 shape = SubResource("BoxShape3D_0ragw")
 
-[node name="SlideRamp" type="StaticBody3D" parent="."]
+[node name="SlideRamp" type="StaticBody3D" parent="NonMainThings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.672241, 0.4953006, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SlideRamp"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NonMainThings/SlideRamp"]
 transform = Transform3D(1, 0, 0, 0, 0.85970086, -0.51079804, 0, 0.51079804, 0.85970086, 0.14564514, 1.5041196, -3.7868567)
 shape = SubResource("BoxShape3D_rb8pp")
 debug_color = Color(0.6862745, 0.18039216, 0, 1)
