@@ -1,13 +1,12 @@
 extends Node3D
 
-
 @export var toys_to_advance := 3
 @export var toy_scene: PackedScene
 
 var current_level = 1
 var toys_sold_this_level = 0
 
-var spawn_points := {}  # { level_number : [Marker3D, Marker3D] }
+var spawn_points := {}  
 
 func _ready() -> void:
 	_collect_spawn_points()
@@ -42,24 +41,26 @@ func spawn_toy() -> void:
 		push_error("Toy scene is null! Assign it in the Inspector.")
 		return
 
-	var points: Array = spawn_points.get(current_level, [])
-	if points.is_empty():
-		push_error("No spawn points for level %d" % current_level)
-		return
+	var spawn_point: Marker3D
 
-	var spawn_point: Marker3D = points.pick_random()
+	if spawn_points.has(current_level):
+		var points: Array = spawn_points[current_level]
+		spawn_point = points.pick_random()
+	else:
+		var all_points := []
+		for pts in spawn_points.values():
+			all_points += pts
+		spawn_point = all_points.pick_random()
 
 	var new_toy: Node3D = toy_scene.instantiate()
 	new_toy.global_transform = spawn_point.global_transform
 	add_child(new_toy)
-
-
 	
 func _on_toy_sold() -> void:
 	toys_sold_this_level += 1
 
 	if toys_sold_this_level >= toys_to_advance:
 		toys_sold_this_level = 0
-		current_level += 1
+		current_level += 1  
 
 	spawn_toy()
