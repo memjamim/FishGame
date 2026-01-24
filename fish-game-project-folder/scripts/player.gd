@@ -533,5 +533,5 @@ func hit(damage, dir):
 
 func _update_ui() -> void:
 	self.breath_bar.value = (self.breath / self.breath_max) * 100.0
-	self.hp_bar.value = 100.0 - (self.health / self.MAX_HEALTH) * 100.0
+	self.hp_bar.value = hp_bar.max_value - (float(health) / float(MAX_HEALTH)) * hp_bar.max_value
 	self.coin_counter.find_child("Label").text = str(self._collectables)
