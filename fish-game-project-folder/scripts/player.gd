@@ -282,7 +282,7 @@ func _physics_process(delta: float) -> void:
 			self.IS_HOLDING_WEAPON = false
 	
 	# --- Combat ---
-	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON and!is_attacking:
+	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON and !is_attacking:
 		if IS_HOLDING_WEAPON:
 			is_attacking = true
 			var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
