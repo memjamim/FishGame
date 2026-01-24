@@ -136,6 +136,12 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.65947115, 
 [node name="Offhand" type="Node3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.659, -0.769, -0.746)
 
+[node name="Flashlight" type="SpotLight3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0.23598588)
+visible = false
+spot_range = 29.320385
+spot_angle = 37.34233
+
 [node name="PickupThrow" type="Node" parent="."]
 script = ExtResource("2_g2els")
 max_throw_strength = 15.0
