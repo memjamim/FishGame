@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
+@onready var player_stats: Node = $PlayerStats
 
 signal collectables_changed(count: int)
 
@@ -41,6 +42,7 @@ var collectables: int:
 
 var IS_IN_WATER: bool = false
 var IS_HOLDING_ITEM: bool = false
+var IS_HOLDING_WEAPON: bool = false
 signal water_state_changed(is_in_water: bool)
 
 # Movement
@@ -182,30 +184,44 @@ func _physics_process(delta: float) -> void:
 		if collider.has_method("_on_interact"):
 			collider._on_interact(self)
 	
+		# collectables are non-physical things to collect (ex. coins that increase a coin value variable)
 		if collider.is_in_group("collectable"):
 			print("total collectables: ", self.collectables)
+		# interactables are things the player can interact with but won't give them anything
 		elif collider.is_in_group("interactable"):
 			print("interactable encountered")
+		# weapons are weapons. duh
+		elif collider.is_in_group('weapon'):
+			if IS_HOLDING_WEAPON == false:
+				self.IS_HOLDING_WEAPON = true
+				self.pickup_throw._pick_up(collider)
+				if !collider.is_connected('enemy_hit', _on_weapon_hitbox_t_1_body_entered):
+					collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
+		# holdables are things for the player to pick up to bring back to radical david
 		elif collider.is_in_group('holdable'):
 			if IS_HOLDING_ITEM == false:
 				self.IS_HOLDING_ITEM = true
 				self.pickup_throw._pick_up(collider)
-				if collider.is_in_group('weapon'):
-					if !collider.is_connected('enemy_hit', _on_weapon_hitbox_t_1_body_entered):
-						collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
 		
-	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM:
+	if Input.is_action_pressed("throw") and (IS_HOLDING_ITEM or IS_HOLDING_WEAPON):
 		self.pickup_throw._charge_throw(delta)
 	
-	if Input.is_action_just_released('throw') and IS_HOLDING_ITEM:
-		var held_item = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
-		self.pickup_throw._throw(held_item)
-		self.IS_HOLDING_ITEM = false
+	if Input.is_action_just_released('throw'):
+		# Will drop item before dropping weapon.
+		# Switch order of elif statements to swap this priority
+		if IS_HOLDING_ITEM:
+			var held_item = self.get_node('CameraPivot/Camera3D/Offhand').get_child(0)
+			self.pickup_throw._throw(held_item)
+			self.IS_HOLDING_ITEM = false
+		elif IS_HOLDING_WEAPON:
+			var held_weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+			self.pickup_throw._throw(held_weapon)
+			self.IS_HOLDING_WEAPON = false
 	
 	# --- Combat ---
-	if Input.is_action_just_pressed("attack") and IS_HOLDING_ITEM:
-		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
-		if weapon.is_in_group('weapon'):
+	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON:
+		if IS_HOLDING_WEAPON:
+			var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
 			anim_player.play("attack")
 			weapon.find_child('Hitbox').monitoring = true
 
@@ -310,7 +326,8 @@ func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == 'attack':
-		anim_player.play('idle')
-		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
-		weapon.find_child('Hitbox').monitoring = false
+	if IS_HOLDING_ITEM:
+		if anim_name == 'attack':
+			anim_player.play('idle')
+			var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+			weapon.find_child('Hitbox').monitoring = false
