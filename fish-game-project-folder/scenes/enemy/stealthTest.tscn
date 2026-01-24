@@ -60,6 +60,8 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_b0xup")
 
+[node name="TestHoldable" parent="." instance=ExtResource("7_kvqo1")]
+
 [node name="TestWeapon" parent="." instance=ExtResource("3_u545m")]
 transform = Transform3D(1, 0, 0, 0, 0.99818766, 0.060177475, 0, -0.060177475, 0.99818766, -0.15725242, 0.58174574, 1.5557015)
 
@@ -105,5 +107,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.00
 
 [node name="L3_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
-
-[node name="TestHoldable" parent="." instance=ExtResource("7_kvqo1")]
