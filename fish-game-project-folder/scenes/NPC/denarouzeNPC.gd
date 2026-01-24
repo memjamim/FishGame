@@ -42,6 +42,6 @@ func _on_interaction_radius_body_entered(body: Node3D) -> void:
 		player_in_range = true
 
 
-func _on_interaction_radius_body_exited(body: CharacterBody3D) -> void:
+func _on_interaction_radius_body_exited(body: Node3D) -> void:
 	if body == player:
 		player_in_range = false

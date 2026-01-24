@@ -2,10 +2,26 @@
 	"intro": [
 		{"name": "Daft Denayrouze:", "text": "Huh- whu– A child? Been a long time since I seen one of your kind around here"},
 		{"name": "Daft Denayrouze:", "text": "Children of course, what else would I mean "},
-		{"name": "Daft Denayrouze:", "text": "Look bud, now that you’re here I need your help with something. You know how to swim right? Of course you do, why else would you be at a pool."},
+		{"name": "Daft Denayrouze:", "text": "Look bud, now that you’re here I need your help with something."},
+		{"name": "Daft Denayrouze:", "text": "You know how to swim right?"},
+		{"name": "Daft Denayrouze:", "text": "Of course you do, why else would you be at a pool."},
+		{"name": "Daft Denayrouze:", "text": "Leave? The door is right over there–  ‘cept I locked it."},
 		{"name": "Daft Denayrouze:", "text": "And I’ll unlock it, once you get my toys. They're down there, somewhere. You'll find ‘em. "},
 		{"name": "Daft Denayrouze:", "text": "Once you find the toys just drop ‘em in my bucket here."},
-		{"name": "Daft Denayrouze:", "text": "Oh, and don’t stay down there too long."},
+		{"name": "Daft Denayrouze:", "text": "Oh, and try not to stay down there too long."},
+	],
+	"shop-intro": [
+		{"name": "Daft Denayrouze:", "text": "The lifeguard Freduck has wares that can make your dive easier."},
+		{"name": "Daft Denayrouze:", "text": "He's got flippers, scuba gear, spears, he'll setchya right up"},
+		{"name": "Daft Denayrouze:", "text": "Oh, and when you see him, tell him to turn off that accursed music."},
+	],
+	"eelbert-intro": [
+		{"name": "Daft Denayrouze:", "text": "Oh this feller in my beard? Why that’s my pal Eelbert!"},
+		{"name": "Eelbert:", "text": "Piss off"},
+		{"name": "Daft Denayrouze:", "text": "He’s a sweetheart, he’ll warm up to ya"},
+	],
+	"generic": [
+		{"name": "Daft Denayrouze:", "text": "Well, scram. My toys ain't going to collect themselves."},
 	],
 	"milestone20": [
 		{"name": "Scholar:", "text": "Solunaris was once a great and prosperous kingdom "},
