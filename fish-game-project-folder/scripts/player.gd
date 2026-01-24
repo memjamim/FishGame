@@ -135,40 +135,64 @@ const WEAPON_DAMAGE := {
 
 var weapon_tier := 1
 
+# --- Audio (children under $Audio) ---
+@onready var audio_root: Node = $Audio
+@onready var sfx_stab: AudioStreamPlayer = $Audio/Stab
+@onready var sfx_oof: AudioStreamPlayer = $Audio/Oof
+@onready var sfx_underwater_amb: AudioStreamPlayer = $Audio/UnderwaterAmbiance
+@onready var sfx_footsteps: AudioStreamPlayer = $Audio/Footsteps
+
+# Footstep timing
+@export var footstep_interval_walk := 0.45
+@export var footstep_interval_run := 0.30
+@export var footstep_speed_threshold := 0.25
+var _footstep_timer := 0.0
+
+
 func _ready() -> void:
 	health = MAX_HEALTH
 	add_to_group("player")
-	
+
 	# Save spawn position/rotation for respawn
 	_spawn_transform = global_transform
-	
+
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+
 	emit_signal("breath_updated", breath, breath_max)
 	emit_signal("collectables_changed", collectables)
-	
+
 	print("total collectables: ", collectables)
-	
+
 	_head_node = get_node(head_node_path) as Node3D
 	_pivot_base_pos = camera_pivot.position
-	
+
 	# Cache optional depth markers
 	_surface_marker = get_node_or_null(surface_marker_path) as Node3D
 	_bottom_marker = get_node_or_null(bottom_marker_path) as Node3D
-	
+
 	mouse_sensitivity = Settings.mouse_sensitivity
 	$CameraPivot/Camera3D.fov = Settings.fov
-	
+
 	Settings.changed.connect(_apply_settings)
-	
-	self.hp_bar = player_ui.find_child('Hp')
-	self.breath_bar = player_ui.find_child('Breath')
-	self.coin_counter = player_ui.find_child('CoinsCounter')
+
+	self.hp_bar = player_ui.find_child("Hp")
+	self.breath_bar = player_ui.find_child("Breath")
+	self.coin_counter = player_ui.find_child("CoinsCounter")
+
+	# Ensure underwater ambiance matches initial state
+	if IS_IN_WATER:
+		if not sfx_underwater_amb.playing:
+			sfx_underwater_amb.play()
+	else:
+		if sfx_underwater_amb.playing:
+			sfx_underwater_amb.stop()
+
 
 func _apply_settings() -> void:
 	mouse_sensitivity = Settings.mouse_sensitivity
 	$CameraPivot/Camera3D.fov = Settings.fov
+
 
 func set_in_water(v: bool) -> void:
 	if v == IS_IN_WATER:
@@ -180,11 +204,20 @@ func set_in_water(v: bool) -> void:
 	# If we just entered water, avoids popping upward from existing velocity
 	if IS_IN_WATER:
 		velocity.y = min(velocity.y, 0.0)
+
+		# Start underwater ambiance
+		if sfx_underwater_amb and not sfx_underwater_amb.playing:
+			sfx_underwater_amb.play()
 	else:
 		# Leaving water: ensure sprint state doesn't stick
 		is_sprinting_underwater = false
 		# Also reset drowning tick timer when you get air
 		_drown_tick_timer = 0.0
+
+		# Stop underwater ambiance
+		if sfx_underwater_amb and sfx_underwater_amb.playing:
+			sfx_underwater_amb.stop()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if get_tree().paused:
@@ -209,10 +242,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		)
 		camera_pivot.rotation.x = _pitch
 
+
 func _physics_process(delta: float) -> void:
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
+	_update_footsteps(delta)
 	_update_ui()
 
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
@@ -245,7 +280,7 @@ func _physics_process(delta: float) -> void:
 		var collider = player_raycast.get_collider()
 		if collider.has_method("_on_interact"):
 			collider._on_interact(self)
-	
+
 		# collectables are non-physical things to collect (ex. coins that increase a coin value variable)
 		if collider.is_in_group("collectable"):
 			print("total collectables: ", self.collectables)
@@ -253,45 +288,49 @@ func _physics_process(delta: float) -> void:
 		elif collider.is_in_group("interactable"):
 			print("interactable encountered")
 		# weapons are weapons. duh
-		elif collider.is_in_group('weapon'):
+		elif collider.is_in_group("weapon"):
 			if IS_HOLDING_WEAPON == false:
 				self.IS_HOLDING_WEAPON = true
 				self.pickup_throw._pick_up(collider)
-				if !collider.is_connected('enemy_hit', _on_weapon_hitbox_t_1_body_entered):
-					collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
+				if !collider.is_connected("enemy_hit", _on_weapon_hitbox_t_1_body_entered):
+					collider.connect("enemy_hit", _on_weapon_hitbox_t_1_body_entered)
 		# holdables are things for the player to pick up to bring back to radical david
-		elif collider.is_in_group('holdable'):
+		elif collider.is_in_group("holdable"):
 			if IS_HOLDING_ITEM == false:
 				self.IS_HOLDING_ITEM = true
 				self.pickup_throw._pick_up(collider)
-		
+
 	if Input.is_action_pressed("throw") and (IS_HOLDING_ITEM or IS_HOLDING_WEAPON):
 		self.pickup_throw._charge_throw(delta)
-	
-	if Input.is_action_just_released('throw'):
+
+	if Input.is_action_just_released("throw"):
 		# Will drop item before dropping weapon.
 		# Switch order of elif statements to swap this priority
 		if IS_HOLDING_ITEM:
-			var held_item = self.get_node('CameraPivot/Camera3D/Offhand').get_child(0)
+			var held_item = self.get_node("CameraPivot/Camera3D/Offhand").get_child(0)
 			self.pickup_throw._throw(held_item)
 			self.IS_HOLDING_ITEM = false
 		elif IS_HOLDING_WEAPON:
-			var held_weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
+			var held_weapon = self.get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
 			self.pickup_throw._throw(held_weapon)
 			self.IS_HOLDING_WEAPON = false
-	
+
 	# --- Combat ---
 	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON and !is_attacking:
-		if IS_HOLDING_WEAPON:
-			is_attacking = true
-			var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
-			anim_player.play("attack")
-			weapon.find_child('Hitbox').monitoring = true
+		is_attacking = true
+		var weapon = self.get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
+		anim_player.play("attack")
+		weapon.find_child("Hitbox").monitoring = true
+
+		# Play stab sound on swing
+		if sfx_stab:
+			sfx_stab.play()
 
 	move_and_slide()
 
 	# Visual bob after movement so it feels stable while moving
 	_apply_underwater_bob(delta)
+
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
 	# Gravity
@@ -307,6 +346,7 @@ func _land_move(wish_dir: Vector3, delta: float) -> void:
 	velocity.x = move_toward(velocity.x, target.x, land_accel * delta)
 	velocity.z = move_toward(velocity.z, target.z, land_accel * delta)
 
+
 func _swim_move(wish_dir: Vector3, delta: float) -> void:
 	# Buoyancy + drag for water movement
 	velocity.y += buoyancy * delta
@@ -318,6 +358,7 @@ func _swim_move(wish_dir: Vector3, delta: float) -> void:
 	velocity.x = move_toward(velocity.x, target.x, swim_accel * delta)
 	velocity.y = move_toward(velocity.y, target.y, swim_accel * delta)
 	velocity.z = move_toward(velocity.z, target.z, swim_accel * delta)
+
 
 func _get_depth_breath_multiplier() -> float:
 	# Determine surface Y
@@ -339,6 +380,7 @@ func _get_depth_breath_multiplier() -> float:
 	# 1x at surface -> depth_breath_multiplier_max at bottom
 	return lerpf(1.0, depth_breath_multiplier_max, t)
 
+
 func _update_breath(delta: float) -> void:
 	if IS_IN_WATER:
 		# Base drain depends on sprinting, then scaled by depth multiplier
@@ -352,11 +394,12 @@ func _update_breath(delta: float) -> void:
 	else:
 		# Fast breath refill when player gets air
 		breath = minf(breath_max, breath + breath_recover_rate * delta)
-	
+
 	emit_signal("breath_updated", breath, breath_max)
 
+
 func _update_drowning_damage(delta: float) -> void:
-	# Only take drowning damage when underwater AND breath is fully gone
+	# Only take drowning damage when underwater and breath is fully gone
 	if IS_IN_WATER and breath <= 0.0 and health > 0:
 		_drown_tick_timer += delta
 		while _drown_tick_timer >= drown_tick_interval and health > 0:
@@ -369,6 +412,7 @@ func _update_drowning_damage(delta: float) -> void:
 		# If you have breath again or aren't underwater, stop the ticking.
 		_drown_tick_timer = 0.0
 	print('health: ', health)
+
 
 func _respawn() -> void:
 	# Reset stats
@@ -387,6 +431,7 @@ func _respawn() -> void:
 	# Update UI signals immediately
 	emit_signal("breath_updated", breath, breath_max)
 
+
 func _update_water_state(delta: float) -> void:
 	# Node3D point query at the head position against Water layer(s)
 	var head_in_water := _is_head_in_water()
@@ -404,6 +449,7 @@ func _update_water_state(delta: float) -> void:
 
 	set_in_water(_water_blend >= 0.5)
 
+
 func _is_head_in_water() -> bool:
 	if _head_node == null:
 		return false
@@ -416,6 +462,7 @@ func _is_head_in_water() -> bool:
 
 	var hits := get_world_3d().direct_space_state.intersect_point(params, 8)
 	return hits.size() > 0
+
 
 func _apply_underwater_bob(delta: float) -> void:
 	var target_offset_y := 0.0
@@ -430,29 +477,61 @@ func _apply_underwater_bob(delta: float) -> void:
 	var t: float = clampf(underwater_bob_smoothing * delta, 0.0, 1.0)
 	camera_pivot.position = camera_pivot.position.lerp(desired, t)
 
+
+func _update_footsteps(delta: float) -> void:
+	# Only land footsteps
+	if IS_IN_WATER or not is_on_floor():
+		_footstep_timer = 0.0
+		return
+
+	var horizontal_speed := Vector2(velocity.x, velocity.z).length()
+	if horizontal_speed < footstep_speed_threshold:
+		_footstep_timer = 0.0
+		return
+
+	# Walking SFX
+	#var t := clampf(horizontal_speed / land_speed, 0.0, 1.0)
+	#var interval := lerpf(footstep_interval_walk, footstep_interval_run, t)
+#
+	#_footstep_timer += delta
+	#if _footstep_timer >= interval:
+		#_footstep_timer = 0.0
+		#if sfx_footsteps:
+			#sfx_footsteps.stop()
+			#sfx_footsteps.play()
+
+
 func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy") && body.has_method("apply_damage"):
+	if body.is_in_group("enemy") and body.has_method("apply_damage"):
 		var damage: int = WEAPON_DAMAGE.get(weapon_tier, 10)
 		body.apply_damage(damage)
 		print("Enemy hit!")
-		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
-		weapon.find_child('Hitbox').set_deferred('monitoring', false)
+		var weapon = self.get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
+		weapon.find_child("Hitbox").set_deferred("monitoring", false)
+
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == 'attack' and IS_HOLDING_WEAPON:
-		anim_player.play('idle')
+	if anim_name == "attack" and IS_HOLDING_WEAPON:
+		anim_player.play("idle")
 		is_attacking = false
-		var weapon = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
-		weapon.find_child('Hitbox').monitoring = false
+		var weapon = self.get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
+		weapon.find_child("Hitbox").monitoring = false
+
 
 func hit(damage, dir):
 	health -= damage
 	velocity += dir * PUSHBACK
+
+	# Play "oof" when hit
+	if sfx_oof:
+		sfx_oof.stop()
+		sfx_oof.play()
+
 	if health <= 0:
 		_respawn()
 
 
 func _update_ui() -> void:
-	self.breath_bar.value = (self.breath/self.breath_max)*100
-	self.hp_bar.value = 100 - (self.health/self.MAX_HEALTH)*100
-	self.coin_counter.find_child('Label').text = str(self._collectables)
+	self.breath_bar.value = (self.breath / self.breath_max) * 100.0
+	self.hp_bar.value = hp_bar.max_value - (float(health) / float(MAX_HEALTH)) * hp_bar.max_value
+	self.coin_counter.find_child("Label").text = str(self._collectables)
