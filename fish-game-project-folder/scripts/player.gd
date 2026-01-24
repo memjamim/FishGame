@@ -213,10 +213,10 @@ func _physics_process(delta: float) -> void:
 					if !collider.is_connected('enemy_hit', _on_weapon_hitbox_t_1_body_entered):
 						collider.connect('enemy_hit', _on_weapon_hitbox_t_1_body_entered)
 		
-	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM:
+	if Input.is_action_pressed("throw") and IS_HOLDING_ITEM and !is_attacking:
 		self.pickup_throw._charge_throw(delta)
 	
-	if Input.is_action_just_released('throw') and IS_HOLDING_ITEM:
+	if Input.is_action_just_released('throw') and IS_HOLDING_ITEM and !is_attacking:
 		var held_item = self.get_node('CameraPivot/Camera3D/HoldPoint').get_child(0)
 		self.pickup_throw._throw(held_item)
 		self.IS_HOLDING_ITEM = false
