@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=20 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
-[ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="3_gr04e"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_mmbh7"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="5_gr04e"]
-[ext_resource type="PackedScene" uid="uid://dnsnij54sy24f" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
+[ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
 [ext_resource type="AudioStream" uid="uid://bg25xxv3ej766" path="res://assets/Sounds/radio.wav" id="7_7vjy0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
@@ -87,8 +86,6 @@ script = ExtResource("3_fkl8m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.052421, 0, -7.446967)
 shape = SubResource("CylinderShape3D_x8l0j")
-
-[node name="PlayerUI" parent="." instance=ExtResource("3_gr04e")]
 
 [node name="PoolSide" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.110241, 2.9528008, -7.4290648)

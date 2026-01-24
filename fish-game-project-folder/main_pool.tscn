@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://pnt0x738tquo"]
+
+[ext_resource type="PackedScene" uid="uid://q6igxla2krl2" path="res://scenes/levels/MainPool.fbx" id="1_hpcs1"]
+
+[node name="MainPool" instance=ExtResource("1_hpcs1")]
+
+[node name="CollisionShape3D" parent="Cube_003/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.0008658245, 0, 0)
+
+[node name="Cube_006" parent="." index="14"]
+transform = Transform3D(19.404644, 0, 0, 0, -7.1154324e-07, 28.077242, 0, -5.968857, -3.3470683e-06, 6.05096, 3.539075, 13.4796295)
+
+[node name="Plane_105" parent="." index="113"]
+transform = Transform3D(1.583558e-05, 1.161311e-05, 616.6222, 4.7193705e-13, 265.67694, -2.6953416e-05, -265.67694, 1.4158112e-12, 3.6753547e-05, -6.947772, 4.6251283, -2.8039646)
+
+[node name="Plane_106" parent="." index="114"]
+transform = Transform3D(4.750674e-05, -1.1613108e-05, -616.62213, 4.7193705e-13, 265.67694, -2.6953412e-05, 265.6769, 1.4158112e-12, 0.00011026064, 12.495571, 4.6251283, 11.776797)
