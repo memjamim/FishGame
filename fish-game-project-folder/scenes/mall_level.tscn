@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://co3b8faxlimg6"]
+[gd_scene load_steps=6 format=3 uid="uid://co3b8faxlimg6"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_hu4f0"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="2_0erxm"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_37o5y"]
-[ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="4_hu4f0"]
 [ext_resource type="PackedScene" uid="uid://ulvgnq7vbuec" path="res://scenes/levels/mall_level_GB_ONLY.tscn" id="5_0erxm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_x8l0j"]
@@ -31,7 +30,5 @@ light_energy = 0.273
 
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("4_37o5y")
-
-[node name="PlayerUI" parent="." instance=ExtResource("4_hu4f0")]
 
 [node name="Level" parent="." instance=ExtResource("5_0erxm")]
