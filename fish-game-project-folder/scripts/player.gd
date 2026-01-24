@@ -9,7 +9,6 @@ extends CharacterBody3D
 var hp_bar
 var breath_bar
 var coin_counter
-@onready var player_stats: Node = $PlayerStats
 
 signal collectables_changed(count: int)
 
@@ -369,6 +368,7 @@ func _update_drowning_damage(delta: float) -> void:
 	else:
 		# If you have breath again or aren't underwater, stop the ticking.
 		_drown_tick_timer = 0.0
+	print('health: ', health)
 
 func _respawn() -> void:
 	# Reset stats
