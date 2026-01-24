@@ -12,8 +12,25 @@ var coin_counter
 
 signal collectables_changed(count: int)
 
-# Stuff for future shop
-var owned_shop_items: Dictionary = {}
+# Stuff for shop
+
+# --- Shop ownership (store tier per item family, e.g. "wetsuit" -> 2) ---
+var owned_shop_items: Dictionary = {} # { "wetsuit": 2, "flippers": 1, ... }
+
+func get_owned_tier(item_family: String) -> int:
+	return int(owned_shop_items.get(item_family, 0))
+
+func set_owned_tier(item_family: String, tier: int) -> void:
+	var current := get_owned_tier(item_family)
+	if tier > current:
+		owned_shop_items[item_family] = tier
+
+func has_tier(item_family: String, tier: int) -> bool:
+	return get_owned_tier(item_family) >= tier
+
+func apply_max_health_bonus(new_max: int) -> void:
+	max_health = max(new_max, 1)
+	health = clamp(health, 0, max_health)
 
 func has_item(item_id: String) -> bool:
 	return owned_shop_items.has(item_id)
@@ -122,8 +139,9 @@ var is_attacking: bool = false
 # Sprint state
 var is_sprinting_underwater: bool = false
 
-const MAX_HEALTH = 100
-var health
+@export var base_max_health: int = 100
+var max_health: int = 100
+var health: int = 100
 
 const PUSHBACK = 8.0
 
@@ -150,7 +168,8 @@ var _footstep_timer := 0.0
 
 
 func _ready() -> void:
-	health = MAX_HEALTH
+	max_health = base_max_health
+	health = max_health
 	add_to_group("player")
 
 	# Save spawn position/rotation for respawn
@@ -416,7 +435,7 @@ func _update_drowning_damage(delta: float) -> void:
 
 func _respawn() -> void:
 	# Reset stats
-	health = MAX_HEALTH
+	health = max_health
 	breath = breath_max
 	_drown_tick_timer = 0.0
 
@@ -533,5 +552,5 @@ func hit(damage, dir):
 
 func _update_ui() -> void:
 	self.breath_bar.value = (self.breath / self.breath_max) * 100.0
-	self.hp_bar.value = hp_bar.max_value - (float(health) / float(MAX_HEALTH)) * hp_bar.max_value
+	self.hp_bar.value = hp_bar.max_value - (float(health) / float(max_health)) * hp_bar.max_value
 	self.coin_counter.find_child("Label").text = str(self._collectables)
