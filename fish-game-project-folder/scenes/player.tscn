@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8v7kcsljbcru"]
+[gd_scene load_steps=11 format=3 uid="uid://c8v7kcsljbcru"]
 
 [ext_resource type="Script" uid="uid://db0vh5tiik48j" path="res://scripts/player.gd" id="1_067cb"]
 [ext_resource type="Script" uid="uid://ctmkxp74vlma0" path="res://scripts/pickup_throw.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://2wh7swcis7wf" path="res://scripts/player_raycast.gd" id="2_qhqgy"]
-[ext_resource type="Script" uid="uid://uv6dqaog7mdx" path="res://scripts/player_stats.gd" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_quwqr"]
@@ -133,26 +132,9 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.65947115, 
 [node name="Offhand" type="Node3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.659, -0.769, -0.746)
 
-[node name="Crosshair" type="ColorRect" parent="CameraPivot/Camera3D"]
-process_mode = 4
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="PickupThrow" type="Node" parent="."]
 script = ExtResource("2_g2els")
 max_throw_strength = 15.0
-
-[node name="PlayerStats" type="Node" parent="."]
-script = ExtResource("4_dqkch")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
