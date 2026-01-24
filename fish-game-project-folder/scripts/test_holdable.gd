@@ -8,6 +8,7 @@ extends Node3D
 # The color of the shader can be changed by opening the shader and changing the albedo vec3 values (RGB)
 @onready var shader = $MeshInstance3D.mesh.material.next_pass
 @onready var player := $"../Player"
+@onready var level := $".."
 @export var sell_value = 10
 
 var targeted = false : set = _set_targeted
@@ -21,4 +22,5 @@ func _set_targeted(val):
 		
 func sell():
 	player.collectables += sell_value
+	level._on_toy_sold()
 	self.queue_free()
