@@ -10,6 +10,5 @@ family_id = "wetsuit"
 cost = 1
 display_name = "Rashgaurd"
 icon = ExtResource("1_mkq75")
-effect_type = 1
 max_health_value = 120
 metadata/_custom_type_script = "uid://dp30l0sce605q"

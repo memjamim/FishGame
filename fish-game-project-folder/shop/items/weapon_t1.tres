@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://cuhck57fcrmqk"]
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=5 format=3 uid="uid://cuhck57fcrmqk"]
 
 [ext_resource type="Texture2D" uid="uid://d0fst16juoe67" path="res://icon.svg" id="1_g1gdc"]
+[ext_resource type="PackedScene" uid="uid://cu3jk3s5sfoxw" path="res://assets/fish.fbx" id="1_qc45n"]
 [ext_resource type="PackedScene" path="res://scenes/test_weapon.tscn" id="2_3qbe8"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_pbc4d"]
 
 [resource]
 script = ExtResource("2_pbc4d")
-display_scene = ExtResource("2_3qbe8")
+display_scene = ExtResource("1_qc45n")
 grant_scene = ExtResource("2_3qbe8")
 is_weapon = true
 item_id = "weapon_t1"

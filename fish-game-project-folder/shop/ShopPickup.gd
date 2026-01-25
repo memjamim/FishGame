@@ -71,19 +71,38 @@ func _grant_item_to_player(player) -> void:
 
 	# Weapons / holdables should be RigidBody3D for pickup_throw
 	var rb := inst as RigidBody3D
+	# Ensure it has a parent
+	get_tree().current_scene.add_child(rb)
+	rb.global_transform = player.global_transform
+
 	if rb == null:
 		push_warning("Granted scene root is not a RigidBody3D: " + str(inst))
 		return
 
-	# Put it in hand
+		# Put it in hand
 	if item_data.is_weapon:
+		# Drop current weapon if holding one
 		if player.IS_HOLDING_WEAPON:
-			# optional: you could drop current weapon first, or block purchase
-			print("Already holding a weapon.")
-			return
+			if player.has_method("drop_current_weapon"):
+				player.drop_current_weapon()
+			else:
+				# fallback: do it here
+				var hold_point := player.get_node("CameraPivot/Camera3D/HoldPoint") as Node3D
+				if hold_point and hold_point.get_child_count() > 0:
+					var old_weapon := hold_point.get_child(0) as RigidBody3D
+					if old_weapon:
+						player.pickup_throw._throw(old_weapon)
+				player.IS_HOLDING_WEAPON = false
 
 		player.IS_HOLDING_WEAPON = true
+
+		# Make sure rb is parented before pickup (optional but robust)
+		if rb.get_parent() == null:
+			player.get_tree().current_scene.add_child(rb)
+			rb.global_transform = player.global_transform
+
 		player.pickup_throw._pick_up(rb)
+
 		# connect hitbox signal if needed
 		if rb.has_signal("enemy_hit") and not rb.is_connected("enemy_hit", player._on_weapon_hitbox_t_1_body_entered):
 			rb.connect("enemy_hit", player._on_weapon_hitbox_t_1_body_entered)

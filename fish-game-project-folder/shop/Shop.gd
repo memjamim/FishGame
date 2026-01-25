@@ -44,7 +44,7 @@ func _fill_slot(slot: Node3D, player: CharacterBody3D) -> void:
 	sp.call_deferred("_apply_display_model")
 
 	sp.set_shop(self)
-	sp.set_slot(slot) # we’ll add this
+	sp.set_slot(slot)
 	_slot_to_pickup[slot] = sp
 
 
@@ -54,6 +54,8 @@ func _ready() -> void:
 
 func _try_refresh() -> void:
 	var player := get_tree().get_first_node_in_group("player") as CharacterBody3D
+	print("[Shop] weapon owned tier =", player.get_owned_tier("weapon"), " raw=", player.owned_shop_items.get("weapon", "none"))
+
 	if player != null:
 		init_shop(player)
 

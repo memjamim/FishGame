@@ -26,20 +26,26 @@ func _process(delta: float) -> void:
 
 
 func _pick_up(holdable: RigidBody3D) -> void:
-	holdable.get_parent().remove_child(holdable)
-	
-	if holdable.is_in_group('weapon'):
+	var p := holdable.get_parent()
+	if p != null:
+		p.remove_child(holdable)
+
+	if holdable.is_in_group("weapon"):
 		main_hand.add_child(holdable)
 	else:
 		off_hand.add_child(holdable)
-	
-	holdable.get_node("CollisionShape3D").disabled = true
+
+	var cs := holdable.get_node_or_null("CollisionShape3D") as CollisionShape3D
+	if cs:
+		cs.disabled = true
+
 	holdable.freeze = true
 	holdable.linear_velocity = Vector3.ZERO
 	holdable.angular_velocity = Vector3.ZERO
 	holdable.transform = Transform3D.IDENTITY
 
 	print("picked up:", holdable.name)
+
 
 
 func _charge_throw(delta: float) -> void:

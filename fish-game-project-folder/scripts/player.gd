@@ -420,6 +420,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_apply_underwater_bob(delta)
 
+func drop_current_weapon() -> void:
+	if not IS_HOLDING_WEAPON:
+		return
+
+	var hold_point := $CameraPivot/Camera3D/HoldPoint
+	if hold_point.get_child_count() == 0:
+		IS_HOLDING_WEAPON = false
+		return
+
+	var held_weapon := hold_point.get_child(0) as RigidBody3D
+	if held_weapon == null:
+		IS_HOLDING_WEAPON = false
+		return
+
+	pickup_throw._throw(held_weapon)
+	IS_HOLDING_WEAPON = false
+	is_attacking = false
+	anim_player.stop()
+
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
 	if not is_on_floor():
