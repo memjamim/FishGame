@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://cuhck57fcrmqk"]
 
-[ext_resource type="Texture2D" uid="uid://byhrwsx4dxlgk" path="res://art/UI/hp_top_new.png" id="2_3qbe8"]
+[ext_resource type="Texture2D" uid="uid://edu18hkmm55m" path="res://art/UI/hp_top.png" id="2_3qbe8"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_pbc4d"]
 [ext_resource type="PackedScene" uid="uid://ta1rtoa3opt5" path="res://shop/item scenes/t1_weapon.tscn" id="2_qc45n"]
 
