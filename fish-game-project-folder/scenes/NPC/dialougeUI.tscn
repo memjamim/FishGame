@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkoumrhyxgs52"]
+
+[ext_resource type="Script" path="res://scenes/NPC/denayrouze_dialouge_player.gd" id="1_bbnff"]
+
+[node name="DialogueUI" type="Control"]
+z_index = 150
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1096.0
+offset_top = 1148.0
+offset_right = 1237.0
+offset_bottom = 1188.0
+script = ExtResource("1_bbnff")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_index = 150
+layout_mode = 0
+offset_left = -184.0
+offset_top = -119.0
+offset_right = 184.0
+offset_bottom = -2.0
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+z_index = 150
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 3118.8083
+offset_bottom = 289.66675
+scale = Vector2(0.28706366, 0.3)
+theme_override_colors/font_shadow_color = Color(0, 0.39500612, 0.7924905, 1)
+theme_override_font_sizes/normal_font_size = 200
+theme_override_font_sizes/bold_font_size = 60
+text = "Name:"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+z_index = 150
+layout_mode = 0
+offset_left = 13.0
+offset_top = 81.0
+offset_right = 1835.2224
+offset_bottom = 692.1111
+scale = Vector2(0.45, 0.45)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.39607844, 0.7921569, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "Chatting..."
