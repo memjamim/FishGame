@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://f5x6quh10fnu" path="res://shop/models/SharkMask.fbx" id="17_fjv0l"]
 [ext_resource type="Resource" uid="uid://cc7nxghhovib7" path="res://shop/items/weapon_t2.tres" id="17_qfykf"]
 [ext_resource type="Resource" uid="uid://btuxlr8iiv3k0" path="res://shop/items/weapon_t3.tres" id="18_8hh26"]
+[ext_resource type="Resource" uid="uid://dm4qmre5ts445" path="res://shop/items/mini_radio.tres" id="20_8hh26"]
 [ext_resource type="PackedScene" uid="uid://0cuyy330tk6l" path="res://shop/models/radio.fbx" id="21_qfykf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
@@ -43,10 +44,6 @@ outer_radius = 6.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8l0j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8l0j"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_7vjy0"]
-top_radius = 0.0
-height = 1.0
 
 [node name="Ben" type="Node3D"]
 
@@ -151,30 +148,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.571601, -0.39591622, 7.675
 [node name="TestHoldable" parent="." instance=ExtResource("6_7vjy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3167062, -0.35977912, 9.927605)
 
-[node name="Speaker" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.41310447, 0.91068363, 0, -0.91068363, -0.41310447, -7.0439386, 1.0158763, 0.7504835)
-mesh = SubResource("CylinderMesh_7vjy0")
+[node name="Speaker2" parent="." instance=ExtResource("21_qfykf")]
+transform = Transform3D(-0.9847805, 0, -0.1738028, -7.450581e-09, 1, 0, 0.1738028, 0, -0.9847805, 12.322617, 0.1279628, -11.686353)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Speaker"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Speaker/StaticBody3D"]
-shape = SubResource("SphereShape3D_4vypp")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Speaker"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Speaker2"]
+transform = Transform3D(-0.9847805, -0.15827936, -0.07179871, -7.3371864e-09, -0.41310447, 0.91068363, -0.1738028, 0.89682347, 0.40681723, 0, 0, 0)
 stream = ExtResource("6_hcgr2")
 autoplay = true
 max_distance = 20.0
 
 [node name="Shop" parent="." instance=ExtResource("9_npq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53987503, -0.32824588, -2.238573)
-shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf"), ExtResource("16_thtum"), ExtResource("17_qfykf"), ExtResource("18_8hh26")])
+shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf"), ExtResource("16_thtum"), ExtResource("17_qfykf"), ExtResource("18_8hh26"), ExtResource("20_8hh26")])
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("16_7hbbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.435041, 2.0911832, 8.723286)
+[node name="Enemy" parent="." instance=ExtResource("16_7hbbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.924171, 2.0911832, 8.723286)
 player_path = NodePath("../Player")
 
 [node name="SharkMask" parent="." instance=ExtResource("17_fjv0l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.629106, 0.01565969, 2.8012118)
 
-[node name="radio" parent="." instance=ExtResource("21_qfykf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.341921, -0.57758975, 0.49265242)
+[node name="Enemy2" parent="." instance=ExtResource("16_7hbbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.997135, 2.0911832, 8.723286)
+player_path = NodePath("../Player")

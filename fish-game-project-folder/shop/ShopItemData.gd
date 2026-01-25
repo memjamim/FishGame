@@ -6,7 +6,9 @@ enum EffectType {
 	MAX_HEALTH_ABSOLUTE,
 	BREATH_BONUS,
 	UNLOCK_FLASHLIGHT,
+	UNLOCK_MINI_RADIO,
 }
+
 @export var display_scene: PackedScene        # what appears in the shop slot
 @export var grant_scene: PackedScene          # what you actually give the player (if weapon or holdable)
 @export var is_weapon: bool = false           # controls how we grant it
@@ -41,6 +43,10 @@ func apply_to(player) -> void:
 		EffectType.UNLOCK_FLASHLIGHT:
 			if unlocks_flashlight and player.has_method("set_flashlight_unlocked"):
 				player.set_flashlight_unlocked(true)
+				
+		EffectType.UNLOCK_MINI_RADIO:
+			if player.has_method("unlock_mini_radio"):
+				player.unlock_mini_radio()
 
 		_:
 			pass

@@ -214,7 +214,7 @@ var weapon_tier := 1
 @export var footstep_interval_walk := 0.45
 @export var footstep_interval_run := 0.30
 @export var footstep_speed_threshold := 0.25
-var _footstep_timer := 0.0
+#var _footstep_timer := 0.0
 
 
 func _ready() -> void:
@@ -222,7 +222,7 @@ func _ready() -> void:
 	health = max_health
 	add_to_group("player")
 	_spawn_transform = global_transform
-
+	randomize()
 	breath_max = base_breath_max
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -567,6 +567,26 @@ func _apply_underwater_bob(delta: float) -> void:
 	#if horizontal_speed < footstep_speed_threshold:
 		#_footstep_timer = 0.0
 		#return
+
+@onready var mini_radio: AudioStreamPlayer3D = $Audio/MiniRadioPlayer
+var mini_radio_unlocked := false
+
+func unlock_mini_radio() -> void:
+	if mini_radio_unlocked:
+		return
+	print("mini_radio=", mini_radio, " stream=", mini_radio.stream, " bus=", mini_radio.bus)
+	mini_radio_unlocked = true
+
+	if mini_radio == null or mini_radio.stream == null:
+		push_warning("MiniRadioPlayer missing or stream not assigned.")
+		return
+
+	var len := mini_radio.stream.get_length()
+	if len > 0.05:
+		mini_radio.play(randf() * len) # play(from_position_seconds)
+	else:
+		mini_radio.play()
+
 
 
 
