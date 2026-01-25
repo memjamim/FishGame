@@ -156,6 +156,7 @@ spot_angle = 37.34233
 
 [node name="UnderwaterEffect" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(-0.76914024, -8.742277e-08, -1.9453365e-15, 0, -4.3711385e-08, 0.5090677, -6.724038e-08, 0.99999994, 2.2252056e-08, 0, 0, -0.22232974)
+visible = false
 mesh = SubResource("PlaneMesh_smehm")
 
 [node name="PickupThrow" type="Node" parent="."]

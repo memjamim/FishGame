@@ -216,6 +216,10 @@ var weapon_tier := 1
 @export var footstep_speed_threshold := 0.25
 var _footstep_timer := 0.0
 
+# --- Visual ---
+@onready var underwater_effect: MeshInstance3D = $CameraPivot/Camera3D/UnderwaterEffect
+
+
 
 func _ready() -> void:
 	max_health = base_max_health
@@ -304,8 +308,7 @@ func set_in_water(v: bool) -> void:
 
 	if IS_IN_WATER:
 		velocity.y = min(velocity.y, 0.0)
-		
-		# TODO enable underwater effect
+		self.underwater_effect.visible = true
 
 		# Start underwater ambiance
 		if sfx_underwater_amb and not sfx_underwater_amb.playing:
@@ -315,6 +318,7 @@ func set_in_water(v: bool) -> void:
 		_drown_tick_timer = 0.0
 		if sfx_underwater_amb and sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
+		self.underwater_effect.visible = false
 
 
 func _unhandled_input(event: InputEvent) -> void:

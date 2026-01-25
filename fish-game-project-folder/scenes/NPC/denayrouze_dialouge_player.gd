@@ -129,7 +129,7 @@ func load_dialogue():
 	# ─────────────────────────────
 	return content["generic"]
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent):
 	if !d_active:
 		return
 
