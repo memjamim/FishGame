@@ -95,6 +95,7 @@ func get_best_icon_for_family(family_id: String) -> Texture2D:
 var IS_IN_WATER: bool = false
 var IS_HOLDING_ITEM: bool = false
 var IS_HOLDING_WEAPON: bool = false
+
 signal water_state_changed(is_in_water: bool)
 
 # --- Movement ---
@@ -155,6 +156,9 @@ var _spawn_transform: Transform3D
 
 var _pitch := 0.0
 var breath := 60.0
+
+var IS_IN_CORAL: bool = false
+var coral_recover_rate: float = 0.25
 
 var _head_node: Node3D
 var _water_blend := 0.0
@@ -248,6 +252,8 @@ func _ready() -> void:
 	else:
 		if sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
+	
+	
 
 	# Flashlight starts hidden until unlocked and toggled
 	flashlight.visible = false
@@ -289,6 +295,10 @@ func set_in_water(v: bool) -> void:
 
 	if IS_IN_WATER:
 		velocity.y = min(velocity.y, 0.0)
+		
+		# TODO enable underwater effect
+
+		# Start underwater ambiance
 		if sfx_underwater_amb and not sfx_underwater_amb.playing:
 			sfx_underwater_amb.play()
 	else:
@@ -332,29 +342,33 @@ func _physics_process(delta: float) -> void:
 	_update_drowning_damage(delta)
 	#_update_footsteps(delta)
 	_update_ui()
-
+	
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
-
+	
+	# Vertical swim input: Space up, Shift down
 	var vertical_input := 0.0
 	if IS_IN_WATER:
 		if Input.is_action_pressed("jump"):
 			vertical_input += 1.0
 		if Input.is_action_pressed("down"):
 			vertical_input -= 1.0
-
+	
+	# Move relative to player orientation
 	var wish_dir := (global_transform.basis * Vector3(input_dir.x, 0.0, input_dir.y))
 	wish_dir.y = vertical_input
-
+	
 	if wish_dir.length() > 0.001:
 		wish_dir = wish_dir.normalized()
-
+		# TODO increase underwaterEffect strength, frequency, wave_speed A BIT
+	
+	# --- Underwater sprint (held) ---
 	is_sprinting_underwater = IS_IN_WATER and Input.is_action_pressed("sprint") and wish_dir.length() > 0.001
-
+	
 	if IS_IN_WATER:
 		_swim_move(wish_dir, delta)
 	else:
 		_land_move(wish_dir, delta)
-
+	
 	# --- Interaction ---
 	if player_raycast.is_colliding() and Input.is_action_just_pressed("interact"):
 		var collider = player_raycast.get_collider()
@@ -449,7 +463,10 @@ func _get_depth_breath_multiplier() -> float:
 
 
 func _update_breath(delta: float) -> void:
-	if IS_IN_WATER:
+	if IS_IN_CORAL:
+		breath = minf(breath_max, breath + breath_recover_rate * delta * coral_recover_rate)
+	elif IS_IN_WATER:
+		# Base drain depends on sprinting, then scaled by depth multiplier
 		var base_drain: float = breath_drain_sprint if is_sprinting_underwater else breath_drain_normal
 		var depth_mult: float = _get_depth_breath_multiplier()
 		var drain_rate: float = base_drain * depth_mult
@@ -472,6 +489,7 @@ func _update_drowning_damage(delta: float) -> void:
 			if health <= 0:
 				_respawn()
 				return
+		_set_taking_damage()
 	else:
 		_drown_tick_timer = 0.0
 
@@ -560,7 +578,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		weapon.find_child("Hitbox").monitoring = false
 
 
-func hit(damage, dir):
+func hit(damage, dir): 
 	health -= damage
 	velocity += dir * PUSHBACK
 
@@ -570,6 +588,8 @@ func hit(damage, dir):
 
 	if health <= 0:
 		_respawn()
+	
+	_set_taking_damage()
 
 
 func _update_ui() -> void:
