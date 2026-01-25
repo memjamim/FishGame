@@ -11,5 +11,6 @@ tier = 3
 cost = 6
 display_name = "Full Wetsuit"
 icon = ExtResource("1_w32xb")
+effect_type = 1
 max_health_value = 200
 metadata/_custom_type_script = "uid://dp30l0sce605q"

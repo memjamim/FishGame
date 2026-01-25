@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=31 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://f5x6quh10fnu" path="res://shop/models/SharkMask.fbx" id="17_fjv0l"]
 [ext_resource type="Resource" uid="uid://cc7nxghhovib7" path="res://shop/items/weapon_t2.tres" id="17_qfykf"]
 [ext_resource type="Resource" uid="uid://btuxlr8iiv3k0" path="res://shop/items/weapon_t3.tres" id="18_8hh26"]
+[ext_resource type="PackedScene" uid="uid://0cuyy330tk6l" path="res://shop/models/radio.fbx" id="21_qfykf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -42,26 +43,6 @@ outer_radius = 6.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8l0j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8l0j"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x8l0j"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mmbh7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8l0j"]
-transparency = 1
-depth_draw_mode = 1
-albedo_color = Color(0.047058824, 0.31764707, 0.53333336, 0.5058824)
-roughness = 0.0
-normal_texture = SubResource("NoiseTexture2D_x8l0j")
-refraction_enabled = true
-refraction_texture = SubResource("NoiseTexture2D_mmbh7")
-uv1_scale = Vector3(0.04, 0.04, 0.04)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_x8l0j"]
-material = SubResource("StandardMaterial3D_x8l0j")
-size = Vector3(4, 4, 4)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7vjy0"]
 top_radius = 0.0
@@ -113,10 +94,6 @@ shape = SubResource("BoxShape3D_x8l0j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.41469327, 0.78404915, -0.46184027, 0, 0.5075384, 0.8616291, 0.9099613, -0.3573118, 0.21047275, 0, 4.928076, 6.533126)
-
-[node name="WaterMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7589846, 1.8488703, 0)
-mesh = SubResource("BoxMesh_x8l0j")
 
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("4_mmbh7")
@@ -197,4 +174,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.435041, 2.0911832, 8.7232
 player_path = NodePath("../Player")
 
 [node name="SharkMask" parent="." instance=ExtResource("17_fjv0l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.629106, -0.85977983, 2.8012118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.629106, 0.01565969, 2.8012118)
+
+[node name="radio" parent="." instance=ExtResource("21_qfykf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.341921, -0.57758975, 0.49265242)

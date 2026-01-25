@@ -10,5 +10,6 @@ family_id = "headlamp"
 cost = 5
 display_name = "Headlamp"
 icon = ExtResource("1_uraux")
+effect_type = 3
 unlocks_flashlight = true
 metadata/_custom_type_script = "uid://dp30l0sce605q"
