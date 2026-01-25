@@ -1,47 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkoumrhyxgs52"]
+[gd_scene load_steps=3 format=3 uid="uid://bkoumrhyxgs52"]
 
-[ext_resource type="Script" path="res://scenes/NPC/denayrouze_dialouge_player.gd" id="1_bbnff"]
+[ext_resource type="Script" uid="uid://dru50te8bo7cb" path="res://scenes/NPC/denayrouze_dialouge_player.gd" id="1_bbnff"]
+[ext_resource type="Texture2D" uid="uid://cgmq8hws5fcni" path="res://art/UI/text_bg.png" id="2_5ogmw"]
 
 [node name="DialogueUI" type="Control"]
+process_mode = 4
 z_index = 150
 layout_mode = 3
-anchors_preset = 0
-offset_left = 1096.0
-offset_top = 1148.0
-offset_right = 1237.0
-offset_bottom = 1188.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_bbnff")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+process_mode = 4
 z_index = 150
-layout_mode = 0
-offset_left = -184.0
-offset_top = -119.0
-offset_right = 184.0
-offset_bottom = -2.0
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 145.0
+offset_top = 472.0
+offset_right = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5ogmw")
 
 [node name="Name" type="RichTextLabel" parent="NinePatchRect"]
 z_index = 150
-layout_mode = 0
-offset_left = 8.0
-offset_top = 3.0
-offset_right = 3118.8083
-offset_bottom = 289.66675
+layout_mode = 1
+offset_left = 35.999996
+offset_top = 5.000025
+offset_right = 2801.937
+offset_bottom = 211.66661
 scale = Vector2(0.28706366, 0.3)
-theme_override_colors/font_shadow_color = Color(0, 0.39500612, 0.7924905, 1)
-theme_override_font_sizes/normal_font_size = 200
+theme_override_colors/font_shadow_color = Color(0, 0.23137255, 0.29411766, 1)
+theme_override_font_sizes/normal_font_size = 150
 theme_override_font_sizes/bold_font_size = 60
 text = "Name:"
 
 [node name="Text" type="RichTextLabel" parent="NinePatchRect"]
 z_index = 150
 layout_mode = 0
-offset_left = 13.0
-offset_top = 81.0
-offset_right = 1835.2224
-offset_bottom = 692.1111
+offset_left = 63.0
+offset_top = 64.0
+offset_right = 1740.7778
+offset_bottom = 284.0
 scale = Vector2(0.45, 0.45)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.39607844, 0.7921569, 1)
-theme_override_font_sizes/normal_font_size = 100
+theme_override_colors/font_shadow_color = Color(0, 0.23137255, 0.29411766, 1)
+theme_override_font_sizes/normal_font_size = 50
 text = "Chatting..."
