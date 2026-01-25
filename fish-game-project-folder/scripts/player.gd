@@ -205,6 +205,7 @@ var weapon_tier := 1
 
 # --- Audio ---
 @onready var audio_root: Node = $Audio
+@onready var sfx_slash: AudioStreamPlayer = $Audio/Slash
 @onready var sfx_stab: AudioStreamPlayer = $Audio/Stab
 @onready var sfx_oof: AudioStreamPlayer = $Audio/Oof
 @onready var sfx_underwater_amb: AudioStreamPlayer = $Audio/UnderwaterAmbiance
@@ -393,13 +394,12 @@ func _physics_process(delta: float) -> void:
 			if !IS_HOLDING_WEAPON:
 				IS_HOLDING_WEAPON = true
 				pickup_throw._pick_up(collider)
-
 				var hitbox = collider.find_child("Hitbox")
 				if hitbox:
-					hitbox.monitoring = false  # start clean
+					hitbox.monitoring = false
 
-				if !collider.is_connected("enemy_hit", _on_weapon_hitbox_t_1_body_entered):
-					collider.connect("enemy_hit", _on_weapon_hitbox_t_1_body_entered)
+				_bind_weapon_signals(collider)
+
 		elif collider and collider.is_in_group("holdable"):
 			if IS_HOLDING_ITEM == false:
 				IS_HOLDING_ITEM = true
@@ -424,11 +424,12 @@ func _physics_process(delta: float) -> void:
 	# --- Combat ---
 	if Input.is_action_just_pressed("attack") and IS_HOLDING_WEAPON and not is_attacking:
 		is_attacking = true
-		var weapon = get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
+		var weapon := $CameraPivot/Camera3D/HoldPoint.get_child(0)
+		if sfx_slash:
+			sfx_slash.play()
+		if weapon and weapon.has_method("reset_for_swing"):
+			weapon.reset_for_swing()
 		anim_player.play("attack")
-		weapon.find_child("Hitbox").monitoring = true
-		if sfx_stab:
-			sfx_stab.play()
 
 	move_and_slide()
 	_apply_underwater_bob(delta)
@@ -569,12 +570,29 @@ func _apply_underwater_bob(delta: float) -> void:
 
 
 
-func _on_weapon_hitbox_t_1_body_entered(body: Node3D) -> void:
+func _on_weapon_enemy_hit(body: Node3D, dmg: int) -> void:
 	if body.is_in_group("enemy") and body.has_method("apply_damage"):
-		var damage: int = WEAPON_DAMAGE.get(weapon_tier, 10)
-		body.apply_damage(damage)
-		var weapon = get_node("CameraPivot/Camera3D/HoldPoint").get_child(0)
-		weapon.find_child("Hitbox").set_deferred("monitoring", false)
+		body.apply_damage(dmg)
+
+		if sfx_stab:
+			sfx_stab.play()
+
+		# (optional) stop hitbox again just in case
+		var hold_point := $CameraPivot/Camera3D/HoldPoint
+		if hold_point.get_child_count() > 0:
+			var weapon := hold_point.get_child(0)
+			var hb := weapon.find_child("Hitbox")
+			if hb:
+				hb.set_deferred("monitoring", false)
+
+func _bind_weapon_signals(weapon: Node) -> void:
+	if weapon == null:
+		return
+
+	var cb := Callable(self, "_on_weapon_enemy_hit")
+
+	if weapon.has_signal("enemy_hit") and not weapon.is_connected("enemy_hit", cb):
+		weapon.connect("enemy_hit", cb)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

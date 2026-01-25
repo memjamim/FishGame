@@ -13,6 +13,6 @@ item_id = "weapon_t2"
 family_id = "weapon"
 tier = 2
 cost = 3
-display_name = "Spear"
+display_name = "Fishing Spear"
 icon = ExtResource("3_ajpoc")
 metadata/_custom_type_script = "uid://dp30l0sce605q"

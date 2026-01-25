@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://de6aau884ebv6"]
 
-[ext_resource type="Script" path="res://scripts/test_weapon.gd" id="1_v1151"]
+[ext_resource type="Script" uid="uid://bu6u344rx41ep" path="res://scripts/test_weapon.gd" id="1_v1151"]
 [ext_resource type="Shader" uid="uid://bbrktyjunhf2y" path="res://art/shaders/interact.gdshader" id="2_kjx5i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yn38l"]
@@ -24,6 +24,7 @@ size = Vector3(0.23474121, 1.1260986, 0.20690918)
 [node name="T3Weapon" type="RigidBody3D" groups=["holdable", "weapon"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_v1151")
+damage = 34
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.13092476, 0, 0, 0, 1.1897305, 0, 0, 0, 0.15391153, 0, 0, 0)
