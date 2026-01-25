@@ -27,7 +27,7 @@ func _extract_shader_material(m: MeshInstance3D) -> ShaderMaterial:
 	if m == null:
 		return null
 
-	# 1) material_override
+
 	if m.material_override is ShaderMaterial:
 		return m.material_override as ShaderMaterial
 

@@ -10,7 +10,7 @@ extends CharacterBody3D
 var hp_bar: Range
 var breath_bar: Range
 var coin_counter: Control
-var item_bar: HBoxContainer
+var item_bar: VBoxContainer
 
 # --- Flashlight (Headlamp unlock) ---
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
@@ -244,7 +244,7 @@ func _ready() -> void:
 	hp_bar = player_ui.find_child("Hp", true, true) as Range
 	breath_bar = player_ui.find_child("Breath", true, true) as Range
 	coin_counter = player_ui.find_child("CoinsCounter", true, true) as Control
-	item_bar = player_ui.find_child("ItemBar", true, true) as HBoxContainer
+	item_bar = player_ui.find_child("ItemBar", true, true) as VBoxContainer
 
 
 
@@ -290,7 +290,7 @@ func _rebuild_item_bar() -> void:
 		tex.texture = icon
 		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		tex.custom_minimum_size = Vector2(80, 80)
+		tex.custom_minimum_size = Vector2(60, 60)
 		tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		item_bar.add_child(tex)
 
