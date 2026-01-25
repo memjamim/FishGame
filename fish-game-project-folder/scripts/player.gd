@@ -28,7 +28,7 @@ func set_flashlight_unlocked(unlocked: bool) -> void:
 # --- Currency / Collectables ---
 signal collectables_changed(count: int)
 
-var _collectables: int = 0
+var _collectables: int = 100 #TODO: testing
 var collectables: int:
 	get:
 		return _collectables
@@ -114,7 +114,9 @@ signal water_state_changed(is_in_water: bool)
 @export var max_pitch_deg := 85.0
 
 # --- Breath ---
-@export var breath_max := 60.0
+@export var base_breath_max := 60.0
+var breath_max := 60.0
+var breath_bonus := 0.0
 @export var breath_recover_rate := 20.0
 signal breath_updated(current: float, max_value: float)
 signal drowned
@@ -184,6 +186,13 @@ func apply_max_health_bonus(new_max: int) -> void:
 	else:
 		health = clamp(health, 0, max_health)
 
+func apply_breath_max_bonus(new_bonus: float) -> void:
+	breath_bonus = maxf(0.0, new_bonus)
+	breath_max = base_breath_max + breath_bonus
+	breath = minf(breath + breath_bonus, breath_max)
+	emit_signal("breath_updated", breath, breath_max)
+
+
 const PUSHBACK = 8.0
 
 const WEAPON_DAMAGE := {
@@ -210,10 +219,10 @@ var _footstep_timer := 0.0
 func _ready() -> void:
 	max_health = base_max_health
 	health = max_health
-
 	add_to_group("player")
 	_spawn_transform = global_transform
 
+	breath_max = base_breath_max
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -257,7 +266,6 @@ func _ready() -> void:
 
 	# Flashlight starts hidden until unlocked and toggled
 	flashlight.visible = false
-
 
 func _apply_settings() -> void:
 	mouse_sensitivity = Settings.mouse_sensitivity
@@ -374,6 +382,7 @@ func _physics_process(delta: float) -> void:
 		var collider = player_raycast.get_collider()
 		if collider and collider.has_method("_on_interact"):
 			collider._on_interact(self)
+			return
 
 		if collider and collider.is_in_group("collectable"):
 			print("total collectables: ", self.collectables)
