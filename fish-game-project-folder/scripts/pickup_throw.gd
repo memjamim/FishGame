@@ -57,7 +57,6 @@ func _throw(holdable: RigidBody3D) -> void:
 	var p := holdable.get_parent()
 	if p != null:
 		p.remove_child(holdable)
-	holdable.get_parent().remove_child(holdable)
 	var world := player.get_parent_node_3d()
 	world.add_child(holdable)
 
