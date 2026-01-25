@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=29 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
@@ -6,7 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="5_gr04e"]
 [ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
 [ext_resource type="AudioStream" uid="uid://doxu2oca1ukc4" path="res://assets/Sounds/radio.mp3" id="6_hcgr2"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="8_npq7a"]
+[ext_resource type="Resource" uid="uid://d2nimdmapemae" path="res://shop/items/wetsuit_t1.tres" id="9_0bpjt"]
 [ext_resource type="PackedScene" uid="uid://3aatsb485j8g" path="res://shop/Shop.tscn" id="9_npq7a"]
+[ext_resource type="Resource" uid="uid://2n4gt3j8fg7t" path="res://shop/items/wetsuit_t2.tres" id="10_7hbbf"]
+[ext_resource type="Resource" uid="uid://d357lhsekacxs" path="res://shop/items/wetsuit_t3.tres" id="11_fjv0l"]
+[ext_resource type="Resource" uid="uid://clf43o61nd1ni" path="res://shop/items/headlamp.tres" id="12_qp50l"]
+[ext_resource type="Resource" uid="uid://kcnr5ngxcuyi" path="res://shop/items/snorkel_t1.tres" id="13_am5ua"]
+[ext_resource type="Resource" uid="uid://bf4jj3ni8vxdh" path="res://shop/items/snorkel_t2.tres" id="14_thtum"]
+[ext_resource type="Resource" uid="uid://bgqv4j4lett83" path="res://shop/items/snorkel_t3.tres" id="15_qfykf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -178,3 +186,4 @@ max_distance = 20.0
 
 [node name="Shop" parent="." instance=ExtResource("9_npq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53987503, -0.32824588, -2.238573)
+shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf")])
