@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://djd3u5j42nbl2"]
+[gd_scene load_steps=5 format=3 uid="uid://djd3u5j42nbl2"]
 
 [ext_resource type="Script" uid="uid://yue4g1q8mq0x" path="res://scenes/NPC/denarouzeNPC.gd" id="1_ck3e4"]
 [ext_resource type="PackedScene" uid="uid://bkoumrhyxgs52" path="res://scenes/NPC/dialougeUI.tscn" id="2_en3g7"]
-[ext_resource type="Script" path="res://scenes/NPC/denayrouze_dialouge_player.gd" id="3_en3g7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck3e4"]
 
@@ -26,7 +25,6 @@ transform = Transform3D(1.7, 0, 0, 0, 0.6955536, 0, 0, 0, 1.7, 0, -0.14700209, 0
 shape = SubResource("CylinderShape3D_ck3e4")
 
 [node name="DialogueUI" parent="." instance=ExtResource("2_en3g7")]
-script = ExtResource("3_en3g7")
 
 [connection signal="body_entered" from="interaction_radius" to="." method="_on_interaction_radius_body_entered"]
 [connection signal="body_exited" from="interaction_radius" to="." method="_on_interaction_radius_body_exited"]

@@ -35,8 +35,8 @@ var auto_advance = false
 var full_text = ""
 var current_text = ""
 var text_index = 0
-var typewriter_speed = 0.05
-var auto_advance_delay = 0.8  # pause after line finishes
+var typewriter_speed = 0.01
+var auto_advance_delay = 0.4  # pause after line finishes
 
 @onready var level = $"../.."
 
@@ -128,19 +128,23 @@ func load_dialogue():
 	# FALLBACK
 	# ─────────────────────────────
 	return content["generic"]
-
+	
+func _input(event):
+	if event.is_action_pressed("interact"):
+		print("INPUT seen")
+		
 func _unhandled_input(event):
 	if !d_active:
 		return
 
 	if event.is_action_pressed("interact"):
+		print("e_pressed")
 		match state:
 			DialogueState.TYPING:
+				print("skip requested")
 				skip_requested = true
 			DialogueState.WAITING:
 				next_script()
-
-
 
 func next_script() -> void:
 	if state == DialogueState.TYPING:
