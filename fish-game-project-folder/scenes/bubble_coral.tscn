@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://7i0xh0e1jfv"]
+[gd_scene load_steps=9 format=3 uid="uid://7i0xh0e1jfv"]
+
+[ext_resource type="Script" uid="uid://4t8x24xm7lmm" path="res://scripts/bubble_coral.gd" id="1_fys8p"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_2y83j"]
 height = 0.5
@@ -12,9 +14,40 @@ is_hemisphere = true
 [sub_resource type="SphereShape3D" id="SphereShape3D_ka185"]
 radius = 0.6
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i5qu8"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2y83j"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = 1.0728835e-05
+angle_max = 488.7
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 573.38995
+radial_velocity_min = 0.99997765
+radial_velocity_max = 1.9999776
+linear_accel_min = -2.7200022
+linear_accel_max = -2.7200022
+scale_max = 4.52
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y83j"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(0.54901963, 0.85882354, 1, 0.2784314)
+roughness = 0.0
+rim_enabled = true
+rim_tint = 0.0
+refraction_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ka185"]
+material = SubResource("StandardMaterial3D_2y83j")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i5qu8"]
+height = 3.8985596
+radius = 0.8208008
 
 [node name="BubbleCoral" type="StaticBody3D"]
+script = ExtResource("1_fys8p")
 
 [node name="CoralMesh" type="Node3D" parent="."]
 
@@ -70,4 +103,17 @@ mesh = SubResource("SphereMesh_fys8p")
 shape = SubResource("SphereShape3D_ka185")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_i5qu8")
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0.23496306, 0)
+randomness = 0.81
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_2y83j")
+draw_pass_1 = SubResource("SphereMesh_ka185")
+
+[node name="BreathRefillArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreathRefillArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0486293, 0)
+shape = SubResource("CylinderShape3D_i5qu8")
+
+[connection signal="body_entered" from="BreathRefillArea" to="." method="_on_breath_refill_area_body_entered"]
+[connection signal="body_exited" from="BreathRefillArea" to="." method="_on_breath_refill_area_body_exited"]

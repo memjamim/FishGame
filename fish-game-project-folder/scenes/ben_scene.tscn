@@ -78,7 +78,6 @@ shape = SubResource("SphereShape3D_4vypp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8105135, 0.9833269, 5.1511974)
 swim_speed = 4.0
 swim_accel = 8.0
-buoyancy = 1.5
 
 [node name="Water" type="Area3D" parent="."]
 script = ExtResource("3_fkl8m")
@@ -134,5 +133,7 @@ shape = SubResource("SphereShape3D_4vypp")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Speaker"]
 stream = ExtResource("7_7vjy0")
+volume_db = -4.22
+max_db = -20.494
 autoplay = true
 max_distance = 20.0

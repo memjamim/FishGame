@@ -1,14 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo1re71ojesvq"]
+[gd_scene load_steps=11 format=3 uid="uid://bo1re71ojesvq"]
 
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tx11n"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_0ragw"]
 [ext_resource type="PackedScene" uid="uid://jhfpml2w5wm4" path="res://scenes/ladder.tscn" id="3_cn2e8"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_rb8pp"]
+[ext_resource type="Material" uid="uid://y7b37uvg238n" path="res://art/water_material.tres" id="5_54nh1"]
+[ext_resource type="PackedScene" uid="uid://7i0xh0e1jfv" path="res://scenes/bubble_coral.tscn" id="5_rb8pp"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_rb8pp"]
+material = ExtResource("5_54nh1")
+size = Vector3(1, 0.01, 1)
+subdivide_width = 80
+subdivide_height = 80
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ragw"]
-size = Vector3(14.1249695, 7.814575, 21.412888)
+size = Vector3(14.1249695, 7.020584, 21.412888)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb8pp"]
 size = Vector3(1.5606384, 0.43310547, 8.428741)
@@ -20,7 +28,7 @@ environment = SubResource("Environment_cn2e8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1920929e-07, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.205973, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 13.900324, 0)
 light_size = 0.242
 light_bake_mode = 1
 shadow_enabled = true
@@ -33,22 +41,31 @@ spot_angle_attenuation = 0.032351892
 [node name="Player" parent="." instance=ExtResource("2_0ragw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2478874, 10.585378)
 
-[node name="NonMainThings" type="Node" parent="."]
+[node name="Environment" type="Node" parent="."]
 
-[node name="Ladder" parent="NonMainThings" instance=ExtResource("3_cn2e8")]
+[node name="Ladder" parent="Environment" instance=ExtResource("3_cn2e8")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.007652, -1.2784022, -3.3350277)
 
-[node name="Water" type="Area3D" parent="NonMainThings"]
+[node name="Water" type="Area3D" parent="Environment"]
+monitoring = false
+monitorable = false
 script = ExtResource("3_rb8pp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NonMainThings/Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1170807, -3.1378484, -1.5595932)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Water"]
+transform = Transform3D(15.201917, 0, 0, 0, 0.03146988, 0, 0, 0, 21.877754, -1.9804571, -0.030369997, -1.248658)
+mesh = SubResource("BoxMesh_rb8pp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1170807, -3.534844, -1.5595932)
 shape = SubResource("BoxShape3D_0ragw")
 
-[node name="SlideRamp" type="StaticBody3D" parent="NonMainThings"]
+[node name="SlideRamp" type="StaticBody3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.672241, 0.4953006, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NonMainThings/SlideRamp"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SlideRamp"]
 transform = Transform3D(1, 0, 0, 0, 0.85970086, -0.51079804, 0, 0.51079804, 0.85970086, 0.14564514, 1.5041196, -3.7868567)
 shape = SubResource("BoxShape3D_rb8pp")
 debug_color = Color(0.6862745, 0.18039216, 0, 1)
+
+[node name="BubbleCoral" parent="Environment" instance=ExtResource("5_rb8pp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.643693, -6.122956)
