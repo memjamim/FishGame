@@ -44,7 +44,7 @@ func _pick_up(holdable: RigidBody3D) -> void:
 	holdable.angular_velocity = Vector3.ZERO
 	holdable.transform = Transform3D.IDENTITY
 
-	print("picked up:", holdable.name)
+	print("picked up:", holdable.name, " scene=", holdable.scene_file_path)
 
 
 
@@ -54,6 +54,9 @@ func _charge_throw(delta: float) -> void:
 
 
 func _throw(holdable: RigidBody3D) -> void:
+	var p := holdable.get_parent()
+	if p != null:
+		p.remove_child(holdable)
 	holdable.get_parent().remove_child(holdable)
 	var world := player.get_parent_node_3d()
 	world.add_child(holdable)
@@ -77,4 +80,4 @@ func _throw(holdable: RigidBody3D) -> void:
 	if holdable.is_in_group('weapon'):
 		holdable.find_child('Hitbox').monitoring = true
 	
-	print("throwing:", holdable.name)
+	print("throwing:", holdable.name, " scene=", holdable.scene_file_path, " parent_before=", holdable.get_parent())

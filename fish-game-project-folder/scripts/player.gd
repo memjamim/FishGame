@@ -28,7 +28,7 @@ func set_flashlight_unlocked(unlocked: bool) -> void:
 # --- Currency / Collectables ---
 signal collectables_changed(count: int)
 
-var _collectables: int = 0
+var _collectables: int = 100 #TODO: testing
 var collectables: int:
 	get:
 		return _collectables
@@ -215,7 +215,6 @@ var _footstep_timer := 0.0
 func _ready() -> void:
 	max_health = base_max_health
 	health = max_health
-
 	add_to_group("player")
 	_spawn_transform = global_transform
 
@@ -261,7 +260,6 @@ func _ready() -> void:
 
 	# Flashlight starts hidden until unlocked and toggled
 	flashlight.visible = false
-
 
 func _apply_settings() -> void:
 	mouse_sensitivity = Settings.mouse_sensitivity
@@ -370,6 +368,7 @@ func _physics_process(delta: float) -> void:
 		var collider = player_raycast.get_collider()
 		if collider and collider.has_method("_on_interact"):
 			collider._on_interact(self)
+			return
 
 		if collider and collider.is_in_group("collectable"):
 			print("total collectables: ", self.collectables)
@@ -419,25 +418,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_apply_underwater_bob(delta)
-
-func drop_current_weapon() -> void:
-	if not IS_HOLDING_WEAPON:
-		return
-
-	var hold_point := $CameraPivot/Camera3D/HoldPoint
-	if hold_point.get_child_count() == 0:
-		IS_HOLDING_WEAPON = false
-		return
-
-	var held_weapon := hold_point.get_child(0) as RigidBody3D
-	if held_weapon == null:
-		IS_HOLDING_WEAPON = false
-		return
-
-	pickup_throw._throw(held_weapon)
-	IS_HOLDING_WEAPON = false
-	is_attacking = false
-	anim_player.stop()
 
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:

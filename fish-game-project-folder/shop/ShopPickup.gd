@@ -4,6 +4,8 @@ class_name ShopPickup
 @export var item_data: ShopItemData
 var shop: Shop = null
 var slot: Node3D = null
+var _is_processing_purchase := false
+
 
 @onready var model_root: Node3D = $ModelRoot
 
@@ -20,24 +22,55 @@ func _apply_display_model() -> void:
 	if model_root == null:
 		return
 
-	# Clear old model
+	# Clear old model immediately
 	for c in model_root.get_children():
+		model_root.remove_child(c)
+
+		if c is RigidBody3D:
+			var rb := c as RigidBody3D
+			rb.freeze = true
+			rb.gravity_scale = 0.0
+			rb.linear_velocity = Vector3.ZERO
+			rb.angular_velocity = Vector3.ZERO
+			rb.collision_layer = 0
+			rb.collision_mask = 0
+
 		c.queue_free()
 
 	if item_data == null:
 		return
 
+	print("[DisplayModel] item=", item_data.item_id,
+		" display_scene=",
+		(item_data.display_scene.resource_path if item_data.display_scene else "null"))
+
 	# Instance item-specific display scene
 	if item_data.display_scene != null:
 		var m := item_data.display_scene.instantiate()
 		model_root.add_child(m)
+
+		# If someone used a physics scene as display, neutralize it
+		if m is RigidBody3D:
+			var rb2 := m as RigidBody3D
+			rb2.freeze = true
+			rb2.gravity_scale = 0.0
+			rb2.linear_velocity = Vector3.ZERO
+			rb2.angular_velocity = Vector3.ZERO
+			rb2.collision_layer = 0
+			rb2.collision_mask = 0
 	else:
-		# Fallback debug cube
 		var mi := MeshInstance3D.new()
 		mi.mesh = BoxMesh.new()
 		model_root.add_child(mi)
 
+
 func _on_interact(player) -> void:
+	print("[ShopPickup] interact called on ", self.name, " item=", item_data.item_id, " frame=", Engine.get_frames_drawn())
+	if _is_processing_purchase:
+		return
+	_is_processing_purchase = true
+	call_deferred("_reset_purchase_lock")
+
 	if item_data == null:
 		return
 	if not item_data.is_available_for(player):
@@ -63,52 +96,37 @@ func _on_interact(player) -> void:
 		if shop != null:
 			shop.on_item_bought(player, slot) if shop.has_method("on_item_bought") else shop.refresh(player)
 
+func _reset_purchase_lock() -> void:
+	_is_processing_purchase = false
+
 func _grant_item_to_player(player) -> void:
-	if item_data.grant_scene == null:
+	if item_data == null or item_data.grant_scene == null:
 		return
 
-	var inst := item_data.grant_scene.instantiate()
-
-	# Weapons / holdables should be RigidBody3D for pickup_throw
+	var inst: Node = item_data.grant_scene.instantiate()
 	var rb := inst as RigidBody3D
-	# Ensure it has a parent
-	get_tree().current_scene.add_child(rb)
-	rb.global_transform = player.global_transform
-
 	if rb == null:
-		push_warning("Granted scene root is not a RigidBody3D: " + str(inst))
+		push_warning("[ShopPickup] grant_scene root is not RigidBody3D for item_id=" + item_data.item_id)
+		inst.queue_free()
 		return
 
-		# Put it in hand
 	if item_data.is_weapon:
-		# Drop current weapon if holding one
-		if player.IS_HOLDING_WEAPON:
-			if player.has_method("drop_current_weapon"):
-				player.drop_current_weapon()
-			else:
-				# fallback: do it here
-				var hold_point := player.get_node("CameraPivot/Camera3D/HoldPoint") as Node3D
-				if hold_point and hold_point.get_child_count() > 0:
-					var old_weapon := hold_point.get_child(0) as RigidBody3D
-					if old_weapon:
-						player.pickup_throw._throw(old_weapon)
-				player.IS_HOLDING_WEAPON = false
-
+	# Hard replace: delete any currently held weapon (do NOT throw it)
+		var hold_point := player.get_node("CameraPivot/Camera3D/HoldPoint") as Node3D
+		if hold_point and hold_point.get_child_count() > 0:
+			var old := hold_point.get_child(0)
+			old.queue_free()
+			player.IS_HOLDING_WEAPON = false
 		player.IS_HOLDING_WEAPON = true
-
-		# Make sure rb is parented before pickup (optional but robust)
-		if rb.get_parent() == null:
-			player.get_tree().current_scene.add_child(rb)
-			rb.global_transform = player.global_transform
-
 		player.pickup_throw._pick_up(rb)
-
-		# connect hitbox signal if needed
+	# connect hitbox if needed
 		if rb.has_signal("enemy_hit") and not rb.is_connected("enemy_hit", player._on_weapon_hitbox_t_1_body_entered):
 			rb.connect("enemy_hit", player._on_weapon_hitbox_t_1_body_entered)
+
+
 	else:
 		if player.IS_HOLDING_ITEM:
-			print("Already holding an item.")
+			rb.queue_free()
 			return
 		player.IS_HOLDING_ITEM = true
 		player.pickup_throw._pick_up(rb)
