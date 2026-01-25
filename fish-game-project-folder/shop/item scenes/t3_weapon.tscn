@@ -1,44 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://de6aau884ebv6"]
+[gd_scene load_steps=6 format=3 uid="uid://de6aau884ebv6"]
 
 [ext_resource type="Script" uid="uid://bu6u344rx41ep" path="res://scripts/test_weapon.gd" id="1_v1151"]
-[ext_resource type="Shader" uid="uid://bbrktyjunhf2y" path="res://art/shaders/interact.gdshader" id="2_kjx5i"]
+[ext_resource type="PackedScene" uid="uid://bc0ngqvslmii5" path="res://shop/models/Trident.fbx" id="2_v1151"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yn38l"]
-render_priority = 0
-shader = ExtResource("2_kjx5i")
-shader_parameter/strength = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0g3m"]
-next_pass = SubResource("ShaderMaterial_yn38l")
-albedo_color = Color(1, 0, 0.07450981, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fpn5d"]
-material = SubResource("StandardMaterial3D_d0g3m")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v1151"]
+radius = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d44m1"]
-size = Vector3(0.44866943, 1.5484772, 0.43041992)
+size = Vector3(0.44866943, 3.6610608, 0.43041992)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fpn5d"]
-size = Vector3(0.23474121, 1.1260986, 0.20690918)
+size = Vector3(0.23474121, 2.848549, 0.20690918)
 
 [node name="T3Weapon" type="RigidBody3D" groups=["holdable", "weapon"]]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(0.81915206, 0, -0.5735764, 0, 0.9999999, 0, 0.57357645, 0, 0.81915194, 0, 0, 0)
 script = ExtResource("1_v1151")
 damage = 34
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.13092476, 0, 0, 0, 1.1897305, 0, 0, 0, 0.15391153, 0, 0, 0)
-mesh = SubResource("BoxMesh_fpn5d")
+mesh = SubResource("CapsuleMesh_v1151")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.29591113, 0, 0, 0, 0.77963495, 0, 0, 0, 0.34722856, 0.00044870377, 0.003929138, -0.0028076172)
+transform = Transform3D(0.29591113, 0, 1.7881393e-07, 0, 0.77962667, 0, -5.9604645e-08, 0, 0.34722447, 0.00044870377, 0.34080315, -0.0028076158)
 shape = SubResource("BoxShape3D_d44m1")
 
 [node name="Hitbox" type="Area3D" parent="."]
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 0.9999753, 0, 0, 0, 0.9999753, 0.006164551, 0.06304862, 0.0038454134)
+transform = Transform3D(1, 0, 2.682209e-07, 0, 0.99996823, 0, 0, 0, 0.99996793, 0.0061645517, 0.38070154, 0.0038454114)
 shape = SubResource("BoxShape3D_fpn5d")
+
+[node name="Trident" parent="." instance=ExtResource("2_v1151")]
+transform = Transform3D(0.13611329, 0, 0.9906931, 0, 0.9999997, 0, -0.99069315, 0, 0.1361132, 0, 0.8822526, 0)
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

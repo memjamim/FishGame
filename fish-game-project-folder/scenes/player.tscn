@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8v7kcsljbcru"]
+[gd_scene load_steps=20 format=3 uid="uid://c8v7kcsljbcru"]
 
 [ext_resource type="Script" uid="uid://db0vh5tiik48j" path="res://scripts/player.gd" id="1_067cb"]
 [ext_resource type="Script" uid="uid://ctmkxp74vlma0" path="res://scripts/pickup_throw.gd" id="2_g2els"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bxnx58okin8dl" path="res://assets/Sounds/UnderwaterAmbiance.wav" id="6_smehm"]
 [ext_resource type="AudioStream" uid="uid://b6mwr0letu8f7" path="res://assets/Sounds/Slash.mp3" id="6_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://clxqj32ax1t53" path="res://assets/Sounds/water footsteps.mp3" id="7_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://doxu2oca1ukc4" path="res://assets/Sounds/radio.mp3" id="11_d2wvv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_quwqr"]
 
@@ -191,6 +192,12 @@ stream = ExtResource("7_ur7pv")
 
 [node name="Slash" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_y4r1p")
+
+[node name="MiniRadioPlayer" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("11_d2wvv")
+
+[node name="Radio" type="AudioStreamPlayer" parent="Audio/MiniRadioPlayer"]
+stream = ExtResource("11_d2wvv")
 
 [node name="RegenCooldown" type="Timer" parent="."]
 autostart = true

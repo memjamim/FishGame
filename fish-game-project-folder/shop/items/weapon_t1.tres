@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://cuhck57fcrmqk"]
 
+[ext_resource type="Texture2D" uid="uid://edu18hkmm55m" path="res://art/UI/hp_top.png" id="2_3qbe8"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_pbc4d"]
 [ext_resource type="PackedScene" uid="uid://ta1rtoa3opt5" path="res://shop/item scenes/t1_weapon.tscn" id="2_qc45n"]
-[ext_resource type="Texture2D" uid="uid://bpcqnctcupbyv" path="res://art/UI/coin_ccounter.png" id="3_3qbe8"]
 
 [resource]
 script = ExtResource("2_pbc4d")
@@ -13,5 +13,5 @@ item_id = "weapon_t1"
 family_id = "weapon"
 cost = 1
 display_name = "Oyster Knife"
-icon = ExtResource("3_3qbe8")
+icon = ExtResource("2_3qbe8")
 metadata/_custom_type_script = "uid://dp30l0sce605q"

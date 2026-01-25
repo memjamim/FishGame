@@ -10,7 +10,7 @@ extends CharacterBody3D
 var hp_bar: Range
 var breath_bar: Range
 var coin_counter: Control
-var item_bar: HBoxContainer
+var item_bar: VBoxContainer
 
 # --- Flashlight (Headlamp unlock) ---
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
@@ -153,6 +153,10 @@ var _bottom_marker: Node3D
 @export var drown_damage_amount: int = 1
 @export var drown_tick_interval: float = 0.1
 
+@export var base_swim_speed := 3.0
+
+var flipper_speed_mult := 1.0
+
 var _drown_tick_timer: float = 0.0
 var _spawn_transform: Transform3D
 
@@ -214,7 +218,7 @@ var weapon_tier := 1
 @export var footstep_interval_walk := 0.45
 @export var footstep_interval_run := 0.30
 @export var footstep_speed_threshold := 0.25
-var _footstep_timer := 0.0
+#var _footstep_timer := 0.0
 
 # --- Visual ---
 @onready var underwater_effect: MeshInstance3D = $CameraPivot/Camera3D/UnderwaterEffect
@@ -226,11 +230,11 @@ func _ready() -> void:
 	health = max_health
 	add_to_group("player")
 	_spawn_transform = global_transform
-
+	randomize()
 	breath_max = base_breath_max
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	swim_speed = base_swim_speed
 	emit_signal("breath_updated", breath, breath_max)
 	emit_signal("collectables_changed", collectables)
 
@@ -248,7 +252,7 @@ func _ready() -> void:
 	hp_bar = player_ui.find_child("Hp", true, true) as Range
 	breath_bar = player_ui.find_child("Breath", true, true) as Range
 	coin_counter = player_ui.find_child("CoinsCounter", true, true) as Control
-	item_bar = player_ui.find_child("ItemBar", true, true) as HBoxContainer
+	item_bar = player_ui.find_child("ItemBar", true, true) as VBoxContainer
 
 
 
@@ -294,7 +298,7 @@ func _rebuild_item_bar() -> void:
 		tex.texture = icon
 		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		tex.custom_minimum_size = Vector2(80, 80)
+		tex.custom_minimum_size = Vector2(60, 60)
 		tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		item_bar.add_child(tex)
 
@@ -572,6 +576,28 @@ func _apply_underwater_bob(delta: float) -> void:
 		#_footstep_timer = 0.0
 		#return
 
+@onready var mini_radio: AudioStreamPlayer3D = $Audio/MiniRadioPlayer
+var mini_radio_unlocked := false
+
+func unlock_mini_radio() -> void:
+	if mini_radio_unlocked:
+		return
+	print("mini_radio=", mini_radio, " stream=", mini_radio.stream, " bus=", mini_radio.bus)
+	mini_radio_unlocked = true
+
+	if mini_radio == null or mini_radio.stream == null:
+		push_warning("MiniRadioPlayer missing or stream not assigned.")
+		return
+
+	var len := mini_radio.stream.get_length()
+	if len > 0.05:
+		mini_radio.play(randf() * len) # play(from_position_seconds)
+	else:
+		mini_radio.play()
+
+func apply_flipper_multiplier(mult: float) -> void:
+	flipper_speed_mult = maxf(1.0, mult)
+	swim_speed = base_swim_speed * flipper_speed_mult
 
 
 func _on_weapon_enemy_hit(body: Node3D, dmg: int) -> void:
