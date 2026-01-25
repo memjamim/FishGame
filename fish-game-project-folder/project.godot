@@ -21,7 +21,7 @@ Settings="*res://scripts/Settings.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [global_group]
 
