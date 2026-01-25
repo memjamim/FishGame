@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=31 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
@@ -15,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://kcnr5ngxcuyi" path="res://shop/items/snorkel_t1.tres" id="13_am5ua"]
 [ext_resource type="Resource" uid="uid://bf4jj3ni8vxdh" path="res://shop/items/snorkel_t2.tres" id="14_thtum"]
 [ext_resource type="Resource" uid="uid://bgqv4j4lett83" path="res://shop/items/snorkel_t3.tres" id="15_qfykf"]
+[ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="16_7hbbf"]
+[ext_resource type="PackedScene" uid="uid://f5x6quh10fnu" path="res://shop/models/SharkMask.fbx" id="17_fjv0l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -187,3 +189,10 @@ max_distance = 20.0
 [node name="Shop" parent="." instance=ExtResource("9_npq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53987503, -0.32824588, -2.238573)
 shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf")])
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("16_7hbbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.435041, 2.0911832, 8.723286)
+player_path = NodePath("../Player")
+
+[node name="SharkMask" parent="." instance=ExtResource("17_fjv0l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.629106, -0.85977983, 2.8012118)

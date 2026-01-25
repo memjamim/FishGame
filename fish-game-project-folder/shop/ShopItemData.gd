@@ -7,7 +7,9 @@ enum EffectType {
 	BREATH_BONUS,
 	UNLOCK_FLASHLIGHT,
 }
-
+@export var display_scene: PackedScene        # what appears in the shop slot
+@export var grant_scene: PackedScene          # what you actually give the player (if weapon or holdable)
+@export var is_weapon: bool = false           # controls how we grant it
 @export var item_id: String = ""
 @export var family_id: String = ""
 @export var tier: int = 1
