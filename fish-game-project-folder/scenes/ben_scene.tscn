@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=21 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_mmbh7"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="5_gr04e"]
 [ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
-[ext_resource type="AudioStream" uid="uid://bg25xxv3ej766" path="res://assets/Sounds/radio.wav" id="7_7vjy0"]
+[ext_resource type="AudioStream" uid="uid://doxu2oca1ukc4" path="res://assets/Sounds/radio.mp3" id="6_hcgr2"]
+[ext_resource type="PackedScene" uid="uid://3aatsb485j8g" path="res://shop/Shop.tscn" id="9_npq7a"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -108,20 +109,58 @@ mesh = SubResource("BoxMesh_x8l0j")
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("4_mmbh7")
 
-[node name="TestCollectable" parent="." instance=ExtResource("5_gr04e")]
+[node name="coins" type="Node" parent="."]
+
+[node name="TestCollectable" parent="coins" instance=ExtResource("5_gr04e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 4.9804173)
+
+[node name="TestCollectable2" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 6.2825403)
+
+[node name="TestCollectable3" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91187, -0.31903505, 4.7733936)
+
+[node name="TestCollectable4" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.367805, -0.39591622, 7.675935)
+
+[node name="TestCollectable5" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7254138, -0.35977912, 4.9804173)
+
+[node name="TestCollectable6" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7254138, -0.35977912, 6.2825403)
+
+[node name="TestCollectable7" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.181349, -0.31903505, 4.7733936)
+
+[node name="TestCollectable8" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.637283, -0.39591622, 7.675935)
+
+[node name="TestCollectable9" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3902526, -0.35977912, 4.9804173)
+
+[node name="TestCollectable10" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3902526, -0.35977912, 6.2825403)
+
+[node name="TestCollectable11" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.846188, -0.31903505, 4.7733936)
+
+[node name="TestCollectable12" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.302122, -0.39591622, 7.675935)
+
+[node name="TestCollectable13" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.659731, -0.35977912, 4.9804173)
+
+[node name="TestCollectable14" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.659731, -0.35977912, 6.2825403)
+
+[node name="TestCollectable15" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.115666, -0.31903505, 4.7733936)
+
+[node name="TestCollectable16" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.571601, -0.39591622, 7.675935)
 
 [node name="TestHoldable" parent="." instance=ExtResource("6_7vjy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3167062, -0.35977912, 9.927605)
-
-[node name="TestCollectable2" parent="." instance=ExtResource("5_gr04e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 6.2825403)
-
-[node name="TestCollectable3" parent="." instance=ExtResource("5_gr04e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91187, -0.31903505, 4.7733936)
-
-[node name="TestCollectable4" parent="." instance=ExtResource("5_gr04e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.367805, -0.39591622, 7.675935)
 
 [node name="Speaker" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.41310447, 0.91068363, 0, -0.91068363, -0.41310447, -7.0439386, 1.0158763, 0.7504835)
@@ -133,6 +172,9 @@ mesh = SubResource("CylinderMesh_7vjy0")
 shape = SubResource("SphereShape3D_4vypp")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Speaker"]
-stream = ExtResource("7_7vjy0")
+stream = ExtResource("6_hcgr2")
 autoplay = true
 max_distance = 20.0
+
+[node name="Shop" parent="." instance=ExtResource("9_npq7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53987503, -0.32824588, -2.238573)
