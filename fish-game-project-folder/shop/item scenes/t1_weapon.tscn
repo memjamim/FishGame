@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ta1rtoa3opt5"]
 
-[ext_resource type="Script" path="res://scripts/test_weapon.gd" id="1_jlu05"]
+[ext_resource type="Script" uid="uid://bu6u344rx41ep" path="res://scripts/test_weapon.gd" id="1_jlu05"]
 [ext_resource type="Shader" uid="uid://bbrktyjunhf2y" path="res://art/shaders/interact.gdshader" id="2_ancl8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yn38l"]

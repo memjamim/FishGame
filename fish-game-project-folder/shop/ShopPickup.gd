@@ -119,9 +119,11 @@ func _grant_item_to_player(player) -> void:
 			player.IS_HOLDING_WEAPON = false
 		player.IS_HOLDING_WEAPON = true
 		player.pickup_throw._pick_up(rb)
+		player._bind_weapon_signals(rb)
 	# connect hitbox if needed
-		if rb.has_signal("enemy_hit") and not rb.is_connected("enemy_hit", player._on_weapon_hitbox_t_1_body_entered):
-			rb.connect("enemy_hit", player._on_weapon_hitbox_t_1_body_entered)
+		if rb.has_signal("enemy_hit") and not rb.is_connected("enemy_hit", Callable(player, "_on_weapon_enemy_hit")):
+			rb.connect("enemy_hit", Callable(player, "_on_weapon_enemy_hit"))
+
 
 
 	else:
