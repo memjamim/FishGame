@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://bgqv4j4lett83"]
+
+[ext_resource type="Texture2D" uid="uid://d0fst16juoe67" path="res://icon.svg" id="1_e0wmj"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_6goxj"]
+
+[resource]
+script = ExtResource("2_6goxj")
+item_id = "snorkel_t3"
+family_id = "snorkel"
+tier = 3
+cost = 6
+display_name = "Scuba Gear"
+icon = ExtResource("1_e0wmj")
+effect_type = 2
+breath_bonus_seconds = 60.0
+metadata/_custom_type_script = "uid://dp30l0sce605q"
