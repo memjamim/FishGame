@@ -40,6 +40,9 @@ func _fill_slot(slot: Node3D, player: CharacterBody3D) -> void:
 	slot.add_child(sp)
 	sp.global_transform = slot.global_transform
 	sp.item_data = item
+	sp.set_slot(slot)
+	sp.call_deferred("_apply_display_model")
+
 	sp.set_shop(self)
 	sp.set_slot(slot) # we’ll add this
 	_slot_to_pickup[slot] = sp

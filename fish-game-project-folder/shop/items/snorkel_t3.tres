@@ -12,6 +12,5 @@ cost = 6
 display_name = "Scuba Gear"
 icon = ExtResource("1_e0wmj")
 effect_type = 2
-max_health_value = 120
 breath_bonus_seconds = 60.0
 metadata/_custom_type_script = "uid://dp30l0sce605q"
