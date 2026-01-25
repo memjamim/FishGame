@@ -128,12 +128,9 @@ func load_dialogue():
 	# FALLBACK
 	# ─────────────────────────────
 	return content["generic"]
-	
-func _input(event):
-	if event.is_action_pressed("interact"):
-		print("INPUT seen")
-		
-func _unhandled_input(event):
+
+func _unhandled_input(event: InputEvent):
+
 	if !d_active:
 		return
 
