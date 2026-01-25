@@ -42,14 +42,7 @@ shape = SubResource("ConcavePolygonShape3D_piw3f")
 
 [node name="FishPerson" parent="." instance=ExtResource("2_b0xup")]
 transform = Transform3D(0.33975595, 0, 0.94051373, 0, 1, 0, -0.94051373, 0, 0.33975595, 6.679449, 2.0841365, -6.6499596)
-visible = false
 player_path = NodePath("../Player")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.234085, 1.392267, 0)
-visible = false
-layers = 3
-size = Vector3(1.5, 1.5, 1.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 2, 0, 1.9005148, 0)
