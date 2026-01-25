@@ -3,6 +3,10 @@ class_name ShopPickup
 
 @export var item_data: ShopItemData
 var shop: Shop = null
+var slot: Node3D = null
+func set_slot(s: Node3D) -> void:
+	slot = s
+
 
 func set_shop(s: Shop) -> void:
 	shop = s
@@ -26,4 +30,4 @@ func _on_interact(player) -> void:
 		item_data.apply_to(player)
 		print("Bought: ", item_data.display_name)
 		if shop != null:
-			shop.refresh(player)
+			shop.on_item_bought(player, slot)

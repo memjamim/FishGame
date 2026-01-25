@@ -10,9 +10,45 @@ var hp_bar
 var breath_bar
 var coin_counter
 
+@onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
+var flashlight_enabled: bool = false
+
+func has_flashlight() -> bool:
+	return get_owned_tier("headlamp") >= 1 or owned_shop_items.has("headlamp")
+
+func set_flashlight_unlocked(unlocked: bool) -> void:
+	flashlight.visible = unlocked and flashlight_enabled
+
+
 signal collectables_changed(count: int)
 
 # Stuff for shop
+
+signal shop_inventory_changed
+
+# map family_id -> (tier -> icon)
+var _shop_icon_by_family_tier: Dictionary = {}
+
+func register_shop_item_icon(family_id: String, tier: int, icon: Texture2D) -> void:
+	if not _shop_icon_by_family_tier.has(family_id):
+		_shop_icon_by_family_tier[family_id] = {}
+	_shop_icon_by_family_tier[family_id][tier] = icon
+
+func get_best_icon_for_family(family_id: String) -> Texture2D:
+	var owned_tier: int = get_owned_tier(family_id)
+	if owned_tier <= 0:
+		return null
+
+	if not _shop_icon_by_family_tier.has(family_id):
+		return null
+
+	var tier_map: Dictionary = _shop_icon_by_family_tier[family_id]
+	if not tier_map.has(owned_tier):
+		return null
+
+	return tier_map[owned_tier] as Texture2D
+
+
 
 # --- Shop ownership (store tier per item family, like "wetsuit" -> 2) ---
 var owned_shop_items: Dictionary = {} # { "wetsuit": 2, "flippers": 1, ... }
@@ -24,13 +60,21 @@ func set_owned_tier(item_family: String, tier: int) -> void:
 	var current := get_owned_tier(item_family)
 	if tier > current:
 		owned_shop_items[item_family] = tier
+		emit_signal("shop_inventory_changed")
 
 func has_tier(item_family: String, tier: int) -> bool:
 	return get_owned_tier(item_family) >= tier
 
 func apply_max_health_bonus(new_max: int) -> void:
+	var old_max := max_health
 	max_health = max(new_max, 1)
-	health = clamp(health, 0, max_health)
+
+	var delta := max_health - old_max
+	if delta > 0:
+		health = min(health + delta, max_health)
+	else:
+		health = clamp(health, 0, max_health)
+
 
 func has_item(item_id: String) -> bool:
 	return owned_shop_items.has(item_id)
@@ -206,6 +250,8 @@ func _ready() -> void:
 	else:
 		if sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
+	
+	flashlight.visible = false
 
 
 func _apply_settings() -> void:
@@ -241,6 +287,11 @@ func set_in_water(v: bool) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if get_tree().paused:
 		return
+	if event.is_action_pressed("toggle_flashlight"):
+		if has_flashlight():
+			flashlight_enabled = !flashlight_enabled
+			flashlight.visible = flashlight_enabled
+
 
 	# Toggle mouse capture (for easier testing in editor)
 	if event.is_action_pressed("ui_cancel"):

@@ -90,6 +90,10 @@ texture_under = ExtResource("5_wsb5h")
 texture_over = ExtResource("6_g4s8q")
 texture_progress = ExtResource("7_17uas")
 
+[node name="ItemBar" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
 [node name="Crosshair" type="ColorRect" parent="."]
 process_mode = 4
 layout_mode = 1
