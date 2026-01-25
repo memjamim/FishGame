@@ -1,15 +1,71 @@
 {
 	"intro": [
-		{"name": "Daft Denayrouze:", "text": "Huh- whu– A child? Been a long time since I seen one of your kind around here"},
-		{"name": "Daft Denayrouze:", "text": "Children of course, what else would I mean "},
-		{"name": "Daft Denayrouze:", "text": "Look bud, now that you’re here I need your help with something. You know how to swim right? Of course you do, why else would you be at a pool."},
-		{"name": "Daft Denayrouze:", "text": "And I’ll unlock it, once you get my toys. They're down there, somewhere. You'll find ‘em. "},
+		{"name": "Daft Denayrouze:", "text": "Huh- whu– A child? Been a long time since I seen one of your kind around here,"},
+		{"name": "Daft Denayrouze:", "text": "Children of course, what else would I mean?"},
+		{"name": "Daft Denayrouze:", "text": "Look bud, now that you’re here I need your help with something."},
+		{"name": "Daft Denayrouze:", "text": "You know how to swim right?"},
+		{"name": "Daft Denayrouze:", "text": "Of course you do, why else would you be at a pool."},
+		{"name": "Daft Denayrouze:", "text": "Leave? The door is right over there–  ‘cept I locked it."},
+		{"name": "Daft Denayrouze:", "text": "And I’ll unlock it, once you get my toys. They're down there, somewhere. You'll find ‘em."},
 		{"name": "Daft Denayrouze:", "text": "Once you find the toys just drop ‘em in my bucket here."},
-		{"name": "Daft Denayrouze:", "text": "Oh, and don’t stay down there too long."},
+		{"name": "Daft Denayrouze:", "text": "Oh, and don’t stay down there too long."}
 	],
-	"milestone20": [
-		{"name": "Scholar:", "text": "Solunaris was once a great and prosperous kingdom "},
-		{"name": "Scholar:", "text": "Commoners and Nobles alike came together to build a better future for everyone. "},
-		{"name": "Scholar:", "text": "And now..."},
+	"shop-intro": [ 
+		{"name": "Daft Denayrouze:", "text": "The lifeguard Freduck has supplies that can make your dive easier."}, 
+		{"name": "Daft Denayrouze:", "text": "He's got flippers, scuba gear, spears, he'll setchya right up."}, 
+		{"name": "Daft Denayrouze:", "text": "Oh, and when you see him, tell him to turn off that accursed music."}, 
+	],
+	"eelbert-intro": [
+		{"name": "Daft Denayrouze:", "text": "Oh this feller in my beard? Why that’s my pal Eelbert."},
+		{"name": "Eelbert:", "text": "Piss off."},
+		{"name": "Daft Denayrouze:", "text": "He’s a sweetheart, he’ll warm up to ya."}
+	],
+	"first-level-1-toy-sold": [
+		{"name": "Daft Denayrouze:", "text": "Well you got one- theres a start."}
+	],
+	"last-level-1-toy-sold": [
+		{"name": "Daft Denayrouze:", "text": "Good work kid, but you’ll have to dive deeper still."}
+	],
+	"first-level-2-toy-sold": [
+		{"name": "Daft Denayrouze:", "text": "You’ve seen them by now, yes? They like to roam the mall."},
+		{"name": "Daft Denayrouze:", "text": "The whispers tell me they were just like you once."},
+		{"name": "Daft Denayrouze:", "text": "But I’ve learned not to listen to the whispers… heh heh heh."}
+	],
+	"last-level-2-toy-sold": [
+		{"name": "Daft Denayrouze:", "text": "You’ll be headed to The Husk next…"},
+		{"name": "Eelbert:", "text": "Say a prayer to whatever god you hold dear, not that he can hear you down there–"},
+		{"name": "Eelbert:", "text": "He didn’t hear my prayer, and certainly didn’t hear theirs."}
+	],
+	"first-level-3-toy-sold": [
+		{"name": "Daft Denayrouze:", "text": "That boat down there in The Husk… it was important to me once,"},
+		{"name": "Daft Denayrouze:", "text": "I ain’t quite sure how, but I feel like it.. carried me here to this place."},
+		{"name": "Eelbert:", "text": "You frail useless stupid daft old man, the boat was yours."},
+		{"name": "Daft Denayrouze:", "text": "Daft! That’s what they call me, Daft Danyrouze!"}
+	],
+	"last-level-3-toy-sold": [
+		{"name": "Daft Denayrouze:", "text": "Well I’ll be, that's all of em."},
+		{"name": "Daft Denayrouze:", "text": "I’m impressed kid, you didn’t lose your way, not like the others."},
+		{"name": "Eelbert:", "text": "You still will. The memories of the depths will eat away at your mind."},
+		{"name": "Eelbert:", "text": "And they will until there's nothing left but a fresh husk for me to crawl my way into."},
+		{"name": "Daft Denayrouze:", "text": "Now now Eelbert, theres no need for hostilities."},
+		{"name": "Daft Denayrouze:", "text": "Welp, door’s open. You’re free to go. Or you could just stay here with me and Eelbert, we could use the company."},
+		{"name": "Daft Denayrouze:", "text": "And there’s always more toys that need collectin'."}
+	],
+	"past-last-level-3-toy-sold": [
+		{"name": "Daft Denayrouze:", "text": "So you decided to stay. Say I hear Freduck is sellin his radio, maybe you can take it off his hands,"},
+		{"name": "Daft Denayrouze:", "text": "‘prolly better in yer than his."}
+	],
+	"post-game-1": [
+		{"name": "Daft Denayrouze:", "text": "When I die, cast me back into the deep."},
+		{"name": "Daft Denayrouze:", "text": "If I die, I ain’t quite sure that’s in the cards for me."}
+	],
+	"post-game-2": [
+		{"name": "Daft Denayrouze:", "text": "The souls of the ones you’ve slain, you think they can rest now?"}
+	],
+	"post-game-3": [
+		{"name": "Daft Denayrouze:", "text": "*scream*"}
+	],
+	"generic": [
+		{"name": "Daft Denayrouze:", "text": "Well, scram. My toys ain't going to collect themselves."}
 	]
 }
