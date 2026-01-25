@@ -153,6 +153,10 @@ var _bottom_marker: Node3D
 @export var drown_damage_amount: int = 1
 @export var drown_tick_interval: float = 0.1
 
+@export var base_swim_speed := 3.0
+
+var flipper_speed_mult := 1.0
+
 var _drown_tick_timer: float = 0.0
 var _spawn_transform: Transform3D
 
@@ -226,7 +230,7 @@ func _ready() -> void:
 	breath_max = base_breath_max
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	swim_speed = base_swim_speed
 	emit_signal("breath_updated", breath, breath_max)
 	emit_signal("collectables_changed", collectables)
 
@@ -587,7 +591,9 @@ func unlock_mini_radio() -> void:
 	else:
 		mini_radio.play()
 
-
+func apply_flipper_multiplier(mult: float) -> void:
+	flipper_speed_mult = maxf(1.0, mult)
+	swim_speed = base_swim_speed * flipper_speed_mult
 
 
 func _on_weapon_enemy_hit(body: Node3D, dmg: int) -> void:

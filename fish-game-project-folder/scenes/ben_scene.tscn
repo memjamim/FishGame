@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=34 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
@@ -21,7 +21,10 @@
 [ext_resource type="Resource" uid="uid://cc7nxghhovib7" path="res://shop/items/weapon_t2.tres" id="17_qfykf"]
 [ext_resource type="Resource" uid="uid://btuxlr8iiv3k0" path="res://shop/items/weapon_t3.tres" id="18_8hh26"]
 [ext_resource type="Resource" uid="uid://dm4qmre5ts445" path="res://shop/items/mini_radio.tres" id="20_8hh26"]
+[ext_resource type="Resource" uid="uid://bc0501jo8jm3h" path="res://shop/items/flipper_t1.tres" id="21_3i0dj"]
 [ext_resource type="PackedScene" uid="uid://0cuyy330tk6l" path="res://shop/models/radio.fbx" id="21_qfykf"]
+[ext_resource type="Resource" uid="uid://dlpsymwy6dwo8" path="res://shop/items/flipper_t2.tres" id="22_rahrv"]
+[ext_resource type="Resource" uid="uid://ck6skxyrnv4w5" path="res://shop/items/flipper_t3.tres" id="23_y2ptl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -159,7 +162,7 @@ max_distance = 20.0
 
 [node name="Shop" parent="." instance=ExtResource("9_npq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53987503, -0.32824588, -2.238573)
-shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf"), ExtResource("16_thtum"), ExtResource("17_qfykf"), ExtResource("18_8hh26"), ExtResource("20_8hh26")])
+shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf"), ExtResource("16_thtum"), ExtResource("17_qfykf"), ExtResource("18_8hh26"), ExtResource("20_8hh26"), ExtResource("21_3i0dj"), ExtResource("22_rahrv"), ExtResource("23_y2ptl")])
 
 [node name="Enemy" parent="." instance=ExtResource("16_7hbbf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.924171, 2.0911832, 8.723286)

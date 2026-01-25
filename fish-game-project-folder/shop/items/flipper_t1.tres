@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://bc0501jo8jm3h"]
+
+[ext_resource type="Texture2D" uid="uid://ccfcdl3kk5g8l" path="res://shop/icons/flippers.png" id="1_uip43"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_xpewc"]
+
+[resource]
+script = ExtResource("2_xpewc")
+flipper_speed_multiplier = 1.2
+item_id = "flipper_t1"
+family_id = "flipper"
+cost = 1
+display_name = "Basic Flippers"
+icon = ExtResource("1_uip43")
+effect_type = 5
+metadata/_custom_type_script = "uid://dp30l0sce605q"

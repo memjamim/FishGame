@@ -7,7 +7,10 @@ enum EffectType {
 	BREATH_BONUS,
 	UNLOCK_FLASHLIGHT,
 	UNLOCK_MINI_RADIO,
+	FLIPPER_MULTIPLIER,
 }
+
+@export var flipper_speed_multiplier: float = 1.0
 
 @export var display_scene: PackedScene        # what appears in the shop slot
 @export var grant_scene: PackedScene          # what you actually give the player (if weapon or holdable)
@@ -47,6 +50,10 @@ func apply_to(player) -> void:
 		EffectType.UNLOCK_MINI_RADIO:
 			if player.has_method("unlock_mini_radio"):
 				player.unlock_mini_radio()
+
+		EffectType.FLIPPER_MULTIPLIER:
+			if player.has_method("apply_flipper_multiplier"):
+				player.apply_flipper_multiplier(flipper_speed_multiplier)
 
 		_:
 			pass
