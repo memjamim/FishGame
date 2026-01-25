@@ -68,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7240286, 0.4833276, -1.182
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5782394, 0.4833276, -5.7147436)
 
 [node name="CollectionPoint" parent="." instance=ExtResource("8_kvqo1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.235715, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.687381, 0.3625158, 0.17330927)
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 

@@ -1,24 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://djd3u5j42nbl2"]
+[gd_scene load_steps=6 format=3 uid="uid://djd3u5j42nbl2"]
 
 [ext_resource type="Script" uid="uid://yue4g1q8mq0x" path="res://scenes/NPC/denarouzeNPC.gd" id="1_ck3e4"]
+[ext_resource type="PackedScene" uid="uid://dmh27hgpfokyi" path="res://scenes/NPC/dd_model.tscn" id="2_0qdqi"]
 [ext_resource type="PackedScene" uid="uid://bkoumrhyxgs52" path="res://scenes/NPC/dialougeUI.tscn" id="2_en3g7"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck3e4"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_en3g7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ck3e4"]
 
-[node name="DenayrouzeNPC" type="CharacterBody3D"]
+[node name="DenayrouzeNPC" type="CharacterBody3D" groups=["interactable"]]
 script = ExtResource("1_ck3e4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8630445, 0)
-shape = SubResource("CapsuleShape3D_ck3e4")
+transform = Transform3D(1.7526166, 0, 0, 0, 1.9396337, 1.1895461e-07, 0, -1.464383e-07, 1.5756015, 0.07246968, 1.2751849, -0.11799258)
+shape = SubResource("CapsuleShape3D_en3g7")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.5519898, 0, 0, 0, 1, 0, 0.6233579, 0)
+[node name="dd_model" parent="." instance=ExtResource("2_0qdqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33590665, -0.17999554, 2.325621)
 
 [node name="interaction_radius" type="Area3D" parent="."]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
+transform = Transform3D(3.6062934, 0, 0, 0, 1.8, 0, 0, 0, 3.8529317, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interaction_radius"]
 transform = Transform3D(1.7, 0, 0, 0, 0.6955536, 0, 0, 0, 1.7, 0, -0.14700209, 0)

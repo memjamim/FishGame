@@ -35,8 +35,8 @@ var auto_advance = false
 var full_text = ""
 var current_text = ""
 var text_index = 0
-var typewriter_speed = 0.01
-var auto_advance_delay = 0.4  # pause after line finishes
+var typewriter_speed = 0.05
+var auto_advance_delay = 1.0  # pause after line finishes
 
 @onready var level = $"../.."
 
