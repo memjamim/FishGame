@@ -610,3 +610,7 @@ func _update_ui() -> void:
 		var lbl := coin_counter.find_child("Label", true, false) as Label
 		if lbl:
 			lbl.text = str(_collectables)
+
+
+func _set_taking_damage() -> void:
+	pass
