@@ -7,7 +7,7 @@
 script = ExtResource("1_80q8t")
 item_id = "wetsuit_t1"
 family_id = "wetsuit"
-cost = 1
+cost = 100
 display_name = "Rashgaurd"
 icon = ExtResource("1_mkq75")
 effect_type = 1

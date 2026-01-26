@@ -7,7 +7,7 @@
 script = ExtResource("2_qnpn5")
 item_id = "snorkel_t1"
 family_id = "snorkel"
-cost = 1
+cost = 100
 display_name = "Kiddie Snorkel"
 icon = ExtResource("1_ti74p")
 effect_type = 2
