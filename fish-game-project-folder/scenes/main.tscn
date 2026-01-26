@@ -570,7 +570,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049464226, -0.2766323, -0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25087, -0.9730547, 4.4426174)
 
 [node name="L1_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4910548, -4.672835, -1.9410698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4910548, -3.9633996, -2.362759)
 
 [node name="L1_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5820313, -3.5405278, -7.8927484)
