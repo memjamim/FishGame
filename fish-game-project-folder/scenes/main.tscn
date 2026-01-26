@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://boq60tw26s0p0"]
+[gd_scene load_steps=47 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
 [ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
@@ -836,6 +836,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.769833, 4.4273276, -80.13
 
 [node name="medium_coin_collectable11" parent="." instance=ExtResource("11_trceg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.063713, -0.7777288, -56.541515)
+
+[node name="large_coin_collectable18" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.154799, 2.8626077, -103.849365)
+
+[node name="small_coin_collectable22" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.010816, 0.06869966, -103.04706)
+
+[node name="large_coin_collectable19" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.285358, 0.031450093, -111.050575)
+
+[node name="small_coin_collectable23" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.632849, 3.0623221, -111.74822)
+
+[node name="medium_coin_collectable12" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.004858, 4.7088675, -102.4309)
+
+[node name="large_coin_collectable20" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.659321, 0.19507289, -105.897804)
+
+[node name="small_coin_collectable24" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.334234, 3.0671284, -110.18255)
 
 [connection signal="body_entered" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_exited"]
