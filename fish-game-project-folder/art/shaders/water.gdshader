@@ -1,5 +1,5 @@
 shader_type spatial;
-
+render_mode blend_mix, depth_prepass_alpha;
 uniform vec2 amplitude = vec2(0.001, 0.001);
 uniform vec2 frequency = vec2(10.0, 10.0);
 uniform vec2 time_factor = vec2(1.0, 2.0);
@@ -55,7 +55,7 @@ void fragment() {
 	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * refraction;
 	EMISSION += textureLod(SCREEN_TEXTURE, ref_ofs, ROUGHNESS * 8.0).rgb * (1.0 - ALPHA);
 	ALBEDO *= ALPHA;
-	ALPHA = 1.0;
+	//ALPHA = 1.0;
 }
 
 //void light() {

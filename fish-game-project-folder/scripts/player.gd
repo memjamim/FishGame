@@ -7,6 +7,8 @@ extends CharacterBody3D
 
 # --- UI ---
 @onready var player_ui: Control = $PlayerUI
+var interact_prompt: Label
+
 var hp_bar: Range
 var breath_bar: Range
 var coin_counter: Control
@@ -122,6 +124,7 @@ signal breath_updated(current: float, max_value: float)
 signal drowned
 
 @onready var camera_pivot: Node3D = $CameraPivot
+@onready var underwater_rect: ColorRect = $UnderwaterPost/UnderwaterRect
 
 # --- Head-based water detection ---
 @export var head_node_path: NodePath = NodePath("CameraPivot/Camera3D")
@@ -271,7 +274,12 @@ func _ready() -> void:
 		if sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
 	
-	
+	interact_prompt = player_ui.find_child("InteractPrompt", true, true) as Label
+	if interact_prompt == null:
+		push_warning("PlayerUI: InteractPrompt Label not found. Prompts will not display.")
+	else:
+		interact_prompt.visible = false
+
 
 	# Flashlight starts hidden until unlocked and toggled
 	flashlight.visible = false
@@ -352,6 +360,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_update_interact_prompt()
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
@@ -530,11 +539,12 @@ func _update_water_state(delta: float) -> void:
 
 	var rate := delta / water_state_smooth_time
 	if head_in_water:
-		self.underwater_effect.visible = true
+		underwater_rect.visible = true
 		_water_blend = min(1.0, _water_blend + rate)
 	else:
-		self.underwater_effect.visible = false
+		underwater_rect.visible = false
 		_water_blend = max(0.0, _water_blend - rate)
+
 
 	set_in_water(_water_blend >= 0.5)
 
@@ -589,9 +599,9 @@ func unlock_mini_radio() -> void:
 		push_warning("MiniRadioPlayer missing or stream not assigned.")
 		return
 
-	var len := mini_radio.stream.get_length()
-	if len > 0.05:
-		mini_radio.play(randf() * len) # play(from_position_seconds)
+	var leng := mini_radio.stream.get_length()
+	if leng > 0.05:
+		mini_radio.play(randf() * leng) # play(from_position_seconds)
 	else:
 		mini_radio.play()
 
@@ -658,6 +668,74 @@ func _update_ui() -> void:
 		var lbl := coin_counter.find_child("Label", true, false) as Label
 		if lbl:
 			lbl.text = str(_collectables)
+
+func _get_action_key_text(action: StringName) -> String:
+	# Returns something like "E" based on current InputMap binding.
+	var events := InputMap.action_get_events(action)
+	for ev in events:
+		if ev is InputEventKey:
+			var k := ev as InputEventKey
+			# Prefer physical so "E" stays E across keyboard layouts; fallback to keycode
+			var code := k.physical_keycode if k.physical_keycode != 0 else k.keycode
+			return OS.get_keycode_string(code)
+		elif ev is InputEventJoypadButton:
+			var jb := ev as InputEventJoypadButton
+			return "Pad %d" % jb.button_index
+		elif ev is InputEventMouseButton:
+			var mb := ev as InputEventMouseButton
+			return "Mouse%d" % mb.button_index
+
+	# Fallback if unbound
+	return "?"
+
+func _set_interact_prompt(text: String) -> void:
+	if interact_prompt == null:
+		return
+	interact_prompt.text = text
+	interact_prompt.visible = (text != "")
+
+func _build_prompt_for_collider(collider: Object) -> String:
+	if collider == null:
+		return ""
+
+	var key := _get_action_key_text(&"interact")
+	var key_hint := "[%s]" % key
+
+	# SHOP PICKUP (your class_name ShopPickup)
+	if collider is ShopPickup:
+		var sp := collider as ShopPickup
+		if sp.item_data != null:
+			var name := sp.item_data.display_name if sp.item_data.display_name != "" else sp.item_data.item_id
+			return "Buy %s  $%d  %s" % [name, sp.item_data.cost, key_hint]
+		return "Buy  %s" % key_hint
+
+	# NPC (choose one: group "npc" OR method "talk")
+	if collider is Node and ((collider as Node).is_in_group("npc") or collider.has_method("talk")):
+		return "Talk  %s" % key_hint
+
+	# Coins / dropped weapons / pool toys (holdables)
+	if collider is Node:
+		var n := collider as Node
+		if n.is_in_group("collectable") or n.is_in_group("weapon") or n.is_in_group("holdable"):
+			return "Pick up  %s" % key_hint
+
+		# Generic interactables
+		if n.is_in_group("interactable") or collider.has_method("_on_interact"):
+			return "Interact  %s" % key_hint
+
+	# Default: no prompt
+	return ""
+
+func _update_interact_prompt() -> void:
+	if interact_prompt == null:
+		return
+
+	if player_raycast == null or not player_raycast.is_colliding():
+		_set_interact_prompt("")
+		return
+
+	var collider := player_raycast.get_collider()
+	_set_interact_prompt(_build_prompt_for_collider(collider))
 
 
 func _set_taking_damage() -> void:
