@@ -12,6 +12,8 @@ extends CharacterBody3D
 @export var offhand_path: NodePath = NodePath("CameraPivot/Camera3D/Offhand")
 @export var drop_forward_distance := 1.0
 @export var drop_up_offset := 0.2
+@onready var sfx_drowning: AudioStreamPlayer = $Audio/DrowningLoop
+var _drowning_sfx_on := false
 
 @onready var offhand: Node3D = get_node(offhand_path) as Node3D
 
@@ -35,6 +37,28 @@ func play_pickup_toy_sfx() -> void:
 
 func play_pickup_coin_sfx() -> void:
 	_play_sfx(sfx_pickup_coin, -6.0)
+
+func _set_drowning_sfx(active: bool) -> void:
+	if sfx_drowning == null:
+		return
+	if active == _drowning_sfx_on:
+		return
+	_drowning_sfx_on = active
+
+	if active:
+		sfx_drowning.volume_db = -6.0
+		if sfx_drowning.playing:
+			sfx_drowning.stop()
+		sfx_drowning.play()
+	else:
+		if sfx_drowning.playing:
+			var tw := create_tween()
+			tw.tween_property(sfx_drowning, "volume_db", -80.0, 0.25)
+			tw.tween_callback(func():
+				if is_instance_valid(sfx_drowning):
+					sfx_drowning.stop()
+					sfx_drowning.volume_db = -6.0
+			)
 
 
 # --- UI ---
@@ -666,7 +690,11 @@ func _update_breath(delta: float) -> void:
 	emit_signal("breath_updated", breath, breath_max)
 
 func _update_drowning_damage(delta: float) -> void:
-	if IS_IN_WATER and breath <= 0.0 and health > 0:
+	var is_actively_drowning := IS_IN_WATER and breath <= 0.0 and health > 0
+
+	_set_drowning_sfx(is_actively_drowning)
+
+	if is_actively_drowning:
 		_drown_tick_timer += delta
 		while _drown_tick_timer >= drown_tick_interval and health > 0:
 			_drown_tick_timer -= drown_tick_interval
@@ -680,8 +708,10 @@ func _update_drowning_damage(delta: float) -> void:
 	else:
 		_drown_tick_timer = 0.0
 
+
 func _respawn() -> void:
 	_drop_non_weapon_holdable_on_death()
+	_set_drowning_sfx(false)
 	health = max_health
 	breath = breath_max
 	_drown_tick_timer = 0.0
