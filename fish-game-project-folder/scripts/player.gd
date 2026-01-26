@@ -9,6 +9,11 @@ extends CharacterBody3D
 @onready var sfx_pickup_toy: AudioStreamPlayer = $Audio/PickupToy
 @onready var sfx_pickup_coin: AudioStreamPlayer = $Audio/PickupCoin
 @onready var sfx_purchase_fail: AudioStreamPlayer = $Audio/PurchaseFail
+@export var offhand_path: NodePath = NodePath("CameraPivot/Camera3D/Offhand")
+@export var drop_forward_distance := 1.0
+@export var drop_up_offset := 0.2
+
+@onready var offhand: Node3D = get_node(offhand_path) as Node3D
 
 func play_purchase_fail_sfx() -> void:
 	_play_sfx(sfx_purchase_fail, -6.0, 0.98, 1.02)
@@ -125,6 +130,29 @@ func get_best_icon_for_family(family_id: String) -> Texture2D:
 	if not tier_map.has(owned_tier):
 		return null
 	return tier_map[owned_tier] as Texture2D
+
+func _drop_non_weapon_holdable_on_death() -> void:
+	if not IS_HOLDING_ITEM:
+		return
+
+	var offhandI := get_node("CameraPivot/Camera3D/Offhand") as Node
+	if offhandI == null or offhandI.get_child_count() == 0:
+		IS_HOLDING_ITEM = false
+		return
+
+	var held := offhandI.get_child(0)
+	if held == null:
+		IS_HOLDING_ITEM = false
+		return
+
+	if held.is_in_group("weapon"):
+		return
+
+	if pickup_throw and pickup_throw.has_method("_throw"):
+		pickup_throw._throw(held)
+
+	IS_HOLDING_ITEM = false
+
 
 
 # --- Water / Holding ---
@@ -653,6 +681,7 @@ func _update_drowning_damage(delta: float) -> void:
 		_drown_tick_timer = 0.0
 
 func _respawn() -> void:
+	_drop_non_weapon_holdable_on_death()
 	health = max_health
 	breath = breath_max
 	_drown_tick_timer = 0.0
