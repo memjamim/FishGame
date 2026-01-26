@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8v7kcsljbcru"]
+[gd_scene load_steps=18 format=3 uid="uid://c8v7kcsljbcru"]
 
 [ext_resource type="Script" uid="uid://db0vh5tiik48j" path="res://scripts/player.gd" id="1_067cb"]
 [ext_resource type="Script" uid="uid://ctmkxp74vlma0" path="res://scripts/pickup_throw.gd" id="2_g2els"]
-[ext_resource type="Script" path="res://scripts/player_raycast.gd" id="2_qhqgy"]
-[ext_resource type="Shader" uid="uid://dyhkqanmlww7w" path="res://art/shaders/underwater.gdshader" id="3_ur7pv"]
+[ext_resource type="Script" uid="uid://2wh7swcis7wf" path="res://scripts/player_raycast.gd" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://c28f3lttpycnx" path="res://assets/Sounds/oof.mp3" id="5_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://cbhj7uwsid5yv" path="res://assets/Sounds/Hit.wav" id="5_smehm"]
@@ -17,18 +16,6 @@
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gugk2"]
 points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2wvv"]
-render_priority = 0
-shader = ExtResource("3_ur7pv")
-shader_parameter/wave_strength = 0.005
-shader_parameter/wave_frequency = 10.0
-shader_parameter/wave_speed = 0.5
-shader_parameter/water_color = Color(0.1, 0.29, 0.41, 1)
-shader_parameter/tint_strength = 0.5
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_smehm"]
-material = SubResource("ShaderMaterial_d2wvv")
 
 [sub_resource type="Animation" id="Animation_qlg0r"]
 length = 0.001
@@ -155,12 +142,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0.23598588)
 visible = false
 spot_range = 29.320385
 spot_angle = 37.34233
-
-[node name="UnderwaterEffect" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
-transform = Transform3D(-0.9200894, -8.742277e-08, -2.430854e-15, 0, -4.3711385e-08, 0.6361209, -8.043677e-08, 0.99999994, 2.7805727e-08, 0, 0, -0.22232974)
-visible = false
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_smehm")
 
 [node name="PickupThrow" type="Node" parent="."]
 script = ExtResource("2_g2els")
