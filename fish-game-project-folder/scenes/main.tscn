@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="5_eb6dy"]
 [ext_resource type="Material" uid="uid://drsyd51qqotu8" path="res://art/water_material.tres" id="6_trceg"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="7_a8y0u"]
-[ext_resource type="Script" uid="uid://c0t2vuven0b2p" path="res://scripts/slide_interact.gd" id="8_jkv2x"]
+[ext_resource type="Script" path="res://scripts/slide_interact.gd" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://3aatsb485j8g" path="res://shop/Shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dnn5wdnto4sn0" path="res://assets/coins/medium_coin_collectable.tscn" id="11_trceg"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="12_eb6dy"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="19_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bnslll1t0vtpt" path="res://scenes/levels/WhaleLevel/WhaleCum.fbx" id="21_jscy8"]
 [ext_resource type="PackedScene" uid="uid://d0ubr3mdbmqpv" path="res://scenes/levels/PoolCorner/PoolCorner.fbx" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://cdme4fjrubni4" path="res://assets/coins/large_coin_collectable.tscn" id="22_jscy8"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
 
@@ -688,6 +689,153 @@ transform = Transform3D(0.95933366, 0, 0.28227448, 0, 1, 0, -0.28227448, 0, 0.95
 
 [node name="PoolCorner" parent="." instance=ExtResource("21_yc10j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031770706, 0.005170107, 0.012263179)
+
+[node name="large_coin_collectable" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(-0.9634203, 0, 0.26799512, 0, 1, 0, -0.26799512, 0, -0.9634203, 3.9650478, -4.3015304, -11.829448)
+
+[node name="medium_coin_collectable" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.486682, 3.8991578, 13.9992895)
+
+[node name="large_coin_collectable2" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.490177, 1.6618134, 13.219315)
+
+[node name="small_coin_collectable" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6797776, 3.58533, -14.166487)
+
+[node name="small_coin_collectable2" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.940102, 0.20926782, -13.538321)
+
+[node name="medium_coin_collectable2" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.24969, 0.22425939, 7.9339113)
+
+[node name="small_coin_collectable3" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7054033, -1.0684311, 7.3045087)
+
+[node name="medium_coin_collectable3" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8352246, -11.40693, -26.138145)
+
+[node name="large_coin_collectable3" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(0.94127035, -0.33765388, 0, 0.33765388, 0.94127035, 0, 0, 0, 1, -4.1447697, -6.7428026, -25.357273)
+
+[node name="large_coin_collectable4" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.113482, -15.234225, -63.188305)
+
+[node name="small_coin_collectable4" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.784822, -15.330418, -62.556095)
+
+[node name="small_coin_collectable5" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.397234, -15.330162, -63.817825)
+
+[node name="small_coin_collectable6" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.12226, -15.330535, -65.376335)
+
+[node name="small_coin_collectable7" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.58209, -15.330162, -66.45521)
+
+[node name="small_coin_collectable8" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.875599, -15.330162, -63.63003)
+
+[node name="small_coin_collectable9" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.46585, -15.330162, -63.187424)
+
+[node name="large_coin_collectable5" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.146578, -15.264883, -66.69273)
+
+[node name="medium_coin_collectable4" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8666649, -15.49539, -51.019714)
+
+[node name="small_coin_collectable10" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.174819, -14.199624, -75.41233)
+
+[node name="large_coin_collectable6" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.640641, -14.15885, -75.40816)
+
+[node name="large_coin_collectable7" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.992211, -14.179363, -70.99854)
+
+[node name="small_coin_collectable11" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.72192, -14.247931, -70.7069)
+
+[node name="medium_coin_collectable5" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7196136, -14.236998, -70.00808)
+
+[node name="small_coin_collectable12" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.833945, -14.741562, -75.684296)
+
+[node name="medium_coin_collectable6" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.134459, -14.209591, -75.731026)
+
+[node name="large_coin_collectable8" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(0.98188275, -0.1894896, 0, 0.1894896, 0.98188275, 0, 0, 0, 1, -19.734898, -6.6379514, -88.3563)
+
+[node name="small_coin_collectable13" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.44808, -6.438772, -98.80404)
+
+[node name="medium_coin_collectable7" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9417572, -0.7720138, -81.18041)
+
+[node name="small_coin_collectable14" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.79493, -0.7568455, -78.59913)
+
+[node name="medium_coin_collectable8" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.562692, 0.53451824, -89.84305)
+
+[node name="small_coin_collectable15" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.385463, 0.5591843, -87.24665)
+
+[node name="large_coin_collectable9" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.475515, 0.3111265, -98.719505)
+
+[node name="small_coin_collectable16" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.905317, 3.3722787, -84.004944)
+
+[node name="large_coin_collectable10" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.009158, -0.8969528, -59.992035)
+
+[node name="small_coin_collectable17" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(-0.8980353, 0, -0.4399234, 0, 1, 0, 0.4399234, 0, -0.8980353, -21.77795, -15.330395, -62.79009)
+
+[node name="medium_coin_collectable9" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.41923, -15.347717, -62.777615)
+
+[node name="small_coin_collectable18" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.644903, -12.864093, -64.5748)
+
+[node name="large_coin_collectable11" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.394625, -12.829392, -65.15495)
+
+[node name="medium_coin_collectable10" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.134804, -12.86581, -64.383484)
+
+[node name="large_coin_collectable12" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.794827, -12.836129, -65.411255)
+
+[node name="small_coin_collectable19" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(-0.053904545, 0, -0.99854606, 0, 1, 0, 0.99854606, 0, -0.053904545, -5.5786805, -14.251454, -69.696945)
+
+[node name="small_coin_collectable20" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37818098, -15.520641, -61.500614)
+
+[node name="large_coin_collectable13" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.387413, -6.3762083, -95.03989)
+
+[node name="large_coin_collectable14" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.680773, -0.43545616, -87.04947)
+
+[node name="large_coin_collectable15" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2826653, -0.39692765, -87.97622)
+
+[node name="large_coin_collectable16" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(0.56706774, 0, -0.82367116, 0, 1, 0, 0.82367116, 0, 0.56706774, -4.163002, -0.39134067, -87.16269)
+
+[node name="small_coin_collectable21" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.583254, -0.6771187, -87.55646)
+
+[node name="large_coin_collectable17" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.769833, 4.4273276, -80.134766)
+
+[node name="medium_coin_collectable11" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.063713, -0.7777288, -56.541515)
 
 [connection signal="body_entered" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_exited"]

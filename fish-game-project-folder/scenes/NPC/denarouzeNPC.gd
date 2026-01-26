@@ -35,6 +35,7 @@ func _process(_delta):
 func _on_dialogue_ui_dialogue_finished() -> void:
 	is_chatting = false
 
+
 func _on_interaction_radius_body_entered(body: Node3D) -> void:
 	if body == player:
 		player_in_range = true
