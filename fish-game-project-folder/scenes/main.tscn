@@ -94,7 +94,7 @@ size = Vector3(1.2480469, 0.90478516, 0.43218994)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hxyhn"]
 size = Vector3(1.4272461, 2.5332031, 2.6054077)
 
-[node name="AndreasScene" type="WorldEnvironment"]
+[node name="MainScene" type="WorldEnvironment"]
 environment = SubResource("Environment_cn2e8")
 
 [node name="LightContainer" type="Node" parent="."]
