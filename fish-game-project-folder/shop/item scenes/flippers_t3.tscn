@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dttn3on0rx8w6"]
+
+[ext_resource type="PackedScene" uid="uid://os6tll1bl2ym" path="res://shop/models/PremiumFlippersFIXED.fbx" id="1_oivhb"]
+
+[node name="SnorkelT2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25153905, 0, 0)
+
+[node name="PremiumFlippersFIXED" parent="MeshInstance3D" instance=ExtResource("1_oivhb")]
+transform = Transform3D(-0.79998446, 0.004984628, -1.2079664e-07, 0.004984628, 0.79998446, 4.3576995e-10, 1.2079703e-07, -3.1689648e-10, -0.8000001, 0.18563358, -0.05828474, 0.026488027)
