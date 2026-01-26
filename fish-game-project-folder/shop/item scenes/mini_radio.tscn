@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckondxxpivf2l"]
+
+[ext_resource type="PackedScene" uid="uid://0cuyy330tk6l" path="res://shop/models/radio.fbx" id="1_as7t1"]
+
+[node name="SnorkelT2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25153905, 0, 0)
+
+[node name="radio" parent="MeshInstance3D" instance=ExtResource("1_as7t1")]
+transform = Transform3D(-1.7484556e-08, 0, 0.40000004, 0, 0.40000004, 0, -0.40000004, 0, -1.7484556e-08, 0.171, 0.017696857, 0.021000003)

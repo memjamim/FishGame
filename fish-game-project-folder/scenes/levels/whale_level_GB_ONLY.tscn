@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://dalrjo3mmc6u2"]
+
+[node name="level" type="Node"]
+
+[node name="ground" type="CSGBox3D" parent="."]
+transform = Transform3D(99.59285, 0, 0, 0, 0.34485227, 0, 0, 0, 104.67153, -0.40014815, -1.5718832, -83.46739)
+use_collision = true
+
+[node name="ceiling" type="CSGBox3D" parent="."]
+transform = Transform3D(114.29071, 0, 0, 0, 0.34485227, 0, 0, 0, 149.60597, -0.12613058, 36.99167, -84.23166)
+use_collision = true
+
+[node name="wall_enter" type="CSGBox3D" parent="."]
+transform = Transform3D(-57.40106, 2.1092951e-08, 2.549868e-06, -2.5090799e-06, 4.610011e-16, -58.334183, -5.0181598e-06, -0.24127522, 1.11458274e-13, -1.5454092, 7.458294, -34.236164)
+use_collision = true
+
+[node name="wall_exit" type="CSGBox3D" parent="."]
+transform = Transform3D(-57.40106, 2.1092951e-08, 2.549868e-06, -2.5090799e-06, 4.610011e-16, -58.334183, -5.0181598e-06, -0.24127522, 1.11458274e-13, -1.5454092, 7.458294, -133.12349)
+use_collision = true
+
+[node name="bone_arch3" type="CSGTorus3D" parent="."]
+transform = Transform3D(6.4742164e-14, 3.1914777e-07, -26.970495, 33.88426, -3.1914777e-07, 0, -1.4811282e-06, -7.30125, -1.1789177e-06, -0.24769878, 3.5541577, -54.50535)
+use_collision = true
+inner_radius = 0.64935815
+sides = 9
+
+[node name="bone_arch4" type="CSGTorus3D" parent="."]
+transform = Transform3D(6.4742164e-14, 3.1914777e-07, -26.970495, 33.88426, -3.1914777e-07, 0, -1.4811282e-06, -7.30125, -1.1789177e-06, -0.24769878, 3.5541577, -69.282684)
+use_collision = true
+inner_radius = 0.64935815
+sides = 9
+
+[node name="bone_arch5" type="CSGTorus3D" parent="."]
+transform = Transform3D(6.4742164e-14, 3.1914777e-07, -26.970495, 33.88426, -3.1914777e-07, 0, -1.4811282e-06, -7.30125, -1.1789177e-06, -0.24769878, 3.5541577, -84.31534)
+use_collision = true
+inner_radius = 0.64935815
+sides = 9
+
+[node name="bone_arch6" type="CSGTorus3D" parent="."]
+transform = Transform3D(6.4742164e-14, 3.1914777e-07, -26.970495, 33.88426, -3.1914777e-07, 0, -1.4811282e-06, -7.30125, -1.1789177e-06, -0.24769878, 3.5541577, -98.963005)
+use_collision = true
+inner_radius = 0.64935815
+sides = 9
+
+[node name="bone_arch7" type="CSGTorus3D" parent="."]
+transform = Transform3D(6.4742164e-14, 3.1914777e-07, -26.970495, 33.88426, -3.1914777e-07, 0, -1.4811282e-06, -7.30125, -1.1789177e-06, -0.24769878, 3.5541577, -112.58579)
+use_collision = true
+inner_radius = 0.64935815
+sides = 9
+
+[node name="spine" type="CSGCylinder3D" parent="."]
+transform = Transform3D(3.1052315e-15, 3.0582587e-08, -1.3652681, 1.6251924, -3.0582587e-08, 0, -7.1039416e-08, -0.6996481, -5.967777e-08, -0.30993497, 30.303144, -93.19841)
+use_collision = true
+radius = 3.5800781
+height = 173.87512
+sides = 9
+
+[node name="flesh_wall_R" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.589329, -0.17389934, 0, 0.101773605, 1.0069793, 0, 0, 0, 106.73654, 13.228455, 5.9169292, -33.35931)
+use_collision = true
+polygon = PackedVector2Array(14.0829935, 14.322924, 6.1962347, 20.830345, -0.9076977, 26.988407, -14.728558, 30.37135, -13.951219, 34.019028, 5.020094, 31.057014, 10.330664, 25.398369, 17.932898, 17.43145, 22.556612, 6.4738607, 21.81455, -10.171882, 14.804987, -9.485514, 18.576853, 2.952226)
+
+[node name="flesh_wall_L" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-0.5893259, 0.17393523, -9.331205e-06, 0.10179426, 1.0069776, 0, 5.152051e-08, -1.52059e-08, -106.73654, -13.959985, 5.9169292, -139.9739)
+use_collision = true
+polygon = PackedVector2Array(14.0829935, 14.322924, 6.1962347, 20.830345, -0.9076977, 26.988407, -14.728558, 30.37135, -13.951219, 34.019028, 5.020094, 31.057014, 10.330664, 25.398369, 17.932898, 17.43145, 22.556612, 6.4738607, 21.81455, -10.171882, 14.804987, -9.485514, 18.576853, 2.952226)
+
+[node name="houses" type="Node" parent="."]
+
+[node name="house_box2" type="CSGBox3D" parent="houses"]
+transform = Transform3D(0.7198241, 0, -1.1880165, 0, 3.8800218, 0, 1.0142773, 0, 0.8431252, -22.8611, 0.25405407, -58.219635)
+use_collision = true
+size = Vector3(5.3155518, 3.7070313, 8.559082)
+
+[node name="house_box6" type="CSGBox3D" parent="houses"]
+transform = Transform3D(0.51654077, 0, -1.21778, 0, 5.5434027, 0, 1.2190228, 0, 0.51601416, -19.377102, 0.25405407, -73.131546)
+use_collision = true
+size = Vector3(5.3155518, 3.7070313, 8.559082)
+
+[node name="house_box7" type="CSGBox3D" parent="houses"]
+transform = Transform3D(1.4033815, 0, 0.61287916, 0, 3.8800228, 0, -0.89784485, 0, 0.957964, -17.89127, -0.81849194, -78.611435)
+use_collision = true
+size = Vector3(5.3155518, 3.1541748, 8.559082)
+
+[node name="house_box8" type="CSGBox3D" parent="houses"]
+transform = Transform3D(1.5145235, 0, 0.42791954, 0, 5.7556496, 0, -0.71232533, 0, 0.9098287, 24.12825, 0.5369401, -108.83736)
+use_collision = true
+size = Vector3(5.3155518, 3.1541748, 8.559082)
+
+[node name="house_box13" type="CSGBox3D" parent="houses"]
+transform = Transform3D(1.4779296, 0, 0.084750034, 0, 2.3184102, 0, -0.12376739, 0, 1.0120146, 21.34111, 0.21365213, -104.5778)
+use_collision = true
+size = Vector3(5.3155518, 3.1541748, 8.559082)
+
+[node name="house_box12" type="CSGBox3D" parent="houses"]
+transform = Transform3D(1.2938609, 0, -0.37870425, 0, 3.8800228, 0, 0.59172046, 0, 0.82807803, 21.847797, 1.0180082, -94.37498)
+use_collision = true
+size = Vector3(5.3155518, 3.1541748, 8.559082)
+
+[node name="house_box9" type="CSGBox3D" parent="houses"]
+transform = Transform3D(2.4910154, 0, 0.32101238, 0, 1.7575678, 0, -0.89348245, 0, 0.8949774, 24.04591, 1.0180082, -91.210365)
+use_collision = true
+size = Vector3(5.3155518, 3.1541748, 8.559082)
+
+[node name="house_box10" type="CSGBox3D" parent="houses"]
+transform = Transform3D(2.4189312, 0, 0.34691083, 0, 6.320802, 0, -0.8676272, 0, 0.967182, 27.25159, 2.860096, -92.45099)
+use_collision = true
+size = Vector3(5.3155518, 3.1541748, 8.559082)
+
+[node name="house_box3" type="CSGBox3D" parent="houses"]
+transform = Transform3D(1.424736, 0, 0.3332558, 0, 2.801975, 0, -0.70210767, 0, 0.67625165, -19.676395, 0.25405407, -66.68521)
+use_collision = true
+size = Vector3(5.3155518, 3.7070313, 8.559082)
+
+[node name="house_box4" type="CSGBox3D" parent="houses"]
+transform = Transform3D(-0.7555033, 0, -0.78359973, 0, 4.9884644, 0, 1.656575, 0, -0.3573711, -24.330784, 6.055089, -63.54216)
+use_collision = true
+size = Vector3(4.965271, 3.7070313, 8.559082)
+
+[node name="house_box5" type="CSGBox3D" parent="houses"]
+transform = Transform3D(0.70599633, 0, 0.79692423, 0, 7.2995434, 0, -2.195895, 0, 0.25621712, -21.531551, 6.8652945, -77.19507)
+use_collision = true
+size = Vector3(4.965271, 3.7070313, 7.452881)
+
+[node name="boat" type="Node" parent="."]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="boat"]
+transform = Transform3D(-3.6378734, -0.43816215, 5.151039, 0, 3.743695, 4.582056, -1.4160076, 1.125685, -13.233564, 5.4111032, -3.595024, -104.587494)
+use_collision = true
+polygon = PackedVector2Array(0.1702225, 0.56365204, -0.2973075, 1.9963236, 1.0415992, 2.0092347, 2.40875, 2.000258, 1.7934695, 0.4769287, 1, 0)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="boat"]
+transform = Transform3D(-3.4854007, -0.2122312, 4.352628, 0.2214774, 4.012742, 3.319433, -1.3770713, 1.1825405, -10.482735, 8.718113, -1.8465881, -114.02559)
+use_collision = true
+polygon = PackedVector2Array(0.1702225, 0.56365204, -0.2973075, 1.9963236, -0.32017922, 3.2097058, 0.93518054, 3.1173158, 2.458705, 3.1093721, 2.40875, 2.000258, 1.7934695, 0.4769287, 1, 0)
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="boat"]
+transform = Transform3D(0.9452658, 3.0842412, 1.8825428, -4.853726, 0.22016619, 5.3140626, 2.5213253, -0.7324734, 9.524155, 1.5453055, 2.798477, -73.37023)
+polygon = PackedVector2Array(0, 0, 0.15918112, 3.7976418, 1.2633419, 1.613327)
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="boat"]
+transform = Transform3D(0.95047116, 3.1012254, 1.8929095, -4.880454, 0.2213786, 5.3433256, 2.5352097, -0.73650694, 9.576602, 2.3197896, 4.915907, -69.46385)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0.067718506, 1.549787, 0.15918112, 3.7976418, 1.2633419, 1.613327)
+
+[node name="eww" type="Node" parent="."]
+
+[node name="parasite 1" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.5935734, 0.8047799, 0, -0.8047799, 0.5935734, 0, 0, 0, 1, -23.485834, 3.861865, -51.29612)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 2" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.5935734, 0.8047799, 0, -0.8047799, 0.5935734, 0, 0, 0, 1, -23.485834, 6.53621, -47.958057)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 3" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.5935734, 0.8047799, 0, -0.72443616, 0.53431505, 0.43554536, 0.35051814, -0.25852814, 0.9001668, -23.485834, 3.302371, -45.476864)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 4" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.34515244, 0.82807446, -0.4417721, -0.7244362, 0.5343151, 0.43554538, 0.59670943, 0.1697061, 0.7843072, -23.772055, 7.8678555, -50.987476)
+use_collision = true
+height = 4.9189453
+
+[node name="freaky" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.99832684, -0.039304927, 0.042412236, -0.04152835, 0.99773693, -0.052882344, -0.04023771, -0.054555174, -0.9976998, 19.92606, -0.30665457, -65.15186)
+use_collision = true
+radius = 0.69091797
+height = 5.1679688
+
+[node name="freaky2" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.99788845, -0.048758715, 0.042911496, -0.050987627, 0.99731964, -0.052478027, -0.04023771, -0.054555174, -0.9976998, 21.70772, -0.8170277, -61.652416)
+use_collision = true
+radius = 0.69091797
+height = 5.1679688
+
+[node name="freaky3" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.9991732, -0.0036239584, 0.040495303, -0.0058248825, 0.9985043, -0.054364238, -0.04023771, -0.054555174, -0.9976998, 19.361689, -0.29478896, -58.45564)
+use_collision = true
+radius = 0.921875
+height = 5.1679688
+
+[node name="parasite 9" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.5870673, -0.79595876, -0.14765404, -0.8047799, 0.5935734, 0, 0.08764352, 0.11882901, -0.9890392, 23.106825, 2.8460593, -78.26838)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 10" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.5892929, -0.79897636, 0.11987701, -0.8047799, 0.5935734, -6.08809e-09, -0.07115577, -0.09647453, -0.9927888, 23.106825, 7.9891543, -80.51799)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 6" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.59220797, -0.8029286, 0.067788936, -0.8047799, 0.5935734, 0, -0.04023771, -0.054555174, -0.9976997, 23.333109, 6.53621, -77.66982)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 7" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.5684467, -0.820454, 0.061021358, -0.7244362, 0.5343151, 0.43554538, -0.3899495, 0.20337825, -0.89809614, 23.501307, 3.302371, -80.1453)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 11" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.39042825, 0.471012, -0.7910205, -0.77142143, 0.63632196, -0.0018577933, 0.5024685, 0.6109355, 0.6117869, -19.891668, 9.485097, -110.58125)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 12" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.5577005, 0.6746963, -0.4834818, -0.7714214, 0.63632196, -0.0018577815, 0.30639654, 0.37400433, 0.8753525, -23.558443, 11.6060505, -109.64054)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 14" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.6171398, 0.74887204, 0.24151328, -0.7714214, 0.63632196, -0.0018578094, -0.15507136, -0.18516195, 0.9703958, -23.558443, 11.6060505, -105.089226)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 13" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(0.11037916, 0.6775651, -0.72713274, -0.69184726, 0.57763106, 0.43323204, 0.7135571, 0.45524496, 0.5325298, -24.475445, 8.915615, -106.99775)
+use_collision = true
+height = 4.9189453
+
+[node name="parasite 8" type="CSGCylinder3D" parent="eww"]
+transform = Transform3D(-0.30390817, -0.81466544, 0.49392322, -0.72443616, 0.53431505, 0.43554536, -0.6187343, -0.22545001, -0.7525557, 23.41331, 7.8678555, -74.62797)
+use_collision = true
+height = 4.9189453
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="eww"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.390991, 3.1212788, -58.578564)
+radius = 0.89211017
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="eww"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.539398, 3.1212788, -65.22808)
+radius = 0.7402642
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="eww"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.631666, 2.242219, -61.866066)
+radius = 0.7402642

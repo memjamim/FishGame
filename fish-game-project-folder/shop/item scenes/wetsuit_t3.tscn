@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgxjw0g7xtr8v"]
+
+[ext_resource type="PackedScene" uid="uid://ctve8jugbs86p" path="res://shop/models/ChampionsWetsuit.fbx" id="1_qhc28"]
+
+[node name="SnorkelT2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25153905, 0, 0)
+
+[node name="ChampionsWetsuit" parent="MeshInstance3D" instance=ExtResource("1_qhc28")]
+transform = Transform3D(-3.4969084e-08, -0.0010890851, -0.79999924, -4.760543e-11, 0.79999924, -0.0010890851, 0.8000001, 0, -3.4969112e-08, 0.15123841, -0.18220012, -0.02634281)

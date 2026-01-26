@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://2n4gt3j8fg7t"]
+
+[ext_resource type="Texture2D" uid="uid://bl635kq0kolb" path="res://shop/icons/StandardWetsuit.png" id="1_a8837"]
+[ext_resource type="PackedScene" uid="uid://5426txxftgg" path="res://shop/item scenes/wetsuit_t2.tscn" id="1_khmvh"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_khmvh"]
+
+[resource]
+script = ExtResource("2_khmvh")
+display_scene = ExtResource("1_khmvh")
+item_id = "wetsuit_t2"
+family_id = "wetsuit"
+tier = 2
+cost = 300
+display_name = "Standard Wetsuit"
+icon = ExtResource("1_a8837")
+effect_type = 1
+max_health_value = 150
+metadata/_custom_type_script = "uid://dp30l0sce605q"

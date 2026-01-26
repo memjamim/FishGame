@@ -1,21 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://jhfpml2w5wm4"]
+[gd_scene load_steps=3 format=3 uid="uid://jhfpml2w5wm4"]
 
 [ext_resource type="Script" uid="uid://bqmhrci02yfo" path="res://scripts/ladder.gd" id="2_xb1tl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htnmx"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xxwne"]
-material = SubResource("StandardMaterial3D_htnmx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xxwne"]
 
 [node name="Ladder" type="StaticBody3D" groups=["interactable"]]
 script = ExtResource("2_xb1tl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.3165927, 0, 0, 0, 5.311278, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_xxwne")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.386485, 0, 0, 0, 5.324809, 0, 0, 0, 1, 0, 0, 0)

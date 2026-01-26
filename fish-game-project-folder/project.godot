@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="FishGameProjectFolder"
-run/main_scene="uid://boq60tw26s0p0"
+run/main_scene="uid://u5o1w8bnfdyw"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.091803186, 0.13468361, 0.251527, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
 Settings="*res://scripts/Settings.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 
@@ -26,6 +31,7 @@ enemy="anything that hurt the player"
 interactable="things the player can interact with and will perform an action"
 holdable="a type of collectable that is held by the player when interacted with"
 weapon="things the player can use to attack"
+npc="non-player character"
 
 [input]
 
@@ -88,3 +94,17 @@ attack={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+sprint={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194326,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+toggle_flashlight={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
+]
+}
+
+[rendering]
+
+lightmapping/denoising/denoiser=1

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://bf4jj3ni8vxdh"]
+
+[ext_resource type="PackedScene" uid="uid://lm3jddqmrp01" path="res://shop/item scenes/snorkel_t2.tscn" id="1_wccmv"]
+[ext_resource type="Texture2D" uid="uid://bhaufyqb3kwfv" path="res://shop/icons/sharkmask.png" id="2_mlnlb"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_wccmv"]
+
+[resource]
+script = ExtResource("2_wccmv")
+display_scene = ExtResource("1_wccmv")
+item_id = "snorkel_t2"
+family_id = "snorkel"
+tier = 2
+cost = 300
+display_name = "Shark Snorkel"
+icon = ExtResource("2_mlnlb")
+effect_type = 2
+breath_bonus_seconds = 40.0
+metadata/_custom_type_script = "uid://dp30l0sce605q"

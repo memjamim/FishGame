@@ -1,0 +1,470 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://q6igxla2krl2"
+path="res://.godot/imported/MainPool.fbx-f89cf26bbcd53a8fb392774fb96e1ce2.scn"
+
+[deps]
+
+source_file="res://scenes/levels/MainPool.fbx"
+dest_files=["res://.godot/imported/MainPool.fbx-f89cf26bbcd53a8fb392774fb96e1ce2.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:BeachChair1": {
+"generate/physics": true
+},
+"PATH:BeachChair1_001": {
+"generate/physics": true
+},
+"PATH:BeachChair1_002": {
+"generate/physics": true
+},
+"PATH:BeachChair1_003": {
+"generate/physics": true
+},
+"PATH:BeachChair2": {
+"generate/physics": true
+},
+"PATH:BeachChair2_001": {
+"generate/physics": true
+},
+"PATH:BeachChair2_002": {
+"generate/physics": true
+},
+"PATH:BeachChair2_003": {
+"generate/physics": true
+},
+"PATH:BeachChair2_004": {
+"generate/physics": true
+},
+"PATH:Circle_003": {
+"generate/physics": true
+},
+"PATH:Circle_003/Circle_001": {
+"generate/physics": true
+},
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Cube_003": {
+"generate/physics": true
+},
+"PATH:Cube_004": {
+"generate/physics": true
+},
+"PATH:Cube_005": {
+"generate/physics": true
+},
+"PATH:Cube_006": {
+"generate/physics": true
+},
+"PATH:Cube_007": {
+"generate/physics": true
+},
+"PATH:Cube_008": {
+"generate/physics": true
+},
+"PATH:Cube_009": {
+"generate/physics": true
+},
+"PATH:Cube_010": {
+"generate/physics": true
+},
+"PATH:Cube_011": {
+"generate/physics": true
+},
+"PATH:Cube_012": {
+"generate/physics": true
+},
+"PATH:Cube_013": {
+"generate/physics": true
+},
+"PATH:Cube_014": {
+"generate/physics": true
+},
+"PATH:Cube_015": {
+"generate/physics": true
+},
+"PATH:Cube_016": {
+"generate/physics": true
+},
+"PATH:Cube_017": {
+"generate/physics": true
+},
+"PATH:Cube_019": {
+"generate/physics": true
+},
+"PATH:Cube_021": {
+"generate/physics": true
+},
+"PATH:Cube_043": {
+"generate/physics": true
+},
+"PATH:Cylinder": {
+"generate/physics": true
+},
+"PATH:Cylinder_001": {
+"generate/physics": true
+},
+"PATH:Cylinder_006": {
+"generate/physics": true
+},
+"PATH:Cylinder_007": {
+"generate/physics": true
+},
+"PATH:Cylinder_012": {
+"generate/physics": true
+},
+"PATH:Cylinder_013": {
+"generate/physics": true
+},
+"PATH:Cylinder_014": {
+"generate/physics": true
+},
+"PATH:Cylinder_015": {
+"generate/physics": true
+},
+"PATH:Cylinder_016": {
+"generate/physics": true
+},
+"PATH:Cylinder_017": {
+"generate/physics": true
+},
+"PATH:Cylinder_018": {
+"generate/physics": true
+},
+"PATH:Cylinder_019": {
+"generate/physics": true
+},
+"PATH:Cylinder_020": {
+"generate/physics": true
+},
+"PATH:Cylinder_020/Cylinder_021": {
+"generate/physics": true
+},
+"PATH:Cylinder_020/Cylinder_031": {
+"generate/physics": true
+},
+"PATH:Cylinder_020/Cylinder_033": {
+"generate/physics": true
+},
+"PATH:Cylinder_022": {
+"generate/physics": true
+},
+"PATH:Cylinder_023": {
+"generate/physics": true
+},
+"PATH:Cylinder_024": {
+"generate/physics": true
+},
+"PATH:Cylinder_025": {
+"generate/physics": true
+},
+"PATH:Cylinder_027": {
+"generate/physics": true
+},
+"PATH:Cylinder_028": {
+"generate/physics": true
+},
+"PATH:Cylinder_029": {
+"generate/physics": true
+},
+"PATH:Cylinder_030": {
+"generate/physics": true
+},
+"PATH:Cylinder_032": {
+"generate/physics": true
+},
+"PATH:Diving Board": {
+"generate/physics": true
+},
+"PATH:Life Buoy": {
+"generate/physics": true
+},
+"PATH:Life Buoy_001": {
+"generate/physics": true
+},
+"PATH:Life Buoy_002": {
+"generate/physics": true
+},
+"PATH:Life Buoy_003": {
+"generate/physics": true
+},
+"PATH:NoodleBlue": {
+"generate/physics": true
+},
+"PATH:NoodleBlue_001": {
+"generate/physics": true
+},
+"PATH:NoodleGreen": {
+"generate/physics": true
+},
+"PATH:NoodlePink": {
+"generate/physics": true
+},
+"PATH:NoodlePink_001": {
+"generate/physics": true
+},
+"PATH:NoodlePurple": {
+"generate/physics": true
+},
+"PATH:NoodlePurple_001": {
+"generate/physics": true
+},
+"PATH:NoodleRed": {
+"generate/physics": true
+},
+"PATH:NoodleYellow": {
+"generate/physics": true
+},
+"PATH:Plane_014": {
+"generate/physics": true
+},
+"PATH:Plane_015": {
+"generate/physics": true
+},
+"PATH:Plane_017": {
+"generate/physics": true
+},
+"PATH:Plane_018": {
+"generate/physics": true
+},
+"PATH:Plane_019": {
+"generate/physics": true
+},
+"PATH:Plane_038": {
+"generate/physics": true
+},
+"PATH:Plane_039": {
+"generate/physics": true
+},
+"PATH:Plane_041": {
+"generate/physics": true
+},
+"PATH:Plane_043": {
+"generate/physics": true
+},
+"PATH:Plane_044": {
+"generate/physics": true
+},
+"PATH:Plane_045": {
+"generate/physics": true
+},
+"PATH:Plane_046": {
+"generate/physics": true
+},
+"PATH:Plane_047": {
+"generate/physics": true
+},
+"PATH:Plane_053": {
+"generate/physics": true
+},
+"PATH:Plane_056": {
+"generate/physics": true
+},
+"PATH:Plane_068": {
+"generate/physics": true
+},
+"PATH:Plane_069": {
+"generate/physics": true
+},
+"PATH:Plane_070": {
+"generate/physics": true
+},
+"PATH:Plane_071": {
+"generate/physics": true
+},
+"PATH:Plane_072": {
+"generate/physics": true
+},
+"PATH:Plane_073": {
+"generate/physics": true
+},
+"PATH:Plane_074": {
+"generate/physics": true
+},
+"PATH:Plane_075": {
+"generate/physics": true
+},
+"PATH:Plane_076": {
+"generate/physics": true
+},
+"PATH:Plane_077": {
+"generate/physics": true
+},
+"PATH:Plane_078": {
+"generate/physics": true
+},
+"PATH:Plane_079": {
+"generate/physics": true
+},
+"PATH:Plane_080": {
+"generate/physics": true
+},
+"PATH:Plane_081": {
+"generate/physics": true
+},
+"PATH:Plane_082": {
+"generate/physics": true
+},
+"PATH:Plane_083": {
+"generate/physics": true
+},
+"PATH:Plane_084": {
+"generate/physics": true
+},
+"PATH:Plane_085": {
+"generate/physics": true
+},
+"PATH:Plane_086": {
+"generate/physics": true
+},
+"PATH:Plane_086/Cube_018": {
+"generate/physics": true
+},
+"PATH:Plane_086/Cube_023": {
+"generate/physics": true
+},
+"PATH:Plane_086/Cube_024": {
+"generate/physics": true
+},
+"PATH:Plane_086/Cube_028": {
+"generate/physics": true
+},
+"PATH:Plane_086/Cube_039": {
+"generate/physics": true
+},
+"PATH:Plane_086/Cube_044": {
+"generate/physics": true
+},
+"PATH:Plane_086/Cylinder_026": {
+"generate/physics": true
+},
+"PATH:Plane_086/Life Buoy_004": {
+"generate/physics": true
+},
+"PATH:Plane_086/Plane_087": {
+"generate/physics": true
+},
+"PATH:Plane_086/Plane_088": {
+"generate/physics": true
+},
+"PATH:Plane_086/Plane_089": {
+"generate/physics": true
+},
+"PATH:Plane_086/Plane_090": {
+"generate/physics": true
+},
+"PATH:Plane_086/Sphere_001": {
+"generate/physics": true
+},
+"PATH:Plane_086/Torus_011": {
+"generate/physics": true
+},
+"PATH:Plane_091": {
+"generate/physics": true
+},
+"PATH:Plane_092": {
+"generate/physics": true
+},
+"PATH:Plane_093": {
+"generate/physics": true
+},
+"PATH:Plane_094": {
+"generate/physics": true
+},
+"PATH:Plane_095": {
+"generate/physics": true
+},
+"PATH:Plane_096": {
+"generate/physics": true
+},
+"PATH:Plane_097": {
+"generate/physics": true
+},
+"PATH:Plane_098": {
+"generate/physics": true
+},
+"PATH:Plane_099": {
+"generate/physics": true
+},
+"PATH:Plane_100": {
+"generate/physics": true
+},
+"PATH:Plane_101": {
+"generate/physics": true
+},
+"PATH:Plane_102": {
+"generate/physics": true
+},
+"PATH:Plane_103": {
+"generate/physics": true
+},
+"PATH:Plane_104": {
+"generate/physics": true
+},
+"PATH:Plane_105": {
+"generate/physics": true
+},
+"PATH:Plane_106": {
+"generate/physics": true
+},
+"PATH:Pool Chest": {
+"generate/physics": true
+},
+"PATH:Pool Chest Lid_001": {
+"generate/physics": true
+},
+"PATH:Pool Chest_001": {
+"generate/physics": true
+},
+"PATH:Pool Chest_002": {
+"generate/physics": true
+},
+"PATH:Pool Chest_003": {
+"generate/physics": true
+},
+"PATH:Pool Chest_004": {
+"generate/physics": true
+},
+"PATH:Torus_008": {
+"generate/physics": true
+},
+"PATH:Torus_009": {
+"generate/physics": true
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

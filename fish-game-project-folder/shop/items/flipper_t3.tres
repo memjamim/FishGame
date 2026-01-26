@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://ck6skxyrnv4w5"]
+
+[ext_resource type="PackedScene" uid="uid://dttn3on0rx8w6" path="res://shop/item scenes/flippers_t3.tscn" id="1_6n347"]
+[ext_resource type="Texture2D" uid="uid://jlk037us6l6q" path="res://shop/icons/PremiumFlippers.png" id="2_4ag6k"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_6n347"]
+
+[resource]
+script = ExtResource("2_6n347")
+flipper_speed_multiplier = 2.0
+display_scene = ExtResource("1_6n347")
+item_id = "flipper_t3"
+family_id = "flipper"
+tier = 3
+cost = 700
+display_name = "Premium Flippers"
+icon = ExtResource("2_4ag6k")
+effect_type = 5
+metadata/_custom_type_script = "uid://dp30l0sce605q"

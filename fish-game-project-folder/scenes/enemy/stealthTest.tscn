@@ -1,8 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=20 format=3 uid="uid://c2td7c2d17p1f"]
 
+[ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
+[ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="1_wassk"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="2_b0xup"]
+[ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_sl7rj"]
 [ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="3_u545m"]
+[ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="6_qig1i"]
+[ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
+[ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="8_kvqo1"]
+[ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="9_5vawu"]
+[ext_resource type="PackedScene" uid="uid://de6aau884ebv6" path="res://shop/item scenes/t3_weapon.tscn" id="10_14ka3"]
+[ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="10_gns3y"]
+[ext_resource type="PackedScene" uid="uid://djq47kacg6wsg" path="res://assets/coins/small_coin_collectable.tscn" id="12_3oafe"]
+[ext_resource type="PackedScene" uid="uid://dnn5wdnto4sn0" path="res://assets/coins/medium_coin_collectable.tscn" id="13_naa32"]
+[ext_resource type="PackedScene" uid="uid://cdme4fjrubni4" path="res://assets/coins/large_coin_collectable.tscn" id="14_0g1ub"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ijls6"]
 size = Vector2(20, 20)
@@ -15,10 +27,19 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0xup"]
 
 [node name="StealthTest" type="Node3D"]
+script = ExtResource("1_5vawu")
+toy_scene = ExtResource("2_sl7rj")
+t1_enemy_scene = ExtResource("2_b0xup")
+t2_enemy_scene = ExtResource("10_gns3y")
+
+[node name="T3Weapon" parent="." instance=ExtResource("10_14ka3")]
+transform = Transform3D(0.81915206, 0, -0.5735764, 0, 0.9999999, 0, 0.57357645, 0, 0.81915194, 0.5616896, 1.3265424, 1.8920048)
+
+[node name="PauseManager" type="Node" parent="."]
+script = ExtResource("1_wassk")
 
 [node name="Player" parent="." instance=ExtResource("1_ijls6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00235271, 1.5523158, 4.2327785)
-swim_drag = 3.5
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.221334, 0, 0, 0, 1, 0, 0, 0, 4.221334, 0, -0.0166724, 0)
@@ -28,20 +49,6 @@ mesh = SubResource("PlaneMesh_ijls6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_piw3f")
-
-[node name="FishPerson" parent="." instance=ExtResource("2_b0xup")]
-transform = Transform3D(-0.997378, 0, 0.07236792, 0, 1, 0, -0.07236792, 0, -0.997378, 0, 1.1244116, -5.06952)
-move_speed = null
-chase_acceleration = null
-vision_range = null
-vision_angle = null
-maxHealth = null
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.234085, 1.392267, 0)
-visible = false
-layers = 3
-size = Vector3(1.5, 1.5, 1.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 2, 0, 1.9005148, 0)
@@ -53,5 +60,105 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_b0xup")
 
+[node name="TestHoldable" parent="." instance=ExtResource("7_kvqo1")]
+
 [node name="TestWeapon" parent="." instance=ExtResource("3_u545m")]
 transform = Transform3D(1, 0, 0, 0, 0.99818766, 0.060177475, 0, -0.060177475, 0.99818766, -0.15725242, 0.58174574, 1.5557015)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9008498, 0.43413085, 0, -0.43413085, 0.9008498, 0, 4.9459248, 0)
+
+[node name="TestCollectable" parent="." instance=ExtResource("6_qig1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.903769, 0.4833276, -1.1821183)
+
+[node name="TestCollectable2" parent="." instance=ExtResource("6_qig1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5782394, 0.4833276, -5.7147436)
+
+[node name="CollectionPoint" parent="." instance=ExtResource("8_kvqo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.687381, 0.3625158, 0.17330927)
+
+[node name="ItemSpawnPoints" type="Node3D" parent="."]
+
+[node name="L1_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, 1.4687924)
+
+[node name="L1_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, -0.03506434)
+
+[node name="L1_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, -1.5293468)
+
+[node name="L2_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, 1.4687924)
+
+[node name="L2_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, -0.038752556)
+
+[node name="L2_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, -1.5360272)
+
+[node name="L3_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 1.4687924)
+
+[node name="L3_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.002709508)
+
+[node name="L3_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
+
+[node name="EnemySpawnPoints" type="Node3D" parent="."]
+
+[node name="T1_Enemy_Spawn_1" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.59824, 0.73545456, -0.96727896)
+
+[node name="T1_Enemy_Spawn_2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.603638, 0.73545456, 0)
+
+[node name="T1_Enemy_Spawn_3" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.675983, 0.73545456, 1.2516723)
+
+[node name="T1_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.308302, 0.73545456, -1.0394871)
+
+[node name="T1_Enemy_Spawn_5" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.296081, 0.73545456, 0)
+
+[node name="T1_Enemy_Spawn_6" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.280331, 0.73545456, 1.1976292)
+
+[node name="T1_Enemy_Spawn_7" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.567045, 0.73545456, -1.0394871)
+
+[node name="T1_Enemy_Spawn_8" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.567045, 0.73545456, -0.0036283731)
+
+[node name="T1_Enemy_Spawn_9" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.567045, 0.73545456, 1.2328216)
+
+[node name="T2_Enemy_Spawn_1" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.43201, 0.73545456, -1.1954211)
+
+[node name="T2_Enemy_Spawn_2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.43201, 0.73545456, 0.016196728)
+
+[node name="T2_Enemy_Spawn_3" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.43201, 0.73545456, 1.2799692)
+
+[node name="T2_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.812323, 0.73545456, -0.015909433)
+
+[node name="DenayrouzeNPC" parent="." instance=ExtResource("9_5vawu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.742864, 0.57425404, -0.46565318)
+player_path = NodePath("../Player")
+
+[node name="small_coin_collectable" parent="." instance=ExtResource("12_3oafe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05786705, 0.021005245, 3.1028452)
+
+[node name="medium_coin_collectable" parent="." instance=ExtResource("13_naa32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7791377, 0.016577402, 3.1103342)
+
+[node name="large_coin_collectable" parent="." instance=ExtResource("14_0g1ub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6585553, 0.04994136, 3.3178573)
+
+[node name="Toy-Holdable" parent="." instance=ExtResource("2_sl7rj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2641169, 0.009109352, 4.451982)
