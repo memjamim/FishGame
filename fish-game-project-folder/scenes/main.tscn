@@ -1,8 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://boq60tw26s0p0"]
+[gd_scene load_steps=44 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
+[ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="2_85g3d"]
+[ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://0cuyy330tk6l" path="res://shop/models/radio.fbx" id="2_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="3_choun"]
 [ext_resource type="AudioStream" uid="uid://doxu2oca1ukc4" path="res://assets/Sounds/radio.mp3" id="3_eb6dy"]
@@ -16,6 +18,8 @@
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://djq47kacg6wsg" path="res://assets/coins/small_coin_collectable.tscn" id="14_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://comqb21scj5cw" path="res://scenes/levels/MallLevel/mall_export.tscn" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="18_0ld40"]
+[ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="19_gqmmt"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
 
@@ -97,6 +101,10 @@ size = Vector3(1.4272461, 2.5332031, 2.6054077)
 
 [node name="MainScene" type="WorldEnvironment"]
 environment = SubResource("Environment_cn2e8")
+script = ExtResource("1_muem4")
+toy_scene = ExtResource("2_gqmmt")
+t1_enemy_scene = ExtResource("18_0ld40")
+t2_enemy_scene = ExtResource("19_gqmmt")
 
 [node name="LightContainer" type="Node" parent="."]
 
@@ -348,7 +356,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.143437, 4.891037, -10.0906
 player_path = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_choun")]
-transform = Transform3D(0.769355, 0, 0.63882154, 0, 1, 0, -0.63882154, 0, 0.769355, 9.0936575, 1.5806272, 11.523382)
+transform = Transform3D(0.769355, 0, 0.63882154, 0, 1, 0, -0.63882154, 0, 0.769355, -4.459282, -14.192512, -52.371746)
 
 [node name="Environment" type="Node" parent="."]
 
@@ -395,6 +403,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.481641, 6.207197, -9.120058
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SlideInteract/InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.054512, -0.7132149, 0.0718689)
 shape = SubResource("BoxShape3D_5kb3n")
+
+[node name="Mall_Water" type="Area3D" parent="Environment"]
+transform = Transform3D(6.0179954, 0, 0, 0, 5.619239, 0, 0, 0, 3.5257428, 0, 16.525606, -71.441986)
+monitoring = false
+monitorable = false
+script = ExtResource("5_eb6dy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Mall_Water"]
+transform = Transform3D(15.201917, 0, 0, 0, 0.03146988, 0, 0, 0, 21.877754, -1.9804571, -0.030369997, -1.248658)
+mesh = SubResource("BoxMesh_rb8pp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Mall_Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1170807, -3.5319152, -1.5595932)
+shape = SubResource("BoxShape3D_0ragw")
 
 [node name="CollisionFixes" type="Node" parent="."]
 
@@ -526,6 +548,112 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.647848, 3.0048854, -15.6303
 
 [node name="MallExport" parent="." instance=ExtResource("16_jbj1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049464226, -0.2766323, -0.1873312)
+
+[node name="ItemSpawnPoints" type="Node3D" parent="."]
+
+[node name="L1_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25087, -0.9730547, 4.4426174)
+
+[node name="L1_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4910548, -4.672835, -1.9410698)
+
+[node name="L1_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5820313, -3.5405278, -7.8927484)
+
+[node name="L1_Item_Spawn_4" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.550759, -3.5405278, -3.5929677)
+
+[node name="L1_Item_Spawn_5" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5662141, -1.0540345, 5.022843)
+
+[node name="L2_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.329468, 1.1413172, -98.82134)
+
+[node name="L2_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.172504, -0.6257952, -64.72823)
+
+[node name="L2_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.40083, -7.7153, -75.32119)
+
+[node name="L2_Item_Spawn_4" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.081793, -7.480304, -98.28783)
+
+[node name="L2_Item_Spawn_5" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.777585, -13.924901, -69.69402)
+
+[node name="L2_Item_Spawn_6" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(0.9971233, 0.0757967, 0, -0.0757967, 0.9971233, 0, 0, 0, 1, -0.86555696, -7.4220133, -56.343063)
+
+[node name="L2_Item_Spawn_7" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.304231, -6.8313365, -85.92735)
+
+[node name="L2_Item_Spawn_8" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7371297, 0.76007843, -90.61354)
+
+[node name="L2_Item_Spawn_9" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.824577, -14.9116335, -74.83956)
+
+[node name="L2_Item_Spawn_10" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.545126, -10.50094, -63.71117)
+
+[node name="L3_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 1.4687924)
+
+[node name="L3_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.002709508)
+
+[node name="L3_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
+
+[node name="EnemySpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.522144)
+
+[node name="T1_Enemy_Spawn_1" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.425915, 0.73545504, -120.195724)
+
+[node name="T1_Enemy_Spawn_2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5953, -10.550785, -118.389175)
+
+[node name="T1_Enemy_Spawn_3" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.7965088, -0.60462695, 0, 0.60462695, 0.7965088, 0, 0, 0, 1, -7.6464157, -11.764008, -107.995575)
+
+[node name="T1_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.8014417, 0, 0.5980728, 0, 1, 0, -0.5980728, 0, 0.8014417, -22.242115, -0.55628467, -105.13074)
+
+[node name="T1_Enemy_Spawn_5" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-0.14804308, 0.10090865, -0.9838194, 0.56322324, 0.8263048, 0, 0.8129347, -0.55411, -0.1791628, -6.176886, 0.7354553, -111.38226)
+
+[node name="T1_Enemy_Spawn_6" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.10138622, 0, -0.9948472, 0, 1, 0, 0.9948472, 0, 0.10138622, -19.004051, -5.607221, -134.73602)
+
+[node name="T1_Enemy_Spawn_7" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.91099346, 0, 0.41242084, 0, 1, 0, -0.41242084, 0, 0.91099346, -25.820011, -12.233794, -109.26953)
+
+[node name="T1_Enemy_Spawn_8" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.966223, 0.73545504, -119.59723)
+
+[node name="T1_Enemy_Spawn_9" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-0.15151958, 0, -0.9884542, 0, 1, 0, 0.9884542, 0, -0.15151958, -3.7827382, -13.065292, -111.13014)
+
+[node name="T1_Enemy_Spawn_10" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-0.15151958, 0, -0.9884542, 0, 1, 0, 0.9884542, 0, -0.15151958, -27.895962, -13.065291, -113.017)
+
+[node name="T2_Enemy_Spawn_1" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.714111, 2.460237, -136.28252)
+
+[node name="T2_Enemy_Spawn_2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.9207025, 0, 0.39026517, 0, 1, 0, -0.39026517, 0, 0.9207025, -15.649991, -6.290861, -130.44595)
+
+[node name="T2_Enemy_Spawn_3" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.9315644, 0, -0.36357644, 0, 1, 0, 0.36357644, 0, 0.9315644, -7.0879993, -12.092566, -117.88806)
+
+[node name="T2_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.95933366, 0, 0.28227448, 0, 1, 0, -0.28227448, 0, 0.95933366, -21.110497, -10.774739, -103.91687)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9466605, 0.3222327, 0, -0.3222327, 0.9466605, -5.1753454, -13.927789, -33.499355)
+use_collision = true
+size = Vector3(18.728165, 0.97998047, 28.04657)
 
 [connection signal="body_entered" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_exited"]
