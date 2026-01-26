@@ -30,7 +30,7 @@ func set_flashlight_unlocked(unlocked: bool) -> void:
 # --- Currency / Collectables ---
 signal collectables_changed(count: int)
 
-var _collectables: int = 100 #TODO: testing
+var _collectables: int = 10000 #TODO: testing
 var collectables: int:
 	get:
 		return _collectables
@@ -224,9 +224,6 @@ var weapon_tier := 1
 @export var footstep_interval_run := 0.30
 @export var footstep_speed_threshold := 0.25
 #var _footstep_timer := 0.0
-
-# --- Visual ---
-@onready var underwater_effect: MeshInstance3D = $CameraPivot/Camera3D/UnderwaterEffect
 
 
 
@@ -663,6 +660,12 @@ func hit(damage, dir):
 	
 	_set_taking_damage()
 
+func _format_money_from_cents(cents: int) -> String:
+	cents = max(0, cents)
+	var dollars := cents / 100
+	var rem_cents := cents % 100
+	return "$%d.%02d" % [dollars, rem_cents]
+
 
 func _update_ui() -> void:
 	if breath_bar:
@@ -672,7 +675,7 @@ func _update_ui() -> void:
 	if coin_counter:
 		var lbl := coin_counter.find_child("Label", true, false) as Label
 		if lbl:
-			lbl.text = str(_collectables)
+			lbl.text = _format_money_from_cents(_collectables)
 
 func _get_action_key_text(action: StringName) -> String:
 	# Returns something like "E" based on current InputMap binding.
@@ -711,8 +714,16 @@ func _build_prompt_for_collider(collider: Object) -> String:
 		var sp := collider as ShopPickup
 		if sp.item_data != null:
 			var name := sp.item_data.display_name if sp.item_data.display_name != "" else sp.item_data.item_id
-			return "Buy %s  $%d  %s" % [name, sp.item_data.cost, key_hint]
+
+			# cost is in cents (1 coin = $0.01)
+			var cents: int = int(sp.item_data.cost)
+			var dollars := cents / 100
+			var rem_cents := cents % 100
+			var price_text := "$%d.%02d" % [dollars, rem_cents]
+
+			return "Buy %s  %s  %s" % [name, price_text, key_hint]
 		return "Buy  %s" % key_hint
+
 
 	# NPC (choose one: group "npc" OR method "talk")
 	if collider is Node and ((collider as Node).is_in_group("npc") or collider.has_method("talk")):
@@ -723,9 +734,12 @@ func _build_prompt_for_collider(collider: Object) -> String:
 		var n := collider as Node
 		if n.is_in_group("collectable") or n.is_in_group("weapon") or n.is_in_group("holdable"):
 			return "Pick up  %s" % key_hint
-
+		
+		if n.name == 'SlideInteract' and n.CAN_SLIDE:
+			return "Interact  %s" % key_hint
+		
 		# Generic interactables
-		if n.is_in_group("interactable") or collider.has_method("_on_interact"):
+		if (n.is_in_group("interactable") or collider.has_method("_on_interact")) and n.name != 'SlideInteract':
 			return "Interact  %s" % key_hint
 
 	# Default: no prompt

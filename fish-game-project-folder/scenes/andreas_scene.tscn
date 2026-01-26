@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://bo1re71ojesvq"]
+[gd_scene load_steps=32 format=3 uid="uid://bo1re71ojesvq"]
 
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tx11n"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_0ragw"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="2_1blye"]
 [ext_resource type="PackedScene" uid="uid://jhfpml2w5wm4" path="res://scenes/ladder.tscn" id="3_cn2e8"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_rb8pp"]
-[ext_resource type="Material" uid="uid://y7b37uvg238n" path="res://art/water_material.tres" id="5_54nh1"]
-[ext_resource type="PackedScene" path="res://scenes/collection_point.tscn" id="7_1blye"]
+[ext_resource type="Material" uid="uid://drsyd51qqotu8" path="res://art/water_material.tres" id="5_54nh1"]
+[ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="7_1blye"]
 [ext_resource type="Script" uid="uid://c0t2vuven0b2p" path="res://scripts/slide_interact.gd" id="9_3q2eb"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
@@ -33,10 +33,13 @@ point_count = 7
 up_vector_enabled = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5kb3n"]
-size = Vector3(1.2817383, 0.7524414, 1.9268188)
+size = Vector3(0.822937, 0.7524414, 1.9268188)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ac37y"]
+size = Vector3(3.598877, 1, 2.0688477)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb8pp"]
-size = Vector3(1.5606384, 0.43310547, 8.428741)
+size = Vector3(1.5606384, 0.43310547, 8.98365)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_54nh1"]
 size = Vector3(3.3181152, 1.2182617, 1.2181396)
@@ -429,7 +432,7 @@ transform = Transform3D(1.000026, 0, 0, 0, 1.0000132, 0, 0, 0, 1.0000137, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.481641, 6.207197, -9.120058)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SlideInteract/InteractArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8251114, -0.7132149, 0.0718689)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.054512, -0.7132149, 0.0718689)
 shape = SubResource("BoxShape3D_5kb3n")
 
 [node name="CollisionFixes" type="Node" parent="."]
@@ -437,8 +440,13 @@ shape = SubResource("BoxShape3D_5kb3n")
 [node name="SlideRampFix" type="StaticBody3D" parent="CollisionFixes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.672241, 0.4953006, 0)
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/SlideRampFix"]
+transform = Transform3D(1, 0, 0, 0, 0.9999867, 0.0051661357, 0, -0.0051661357, 0.9999867, -0.3837738, 3.62315, -8.810324)
+shape = SubResource("BoxShape3D_ac37y")
+debug_color = Color(0.6862745, 0.18039216, 0, 1)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/SlideRampFix"]
-transform = Transform3D(1, 0, 0, 0, 0.85970086, -0.51079804, 0, 0.51079804, 0.85970086, 0.14564514, 1.5041196, -3.7868567)
+transform = Transform3D(1, 0, 0, 0, 0.85970086, -0.51079804, 0, 0.51079804, 0.85970086, 0.14564514, 1.6458428, -4.0253844)
 shape = SubResource("BoxShape3D_rb8pp")
 debug_color = Color(0.6862745, 0.18039216, 0, 1)
 

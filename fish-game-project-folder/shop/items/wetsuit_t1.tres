@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://d2nimdmapemae"]
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://d2nimdmapemae"]
 
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="1_80q8t"]
-[ext_resource type="Texture2D" uid="uid://nvm6ad0us6cy" path="res://shop/icons/wetsuit_t1_icon.png" id="1_mkq75"]
+[ext_resource type="PackedScene" uid="uid://b34w6sqyfypgg" path="res://shop/item scenes/wetsuit_t1.tscn" id="1_b6xuy"]
+[ext_resource type="Texture2D" uid="uid://dgjsca4c46qde" path="res://shop/icons/PatchworkWetsuit.png" id="1_mkq75"]
 
 [resource]
 script = ExtResource("1_80q8t")
+display_scene = ExtResource("1_b6xuy")
 item_id = "wetsuit_t1"
 family_id = "wetsuit"
-cost = 1
-display_name = "Rashgaurd"
+cost = 100
+display_name = "Patchwork Wetsuit"
 icon = ExtResource("1_mkq75")
 effect_type = 1
 max_health_value = 120

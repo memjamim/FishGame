@@ -4,7 +4,7 @@ extends Control
 var options_menu: Control
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ben_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/andreas_scene.tscn")
 
 func _on_options_button_pressed() -> void:
 	if options_menu != null:
