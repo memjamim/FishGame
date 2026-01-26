@@ -1,7 +1,7 @@
 [gd_scene load_steps=44 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
-[ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
+[ext_resource type="Script" path="res://scripts/main_script.gd" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_gqmmt"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="5_eb6dy"]
 [ext_resource type="Material" uid="uid://drsyd51qqotu8" path="res://art/water_material.tres" id="6_trceg"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="7_a8y0u"]
-[ext_resource type="Script" uid="uid://c0t2vuven0b2p" path="res://scripts/slide_interact.gd" id="8_jkv2x"]
+[ext_resource type="Script" path="res://scripts/slide_interact.gd" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://3aatsb485j8g" path="res://shop/Shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dnn5wdnto4sn0" path="res://assets/coins/medium_coin_collectable.tscn" id="11_trceg"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="12_eb6dy"]
@@ -356,7 +356,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.143437, 4.891037, -10.0906
 player_path = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_choun")]
-transform = Transform3D(0.769355, 0, 0.63882154, 0, 1, 0, -0.63882154, 0, 0.769355, -4.459282, -14.192512, -52.371746)
+transform = Transform3D(0.769355, 0, 0.63882154, 0, 1, 0, -0.63882154, 0, 0.769355, 9.590743, 1.3258269, 12.065365)
 
 [node name="Environment" type="Node" parent="."]
 
