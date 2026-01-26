@@ -32,7 +32,7 @@ subdivide_width = 100
 subdivide_height = 100
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ragw"]
-size = Vector3(14.1249695, 7.0264416, 24.589802)
+size = Vector3(14.667717, 7.0264416, 25.992167)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1blye"]
 height = 0.6577759
@@ -422,7 +422,6 @@ shape = SubResource("BoxShape3D_5kb3n")
 
 [node name="Mall_Water" type="Area3D" parent="Environment"]
 transform = Transform3D(6.0179954, 0, 0, 0, 5.619239, 0, 0, 0, 3.5257428, 0, 16.525606, -71.441986)
-visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("5_eb6dy")
@@ -432,7 +431,7 @@ transform = Transform3D(15.201917, 0, 0, 0, 0.03146988, 0, 0, 0, 21.877754, -1.9
 mesh = SubResource("BoxMesh_rb8pp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Mall_Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1170807, -3.5319152, -1.5595932)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -1.8457068, -3.5319152, -2.2607765)
 shape = SubResource("BoxShape3D_0ragw")
 
 [node name="CollisionFixes" type="Node" parent="."]

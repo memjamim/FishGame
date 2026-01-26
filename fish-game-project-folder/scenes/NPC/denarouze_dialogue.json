@@ -33,6 +33,9 @@
 	],
 	"last-level-2-toy-sold": [
 		{"name": "Daft Denayrouze:", "text": "You’ll be headed to The Husk next…"},
+		{"name": "Daft Denayrouze:", "text": "I never liked that diner. Always a fishy smell coming from that fridge."},
+		{"name": "Daft Denayrouze:", "text": "I tried checking back there once. Was too dark to see."},
+		{"name": "Daft Denayrouze:", "text": "You might need a flashlight if your curiosity gets the best of you."},
 		{"name": "Eelbert:", "text": "Say a prayer to whatever god you hold dear, not that he can hear you down there–"},
 		{"name": "Eelbert:", "text": "He didn’t hear my prayer, and certainly didn’t hear theirs."}
 	],
