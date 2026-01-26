@@ -48,7 +48,7 @@
 		{"name": "Eelbert:", "text": "You still will. The memories of the depths will eat away at your mind."},
 		{"name": "Eelbert:", "text": "And they will until there's nothing left but a fresh husk for me to crawl my way into."},
 		{"name": "Daft Denayrouze:", "text": "Now now Eelbert, theres no need for hostilities."},
-		{"name": "Daft Denayrouze:", "text": "Welp, door’s open. You’re free to go. Or you could just stay here with me and Eelbert, we could use the company."},
+		{"name": "Daft Denayrouze:", "text": "Welp, door’s open. You’re free to go. Or you could just stay here with me and Eelbert, we could use the company.", "event": "open_end_door"},
 		{"name": "Daft Denayrouze:", "text": "And there’s always more toys that need collectin'."}
 	],
 	"past-last-level-3-toy-sold": [

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/OverwaterAmbiance.mp3-b10796836809826602e0bc5
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
