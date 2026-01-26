@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8v7kcsljbcru"]
+[gd_scene load_steps=19 format=3 uid="uid://c8v7kcsljbcru"]
 
 [ext_resource type="Script" uid="uid://db0vh5tiik48j" path="res://scripts/player.gd" id="1_067cb"]
 [ext_resource type="Script" uid="uid://ctmkxp74vlma0" path="res://scripts/pickup_throw.gd" id="2_g2els"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://cbhj7uwsid5yv" path="res://assets/Sounds/Hit.wav" id="5_smehm"]
 [ext_resource type="Material" uid="uid://byeyt03501m7h" path="res://art/shaders/UnderwaterShader.tres" id="6_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://cnxrpu61vyjn6" path="res://assets/Sounds/OverwaterAmbiance.mp3" id="6_jej6c"]
 [ext_resource type="AudioStream" uid="uid://bxnx58okin8dl" path="res://assets/Sounds/UnderwaterAmbiance.wav" id="6_smehm"]
 [ext_resource type="AudioStream" uid="uid://b6mwr0letu8f7" path="res://assets/Sounds/Slash.mp3" id="6_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://clxqj32ax1t53" path="res://assets/Sounds/water footsteps.mp3" id="7_ur7pv"]
@@ -172,7 +173,10 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Audio" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_y4r1p")
+stream = ExtResource("6_jej6c")
+
+[node name="OverwaterAmbiance" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_jej6c")
 
 [node name="Stab" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_smehm")

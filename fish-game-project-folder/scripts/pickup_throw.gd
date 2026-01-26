@@ -51,32 +51,42 @@ func _pick_up(holdable: RigidBody3D) -> void:
 func _charge_throw(delta: float) -> void:
 	self.throw_charge += delta
 	self.throw_charge = min(throw_charge, throw_charge_time)
+	self.throw_charge = ease(self.throw_charge/throw_charge_time, 0.5)
 
 
 func _throw(holdable: RigidBody3D) -> void:
+	if !is_instance_valid(holdable):
+		return
+
 	var p := holdable.get_parent()
 	if p != null:
 		p.remove_child(holdable)
-	var world := player.get_parent_node_3d()
+
+	var world: Node = get_tree().current_scene
+	if world == null:
+		world = get_tree().root # fallback
+
 	world.add_child(holdable)
 
 	var camera_pivot: Node3D = player.get_node("CameraPivot")
 	var forward: Vector3 = -camera_pivot.global_transform.basis.z
-	var drop_dist := 2.0
+	var drop_dist := 0.5
 	holdable.global_position = player.global_position + forward * drop_dist
-	holdable.get_node("CollisionShape3D").disabled = false
+
+	var cs := holdable.get_node_or_null("CollisionShape3D") as CollisionShape3D
+	if cs:
+		cs.disabled = false
+
 	holdable.freeze = false
-	
-	var charge_strength = self.throw_charge/self.throw_charge_time
+
+	var charge_strength = self.throw_charge / self.throw_charge_time
 	var throw_force = lerp(self.min_throw_strength, self.max_throw_strength, charge_strength)
-	
-	holdable.apply_impulse(
-		forward * throw_force
-	)
-	
+
+	holdable.apply_impulse(forward * throw_force)
+
 	self.throw_charge = 0
-	
-	if holdable.is_in_group('weapon'):
-		holdable.find_child('Hitbox').monitoring = true
-	
-	print("throwing:", holdable.name, " scene=", holdable.scene_file_path, " parent_before=", holdable.get_parent())
+
+	if holdable.is_in_group("weapon"):
+		var hitbox := holdable.find_child("Hitbox", true, false)
+		if hitbox and hitbox is Area3D:
+			hitbox.monitoring = true
