@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var mesh: MeshInstance3D = $Armature_001/Skeleton3D/Plane_052
+@onready var mesh: MeshInstance3D = $Armature_009/Skeleton3D/Body2
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var vision_raycast: RayCast3D = $VisionRaycast
 @onready var attack_area: Area3D = $AttackArea
@@ -10,20 +10,20 @@ var player: CharacterBody3D
 
 # ---------------- MOVEMENT ----------------
 @export var idle_speed := 1.2
-@export var chase_speed := 2.5
+@export var chase_speed := 4.0
 @export var turn_speed := 4.0
 @export var idle_dir_change_time := 2.5
 
 # ---------------- COMBAT ----------------
-@export var max_health := 100
-@export var attack_damage := 20
+@export var max_health := 150
+@export var attack_damage := 34
 @export var attack_cooldown := 2.0
 
 # ---------------- VISION ----------------
 @export var lose_sight_time := 1.5
 
 # ---------------- STATE ----------------
-var health := 100
+var health := 150
 var move_dir := Vector3.ZERO
 var idle_dir := Vector3.ZERO
 var idle_timer := 0.0
@@ -32,7 +32,7 @@ var attack_timer := 0.0
 var chasing := false
 var player_in_attack_range := false
 
-const ANIM_NAME := "fast_swim"
+const ANIM_NAME := "Armature_009|Armature_009|Armature|ArmatureAction"
 
 # ----------------------------------------------------
 
