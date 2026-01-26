@@ -209,7 +209,10 @@ func apply_breath_max_bonus(new_bonus: float) -> void:
 
 
 func _set_ui_params(type: String, bonus: float) -> void:
-	# Sets the UI to match the current tier of breath upgrade
+	# Sets the UI to match the current tier of upgrade
+	# This is the most jank solution i've ever done for anything
+	# but we're running out of time, its due day @ 4:56am, and we still have no gameplay
+	# so fuck it we ball
 	if type == 'breath':
 		var bar = player_ui.find_child("Breath", true, true)
 		if bonus == 20.0:
