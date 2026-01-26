@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://eue7miiwo2jt" path="res://assets/toys/ringsAndDarts_0.png" id="4_rbndw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yk7jk"]
-radius = 0.1699562
-height = 0.3399124
+radius = 0.2626953
+height = 0.5253906
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx022"]
 resource_name = "pooltoys1"
@@ -287,49 +287,49 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d7irq")
 
-[node name="Toy-Holdable" type="RigidBody3D" groups=["holdable"]]
+[node name="Toy_Holdable" type="RigidBody3D" groups=["holdable"]]
 script = ExtResource("1_pp2y5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0009323582, 0.054423094, -0.008246375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014285453, 0.115447104, -0.012999771)
 shape = SubResource("CapsuleShape3D_yk7jk")
 
 [node name="dart_1" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.576041e-06, 1.8519771e-06, 42.368286, 7.52612e-14, 42.36829, -1.8519771e-06, -42.368286, 3.76306e-13, 7.576041e-06, 0.012197852, 0.028478839, -0.002843082)
+transform = Transform3D(1.1682431e-05, 2.6226837e-06, 60, 1.06581424e-13, 60, -2.6226837e-06, -60, 6.172368e-13, 1.1682431e-05, 0.012197852, 0.028478839, -0.002843082)
 mesh = SubResource("ArrayMesh_rbndw")
 skeleton = NodePath("")
 
 [node name="dart_2" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.576041e-06, 1.8519771e-06, 42.368286, 7.52612e-14, 42.36829, -1.8519771e-06, -42.368286, 3.76306e-13, 7.576041e-06, 0.006844163, 0.029284239, -0.0038030744)
+transform = Transform3D(1.1682431e-05, 2.6226837e-06, 60, 1.06581424e-13, 60, -2.6226837e-06, -60, 6.172368e-13, 1.1682431e-05, 0.006844163, 0.029284239, -0.0038030744)
 mesh = SubResource("ArrayMesh_r2fq5")
 skeleton = NodePath("")
 
 [node name="dart_3" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.576041e-06, 1.8519771e-06, 42.368286, 7.52612e-14, 42.36829, -1.8519771e-06, -42.368286, 3.76306e-13, 7.576041e-06, 0.006844163, 0.030168742, -0.011521667)
+transform = Transform3D(1.1682431e-05, 2.6226837e-06, 60, 1.06581424e-13, 60, -2.6226837e-06, -60, 6.172368e-13, 1.1682431e-05, 0.006844163, 0.030168742, -0.011521667)
 mesh = SubResource("ArrayMesh_ay6vn")
 skeleton = NodePath("")
 
 [node name="dart_4" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.576041e-06, 1.8519771e-06, 42.368286, 7.52612e-14, 42.36829, -1.8519771e-06, -42.368286, 3.76306e-13, 7.576041e-06, 0.006844163, 0.033223867, -0.00075662136)
+transform = Transform3D(1.1682431e-05, 2.6226837e-06, 60, 1.06581424e-13, 60, -2.6226837e-06, -60, 6.172368e-13, 1.1682431e-05, 0.006844163, 0.033223867, -0.00075662136)
 mesh = SubResource("ArrayMesh_rxnge")
 skeleton = NodePath("")
 
 [node name="ring_1" type="MeshInstance3D" parent="."]
-transform = Transform3D(34.14804, 0, -1.4926583e-06, 1.4926583e-06, 6.524616e-14, 34.14804, 0, -34.14804, 6.524616e-14, -0.0020346344, 0.04079479, -0.0046981573)
+transform = Transform3D(60, -5.0111228e-21, -2.1904311e-28, 0, -2.6226833e-06, 60, -5.0111228e-21, -60, -2.6226833e-06, -0.0020346344, 0.04079479, -0.0046981573)
 mesh = SubResource("ArrayMesh_wlkfl")
 skeleton = NodePath("")
 
 [node name="ring_2" type="MeshInstance3D" parent="."]
-transform = Transform3D(34.148045, 0, -1.4926584e-06, 1.4926584e-06, 6.5246175e-14, 34.148045, 0, -34.148045, 6.5246175e-14, -0.0020346344, 0.04608217, -0.0111068785)
+transform = Transform3D(60, -5.011123e-21, -2.1904314e-28, 0, -2.6226833e-06, 60, -5.011123e-21, -60, -2.6226833e-06, -0.0020346344, 0.04608217, -0.0111068785)
 mesh = SubResource("ArrayMesh_c0dde")
 skeleton = NodePath("")
 
 [node name="ring_3" type="MeshInstance3D" parent="."]
-transform = Transform3D(34.148045, 0, -1.4926584e-06, 1.4926584e-06, 6.5246175e-14, 34.148045, 0, -34.148045, 6.5246175e-14, -0.0020346344, 0.04448855, -0.0092894435)
+transform = Transform3D(60, -5.011123e-21, -2.1904314e-28, 0, -2.6226833e-06, 60, -5.011123e-21, -60, -2.6226833e-06, -0.0020346344, 0.04448855, -0.0092894435)
 mesh = SubResource("ArrayMesh_dby6v")
 skeleton = NodePath("")
 
 [node name="ring_4" type="MeshInstance3D" parent="."]
-transform = Transform3D(34.148045, 0, -1.4926584e-06, 1.4926584e-06, 6.5246175e-14, 34.148045, 0, -34.148045, 6.5246175e-14, -0.0020346344, 0.045552015, -0.010417044)
+transform = Transform3D(60, -5.011123e-21, -2.1904314e-28, 0, -2.6226833e-06, 60, -5.011123e-21, -60, -2.6226833e-06, -0.0020346344, 0.045552015, -0.010417044)
 mesh = SubResource("ArrayMesh_pwgom")
 skeleton = NodePath("")
