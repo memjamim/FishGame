@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://boq60tw26s0p0"]
+[gd_scene load_steps=46 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
 [ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://comqb21scj5cw" path="res://scenes/levels/MallLevel/mall_export.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="18_0ld40"]
 [ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="19_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://bnslll1t0vtpt" path="res://scenes/levels/WhaleLevel/WhaleCum.fbx" id="21_jscy8"]
 [ext_resource type="PackedScene" uid="uid://d0ubr3mdbmqpv" path="res://scenes/levels/PoolCorner/PoolCorner.fbx" id="21_yc10j"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
@@ -357,7 +358,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.143437, 4.891037, -10.0906
 player_path = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_choun")]
-transform = Transform3D(0.769355, 0, 0.63882154, 0, 1, 0, -0.63882154, 0, 0.769355, 9.590743, 1.3258269, 12.065365)
+transform = Transform3D(0.769355, 0, 0.63882154, 0, 1, 0, -0.63882154, 0, 0.769355, 6.7323456, 1.7298484, 11.440675)
 
 [node name="Environment" type="Node" parent="."]
 
@@ -421,6 +422,7 @@ shape = SubResource("BoxShape3D_5kb3n")
 
 [node name="Mall_Water" type="Area3D" parent="Environment"]
 transform = Transform3D(6.0179954, 0, 0, 0, 5.619239, 0, 0, 0, 3.5257428, 0, 16.525606, -71.441986)
+visible = false
 monitoring = false
 monitorable = false
 script = ExtResource("5_eb6dy")
@@ -564,25 +566,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.647848, 3.0048854, -15.6303
 [node name="MallExport" parent="." instance=ExtResource("16_jbj1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049464226, -0.2766323, -0.1873312)
 
+[node name="WhaleCum" parent="." instance=ExtResource("21_jscy8")]
+
 [node name="ItemSpawnPoints" type="Node3D" parent="."]
 
 [node name="L1_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25087, -0.9730547, 4.4426174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25087, -0.589127, 4.4426174)
 
 [node name="L1_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4910548, -3.9633996, -2.362759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9742981, -2.4182286, -3.3911872)
 
 [node name="L1_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5820313, -3.5405278, -7.8927484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5820313, -3.010122, -7.8927484)
 
 [node name="L1_Item_Spawn_4" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.550759, -3.5405278, -3.5929677)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.550759, -2.927607, -3.5929677)
 
 [node name="L1_Item_Spawn_5" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5662141, -1.0540345, 5.022843)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96628606, -0.67250544, 5.022843)
 
 [node name="L2_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.329468, 1.1413172, -98.82134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.561697, 1.5427724, -90.28686)
 
 [node name="L2_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.172504, -0.6257952, -64.72823)
@@ -612,13 +616,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.824577, -14.9116335, -74.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.545126, -10.50094, -63.71117)
 
 [node name="L3_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.024408, -0.084825456, -79.90274)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.909497, 0.97268015, -108.6823)
 
 [node name="L3_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.116109, 0.0075165033, -66.9812)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.772518, 2.0356894, -102.92826)
 
 [node name="L3_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.790821, 0.5693456, -89.25919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1392775, 5.5886145, -101.55223)
 
 [node name="EnemySpawnPoints" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.522144)
@@ -653,6 +657,15 @@ transform = Transform3D(-0.15151958, 0, -0.9884542, 0, 1, 0, 0.9884542, 0, -0.15
 [node name="T1_Enemy_Spawn_10" type="Marker3D" parent="EnemySpawnPoints"]
 transform = Transform3D(-0.15151958, 0, -0.9884542, 0, 1, 0, 0.9884542, 0, -0.15151958, -27.895962, -13.065291, -113.017)
 
+[node name="T1_Enemy_Spawn_11" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-0.15151958, 0, -0.9884542, 0, 1, 0, 0.9884542, 0, -0.15151958, 10.776326, 2.8655214, -148.6565)
+
+[node name="T1_Enemy_Spawn_12" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-0.15151958, 0, -0.9884542, 0, 1, 0, 0.9884542, 0, -0.15151958, 16.158573, 2.8655214, -150.86021)
+
+[node name="T1_Enemy_Spawn_13" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-0.15151958, 0, -0.9884542, 0, 1, 0, 0.9884542, 0, -0.15151958, 16.158573, 2.8655214, -152.36186)
+
 [node name="T2_Enemy_Spawn_1" type="Marker3D" parent="EnemySpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.714111, 2.460237, -136.28252)
 
@@ -664,6 +677,15 @@ transform = Transform3D(0.9315644, 0, -0.36357644, 0, 1, 0, 0.36357644, 0, 0.931
 
 [node name="T2_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
 transform = Transform3D(0.95933366, 0, 0.28227448, 0, 1, 0, -0.28227448, 0, 0.95933366, -21.110497, -10.774739, -103.91687)
+
+[node name="T2_Enemy_Spawn_5" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.95933366, 0, 0.28227448, 0, 1, 0, -0.28227448, 0, 0.95933366, 13.204658, 5.254809, -149.01631)
+
+[node name="T2_Enemy_Spawn_6" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.95933366, 0, 0.28227448, 0, 1, 0, -0.28227448, 0, 0.95933366, 15.273296, 5.254809, -151.74345)
+
+[node name="T2_Enemy_Spawn_7" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.95933366, 0, 0.28227448, 0, 1, 0, -0.28227448, 0, 0.95933366, 11.539845, 4.303689, -150.05923)
 
 [node name="PoolCorner" parent="." instance=ExtResource("21_yc10j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031770706, 0.005170107, 0.012263179)
