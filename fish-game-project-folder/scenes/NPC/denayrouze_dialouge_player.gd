@@ -1,6 +1,12 @@
 extends Control
 
 signal dialogue_finished 
+@export var voice_player_path: NodePath
+@onready var voice_player: AudioStreamPlayer3D = get_node_or_null(voice_player_path) as AudioStreamPlayer3D
+
+@export var voice_blip_streams: Array[AudioStream] = []
+@export var blip_interval := 0.035
+var _last_voice_index := -1
 
 @export_file("*.json") var d_file
 
@@ -130,6 +136,9 @@ func load_dialogue():
 	return content["generic"]
 
 func _unhandled_input(event: InputEvent):
+	
+	if get_tree().paused:
+		return
 
 	if !d_active:
 		return
@@ -154,10 +163,38 @@ func next_script() -> void:
 		return
 
 	var line = dialogue[current_dialogue_id]
+
 	$NinePatchRect/Name.text = line["name"]
 	full_text = line["text"]
 
+	_play_voice_for_line(line)
+
 	await type_text()
+
+func _play_voice_for_line(_line: Dictionary) -> void:
+	if voice_player == null:
+		push_warning("VOICE: voice_player NULL")
+		return
+
+	if voice_blip_streams.is_empty():
+		push_warning("VOICE: voice_blip_streams is empty. Add streams in the inspector.")
+		return
+
+	# Pick a random one (+ avoid repeating the same one twice)
+	var idx := randi_range(0, voice_blip_streams.size() - 1)
+	if voice_blip_streams.size() > 1 and idx == _last_voice_index:
+		idx = (idx + 1) % voice_blip_streams.size()
+	_last_voice_index = idx
+
+	voice_player.stream = voice_blip_streams[idx]
+
+	if voice_player.playing:
+		voice_player.stop()
+
+	voice_player.pitch_scale = randf_range(0.97, 1.03)
+	voice_player.volume_db = -6
+	voice_player.play()
+
 
 
 func type_text() -> void:
@@ -173,18 +210,21 @@ func type_text() -> void:
 		current_text += full_text[text_index]
 		$NinePatchRect/Text.text = current_text
 		text_index += 1
-		await get_tree().create_timer(typewriter_speed).timeout
+		await get_tree().create_timer(typewriter_speed, false).timeout
 
 	# Finish line instantly if skipped
 	$NinePatchRect/Text.text = full_text
 	state = DialogueState.WAITING
 
 	if auto_play:
-		await get_tree().create_timer(auto_advance_delay).timeout
+		await get_tree().create_timer(auto_advance_delay, false).timeout
 		next_script()
 
 
 func end_dialogue():
+	if voice_player and voice_player.playing:
+		voice_player.stop()
+
 	state = DialogueState.IDLE
 	d_active = false
 	skip_requested = false

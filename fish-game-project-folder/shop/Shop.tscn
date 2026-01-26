@@ -33,10 +33,10 @@ mesh = SubResource("BoxMesh_e2ga4")
 [node name="Slots" type="Node3D" parent="."]
 
 [node name="Slot1" type="Node3D" parent="Slots"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
 
 [node name="Slot2" type="Node3D" parent="Slots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 
 [node name="Slot3" type="Node3D" parent="Slots"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
