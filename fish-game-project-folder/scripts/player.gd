@@ -18,7 +18,7 @@ var _drowning_sfx_on := false
 @onready var offhand: Node3D = get_node(offhand_path) as Node3D
 
 func play_purchase_fail_sfx() -> void:
-	_play_sfx(sfx_purchase_fail, 6.0, 0.98, 1.02)
+	_play_sfx(sfx_purchase_fail, 8.0, 0.98, 1.02)
 
 func _play_sfx(p: AudioStreamPlayer, vol_db := -6.0, pitch_min := 0.97, pitch_max := 1.03) -> void:
 	if p == null:
@@ -46,7 +46,7 @@ func _set_drowning_sfx(active: bool) -> void:
 	_drowning_sfx_on = active
 
 	if active:
-		sfx_drowning.volume_db = -6.0
+		sfx_drowning.volume_db = 6.0
 		if sfx_drowning.playing:
 			sfx_drowning.stop()
 		sfx_drowning.play()
@@ -57,7 +57,7 @@ func _set_drowning_sfx(active: bool) -> void:
 			tw.tween_callback(func():
 				if is_instance_valid(sfx_drowning):
 					sfx_drowning.stop()
-					sfx_drowning.volume_db = -6.0
+					sfx_drowning.volume_db = 6.0
 			)
 
 
