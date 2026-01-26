@@ -1,7 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://boq60tw26s0p0"]
+[gd_scene load_steps=45 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
-[ext_resource type="Script" path="res://scripts/main_script.gd" id="1_muem4"]
+[ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_gqmmt"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://comqb21scj5cw" path="res://scenes/levels/MallLevel/mall_export.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="18_0ld40"]
 [ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="19_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://d0ubr3mdbmqpv" path="res://scenes/levels/PoolCorner/PoolCorner.fbx" id="21_yc10j"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
 
@@ -30,7 +31,7 @@ subdivide_width = 100
 subdivide_height = 100
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ragw"]
-size = Vector3(14.1249695, 7.0264416, 21.412888)
+size = Vector3(14.1249695, 7.0264416, 24.589802)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1blye"]
 height = 0.6577759
@@ -376,6 +377,20 @@ mesh = SubResource("BoxMesh_rb8pp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1170807, -3.5319152, -1.5595932)
 shape = SubResource("BoxShape3D_0ragw")
 
+[node name="Tunnel_Water" type="Area3D" parent="Environment"]
+transform = Transform3D(0.9835411, 0, 0, 0, 3.4999664, 0, 0, 0, 1.1359633, -3.1836271, -0.69317544, -23.214169)
+monitoring = false
+monitorable = false
+script = ExtResource("5_eb6dy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Tunnel_Water"]
+transform = Transform3D(15.201917, 0, 0, 0, 0.03146988, 0, 0, 0, 21.877754, -1.9804571, -0.030369997, -1.248658)
+mesh = SubResource("BoxMesh_rb8pp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Tunnel_Water"]
+transform = Transform3D(1, 0, 0, 0, 0.99999017, 0, 0, 0, 0.99999964, -2.1170807, -3.5319138, -3.0049324)
+shape = SubResource("BoxShape3D_0ragw")
+
 [node name="CollectionPoint" parent="Environment" instance=ExtResource("7_a8y0u")]
 transform = Transform3D(0.98442966, 0, -0.1757791, 0, 1, 0, 0.1757791, 0, 0.98442966, 11.411428, 4.8306932, -9.997053)
 
@@ -597,13 +612,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.824577, -14.9116335, -74.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.545126, -10.50094, -63.71117)
 
 [node name="L3_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 1.4687924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.024408, -0.084825456, -79.90274)
 
 [node name="L3_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.002709508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.116109, 0.0075165033, -66.9812)
 
 [node name="L3_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.790821, 0.5693456, -89.25919)
 
 [node name="EnemySpawnPoints" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.522144)
@@ -650,10 +665,8 @@ transform = Transform3D(0.9315644, 0, -0.36357644, 0, 1, 0, 0.36357644, 0, 0.931
 [node name="T2_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
 transform = Transform3D(0.95933366, 0, 0.28227448, 0, 1, 0, -0.28227448, 0, 0.95933366, -21.110497, -10.774739, -103.91687)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9466605, 0.3222327, 0, -0.3222327, 0.9466605, -5.1753454, -13.927789, -33.499355)
-use_collision = true
-size = Vector3(18.728165, 0.97998047, 28.04657)
+[node name="PoolCorner" parent="." instance=ExtResource("21_yc10j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031770706, 0.005170107, 0.012263179)
 
 [connection signal="body_entered" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_exited"]
