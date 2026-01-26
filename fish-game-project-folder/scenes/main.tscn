@@ -106,7 +106,7 @@ size = Vector3(28.390808, 27.566742, 33.28772)
 data = ExtResource("1_jkv2x")
 
 [node name="HangingLight" type="SpotLight3D" parent="LightContainer"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.7038288, 12.450238, 8.779118)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.7038288, 13.560828, 9.422107)
 light_energy = 0.6
 light_size = 0.2
 light_bake_mode = 1
@@ -117,7 +117,7 @@ spot_angle = 50.0
 spot_angle_attenuation = 0.03
 
 [node name="HangingLight3" type="SpotLight3D" parent="LightContainer"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.7038288, 12.450238, -0.6208763)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.732568, 13.575205, -0.41498232)
 light_energy = 0.6
 light_size = 0.2
 light_bake_mode = 1
@@ -128,7 +128,7 @@ spot_angle = 50.0
 spot_angle_attenuation = 0.03
 
 [node name="HangingLight2" type="SpotLight3D" parent="LightContainer"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.902169, -10.067515)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.6840676, 13.560952, -10.193521)
 light_energy = 0.6
 light_size = 0.2
 light_bake_mode = 1
