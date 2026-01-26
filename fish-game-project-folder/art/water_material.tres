@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cj786swsg5q1p" path="res://art/water_uv_offset.png" id="4_ukg66"]
 
 [resource]
-render_priority = 1
+render_priority = 2
 shader = ExtResource("1_u1vvr")
 shader_parameter/amplitude = Vector2(0.001, 0.001)
 shader_parameter/frequency = Vector2(10, 10)

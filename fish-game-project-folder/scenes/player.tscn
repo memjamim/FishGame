@@ -22,7 +22,7 @@ shader_parameter/wave_strength = 0.005
 shader_parameter/wave_frequency = 10.0
 shader_parameter/wave_speed = 0.5
 shader_parameter/water_color = Color(0.10980392, 0.2901961, 0.41960785, 1)
-shader_parameter/tint_strength = 0.3
+shader_parameter/tint_strength = 0.5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_smehm"]
 material = SubResource("ShaderMaterial_d2wvv")
@@ -154,8 +154,8 @@ spot_range = 29.320385
 spot_angle = 37.34233
 
 [node name="UnderwaterEffect" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
-transform = Transform3D(-0.76914024, -8.742277e-08, -1.9453365e-15, 0, -4.3711385e-08, 0.5090677, -6.724038e-08, 0.99999994, 2.2252056e-08, 0, 0, -0.22232974)
-visible = false
+transform = Transform3D(-0.9200894, -8.742277e-08, -2.430854e-15, 0, -4.3711385e-08, 0.6361209, -8.043677e-08, 0.99999994, 2.7805727e-08, 0, 0, -0.22232974)
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_smehm")
 
 [node name="PickupThrow" type="Node" parent="."]
