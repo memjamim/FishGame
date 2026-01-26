@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://djd3u5j42nbl2"]
+[gd_scene load_steps=9 format=3 uid="uid://djd3u5j42nbl2"]
 
 [ext_resource type="Script" uid="uid://yue4g1q8mq0x" path="res://scenes/NPC/denarouzeNPC.gd" id="1_ck3e4"]
-[ext_resource type="PackedScene" uid="uid://dmh27hgpfokyi" path="res://scenes/NPC/dd_model.tscn" id="2_0qdqi"]
+[ext_resource type="PackedScene" path="res://scenes/NPC/dd_model.tscn" id="2_0qdqi"]
 [ext_resource type="PackedScene" uid="uid://bkoumrhyxgs52" path="res://scenes/NPC/dialougeUI.tscn" id="2_en3g7"]
+[ext_resource type="AudioStream" uid="uid://k6d6j5curqrj" path="res://assets/Sounds/scream.mp3" id="4_0qdqi"]
+[ext_resource type="AudioStream" uid="uid://dvmkxotku7rf" path="res://assets/Sounds/old-man-5.mp3" id="5_5ec7n"]
+[ext_resource type="AudioStream" uid="uid://xwfy1bm5uucl" path="res://assets/Sounds/old-man-laugh.mp3" id="6_83ybo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_en3g7"]
 
@@ -27,8 +30,13 @@ transform = Transform3D(1.7000004, 0, 0, 0, 0.6955536, 0, 0, 0, 1.7000291, 0.170
 shape = SubResource("BoxShape3D_en3g7")
 
 [node name="DialogueUI" parent="." instance=ExtResource("2_en3g7")]
-z_index = 0
 offset_top = 474.0
+voice_player_path = NodePath("../AudioStreamPlayer3D")
+voice_blip_streams = Array[AudioStream]([ExtResource("6_83ybo"), ExtResource("5_5ec7n"), ExtResource("4_0qdqi")])
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_5ec7n")
+volume_db = 22.577
 
 [connection signal="body_entered" from="interaction_radius" to="." method="_on_interaction_radius_body_entered"]
 [connection signal="body_exited" from="interaction_radius" to="." method="_on_interaction_radius_body_exited"]
