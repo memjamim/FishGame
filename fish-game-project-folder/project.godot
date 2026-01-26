@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FishGameProjectFolder"
-run/main_scene="uid://u5o1w8bnfdyw"
+run/main_scene="uid://dngapkpjogg0s"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.091803186, 0.13468361, 0.251527, 1)
 config/icon="res://icon.svg"
