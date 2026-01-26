@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://6dpxtiabcrh"]
+
+[ext_resource type="PackedScene" uid="uid://dxwh1idtybewy" path="res://shop/models/SecondHandSnorkel.fbx" id="1_yl2m4"]
+
+[node name="SnorkelT2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25153905, 0, 0)
+
+[node name="SecondHandSnorkel" parent="MeshInstance3D" instance=ExtResource("1_yl2m4")]
+transform = Transform3D(-0.6, 0, -5.2453668e-08, 0, 0.6, 0, 5.2453668e-08, 0, -0.6, 0.20567462, -0.31108555, -0.006335666)

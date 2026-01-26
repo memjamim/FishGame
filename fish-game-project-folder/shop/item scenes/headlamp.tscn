@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2gsj4ieecoo3"]
+
+[ext_resource type="PackedScene" uid="uid://dcbd86ly3i1j2" path="res://shop/models/Headlamp.fbx" id="1_me3pi"]
+
+[node name="SnorkelT2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25153905, 0, 0)
+
+[node name="Headlamp" parent="MeshInstance3D" instance=ExtResource("1_me3pi")]
+transform = Transform3D(0.19080381, 0.07657915, -0.4557736, -0.029572085, 0.4941009, 0.07063894, 0.46121514, 0, 0.19308183, 0.26373252, -0.0047148466, -0.034985226)
