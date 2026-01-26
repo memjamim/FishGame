@@ -9,6 +9,9 @@ signal dialogue_finished
 var _last_voice_index := -1
 
 @export_file("*.json") var d_file
+@export var end_door_path: NodePath
+@onready var end_door = get_node_or_null(end_door_path)
+var _current_line: Dictionary = {}
 
 var dialogue = []
 var current_dialogue_id = 0
@@ -163,6 +166,7 @@ func next_script() -> void:
 		return
 
 	var line = dialogue[current_dialogue_id]
+	_current_line = line
 
 	$NinePatchRect/Name.text = line["name"]
 	full_text = line["text"]
@@ -170,6 +174,14 @@ func next_script() -> void:
 	_play_voice_for_line(line)
 
 	await type_text()
+
+	_handle_line_triggers(_current_line)
+
+func _handle_line_triggers(line: Dictionary) -> void:
+	if line.has("event") and str(line["event"]) == "open_end_door":
+		if end_door and end_door.has_method("open_door"):
+			end_door.open_door()
+
 
 func _play_voice_for_line(_line: Dictionary) -> void:
 	if voice_player == null:

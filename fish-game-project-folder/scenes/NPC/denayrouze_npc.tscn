@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djd3u5j42nbl2"]
+[gd_scene load_steps=14 format=3 uid="uid://djd3u5j42nbl2"]
 
 [ext_resource type="Script" uid="uid://yue4g1q8mq0x" path="res://scenes/NPC/denarouzeNPC.gd" id="1_ck3e4"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/dd_model.tscn" id="2_0qdqi"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://hc7fgonhvr2r" path="res://assets/Sounds/old-man-2.mp3" id="8_ss1ox"]
 [ext_resource type="AudioStream" uid="uid://b6cwy0468cp80" path="res://assets/Sounds/old-man-3.mp3" id="9_ahln8"]
 [ext_resource type="AudioStream" uid="uid://c2dlbqui6q5so" path="res://assets/Sounds/old-man-4.mp3" id="10_6ju5j"]
+[ext_resource type="PackedScene" uid="uid://dd37m1rjtcdqa" path="res://scenes/enemy/EndDoor.tscn" id="11_ss1ox"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_en3g7"]
 
@@ -37,10 +38,14 @@ shape = SubResource("BoxShape3D_en3g7")
 offset_top = 474.0
 voice_player_path = NodePath("../AudioStreamPlayer3D")
 voice_blip_streams = Array[AudioStream]([ExtResource("6_83ybo"), ExtResource("5_5ec7n"), ExtResource("4_0qdqi"), ExtResource("7_o50nj"), ExtResource("8_ss1ox"), ExtResource("9_ahln8"), ExtResource("10_6ju5j")])
+end_door_path = NodePath("../EndDoor")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_5ec7n")
 volume_db = 22.577
+
+[node name="EndDoor" parent="." instance=ExtResource("11_ss1ox")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20.239199, -5.0261917, 6.5017295)
 
 [connection signal="body_entered" from="interaction_radius" to="." method="_on_interaction_radius_body_entered"]
 [connection signal="body_exited" from="interaction_radius" to="." method="_on_interaction_radius_body_exited"]

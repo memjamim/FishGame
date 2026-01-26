@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="1_wassk"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="2_b0xup"]
 [ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_sl7rj"]
-[ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="3_u545m"]
+[ext_resource type="PackedScene" path="res://scenes/test_weapon.tscn" id="3_u545m"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="6_qig1i"]
 [ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="8_kvqo1"]
@@ -41,7 +41,7 @@ transform = Transform3D(0.81915206, 0, -0.5735764, 0, 0.9999999, 0, 0.57357645, 
 script = ExtResource("1_wassk")
 
 [node name="Player" parent="." instance=ExtResource("1_ijls6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00235271, 1.5523158, -20.984951)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00235271, 1.5523158, 10.314594)
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.221334, 0, 0, 0, 1, 0, 0, 0, 4.221334, 0, -0.0166724, 0)
