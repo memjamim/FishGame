@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dd37m1rjtcdqa"]
 
 [ext_resource type="PackedScene" uid="uid://bij3cj2qj05ov" path="res://scenes/enemy/doorAnimated.fbx" id="1_vi6um"]
-[ext_resource type="Script" uid="uid://c7puk0qm7aklf" path="res://scenes/enemy/EndDoor.gd" id="1_ynbo1"]
+[ext_resource type="Script" path="res://scenes/enemy/EndDoor.gd" id="1_ynbo1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ynbo1"]
 size = Vector3(1.5585327, 0.87164307, 0.9415283)
