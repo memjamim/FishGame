@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://d357lhsekacxs"]
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://d357lhsekacxs"]
 
-[ext_resource type="Texture2D" uid="uid://c2pgnw2f5kl5s" path="res://shop/icons/wetsuit_t3_icon.png" id="1_w32xb"]
+[ext_resource type="PackedScene" uid="uid://cgxjw0g7xtr8v" path="res://shop/item scenes/wetsuit_t3.tscn" id="1_cals1"]
+[ext_resource type="Texture2D" uid="uid://drsvj2t0vvxw8" path="res://shop/icons/ChampionsWetsuit.png" id="1_w32xb"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_cals1"]
 
 [resource]
 script = ExtResource("2_cals1")
+display_scene = ExtResource("1_cals1")
 item_id = "wetsuit_t3"
 family_id = "wetsuit"
 tier = 3
 cost = 700
-display_name = "Full Wetsuit"
+display_name = "Champion's Wetsuit"
 icon = ExtResource("1_w32xb")
 effect_type = 1
 max_health_value = 200
