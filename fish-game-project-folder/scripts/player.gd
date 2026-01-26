@@ -5,6 +5,38 @@ extends CharacterBody3D
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
+@onready var sfx_purchase: AudioStreamPlayer = $Audio/Purchase
+@onready var sfx_pickup_toy: AudioStreamPlayer = $Audio/PickupToy
+@onready var sfx_pickup_coin: AudioStreamPlayer = $Audio/PickupCoin
+@onready var sfx_purchase_fail: AudioStreamPlayer = $Audio/PurchaseFail
+@export var offhand_path: NodePath = NodePath("CameraPivot/Camera3D/Offhand")
+@export var drop_forward_distance := 1.0
+@export var drop_up_offset := 0.2
+
+@onready var offhand: Node3D = get_node(offhand_path) as Node3D
+
+func play_purchase_fail_sfx() -> void:
+	_play_sfx(sfx_purchase_fail, 6.0, 0.98, 1.02)
+
+func _play_sfx(p: AudioStreamPlayer, vol_db := -6.0, pitch_min := 0.97, pitch_max := 1.03) -> void:
+	if p == null:
+		return
+	p.volume_db = vol_db
+	p.pitch_scale = randf_range(pitch_min, pitch_max)
+	if p.playing:
+		p.stop()
+	p.play()
+
+func play_purchase_sfx() -> void:
+	_play_sfx(sfx_purchase, -6.0)
+
+func play_pickup_toy_sfx() -> void:
+	_play_sfx(sfx_pickup_toy, -6.0)
+
+func play_pickup_coin_sfx() -> void:
+	_play_sfx(sfx_pickup_coin, -6.0)
+
+
 # --- UI ---
 @onready var player_ui: Control = $PlayerUI
 var interact_prompt: Label
@@ -38,8 +70,15 @@ var collectables: int:
 		value = max(0, value)
 		if value == _collectables:
 			return
+
+		var gained := value > _collectables
 		_collectables = value
+
+		if gained:
+			play_pickup_coin_sfx()
+
 		emit_signal("collectables_changed", _collectables)
+
 
 func can_afford(cost: int) -> bool:
 	return collectables >= cost
@@ -91,6 +130,29 @@ func get_best_icon_for_family(family_id: String) -> Texture2D:
 	if not tier_map.has(owned_tier):
 		return null
 	return tier_map[owned_tier] as Texture2D
+
+func _drop_non_weapon_holdable_on_death() -> void:
+	if not IS_HOLDING_ITEM:
+		return
+
+	var offhandI := get_node("CameraPivot/Camera3D/Offhand") as Node
+	if offhandI == null or offhandI.get_child_count() == 0:
+		IS_HOLDING_ITEM = false
+		return
+
+	var held := offhandI.get_child(0)
+	if held == null:
+		IS_HOLDING_ITEM = false
+		return
+
+	if held.is_in_group("weapon"):
+		return
+
+	if pickup_throw and pickup_throw.has_method("_throw"):
+		pickup_throw._throw(held)
+
+	IS_HOLDING_ITEM = false
+
 
 
 # --- Water / Holding ---
@@ -519,6 +581,7 @@ func _physics_process(delta: float) -> void:
 			if IS_HOLDING_ITEM == false:
 				IS_HOLDING_ITEM = true
 				pickup_throw._pick_up(collider)
+				play_pickup_toy_sfx()
 
 	if Input.is_action_pressed("throw") and (IS_HOLDING_ITEM or IS_HOLDING_WEAPON):
 		pickup_throw._charge_throw(delta)
@@ -618,6 +681,7 @@ func _update_drowning_damage(delta: float) -> void:
 		_drown_tick_timer = 0.0
 
 func _respawn() -> void:
+	_drop_non_weapon_holdable_on_death()
 	health = max_health
 	breath = breath_max
 	_drown_tick_timer = 0.0
