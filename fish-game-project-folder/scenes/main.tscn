@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://boq60tw26s0p0"]
+[gd_scene load_steps=40 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tipki"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dnn5wdnto4sn0" path="res://assets/coins/medium_coin_collectable.tscn" id="11_trceg"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://djq47kacg6wsg" path="res://assets/coins/small_coin_collectable.tscn" id="14_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://comqb21scj5cw" path="res://scenes/levels/MallLevel/mall_export.tscn" id="16_jbj1t"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
 
@@ -522,6 +523,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.487075, 0.08325208, 14.4865
 
 [node name="medium_coin_collectable" parent="Hidden Coins" instance=ExtResource("11_trceg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.647848, 3.0048854, -15.630317)
+
+[node name="MallExport" parent="." instance=ExtResource("16_jbj1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049464226, -0.2766323, -0.1873312)
 
 [connection signal="body_entered" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_exited"]
