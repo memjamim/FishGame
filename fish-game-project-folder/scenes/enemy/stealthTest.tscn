@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=21 format=3 uid="uid://c2td7c2d17p1f"]
 
 [ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://djq47kacg6wsg" path="res://assets/coins/small_coin_collectable.tscn" id="12_3oafe"]
 [ext_resource type="PackedScene" uid="uid://dnn5wdnto4sn0" path="res://assets/coins/medium_coin_collectable.tscn" id="13_naa32"]
 [ext_resource type="PackedScene" uid="uid://cdme4fjrubni4" path="res://assets/coins/large_coin_collectable.tscn" id="14_0g1ub"]
+[ext_resource type="PackedScene" uid="uid://3aatsb485j8g" path="res://shop/Shop.tscn" id="16_hm4kl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ijls6"]
 size = Vector2(20, 20)
@@ -162,3 +163,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6585553, 0.04994136, 3.3178
 
 [node name="Toy-Holdable" parent="." instance=ExtResource("2_sl7rj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2641169, 0.009109352, 4.451982)
+
+[node name="Shop" parent="." instance=ExtResource("16_hm4kl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.474525, 0.22340584, 6.2280073)
