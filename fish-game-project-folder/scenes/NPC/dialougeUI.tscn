@@ -5,7 +5,6 @@
 [ext_resource type="Theme" uid="uid://bbxq3huxritnu" path="res://art/UI/menu_theme.tres" id="3_jp6bb"]
 
 [node name="DialogueUI" type="Control"]
-z_index = 150
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +19,6 @@ size_flags_vertical = 0
 script = ExtResource("1_bbnff")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-z_index = 150
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -31,7 +29,6 @@ grow_vertical = 2
 texture = ExtResource("2_5ogmw")
 
 [node name="Name" type="RichTextLabel" parent="NinePatchRect"]
-z_index = 150
 layout_mode = 1
 offset_left = 35.999996
 offset_top = 5.000025
@@ -45,7 +42,6 @@ theme_override_font_sizes/bold_font_size = 60
 text = "Name:"
 
 [node name="Text" type="RichTextLabel" parent="NinePatchRect"]
-z_index = 150
 layout_mode = 0
 offset_left = 63.0
 offset_top = 64.0
