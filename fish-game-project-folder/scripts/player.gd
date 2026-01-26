@@ -46,7 +46,7 @@ func _set_drowning_sfx(active: bool) -> void:
 	_drowning_sfx_on = active
 
 	if active:
-		sfx_drowning.volume_db = -6.0
+		sfx_drowning.volume_db = 6.0
 		if sfx_drowning.playing:
 			sfx_drowning.stop()
 		sfx_drowning.play()
@@ -57,7 +57,7 @@ func _set_drowning_sfx(active: bool) -> void:
 			tw.tween_callback(func():
 				if is_instance_valid(sfx_drowning):
 					sfx_drowning.stop()
-					sfx_drowning.volume_db = -6.0
+					sfx_drowning.volume_db = 6.0
 			)
 
 
