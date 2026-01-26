@@ -129,7 +129,8 @@ func load_dialogue():
 			var post_game_options := [
 				content["post-game-1"],
 				content["post-game-2"],
-				content["post-game-3"]
+				content["post-game-3"],
+				content["post-game-4"]
 			]
 			return post_game_options.pick_random()
 
