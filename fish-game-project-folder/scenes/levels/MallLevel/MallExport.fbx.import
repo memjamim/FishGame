@@ -1,0 +1,1001 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://4s3cuw1csaff"
+path="res://.godot/imported/MallExport.fbx-5749840ef3b37567b2dd2ffa222071a1.scn"
+
+[deps]
+
+source_file="res://scenes/levels/MallLevel/MallExport.fbx"
+dest_files=["res://.godot/imported/MallExport.fbx-5749840ef3b37567b2dd2ffa222071a1.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Casino Chair": {
+"generate/physics": true
+},
+"PATH:Casino Chair2": {
+"generate/physics": true
+},
+"PATH:Casino Chair22": {
+"generate/physics": true
+},
+"PATH:Casino Chair23": {
+"generate/physics": true
+},
+"PATH:Casino Chair3": {
+"generate/physics": true
+},
+"PATH:Casino Chair32": {
+"generate/physics": true
+},
+"PATH:Casino Chair33": {
+"generate/physics": true
+},
+"PATH:Casino Chair4": {
+"generate/physics": true
+},
+"PATH:Casino Chair42": {
+"generate/physics": true
+},
+"PATH:Casino Chair43": {
+"generate/physics": true
+},
+"PATH:Casino Chair5": {
+"generate/physics": true
+},
+"PATH:Casino Chair6": {
+"generate/physics": true
+},
+"PATH:CasinoFloor": {
+"generate/physics": true
+},
+"PATH:CasinoWall": {
+"generate/physics": true
+},
+"PATH:CasinoWall_001": {
+"generate/physics": true
+},
+"PATH:Cube_057": {
+"generate/physics": true
+},
+"PATH:Cube_058": {
+"generate/physics": true
+},
+"PATH:Cube_059": {
+"generate/physics": true
+},
+"PATH:Cube_060": {
+"generate/physics": true
+},
+"PATH:Cube_061": {
+"generate/physics": true
+},
+"PATH:Cube_062": {
+"generate/physics": true
+},
+"PATH:Cube_142": {
+"generate/physics": true
+},
+"PATH:Cube_150": {
+"generate/physics": true
+},
+"PATH:Cube_151": {
+"generate/physics": true
+},
+"PATH:Cube_152": {
+"generate/physics": true
+},
+"PATH:Cube_153": {
+"generate/physics": true
+},
+"PATH:Cube_154": {
+"generate/physics": true
+},
+"PATH:Cube_155": {
+"generate/physics": true
+},
+"PATH:Cube_156": {
+"generate/physics": true
+},
+"PATH:Cube_157": {
+"generate/physics": true
+},
+"PATH:Cube_158": {
+"generate/physics": true
+},
+"PATH:Cube_159": {
+"generate/physics": true
+},
+"PATH:Cube_160": {
+"generate/physics": true
+},
+"PATH:Cube_161": {
+"generate/physics": true
+},
+"PATH:Cube_162": {
+"generate/physics": true
+},
+"PATH:Cube_163": {
+"generate/physics": true
+},
+"PATH:Cube_164": {
+"generate/physics": true
+},
+"PATH:Cube_165": {
+"generate/physics": true
+},
+"PATH:Cube_166": {
+"generate/physics": true
+},
+"PATH:Cube_167": {
+"generate/physics": true
+},
+"PATH:Cube_168": {
+"generate/physics": true
+},
+"PATH:Cube_171": {
+"generate/physics": true
+},
+"PATH:Cube_174": {
+"generate/physics": true
+},
+"PATH:Cube_176": {
+"generate/physics": true
+},
+"PATH:Cube_178": {
+"generate/physics": true
+},
+"PATH:Cube_179": {
+"generate/physics": true
+},
+"PATH:Cube_180": {
+"generate/physics": true
+},
+"PATH:Cube_181": {
+"generate/physics": true
+},
+"PATH:Cube_182": {
+"generate/physics": true
+},
+"PATH:Cube_183": {
+"generate/physics": true
+},
+"PATH:Cube_184": {
+"generate/physics": true
+},
+"PATH:Cube_185": {
+"generate/physics": true
+},
+"PATH:Cube_186": {
+"generate/physics": true
+},
+"PATH:Cube_187": {
+"generate/physics": true
+},
+"PATH:Cube_188": {
+"generate/physics": true
+},
+"PATH:Cube_190": {
+"generate/physics": true
+},
+"PATH:Cube_191": {
+"generate/physics": true
+},
+"PATH:Cube_192": {
+"generate/physics": true
+},
+"PATH:Cube_193": {
+"generate/physics": true
+},
+"PATH:Cube_196": {
+"generate/physics": true
+},
+"PATH:Cube_197": {
+"generate/physics": true
+},
+"PATH:Cube_198": {
+"generate/physics": true
+},
+"PATH:Cube_200": {
+"generate/physics": true
+},
+"PATH:Cube_201": {
+"generate/physics": true
+},
+"PATH:Cube_268": {
+"generate/physics": true
+},
+"PATH:Cube_270": {
+"generate/physics": true
+},
+"PATH:Cube_271": {
+"generate/physics": true
+},
+"PATH:Cube_272": {
+"generate/physics": true
+},
+"PATH:Cube_273": {
+"generate/physics": true
+},
+"PATH:Cube_274": {
+"generate/physics": true
+},
+"PATH:Cube_275": {
+"generate/physics": true
+},
+"PATH:Cube_276": {
+"generate/physics": true
+},
+"PATH:Cube_277": {
+"generate/physics": true
+},
+"PATH:Cube_278": {
+"generate/physics": true
+},
+"PATH:Cube_279": {
+"generate/physics": true
+},
+"PATH:Cube_280": {
+"generate/physics": true
+},
+"PATH:Cube_281": {
+"generate/physics": true
+},
+"PATH:Cube_283": {
+"generate/physics": true
+},
+"PATH:Cube_284": {
+"generate/physics": true
+},
+"PATH:Cube_285": {
+"generate/physics": true
+},
+"PATH:Cube_289": {
+"generate/physics": true
+},
+"PATH:Cube_290": {
+"generate/physics": true
+},
+"PATH:Cube_291": {
+"generate/physics": true
+},
+"PATH:Cube_293": {
+"generate/physics": true
+},
+"PATH:Cube_294": {
+"generate/physics": true
+},
+"PATH:Cube_295": {
+"generate/physics": true
+},
+"PATH:Cube_296": {
+"generate/physics": true
+},
+"PATH:Cube_297": {
+"generate/physics": true
+},
+"PATH:Cube_298": {
+"generate/physics": true
+},
+"PATH:Cube_299": {
+"generate/physics": true
+},
+"PATH:Cube_300": {
+"generate/physics": true
+},
+"PATH:Cube_301": {
+"generate/physics": true
+},
+"PATH:Cube_302": {
+"generate/physics": true
+},
+"PATH:Cube_303": {
+"generate/physics": true
+},
+"PATH:Cube_304": {
+"generate/physics": true
+},
+"PATH:Cube_305": {
+"generate/physics": true
+},
+"PATH:Cube_306": {
+"generate/physics": true
+},
+"PATH:Cube_307": {
+"generate/physics": true
+},
+"PATH:Cube_308": {
+"generate/physics": true
+},
+"PATH:Cube_309": {
+"generate/physics": true
+},
+"PATH:Cube_310": {
+"generate/physics": true
+},
+"PATH:Cube_311": {
+"generate/physics": true
+},
+"PATH:Cube_312": {
+"generate/physics": true
+},
+"PATH:Cube_313": {
+"generate/physics": true
+},
+"PATH:Cube_314": {
+"generate/physics": true
+},
+"PATH:Cube_315": {
+"generate/physics": true
+},
+"PATH:Cube_316": {
+"generate/physics": true
+},
+"PATH:Cube_317": {
+"generate/physics": true
+},
+"PATH:Cube_318": {
+"generate/physics": true
+},
+"PATH:Cube_319": {
+"generate/physics": true
+},
+"PATH:Cube_320": {
+"generate/physics": true
+},
+"PATH:Cube_321": {
+"generate/physics": true
+},
+"PATH:Cube_322": {
+"generate/physics": true
+},
+"PATH:Cube_323": {
+"generate/physics": true
+},
+"PATH:Cube_324": {
+"generate/physics": true
+},
+"PATH:Cube_325": {
+"generate/physics": true
+},
+"PATH:Cube_326": {
+"generate/physics": true
+},
+"PATH:Cube_327": {
+"generate/physics": true
+},
+"PATH:Cube_328": {
+"generate/physics": true
+},
+"PATH:Cube_329": {
+"generate/physics": true
+},
+"PATH:Cube_330": {
+"generate/physics": true
+},
+"PATH:Cube_331": {
+"generate/physics": true
+},
+"PATH:Cube_332": {
+"generate/physics": true
+},
+"PATH:Cube_333": {
+"generate/physics": true
+},
+"PATH:Cube_334": {
+"generate/physics": true
+},
+"PATH:Cube_335": {
+"generate/physics": true
+},
+"PATH:Cube_336": {
+"generate/physics": true
+},
+"PATH:Cube_337": {
+"generate/physics": true
+},
+"PATH:Cube_338": {
+"generate/physics": true
+},
+"PATH:Cube_339": {
+"generate/physics": true
+},
+"PATH:Cube_340": {
+"generate/physics": true
+},
+"PATH:Cube_341": {
+"generate/physics": true
+},
+"PATH:Cube_342": {
+"generate/physics": true
+},
+"PATH:Cube_343": {
+"generate/physics": true
+},
+"PATH:Cube_344": {
+"generate/physics": true
+},
+"PATH:Cube_345": {
+"generate/physics": true
+},
+"PATH:Cube_346": {
+"generate/physics": true
+},
+"PATH:Cube_347": {
+"generate/physics": true
+},
+"PATH:Cube_348": {
+"generate/physics": true
+},
+"PATH:Cube_349": {
+"generate/physics": true
+},
+"PATH:Cube_350": {
+"generate/physics": true
+},
+"PATH:Cube_351": {
+"generate/physics": true
+},
+"PATH:Cube_352": {
+"generate/physics": true
+},
+"PATH:Cube_353": {
+"generate/physics": true
+},
+"PATH:Cube_354": {
+"generate/physics": true
+},
+"PATH:Cube_355": {
+"generate/physics": true
+},
+"PATH:Cube_356": {
+"generate/physics": true
+},
+"PATH:Cube_357": {
+"generate/physics": true
+},
+"PATH:Cube_358": {
+"generate/physics": true
+},
+"PATH:Cube_359": {
+"generate/physics": true
+},
+"PATH:Cube_360": {
+"generate/physics": true
+},
+"PATH:Cube_361": {
+"generate/physics": true
+},
+"PATH:Cube_362": {
+"generate/physics": true
+},
+"PATH:Cube_363": {
+"generate/physics": true
+},
+"PATH:Cube_364": {
+"generate/physics": true
+},
+"PATH:Cube_365": {
+"generate/physics": true
+},
+"PATH:Cube_366": {
+"generate/physics": true
+},
+"PATH:Cube_367": {
+"generate/physics": true
+},
+"PATH:Cube_368": {
+"generate/physics": true
+},
+"PATH:Cube_369": {
+"generate/physics": true
+},
+"PATH:Cube_370": {
+"generate/physics": true
+},
+"PATH:Cube_371": {
+"generate/physics": true
+},
+"PATH:Cube_372": {
+"generate/physics": true
+},
+"PATH:Cube_373": {
+"generate/physics": true
+},
+"PATH:Cube_374": {
+"generate/physics": true
+},
+"PATH:Cube_375": {
+"generate/physics": true
+},
+"PATH:Cube_376": {
+"generate/physics": true
+},
+"PATH:Cube_377": {
+"generate/physics": true
+},
+"PATH:Cube_378": {
+"generate/physics": true
+},
+"PATH:Cube_379": {
+"generate/physics": true
+},
+"PATH:Cube_380": {
+"generate/physics": true
+},
+"PATH:Cube_381": {
+"generate/physics": true
+},
+"PATH:Cube_382": {
+"generate/physics": true
+},
+"PATH:Cube_383": {
+"generate/physics": true
+},
+"PATH:Cube_410": {
+"generate/physics": true
+},
+"PATH:Cube_411": {
+"generate/physics": true
+},
+"PATH:Cube_434": {
+"generate/physics": true
+},
+"PATH:Cube_436": {
+"generate/physics": true
+},
+"PATH:Cube_437": {
+"generate/physics": true
+},
+"PATH:Cube_440": {
+"generate/physics": true
+},
+"PATH:Cube_441": {
+"generate/physics": true
+},
+"PATH:Cube_442": {
+"generate/physics": true
+},
+"PATH:Cube_444": {
+"generate/physics": true
+},
+"PATH:Cube_445": {
+"generate/physics": true
+},
+"PATH:Cube_446": {
+"generate/physics": true
+},
+"PATH:Cube_447": {
+"generate/physics": true
+},
+"PATH:Cube_449": {
+"generate/physics": true
+},
+"PATH:Cube_450": {
+"generate/physics": true
+},
+"PATH:Cube_451": {
+"generate/physics": true
+},
+"PATH:Cube_452": {
+"generate/physics": true
+},
+"PATH:Cube_453": {
+"generate/physics": true
+},
+"PATH:Cube_454": {
+"generate/physics": true
+},
+"PATH:Cube_455": {
+"generate/physics": true
+},
+"PATH:Cube_457": {
+"generate/physics": true
+},
+"PATH:Cube_458": {
+"generate/physics": true
+},
+"PATH:Cube_459": {
+"generate/physics": true
+},
+"PATH:Cube_460": {
+"generate/physics": true
+},
+"PATH:Cube_461": {
+"generate/physics": true
+},
+"PATH:Cube_462": {
+"generate/physics": true
+},
+"PATH:Cube_463": {
+"generate/physics": true
+},
+"PATH:Cube_464": {
+"generate/physics": true
+},
+"PATH:Cube_465": {
+"generate/physics": true
+},
+"PATH:Cube_466": {
+"generate/physics": true
+},
+"PATH:Cube_467": {
+"generate/physics": true
+},
+"PATH:Cube_468": {
+"generate/physics": true
+},
+"PATH:Cube_469": {
+"generate/physics": true
+},
+"PATH:Cube_470": {
+"generate/physics": true
+},
+"PATH:Cube_471": {
+"generate/physics": true
+},
+"PATH:Cube_472": {
+"generate/physics": true
+},
+"PATH:Cube_473": {
+"generate/physics": true
+},
+"PATH:Cube_474": {
+"generate/physics": true
+},
+"PATH:Cube_475": {
+"generate/physics": true
+},
+"PATH:Cube_476": {
+"generate/physics": true
+},
+"PATH:Cube_495": {
+"generate/physics": true
+},
+"PATH:Cube_496": {
+"generate/physics": true
+},
+"PATH:Cube_497": {
+"generate/physics": true
+},
+"PATH:Cube_498": {
+"generate/physics": true
+},
+"PATH:Cube_499": {
+"generate/physics": true
+},
+"PATH:Cube_500": {
+"generate/physics": true
+},
+"PATH:Cube_501": {
+"generate/physics": true
+},
+"PATH:Cube_502": {
+"generate/physics": true
+},
+"PATH:Cube_503": {
+"generate/physics": true
+},
+"PATH:Cube_504": {
+"generate/physics": true
+},
+"PATH:Cube_511": {
+"generate/physics": true
+},
+"PATH:Cube_513": {
+"generate/physics": true
+},
+"PATH:Cube_514": {
+"generate/physics": true
+},
+"PATH:Cube_515": {
+"generate/physics": true
+},
+"PATH:Cube_516": {
+"generate/physics": true
+},
+"PATH:Cube_517": {
+"generate/physics": true
+},
+"PATH:Cube_518": {
+"generate/physics": true
+},
+"PATH:Cube_519": {
+"generate/physics": true
+},
+"PATH:Cube_520": {
+"generate/physics": true
+},
+"PATH:Cube_521": {
+"generate/physics": true
+},
+"PATH:Cube_522": {
+"generate/physics": true
+},
+"PATH:Cube_523": {
+"generate/physics": true
+},
+"PATH:Cube_524": {
+"generate/physics": true
+},
+"PATH:Cube_525": {
+"generate/physics": true
+},
+"PATH:Cube_526": {
+"generate/physics": true
+},
+"PATH:Cube_527": {
+"generate/physics": true
+},
+"PATH:Cylinder_034": {
+"generate/physics": true
+},
+"PATH:Cylinder_035": {
+"generate/physics": true
+},
+"PATH:Cylinder_036": {
+"generate/physics": true
+},
+"PATH:Cylinder_053": {
+"generate/physics": true
+},
+"PATH:Cylinder_054": {
+"generate/physics": true
+},
+"PATH:Cylinder_056": {
+"generate/physics": true
+},
+"PATH:Cylinder_057": {
+"generate/physics": true
+},
+"PATH:Cylinder_058": {
+"generate/physics": true
+},
+"PATH:Cylinder_059": {
+"generate/physics": true
+},
+"PATH:Cylinder_075": {
+"generate/physics": true
+},
+"PATH:Cylinder_076": {
+"generate/physics": true
+},
+"PATH:Cylinder_077": {
+"generate/physics": true
+},
+"PATH:Cylinder_078": {
+"generate/physics": true
+},
+"PATH:Cylinder_080": {
+"generate/physics": true
+},
+"PATH:Cylinder_081": {
+"generate/physics": true
+},
+"PATH:Cylinder_082": {
+"generate/physics": true
+},
+"PATH:Cylinder_083": {
+"generate/physics": true
+},
+"PATH:Cylinder_084": {
+"generate/physics": true
+},
+"PATH:Cylinder_085": {
+"generate/physics": true
+},
+"PATH:Cylinder_086": {
+"generate/physics": true
+},
+"PATH:Cylinder_087": {
+"generate/physics": true
+},
+"PATH:Cylinder_088": {
+"generate/physics": true
+},
+"PATH:Cylinder_089": {
+"generate/physics": true
+},
+"PATH:Cylinder_090": {
+"generate/physics": true
+},
+"PATH:Cylinder_091": {
+"generate/physics": true
+},
+"PATH:Cylinder_092": {
+"generate/physics": true
+},
+"PATH:Cylinder_093": {
+"generate/physics": true
+},
+"PATH:Cylinder_094": {
+"generate/physics": true
+},
+"PATH:Cylinder_095": {
+"generate/physics": true
+},
+"PATH:Cylinder_096": {
+"generate/physics": true
+},
+"PATH:Cylinder_098": {
+"generate/physics": true
+},
+"PATH:Cylinder_100": {
+"generate/physics": true
+},
+"PATH:Cylinder_101": {
+"generate/physics": true
+},
+"PATH:Cylinder_102": {
+"generate/physics": true
+},
+"PATH:Cylinder_104": {
+"generate/physics": true
+},
+"PATH:Cylinder_105": {
+"generate/physics": true
+},
+"PATH:Cylinder_111": {
+"generate/physics": true
+},
+"PATH:Cylinder_112": {
+"generate/physics": true
+},
+"PATH:Cylinder_113": {
+"generate/physics": true
+},
+"PATH:Cylinder_114": {
+"generate/physics": true
+},
+"PATH:Cylinder_115": {
+"generate/physics": true
+},
+"PATH:Cylinder_116": {
+"generate/physics": true
+},
+"PATH:Cylinder_117": {
+"generate/physics": true
+},
+"PATH:GrocerySign": {
+"generate/physics": true
+},
+"PATH:GroceryWall": {
+"generate/physics": true
+},
+"PATH:GroceryWall_001": {
+"generate/physics": true
+},
+"PATH:GroceryWall_002": {
+"generate/physics": true
+},
+"PATH:GroceryWall_003": {
+"generate/physics": true
+},
+"PATH:GroceryWall_004": {
+"generate/physics": true
+},
+"PATH:GroceryWall_005": {
+"generate/physics": true
+},
+"PATH:GroceryWall_006": {
+"generate/physics": true
+},
+"PATH:GroceryWall_007": {
+"generate/physics": true
+},
+"PATH:Icosphere": {
+"generate/physics": true
+},
+"PATH:Level_001/Walls/Walls40": {
+"generate/physics": true
+},
+"PATH:Level_001/Walls/Walls41": {
+"generate/physics": true
+},
+"PATH:Poker": {
+"generate/physics": true
+},
+"PATH:Poker_001": {
+"generate/physics": true
+},
+"PATH:Roulette": {
+"generate/physics": true
+},
+"PATH:Roulette_001": {
+"generate/physics": true
+},
+"PATH:Slots": {
+"generate/physics": true
+},
+"PATH:Stool": {
+"generate/physics": true
+},
+"PATH:Stool_001": {
+"generate/physics": true
+},
+"PATH:Stool_002": {
+"generate/physics": true
+},
+"PATH:Stool_003": {
+"generate/physics": true
+},
+"PATH:Stool_004": {
+"generate/physics": true
+},
+"PATH:Stool_005": {
+"generate/physics": true
+},
+"PATH:Stool_006": {
+"generate/physics": true
+},
+"PATH:Stool_007": {
+"generate/physics": true
+},
+"PATH:Stool_008": {
+"generate/physics": true
+},
+"PATH:Stool_009": {
+"generate/physics": true
+},
+"PATH:Stool_010": {
+"generate/physics": true
+},
+"PATH:Stool_011": {
+"generate/physics": true
+},
+"PATH:Stool_012": {
+"generate/physics": true
+},
+"PATH:Stool_013": {
+"generate/physics": true
+},
+"PATH:Stool_014": {
+"generate/physics": true
+},
+"PATH:Stool_015": {
+"generate/physics": true
+},
+"PATH:Stool_016": {
+"generate/physics": true
+},
+"PATH:Stool_017": {
+"generate/physics": true
+},
+"PATH:Stool_018": {
+"generate/physics": true
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2
