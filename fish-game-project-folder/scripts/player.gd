@@ -380,7 +380,12 @@ func _physics_process(delta: float) -> void:
 			collider._on_interact(self)
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+			return
+	
+>>>>>>> Stashed changes
 =======
 			return
 	
