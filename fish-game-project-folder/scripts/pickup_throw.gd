@@ -51,6 +51,7 @@ func _pick_up(holdable: RigidBody3D) -> void:
 func _charge_throw(delta: float) -> void:
 	self.throw_charge += delta
 	self.throw_charge = min(throw_charge, throw_charge_time)
+	self.throw_charge = ease(self.throw_charge/throw_charge_time, 0.5)
 
 
 func _throw(holdable: RigidBody3D) -> void:
@@ -69,7 +70,7 @@ func _throw(holdable: RigidBody3D) -> void:
 
 	var camera_pivot: Node3D = player.get_node("CameraPivot")
 	var forward: Vector3 = -camera_pivot.global_transform.basis.z
-	var drop_dist := 2.0
+	var drop_dist := 0.5
 	holdable.global_position = player.global_position + forward * drop_dist
 
 	var cs := holdable.get_node_or_null("CollisionShape3D") as CollisionShape3D
