@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://db0vh5tiik48j" path="res://scripts/player.gd" id="1_067cb"]
 [ext_resource type="Script" uid="uid://ctmkxp74vlma0" path="res://scripts/pickup_throw.gd" id="2_g2els"]
-[ext_resource type="Script" uid="uid://2wh7swcis7wf" path="res://scripts/player_raycast.gd" id="2_qhqgy"]
+[ext_resource type="Script" path="res://scripts/player_raycast.gd" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://c28f3lttpycnx" path="res://assets/Sounds/oof.mp3" id="5_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://cbhj7uwsid5yv" path="res://assets/Sounds/Hit.wav" id="5_smehm"]
@@ -113,6 +113,7 @@ collision_mask = 3
 script = ExtResource("1_067cb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_quwqr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

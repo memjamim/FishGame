@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_rb8pp"]
 [ext_resource type="Material" uid="uid://drsyd51qqotu8" path="res://art/water_material.tres" id="5_54nh1"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="7_1blye"]
-[ext_resource type="Script" uid="uid://c0t2vuven0b2p" path="res://scripts/slide_interact.gd" id="9_3q2eb"]
+[ext_resource type="Script" path="res://scripts/slide_interact.gd" id="9_3q2eb"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
 
