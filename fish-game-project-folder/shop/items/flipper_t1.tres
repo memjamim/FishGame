@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://bc0501jo8jm3h"]
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://bc0501jo8jm3h"]
 
-[ext_resource type="Texture2D" uid="uid://ccfcdl3kk5g8l" path="res://shop/icons/flippers.png" id="1_uip43"]
+[ext_resource type="Texture2D" uid="uid://c8x5txe0vwbte" path="res://shop/icons/ShoddyFlippers.png" id="1_uip43"]
+[ext_resource type="PackedScene" uid="uid://m01iqu65up6u" path="res://shop/item scenes/flippers_t1.tscn" id="1_xpewc"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_xpewc"]
 
 [resource]
 script = ExtResource("2_xpewc")
 flipper_speed_multiplier = 1.2
+display_scene = ExtResource("1_xpewc")
 item_id = "flipper_t1"
 family_id = "flipper"
 cost = 100
-display_name = "Basic Flippers"
+display_name = "Shoddy Flippers"
 icon = ExtResource("1_uip43")
 effect_type = 5
 metadata/_custom_type_script = "uid://dp30l0sce605q"
