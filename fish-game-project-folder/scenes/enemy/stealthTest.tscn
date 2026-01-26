@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=19 format=3 uid="uid://c2td7c2d17p1f"]
 
 [ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="9_5vawu"]
 [ext_resource type="PackedScene" uid="uid://de6aau884ebv6" path="res://shop/item scenes/t3_weapon.tscn" id="10_14ka3"]
 [ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="10_gns3y"]
+[ext_resource type="PackedScene" uid="uid://djq47kacg6wsg" path="res://assets/coins/small_coin_collectable.tscn" id="12_3oafe"]
+[ext_resource type="PackedScene" uid="uid://dnn5wdnto4sn0" path="res://assets/coins/medium_coin_collectable.tscn" id="13_naa32"]
+[ext_resource type="PackedScene" uid="uid://cdme4fjrubni4" path="res://assets/coins/large_coin_collectable.tscn" id="14_0g1ub"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ijls6"]
 size = Vector2(20, 20)
@@ -149,3 +152,12 @@ player_path = NodePath("../Player")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("10_gns3y")]
 transform = Transform3D(0.30635995, 0, -0.95191574, 0, 1, 0, 0.95191574, 0, 0.30635995, -21.516161, 0.6941873, 7.4756436)
+
+[node name="small_coin_collectable" parent="." instance=ExtResource("12_3oafe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05786705, 0.021005245, 3.1028452)
+
+[node name="medium_coin_collectable" parent="." instance=ExtResource("13_naa32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7791377, 0.016577402, 3.1103342)
+
+[node name="large_coin_collectable" parent="." instance=ExtResource("14_0g1ub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6585553, 0.04994136, 3.3178573)
