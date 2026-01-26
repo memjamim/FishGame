@@ -2,6 +2,8 @@ extends Node3D
 
 @export var toys_to_advance := 3
 @export var toy_scene: PackedScene
+@export var t1_enemy_scene: PackedScene
+@export var t2_enemy_scene: PackedScene
 
 var current_level = 1
 var toys_sold_this_level = 0

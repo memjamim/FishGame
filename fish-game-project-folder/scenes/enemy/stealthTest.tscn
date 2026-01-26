@@ -24,6 +24,8 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 [node name="StealthTest" type="Node3D"]
 script = ExtResource("1_5vawu")
 toy_scene = ExtResource("7_kvqo1")
+t1_enemy_scene = ExtResource("2_b0xup")
+t2_enemy_scene = ExtResource("10_gns3y")
 
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("1_wassk")
@@ -75,34 +77,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5782394, 0.4833276, -5.714
 [node name="CollectionPoint" parent="." instance=ExtResource("8_kvqo1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.687381, 0.3625158, 0.17330927)
 
-[node name="SpawnPoints" type="Node3D" parent="."]
+[node name="ItemSpawnPoints" type="Node3D" parent="."]
 
-[node name="L1_Item_Spawn_1" type="Marker3D" parent="SpawnPoints"]
+[node name="L1_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, 1.4687924)
 
-[node name="L1_Item_Spawn_2" type="Marker3D" parent="SpawnPoints"]
+[node name="L1_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, -0.03506434)
 
-[node name="L1_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
+[node name="L1_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.351753, 0.0572747, -1.5293468)
 
-[node name="L2_Item_Spawn_1" type="Marker3D" parent="SpawnPoints"]
+[node name="L2_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, 1.4687924)
 
-[node name="L2_Item_Spawn_2" type="Marker3D" parent="SpawnPoints"]
+[node name="L2_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, -0.038752556)
 
-[node name="L2_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
+[node name="L2_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.949612, 0.0572747, -1.5360272)
 
-[node name="L3_Item_Spawn_1" type="Marker3D" parent="SpawnPoints"]
+[node name="L3_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 1.4687924)
 
-[node name="L3_Item_Spawn_2" type="Marker3D" parent="SpawnPoints"]
+[node name="L3_Item_Spawn_2" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.002709508)
 
-[node name="L3_Item_Spawn_3" type="Marker3D" parent="SpawnPoints"]
+[node name="L3_Item_Spawn_3" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
+
+[node name="EnemySpawnPoints" type="Node3D" parent="."]
+
+[node name="T1_Enemy_Spawn_1" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.59824, 0, -0.96727896)
+
+[node name="T1_Enemy_Spawn_2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.603638, 0, 0)
+
+[node name="T1_Enemy_Spawn_3" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.675983, 0, 1.2516723)
+
+[node name="T1_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.308302, 0, -1.0394871)
+
+[node name="T1_Enemy_Spawn_5" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.296081, 0, 0)
+
+[node name="T1_Enemy_Spawn_6" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.280331, 0, 1.1976292)
+
+[node name="T1_Enemy_Spawn_7" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.567045, 0, -1.0394871)
+
+[node name="T1_Enemy_Spawn_8" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.567045, 0, -0.0036283731)
+
+[node name="T1_Enemy_Spawn_9" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.567045, 0, 1.2328216)
+
+[node name="T2_Enemy_Spawn_1" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.43201, 0, -1.1954211)
+
+[node name="T2_Enemy_Spawn_2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.43201, 0, 0.016196728)
+
+[node name="T2_Enemy_Spawn_3" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.43201, 0, 1.2799692)
+
+[node name="T2_Enemy_Spawn_4" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.812323, 0, -0.015909433)
 
 [node name="DenayrouzeNPC" parent="." instance=ExtResource("9_5vawu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7304807, 0.57425404, 2.8453996)
