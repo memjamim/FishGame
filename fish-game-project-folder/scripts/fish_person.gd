@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var vision_raycast: RayCast3D = $VisionRaycast
 @onready var attack_area: Area3D = $AttackArea
-# @onready var player_path = $'../Player'
+@onready var player_path = $'../Player'
 var player: CharacterBody3D 
 
 # ---------------- MOVEMENT ----------------
@@ -36,14 +36,9 @@ const ANIM_NAME := "fast_swim"
 # ----------------------------------------------------
 
 func _ready() -> void:
-	if player == null:
-		player = get_tree().get_root().find_node("Player")
-		if player == null:
-			push_warning("Enemy has no player reference and could not find Player node in scene!")
-		else:
-			print("Player reference found automatically:", player)
-
+	player = player_path
 	health = max_health
+
 	anim_player.play(ANIM_NAME)
 	_pick_idle_dir()
 	move_dir = idle_dir
