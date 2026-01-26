@@ -84,7 +84,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6hgcp")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kvqo1"]
-radius = 0.93847656
+height = 3.8061523
+radius = 3.3769531
 
 [node name="CollectionPoint" type="Node3D"]
 script = ExtResource("1_iwa1u")
@@ -104,7 +105,7 @@ skeleton = NodePath("")
 transform = Transform3D(0.0060640923, 0, 0, 0, -8.7357e-11, -0.005907823, 0, 0.001998496, -2.5823912e-10, -0.0006332882, 0.0009729662, 0.0004746627)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/bucket_mesh/HoldableHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.516189e-19, 0, 8.427978e-20, 0.9999878, 0.111680984, 0.2874637, 0.17091005)
+transform = Transform3D(1, 0, 0, 0, 1, 4.2012834e-19, 0, 2.3039296e-19, 0.9999666, 0.111680984, 1.19054, 0.17090979)
 shape = SubResource("CylinderShape3D_kvqo1")
 
 [connection signal="body_entered" from="StaticBody3D/bucket_mesh/HoldableHitbox" to="." method="_on_holdable_hitbox_body_entered"]

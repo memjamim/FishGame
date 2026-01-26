@@ -5,6 +5,7 @@ extends WorldEnvironment
 @export var t1_enemy_scene: PackedScene
 @export var t2_enemy_scene: PackedScene
 @onready var player = $Player
+@onready var poolCover = $PoolCorner
 
 # Enemy spawn variables
 @export var enemies_per_wave := 4
@@ -143,6 +144,9 @@ func _on_toy_sold() -> void:
 	if toys_sold_this_level >= toys_to_advance:
 		toys_sold_this_level = 0
 		current_level += 1
+		
+		if current_level == 2 and is_instance_valid(poolCover):
+			poolCover.queue_free()
 
 	spawn_toy()
 	spawn_enemies()

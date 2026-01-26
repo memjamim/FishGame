@@ -1,0 +1,98 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bokcohq5dqrgh"
+path="res://.godot/imported/poolTunnel.fbx-4031834a6cc9cb464b14a0bff48e87a8.scn"
+
+[deps]
+
+source_file="res://scenes/levels/PoolCorner/poolTunnel.fbx"
+dest_files=["res://.godot/imported/poolTunnel.fbx-4031834a6cc9cb464b14a0bff48e87a8.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Cube_070": {
+"generate/physics": true
+},
+"PATH:Cube_072": {
+"generate/physics": true
+},
+"PATH:Cube_073": {
+"generate/physics": true
+},
+"PATH:Cube_074": {
+"generate/physics": true
+},
+"PATH:Cube_075": {
+"generate/physics": true
+},
+"PATH:Cube_076": {
+"generate/physics": true
+},
+"PATH:Cube_077": {
+"generate/physics": true
+},
+"PATH:Cube_078": {
+"generate/physics": true
+},
+"PATH:Cube_079": {
+"generate/physics": true
+},
+"PATH:Cube_080": {
+"generate/physics": true
+},
+"PATH:Cylinder_062": {
+"generate/physics": true
+},
+"PATH:Cylinder_063": {
+"generate/physics": true
+},
+"PATH:Plane_015": {
+"generate/physics": true
+},
+"PATH:Plane_017": {
+"generate/physics": true
+},
+"PATH:Plane_111": {
+"generate/physics": true
+},
+"PATH:Plane_113": {
+"generate/physics": true
+},
+"PATH:Plane_114": {
+"generate/physics": true
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

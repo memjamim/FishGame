@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=4 uid="uid://bj3wmr2pfhtjm"]
+
+[ext_resource type="Texture2D" uid="uid://cplr3ikvxna66" path="res://scenes/levels/PoolCorner/PoolCorner_0.png" id="1_edv7w"]
+[ext_resource type="Texture2D" uid="uid://s34wr3qmg8ag" path="res://scenes/levels/PoolCorner/PoolCorner_1.png" id="2_jpaq0"]
+[ext_resource type="Texture2D" uid="uid://1eij4mrww8oo" path="res://scenes/levels/PoolCorner/PoolCorner_3.png" id="3_f0kea"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8penq"]
+resource_name = "poolTile"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_edv7w")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0e0c"]
+resource_name = "bluepooltile"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_jpaq0")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lacfo"]
+resource_name = "cementBase"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_f0kea")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q7rhn"]
+_surfaces = [{
+"aabb": AABB(-0.051559333, -1.493454e-05, 0, 0.051559333, 0.06791352, 1e-05),
+"format": 34359742465,
+"index_count": 57,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAAAAAFAAQABQAAAAYABgAHAAUACAAHAAYABgAJAAgACQAGAAoACwAIAAkACQAMAAsADQAMAAkADQAOAAwADwAOAA0ADAAOABAAEAARAAwAEAASABEAEgATABEAEAAUABIA"),
+"name": "poolTile",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 21,
+"vertex_data": PackedByteArray("pKwGvTEkBz0AAAAAwHQZvRQ+5jwAAAAAwHQZvekjBz0AAAAAwHQZvc3MjLYAAAAAAAAAAAAAAAAAAAAAFO5nuSQmBz0AAAAApKwGveEnGT0AAAAAUjgduZopGT0AAAAA9mgVuXGqLD0AAAAAwHQZvQpYLT0AAAAAwHQZvaQnGT0AAAAACtfDt2kOiz0AAAAA4S9TvWoOiz0AAAAALkgsvcpTLT0AAAAACLw/vakmGT0AAAAALkgsvZIiGT0AAAAACLw/vcoiBz0AAAAA4S9Tva5HITYAAAAALkgsvdww5jwAAAAALkgsvVyPercAAAAALkgsvRweBz0AAAAA")
+}, {
+"aabb": AABB(-0.04681018, -1.493454e-05, 0, 0.013930693, 0.042335223, 1e-05),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAAAAAAGAAQABgAAAAMAAwAHAAYABwADAAgABgAHAAkACQAKAAYACAALAAcACwAIAAwADAANAAsA"),
+"name": "bluepooltile",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("wHQZvaQnGT0AAAAApKwGveEnGT0AAAAApKwGvTEkBz0AAAAAwHQZvekjBz0AAAAALkgsvcpTLT0AAAAAwHQZvQpYLT0AAAAALkgsvZIiGT0AAAAALkgsvRweBz0AAAAAwHQZvRQ+5jwAAAAACLw/vcoiBz0AAAAACLw/vakmGT0AAAAALkgsvdww5jwAAAAAwHQZvc3MjLYAAAAALkgsvVyPercAAAAA")
+}, {
+"aabb": AABB(-0.051005043, 0.00025942802, -0.00065906526, 0.051139597, 0.06786912, 0.032204818),
+"format": 34359742465,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAwACAAQABAAFAAMA"),
+"name": "cementBase",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("7IHOufuGiz0fNgE9ChcNOfuGiz0fxSy6j8BOvfaGiz0fxSy6qupQvfaGiz0fNgE9qupQvdcDiDkfpSa6qupQvdcDiDkfNgE9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qvpcb"]
+resource_name = "Plane_002"
+_surfaces = [{
+"aabb": AABB(-0.051559333, -1.493454e-05, 0, 0.051559333, 0.06791352, 1e-05),
+"attribute_data": PackedByteArray("yi2AQNIuEMFvB4hAvv8LwW8HiEDDLhDBcAeIQKjf58A2xw9AfOHnwBiJEEA8LxDByy2AQJryE8GiShBA9vITwRxEEEBiBhjBcAeIQKoqGMFwB4hAjPITwavbD0DLDy7BqiigQM8PLsHQ5Y9AyikYwT0HmEBY8hPB0OWPQH/xE8HQ5Y9AYP4LwdDlj0D02ufAqiigQIzi58A9B5hAiS4QwaoooEDPDy7BPQeYQFjyE8E9B5hAiS4QwdDlj0CQLRDB0OWPQGD+C8GqKKBAjOLnwA=="),
+"format": 34359742487,
+"index_count": 57,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAAAAAFAAQABQAAAAYABgAHAAUACAAHAAYABgAJAAgACQAGAAoACwAIAAkACQAMAAsADQAMAAkADQAOAAwADwAOAA0AEAARABIAEwASABQAFAAVABMAFgAXABgAFgAYABkA"),
+"material": SubResource("StandardMaterial3D_8penq"),
+"name": "poolTile",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("pKwGvTEkBz0AAAAAwHQZvRQ+5jwAAAAAwHQZvekjBz0AAAAAwHQZvc3MjLYAAAAAAAAAAAAAAAAAAAAAFO5nuSQmBz0AAAAApKwGveEnGT0AAAAAUjgduZopGT0AAAAA9mgVuXGqLD0AAAAAwHQZvQpYLT0AAAAAwHQZvaQnGT0AAAAACtfDt2kOiz0AAAAA4S9TvWoOiz0AAAAALkgsvcpTLT0AAAAACLw/vakmGT0AAAAALkgsvZIiGT0AAAAALkgsvdww5jwAAAAALkgsvVyPercAAAAA4S9Tva5HITYAAAAACLw/vcoiBz0AAAAA4S9TvWoOiz0AAAAACLw/vakmGT0AAAAACLw/vcoiBz0AAAAALkgsvRweBz0AAAAALkgsvdww5jwAAAAA4S9Tva5HITYAAAAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAAAED/f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/Pw==")
+}, {
+"aabb": AABB(-0.04681018, -1.493454e-05, 0, 0.013930693, 0.042335223, 1e-05),
+"attribute_data": PackedByteArray("cAeIQIzyE8HLLYBAmvITwcotgEDSLhDBbweIQMMuEMHQ5Y9AyikYwXAHiECqKhjB0OWPQH/xE8HQ5Y9AkC0QwW8HiEC+/wvBPQeYQIkuEME9B5hAWPITwdDlj0Bg/gvBcAeIQKjf58DQ5Y9A9NrnwA=="),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAAAAAAGAAQABgAAAAMAAwAHAAYABwADAAgABgAHAAkACQAKAAYACAALAAcACwAIAAwADAANAAsA"),
+"material": SubResource("StandardMaterial3D_b0e0c"),
+"name": "bluepooltile",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("wHQZvaQnGT0AAAAApKwGveEnGT0AAAAApKwGvTEkBz0AAAAAwHQZvekjBz0AAAAALkgsvcpTLT0AAAAAwHQZvQpYLT0AAAAALkgsvZIiGT0AAAAALkgsvRweBz0AAAAAwHQZvRQ+5jwAAAAACLw/vcoiBz0AAAAACLw/vakmGT0AAAAALkgsvdww5jwAAAAAwHQZvc3MjLYAAAAALkgsvVyPercAAAAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/Pw==")
+}, {
+"aabb": AABB(-0.051005043, 0.00025942802, -0.00065906526, 0.051139597, 0.06786912, 0.032204818),
+"attribute_data": PackedByteArray("YEMZPhTv4j4oHyo+LA5/P7KPtL8sDn8/KKu2vxTv4j5KYOo/eN5+P0pg6j8U7+I+AoN8QBTv4j4Cg3xALA5/Pw=="),
+"format": 34359742487,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQA"),
+"material": SubResource("StandardMaterial3D_lacfo"),
+"name": "cementBase",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("7IHOufuGiz0fNgE9ChcNOfuGiz0fxSy6j8BOvfaGiz0fxSy6qupQvfaGiz0fNgE9qupQvdcDiDkfpSa6qupQvdcDiDkfNgE9qupQvfaGiz0fNgE9j8BOvfaGiz0fxSy6/38AAP7//7//fwAA/v//v/9/AAD+//+//38AAP7//793/oF/foC9/3f+gX9+gL7/d/6Bf36AvP93/oF/foC7/w==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_q7rhn")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_w2ndl"]
+data = PackedVector3Array(-0.032879487, 0.0329935, 0, -0.037464857, 0.028105773, 0, -0.037464857, 0.03299323, 0, -0.00014248848, 0.042154733, 0, -0.00014993668, 0.03739319, 0, -0.032879487, 0.037391547, 0, -0.032879487, 0.037391547, 0, -0.037464857, 0.04232029, 0, -0.00014248848, 0.042154733, 0, -0.037464857, 0.04232029, 0, -0.032879487, 0.037391547, 0, -0.037464857, 0.03739132, 0, -0.042061023, 0.02809947, 0, -0.042061023, -1.493454e-05, 0, -0.051559333, 2.4032593e-06, 0, -0.00022118568, 0.032995358, 0, -0.032879487, 0.0329935, 0, -0.032879487, 0.037391547, 0, -0.032879487, 0.037391547, 0, -0.00014993668, 0.03739319, 0, -0.00022118568, 0.032995358, 0, -0.04681018, 0.03299216, 0, -0.042061023, 0.0329877, 0, -0.042061023, 0.02809947, 0, -0.042061023, 0.042316236, 0, -0.051559333, 0.06789859, 0, -0.037464857, 0.04232029, 0, -0.042061023, 0.037386484, 0, -0.04681018, 0.037390385, 0, -0.042061023, 0.042316236, 0, -0.04681018, 0.03299216, 0, -0.042061023, 0.02809947, 0, -0.051559333, 2.4032593e-06, 0, -0.042061023, 0.042316236, 0, -0.04681018, 0.037390385, 0, -0.051559333, 0.06789859, 0, -0.051559333, 0.06789859, 0, -0.04681018, 0.037390385, 0, -0.04681018, 0.03299216, 0, -0.04681018, 0.03299216, 0, -0.051559333, 2.4032593e-06, 0, -0.051559333, 0.06789859, 0, 0, 0, 0, -0.037464857, -4.196167e-06, 0, -0.032879487, 0.0329935, 0, -0.032879487, 0.0329935, 0, -0.00022118568, 0.032995358, 0, 0, 0, 0, -0.032879487, 0.0329935, 0, -0.037464857, -4.196167e-06, 0, -0.037464857, 0.028105773, 0, -2.3345947e-05, 0.06789858, 0, -0.00014248848, 0.042154733, 0, -0.037464857, 0.04232029, 0, -0.037464857, 0.04232029, 0, -0.051559333, 0.06789859, 0, -2.3345947e-05, 0.06789858, 0, -0.037464857, 0.03739132, 0, -0.032879487, 0.037391547, 0, -0.032879487, 0.0329935, 0, -0.032879487, 0.0329935, 0, -0.037464857, 0.03299323, 0, -0.037464857, 0.03739132, 0, -0.042061023, 0.02809947, 0, -0.037464857, 0.028105773, 0, -0.037464857, -4.196167e-06, 0, -0.037464857, -4.196167e-06, 0, -0.042061023, -1.493454e-05, 0, -0.042061023, 0.02809947, 0, -0.042061023, 0.042316236, 0, -0.037464857, 0.04232029, 0, -0.037464857, 0.03739132, 0, -0.037464857, 0.03739132, 0, -0.042061023, 0.037386484, 0, -0.042061023, 0.042316236, 0, -0.04681018, 0.03299216, 0, -0.04681018, 0.037390385, 0, -0.042061023, 0.037386484, 0, -0.042061023, 0.037386484, 0, -0.042061023, 0.0329877, 0, -0.04681018, 0.03299216, 0, -0.037464857, 0.03299323, 0, -0.042061023, 0.0329877, 0, -0.042061023, 0.037386484, 0, -0.042061023, 0.037386484, 0, -0.037464857, 0.03739132, 0, -0.037464857, 0.03299323, 0, -0.037464857, 0.028105773, 0, -0.042061023, 0.02809947, 0, -0.042061023, 0.0329877, 0, -0.042061023, 0.0329877, 0, -0.037464857, 0.03299323, 0, -0.037464857, 0.028105773, 0, -0.0003938818, 0.06812855, 0.031545755, 0.0001345539, 0.06812855, -0.00065906526, -0.050476607, 0.06812851, -0.00065906526, -0.050476607, 0.06812851, -0.00065906526, -0.051005043, 0.06812851, 0.031545755, -0.0003938818, 0.06812855, 0.031545755, -0.051005043, 0.00025942802, -0.00063570024, -0.051005043, 0.00025942802, 0.031545755, -0.051005043, 0.06812851, 0.031545755, -0.051005043, 0.06812851, 0.031545755, -0.050476607, 0.06812851, -0.00065906526, -0.051005043, 0.00025942802, -0.00063570024)
+
+[node name="PoolCorner" type="Node3D"]
+
+[node name="Plane_112" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -3.7366202, -4.3647356, -5.2414045)
+mesh = SubResource("ArrayMesh_qvpcb")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_112"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_112/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_w2ndl")
