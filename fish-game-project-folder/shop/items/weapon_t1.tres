@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://cuhck57fcrmqk"]
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=5 format=3 uid="uid://cuhck57fcrmqk"]
 
+[ext_resource type="PackedScene" uid="uid://by8pkjnmct0q0" path="res://shop/item scenes/t1_weaponInShop.tscn" id="1_qc45n"]
 [ext_resource type="Texture2D" uid="uid://cdy07fcmson0o" path="res://shop/icons/OysterKnife.png" id="2_3qbe8"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_pbc4d"]
 [ext_resource type="PackedScene" uid="uid://ta1rtoa3opt5" path="res://shop/item scenes/t1_weapon.tscn" id="2_qc45n"]
 
 [resource]
 script = ExtResource("2_pbc4d")
-display_scene = ExtResource("2_qc45n")
+display_scene = ExtResource("1_qc45n")
 grant_scene = ExtResource("2_qc45n")
 is_weapon = true
 item_id = "weapon_t1"
