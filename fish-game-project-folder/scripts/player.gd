@@ -694,6 +694,12 @@ func hit(damage, dir):
 	
 	_set_taking_damage()
 
+func _format_money_from_cents(cents: int) -> String:
+	cents = max(0, cents)
+	var dollars := cents / 100
+	var rem_cents := cents % 100
+	return "$%d.%02d" % [dollars, rem_cents]
+
 
 func _update_ui() -> void:
 	if breath_bar:
@@ -703,7 +709,7 @@ func _update_ui() -> void:
 	if coin_counter:
 		var lbl := coin_counter.find_child("Label", true, false) as Label
 		if lbl:
-			lbl.text = str(_collectables)
+			lbl.text = _format_money_from_cents(_collectables)
 
 func _get_action_key_text(action: StringName) -> String:
 	# Returns something like "E" based on current InputMap binding.
@@ -742,8 +748,16 @@ func _build_prompt_for_collider(collider: Object) -> String:
 		var sp := collider as ShopPickup
 		if sp.item_data != null:
 			var name := sp.item_data.display_name if sp.item_data.display_name != "" else sp.item_data.item_id
-			return "Buy %s  $%d  %s" % [name, sp.item_data.cost, key_hint]
+
+			# cost is in cents (1 coin = $0.01)
+			var cents: int = int(sp.item_data.cost)
+			var dollars := cents / 100
+			var rem_cents := cents % 100
+			var price_text := "$%d.%02d" % [dollars, rem_cents]
+
+			return "Buy %s  %s  %s" % [name, price_text, key_hint]
 		return "Buy  %s" % key_hint
+
 
 	# NPC (choose one: group "npc" OR method "talk")
 	if collider is Node and ((collider as Node).is_in_group("npc") or collider.has_method("talk")):

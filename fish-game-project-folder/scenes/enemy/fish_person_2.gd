@@ -4,8 +4,7 @@ extends CharacterBody3D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var vision_raycast: RayCast3D = $VisionRaycast
 @onready var attack_area: Area3D = $AttackArea
-
-@export var player_path: NodePath
+@onready var player_path = $'../Player'
 var player: CharacterBody3D
 
 # ---------------- MOVEMENT ----------------
@@ -37,7 +36,7 @@ const ANIM_NAME := "Armature_009|Armature_009|Armature|ArmatureAction"
 # ----------------------------------------------------
 
 func _ready() -> void:
-	player = get_node(player_path)
+	player = player_path
 	health = max_health
 
 	anim_player.play(ANIM_NAME)
