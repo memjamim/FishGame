@@ -7,7 +7,7 @@
 script = ExtResource("2_h5bj0")
 item_id = "headlamp"
 family_id = "headlamp"
-cost = 5
+cost = 500
 display_name = "Headlamp"
 icon = ExtResource("1_uraux")
 effect_type = 3
