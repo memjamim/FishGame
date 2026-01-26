@@ -62,7 +62,7 @@ func _try_refresh() -> void:
 func on_item_bought(player: CharacterBody3D, slot: Node3D) -> void:
 	# Add any new items that just became available (wetsuit_t2 when wetsuit_t1 is bought)
 	var newly_available := _get_available_items(player)
-
+	
 	# But don't re-add items already in queue or currently displayed
 	var existing_ids: Dictionary = {}
 	for it in _queue:
@@ -71,7 +71,7 @@ func on_item_bought(player: CharacterBody3D, slot: Node3D) -> void:
 		var p := _slot_to_pickup[s] as ShopPickup
 		if p != null and p.item_data != null:
 			existing_ids[p.item_data.item_id] = true
-
+	
 	for it in newly_available:
 		if not existing_ids.has(it.item_id):
 			_queue.append(it)
