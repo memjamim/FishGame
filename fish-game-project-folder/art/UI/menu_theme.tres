@@ -1,11 +1,17 @@
-[gd_resource type="Theme" format=3 uid="uid://bbxq3huxritnu"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bbxq3huxritnu"]
+
+[ext_resource type="FontFile" uid="uid://dctnr4awn6r6j" path="res://art/UI/Ducks Fiesta.ttf" id="1_ll4pp"]
+[ext_resource type="FontFile" uid="uid://dlbu28rh3lqla" path="res://art/UI/Hey Comic.ttf" id="1_tj0pf"]
 
 [resource]
 Button/colors/font_outline_color = Color(0, 0.21960784, 0.2784314, 1)
 Button/constants/outline_size = 10
+Button/fonts/font = ExtResource("1_tj0pf")
 Label/colors/font_shadow_color = Color(0, 0.21960784, 0.2784314, 1)
 Label/constants/shadow_offset_x = 5
 Label/constants/shadow_outline_size = 10
+Label/fonts/font = ExtResource("1_ll4pp")
 RichTextLabel/colors/font_shadow_color = Color(0, 0.21960784, 0.2784314, 1)
 RichTextLabel/constants/shadow_offset_x = 10
 RichTextLabel/constants/shadow_outline_size = 7
+RichTextLabel/fonts/normal_font = ExtResource("1_tj0pf")
