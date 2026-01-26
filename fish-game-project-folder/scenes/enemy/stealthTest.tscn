@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=20 format=3 uid="uid://c2td7c2d17p1f"]
 
 [ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="1_wassk"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="2_b0xup"]
+[ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_sl7rj"]
 [ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="3_u545m"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="6_qig1i"]
 [ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
@@ -27,7 +28,7 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 
 [node name="StealthTest" type="Node3D"]
 script = ExtResource("1_5vawu")
-toy_scene = ExtResource("7_kvqo1")
+toy_scene = ExtResource("2_sl7rj")
 t1_enemy_scene = ExtResource("2_b0xup")
 t2_enemy_scene = ExtResource("10_gns3y")
 
@@ -150,9 +151,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.812323, 0.73545456, -0.015
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.742864, 0.57425404, -0.46565318)
 player_path = NodePath("../Player")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("10_gns3y")]
-transform = Transform3D(0.30635995, 0, -0.95191574, 0, 1, 0, 0.95191574, 0, 0.30635995, -21.516161, 0.6941873, 7.4756436)
-
 [node name="small_coin_collectable" parent="." instance=ExtResource("12_3oafe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05786705, 0.021005245, 3.1028452)
 
@@ -161,3 +159,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7791377, 0.016577402, 3.110
 
 [node name="large_coin_collectable" parent="." instance=ExtResource("14_0g1ub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6585553, 0.04994136, 3.3178573)
+
+[node name="Toy-Holdable" parent="." instance=ExtResource("2_sl7rj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2641169, 0.009109352, 4.451982)
