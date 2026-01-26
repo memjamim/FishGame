@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=35 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://dlpsymwy6dwo8" path="res://shop/items/flipper_t2.tres" id="22_rahrv"]
 [ext_resource type="Resource" uid="uid://ck6skxyrnv4w5" path="res://shop/items/flipper_t3.tres" id="23_y2ptl"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="26_rahrv"]
+[ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="28_835yw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -164,14 +165,12 @@ max_distance = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53987503, -0.32824588, -2.238573)
 shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf"), ExtResource("16_thtum"), ExtResource("17_qfykf"), ExtResource("18_8hh26"), ExtResource("20_8hh26"), ExtResource("21_3i0dj"), ExtResource("22_rahrv"), ExtResource("23_y2ptl")])
 
-[node name="Enemy" parent="." instance=ExtResource("16_7hbbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.924171, 2.0911832, 8.723286)
-player_path = NodePath("../Player")
-
 [node name="Enemy2" parent="." instance=ExtResource("16_7hbbf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.997135, 2.0911832, 8.723286)
-player_path = NodePath("../Player")
 
 [node name="DenayrouzeNPC" parent="." groups=["NPC"] instance=ExtResource("26_rahrv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9502883, -0.41278967, 0.554863)
 player_path = NodePath("../Player")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("28_835yw")]
+transform = Transform3D(0.30635995, 0, -0.95191574, 0, 1, 0, 0.95191574, 0, 0.30635995, -9.365194, 0.6941873, 7.4756436)
