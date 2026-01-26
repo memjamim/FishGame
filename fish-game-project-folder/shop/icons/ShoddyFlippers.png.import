@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp3d5jue4hinm"
-path="res://.godot/imported/hp_fill_new.png-29c62d941de11c6f869af7f18cfa0f7c.ctex"
+uid="uid://c8x5txe0vwbte"
+path="res://.godot/imported/ShoddyFlippers.png-37a24820f71df7f7e9242a2973ec14da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/hp_fill_new.png"
-dest_files=["res://.godot/imported/hp_fill_new.png-29c62d941de11c6f869af7f18cfa0f7c.ctex"]
+source_file="res://shop/icons/ShoddyFlippers.png"
+dest_files=["res://.godot/imported/ShoddyFlippers.png-37a24820f71df7f7e9242a2973ec14da.ctex"]
 
 [params]
 

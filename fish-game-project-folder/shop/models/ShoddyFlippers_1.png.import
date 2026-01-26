@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ojhrx7oqs1kn"
-path="res://.godot/imported/breath_bottom_2.png-ce9b982ba79faec36f1e272d9e5ba6c6.ctex"
+uid="uid://c127g1dcnjdju"
+path.s3tc="res://.godot/imported/ShoddyFlippers_1.png-3606084620f0bbd49d2812a9df6ce8e2.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c501d1bfda77d5bdaefce2ca2dbd287c"
 }
 
 [deps]
 
-source_file="res://art/UI/breath_bottom_2.png"
-dest_files=["res://.godot/imported/breath_bottom_2.png-ce9b982ba79faec36f1e272d9e5ba6c6.ctex"]
+source_file="res://shop/models/ShoddyFlippers_1.png"
+dest_files=["res://.godot/imported/ShoddyFlippers_1.png-3606084620f0bbd49d2812a9df6ce8e2.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

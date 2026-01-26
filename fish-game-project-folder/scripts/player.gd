@@ -184,10 +184,45 @@ var is_sprinting_underwater: bool = false
 var max_health: int = 100
 var health: int = 100
 
+# --- Passive Health Regen ---
+@export var regen_delay_after_damage: float = 5.0        # wait this long after last damage
+@export var regen_hp_per_tick: int = 1                   # 1 hp per tick
+@export var regen_start_interval: float = 0.5            # starts at 1 hp / 0.5s
+@export var regen_min_interval: float = 0.08             # ramps up to ~12.5 hp/s
+@export var regen_interval_decay: float = 0.06           # how fast interval shrinks per tick
+
+var _time_since_damage: float = 9999.0
+var _regen_tick_timer: float = 0.0
+var _regen_interval: float = 0.5
+
+func _notify_damage_taken() -> void:
+	_time_since_damage = 0.0
+	_regen_tick_timer = 0.0
+	_regen_interval = regen_start_interval
+
+func _update_health_regen(delta: float) -> void:
+	# No regen if already full or "dead"
+	if health <= 0 or health >= max_health:
+		return
+
+	_time_since_damage += delta
+	if _time_since_damage < regen_delay_after_damage:
+		return
+
+	_regen_tick_timer += delta
+	while _regen_tick_timer >= _regen_interval and health < max_health:
+		_regen_tick_timer -= _regen_interval
+		health = min(max_health, health + regen_hp_per_tick)
+
+		# ramp up quickly by reducing interval down to a minimum
+		_regen_interval = max(regen_min_interval, _regen_interval - regen_interval_decay)
+
 func apply_max_health_bonus(new_max: int) -> void:
 	var old_max := max_health
 	max_health = max(new_max, 1)
-
+	
+	_set_ui_params('hp', new_max)
+	
 	# Heal by the increase in max health
 	var delta := max_health - old_max
 	if delta > 0:
@@ -195,12 +230,47 @@ func apply_max_health_bonus(new_max: int) -> void:
 	else:
 		health = clamp(health, 0, max_health)
 
+
 func apply_breath_max_bonus(new_bonus: float) -> void:
 	breath_bonus = maxf(0.0, new_bonus)
 	breath_max = base_breath_max + breath_bonus
 	breath = minf(breath + breath_bonus, breath_max)
+	
+	_set_ui_params('breath', new_bonus)
+	
 	emit_signal("breath_updated", breath, breath_max)
 
+
+func _set_ui_params(type: String, bonus: float) -> void:
+	# Sets the UI to match the current tier of upgrade
+	# This is the most jank solution i've ever done for anything
+	# but we're running out of time, its due day @ 4:56am, and we still have no gameplay
+	# so fuck it we ball
+	if type == 'breath':
+		var bar = player_ui.find_child("Breath", true, true)
+		if bonus == 20.0:
+			bar.texture_under = load("res://art/UI/breath_bottom_lvl_2.png")
+			bar.texture_over = load("res://art/UI/breath_top_lvl_2.png")
+			bar.texture_progress = load("res://art/UI/breath_fill_lvl_2.png")
+			bar.custom_minimum_size = Vector2(300.0, 30.0)
+		elif bonus == 40.0:
+			bar.texture_under = load("res://art/UI/breath_bottom_lvl_3.png")
+			bar.texture_over = load("res://art/UI/breath_top_lvl_3.png")
+			bar.texture_progress = load("res://art/UI/breath_fill_lvl_3.png")
+			bar.custom_minimum_size = Vector2(375.0, 30.0)
+		elif bonus == 60:
+			bar.texture_under = load("res://art/UI/breath_bottom_lvl_4.png")
+			bar.texture_over = load("res://art/UI/breath_top_lvl_4.png")
+			bar.texture_progress = load("res://art/UI/breath_fill_lvl_4.png")
+			bar.custom_minimum_size = Vector2(450.0, 30.0)
+	if type == 'hp':
+		var bar = player_ui.find_child("Hp", true, true)
+		if bonus == 150:
+			bar.texture_under = load("res://art/UI/hp_bottom_lvl_2.png")
+			bar.texture_over = load("res://art/UI/hp_top_lvl_2.png")
+		if bonus == 200:
+			bar.texture_under = load("res://art/UI/hp_bottom_lvl_3.png")
+			bar.texture_over = load("res://art/UI/hp_top_lvl_3.png")
 
 const PUSHBACK = 8.0
 
@@ -365,7 +435,7 @@ func _physics_process(delta: float) -> void:
 	_update_drowning_damage(delta)
 	#_update_footsteps(delta)
 	_update_ui()
-	
+	_update_health_regen(delta)
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
 	
 	# Vertical swim input: Space up, Shift down
@@ -513,6 +583,8 @@ func _update_drowning_damage(delta: float) -> void:
 		while _drown_tick_timer >= drown_tick_interval and health > 0:
 			_drown_tick_timer -= drown_tick_interval
 			health -= drown_damage_amount
+			_notify_damage_taken()
+
 			if health <= 0:
 				_respawn()
 				return
@@ -530,7 +602,7 @@ func _respawn() -> void:
 	IS_HOLDING_ITEM = false
 	global_transform = _spawn_transform
 	emit_signal("breath_updated", breath, breath_max)
-
+	_notify_damage_taken()
 
 func _update_water_state(delta: float) -> void:
 	var head_in_water := _is_head_in_water()
@@ -649,6 +721,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func hit(damage, dir): 
 	health -= damage
+	_notify_damage_taken()
 	velocity += dir * PUSHBACK
 
 	if sfx_oof:
@@ -713,7 +786,7 @@ func _build_prompt_for_collider(collider: Object) -> String:
 	if collider is ShopPickup:
 		var sp := collider as ShopPickup
 		if sp.item_data != null:
-			var name := sp.item_data.display_name if sp.item_data.display_name != "" else sp.item_data.item_id
+			var Sname := sp.item_data.display_name if sp.item_data.display_name != "" else sp.item_data.item_id
 
 			# cost is in cents (1 coin = $0.01)
 			var cents: int = int(sp.item_data.cost)
@@ -721,7 +794,7 @@ func _build_prompt_for_collider(collider: Object) -> String:
 			var rem_cents := cents % 100
 			var price_text := "$%d.%02d" % [dollars, rem_cents]
 
-			return "Buy %s  %s  %s" % [name, price_text, key_hint]
+			return "Buy %s  %s  %s" % [Sname, price_text, key_hint]
 		return "Buy  %s" % key_hint
 
 
