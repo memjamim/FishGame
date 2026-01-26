@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yt5qqty5gvy3"
-path="res://.godot/imported/hp_bottom_new.png-65208d1a06451285e8f22b73629a5c2f.ctex"
+uid="uid://dsn7jxj6o0pmq"
+path="res://.godot/imported/breath_fill_lvl_4.png-de2a0fa3323017e029c4e2d354b9c179.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/hp_bottom_new.png"
-dest_files=["res://.godot/imported/hp_bottom_new.png-65208d1a06451285e8f22b73629a5c2f.ctex"]
+source_file="res://art/UI/breath_fill_lvl_4.png"
+dest_files=["res://.godot/imported/breath_fill_lvl_4.png-de2a0fa3323017e029c4e2d354b9c179.ctex"]
 
 [params]
 

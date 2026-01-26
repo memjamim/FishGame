@@ -187,7 +187,9 @@ var health: int = 100
 func apply_max_health_bonus(new_max: int) -> void:
 	var old_max := max_health
 	max_health = max(new_max, 1)
-
+	
+	_set_ui_params('hp', new_max)
+	
 	# Heal by the increase in max health
 	var delta := max_health - old_max
 	if delta > 0:
@@ -195,12 +197,44 @@ func apply_max_health_bonus(new_max: int) -> void:
 	else:
 		health = clamp(health, 0, max_health)
 
+
 func apply_breath_max_bonus(new_bonus: float) -> void:
 	breath_bonus = maxf(0.0, new_bonus)
 	breath_max = base_breath_max + breath_bonus
 	breath = minf(breath + breath_bonus, breath_max)
+	
+	_set_ui_params('breath', new_bonus)
+	
 	emit_signal("breath_updated", breath, breath_max)
 
+
+func _set_ui_params(type: String, bonus: float) -> void:
+	# Sets the UI to match the current tier of breath upgrade
+	if type == 'breath':
+		var bar = player_ui.find_child("Breath", true, true)
+		if bonus == 20.0:
+			bar.texture_under = load("res://art/UI/breath_bottom_lvl_2.png")
+			bar.texture_over = load("res://art/UI/breath_top_lvl_2.png")
+			bar.texture_progress = load("res://art/UI/breath_fill_lvl_2.png")
+			bar.custom_minimum_size = Vector2(300.0, 30.0)
+		elif bonus == 40.0:
+			bar.texture_under = load("res://art/UI/breath_bottom_lvl_3.png")
+			bar.texture_over = load("res://art/UI/breath_top_lvl_3.png")
+			bar.texture_progress = load("res://art/UI/breath_fill_lvl_3.png")
+			bar.custom_minimum_size = Vector2(375.0, 30.0)
+		elif bonus == 60:
+			bar.texture_under = load("res://art/UI/breath_bottom_lvl_4.png")
+			bar.texture_over = load("res://art/UI/breath_top_lvl_4.png")
+			bar.texture_progress = load("res://art/UI/breath_fill_lvl_4.png")
+			bar.custom_minimum_size = Vector2(450.0, 30.0)
+	if type == 'hp':
+		var bar = player_ui.find_child("Hp", true, true)
+		if bonus == 150:
+			bar.texture_under = load("res://art/UI/hp_bottom_lvl_2.png")
+			bar.texture_over = load("res://art/UI/hp_top_lvl_2.png")
+		if bonus == 200:
+			bar.texture_under = load("res://art/UI/hp_bottom_lvl_3.png")
+			bar.texture_over = load("res://art/UI/hp_top_lvl_3.png")
 
 const PUSHBACK = 8.0
 
