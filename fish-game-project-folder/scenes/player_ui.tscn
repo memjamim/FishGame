@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://ng2dtmkeo6dv"]
 
-[ext_resource type="Texture2D" uid="uid://yt5qqty5gvy3" path="res://art/UI/hp_bottom_new.png" id="1_bkx2g"]
+[ext_resource type="Texture2D" uid="uid://yt5qqty5gvy3" path="res://art/UI/hp_bottom.png" id="1_bkx2g"]
 [ext_resource type="Texture2D" uid="uid://byhrwsx4dxlgk" path="res://art/UI/hp_top_new.png" id="2_n31oh"]
-[ext_resource type="Texture2D" uid="uid://bp3d5jue4hinm" path="res://art/UI/hp_fill_new.png" id="3_wsb5h"]
+[ext_resource type="Texture2D" uid="uid://bp3d5jue4hinm" path="res://art/UI/hp_fill.png" id="3_wsb5h"]
 [ext_resource type="Texture2D" uid="uid://bpcqnctcupbyv" path="res://art/UI/coin_ccounter.png" id="4_n31oh"]
 [ext_resource type="Texture2D" uid="uid://ch2vya3jguyv3" path="res://art/UI/label_bg.png" id="4_wsb5h"]
-[ext_resource type="Texture2D" uid="uid://ojhrx7oqs1kn" path="res://art/UI/breath_bottom_2.png" id="5_wsb5h"]
+[ext_resource type="Texture2D" uid="uid://ojhrx7oqs1kn" path="res://art/UI/breath_bottom.png" id="5_wsb5h"]
 [ext_resource type="Texture2D" uid="uid://chl152xioek3b" path="res://art/UI/breath_top.png" id="6_g4s8q"]
 [ext_resource type="Texture2D" uid="uid://codx1h5pddtvw" path="res://art/UI/breath_fill.png" id="7_17uas"]
 
@@ -71,13 +71,14 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="Hp" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 3
 fill_mode = 4
 nine_patch_stretch = true
 texture_under = ExtResource("1_bkx2g")
@@ -86,7 +87,8 @@ texture_progress = ExtResource("3_wsb5h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -124,9 +126,9 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="Breath" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(360, 30)
+custom_minimum_size = Vector2(225, 30)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 size_flags_vertical = 8
 value = 100.0
 nine_patch_stretch = true
