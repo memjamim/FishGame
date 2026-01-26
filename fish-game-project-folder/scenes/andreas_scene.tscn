@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://bo1re71ojesvq"]
+[gd_scene load_steps=31 format=3 uid="uid://bo1re71ojesvq"]
 
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tx11n"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_0ragw"]
+[ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="2_1blye"]
 [ext_resource type="PackedScene" uid="uid://jhfpml2w5wm4" path="res://scenes/ladder.tscn" id="3_cn2e8"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_rb8pp"]
 [ext_resource type="Material" uid="uid://y7b37uvg238n" path="res://art/water_material.tres" id="5_54nh1"]
-[ext_resource type="PackedScene" uid="uid://7i0xh0e1jfv" path="res://scenes/bubble_coral.tscn" id="5_rb8pp"]
+[ext_resource type="PackedScene" path="res://scenes/collection_point.tscn" id="7_1blye"]
+[ext_resource type="Script" uid="uid://c0t2vuven0b2p" path="res://scripts/slide_interact.gd" id="9_3q2eb"]
 
 [sub_resource type="Environment" id="Environment_cn2e8"]
 
@@ -17,6 +19,21 @@ subdivide_height = 100
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ragw"]
 size = Vector3(14.1249695, 7.0264416, 21.412888)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1blye"]
+height = 0.6577759
+radius = 0.8222656
+
+[sub_resource type="Curve3D" id="Curve3D_3q2eb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.1935349, 0, 0, 0, 0, 0, 0, 0, 0, -1, -0.25, 0, 0.22383833, 0.41362762, 0.65331745, -0.22383833, -0.41362762, -0.65331745, -2.7794213, -1.0129166, -0.45234013, -0.9993954, 0.48791003, 0.16192341, 0.9993954, -0.48791003, -0.16192341, -2, -2.17556, -2.4188766, -0.21036339, 0.36073303, -0.8868046, 0.21036339, -0.36073303, 0.8868046, -0.2896285, -3.244959, -1.2239285, 0.01490593, 0.09228659, -0.064953804, -0.01490593, -0.09228659, 0.064953804, -0.88216877, -3.7453175, -0.018931389, 0, 0, 0, 0, 0, 0, -5.797555, -3.9864206, -0.048279762),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+up_vector_enabled = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5kb3n"]
+size = Vector3(1.2817383, 0.7524414, 1.9268188)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb8pp"]
 size = Vector3(1.5606384, 0.43310547, 8.428741)
@@ -48,6 +65,24 @@ size = Vector3(1, 1.1241455, 8.268555)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_54nh1"]
 height = 0.45007324
 radius = 0.62646484
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p3or2"]
+size = Vector3(0.8994751, 2.1610107, 0.19958496)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n0rtk"]
+radius = 0.33740234
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avx5u"]
+size = Vector3(0.7866211, 2.1813965, 0.5130615)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_felpv"]
+size = Vector3(1.3231812, 2.812767, 0.885376)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uym4a"]
+size = Vector3(1.2480469, 0.90478516, 0.43218994)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxyhn"]
+size = Vector3(1.4272461, 2.5332031, 2.6054077)
 
 [node name="AndreasScene" type="WorldEnvironment"]
 environment = SubResource("Environment_cn2e8")
@@ -91,8 +126,8 @@ spot_angle = 50.0
 spot_angle_attenuation = 0.03
 
 [node name="DannyLight" type="SpotLight3D" parent="LightContainer"]
-transform = Transform3D(-0.7552399, 0.5006045, -0.42309323, -0.48874316, -5.132222e-08, 0.87242776, 0.43674123, 0.8656761, 0.24466707, 8.383997, 9.487917, -6.684303)
-light_energy = 16.0
+transform = Transform3D(0.3811464, 0.8995196, 0.21352233, -0.48874316, -1.0958494e-07, 0.87242776, 0.78476596, -0.43688023, 0.43963405, 11.50912, 11.424283, -6.684303)
+light_energy = 14.845
 light_indirect_energy = 3.621
 light_bake_mode = 1
 shadow_enabled = true
@@ -344,8 +379,12 @@ omni_attenuation = 2.018
 
 [node name="MainPool" parent="." instance=ExtResource("1_tx11n")]
 
+[node name="DenayrouzeNPC" parent="." instance=ExtResource("2_1blye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.143437, 4.891037, -10.090617)
+player_path = NodePath("../Player")
+
 [node name="Player" parent="." instance=ExtResource("2_0ragw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2478874, 10.585378)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5806272, 10.398766)
 
 [node name="Environment" type="Node" parent="."]
 
@@ -365,59 +404,139 @@ mesh = SubResource("BoxMesh_rb8pp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1170807, -3.5319152, -1.5595932)
 shape = SubResource("BoxShape3D_0ragw")
 
-[node name="SlideRamp" type="StaticBody3D" parent="Environment"]
+[node name="CollectionPoint" parent="Environment" instance=ExtResource("7_1blye")]
+transform = Transform3D(0.98442966, 0, -0.1757791, 0, 1, 0, 0.1757791, 0, 0.98442966, 11.411428, 4.8306932, -9.997053)
+
+[node name="SlideInteract" type="StaticBody3D" parent="Environment" groups=["interactable"]]
+script = ExtResource("9_3q2eb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SlideInteract"]
+transform = Transform3D(2.9802322e-08, 1, 0, -1, 2.9802322e-08, 0, 0, 0, 1, 7.7906294, 5.687225, -9.04921)
+shape = SubResource("CylinderShape3D_1blye")
+
+[node name="Path3D" type="Path3D" parent="Environment/SlideInteract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6634912, 5.497615, -9.103454)
+curve = SubResource("Curve3D_3q2eb")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Environment/SlideInteract/Path3D"]
+transform = Transform3D(-4.4135277e-08, -0.11323649, 0.99353945, 3.7252321e-09, 0.99355274, 0.113234974, -0.9999844, 8.699074e-09, -4.3428987e-08, 1.1935349, 0, 0)
+loop = false
+
+[node name="SlideCamera" type="Camera3D" parent="Environment/SlideInteract/Path3D/PathFollow3D"]
+transform = Transform3D(1.000026, 0, 0, 0, 1.0000132, 0, 0, 0, 1.0000137, 0, 0, 0)
+
+[node name="InteractArea" type="Area3D" parent="Environment/SlideInteract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.481641, 6.207197, -9.120058)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SlideInteract/InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8251114, -0.7132149, 0.0718689)
+shape = SubResource("BoxShape3D_5kb3n")
+
+[node name="CollisionFixes" type="Node" parent="."]
+
+[node name="SlideRampFix" type="StaticBody3D" parent="CollisionFixes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.672241, 0.4953006, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SlideRamp"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/SlideRampFix"]
 transform = Transform3D(1, 0, 0, 0, 0.85970086, -0.51079804, 0, 0.51079804, 0.85970086, 0.14564514, 1.5041196, -3.7868567)
 shape = SubResource("BoxShape3D_rb8pp")
 debug_color = Color(0.6862745, 0.18039216, 0, 1)
 
-[node name="BubbleCoral" parent="Environment" instance=ExtResource("5_rb8pp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.643693, -6.122956)
+[node name="LadderFix" type="StaticBody3D" parent="CollisionFixes"]
 
-[node name="LadderFix" type="StaticBody3D" parent="Environment"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LadderFix"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/LadderFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.469531, 1.8349369, -0.7391968)
 shape = SubResource("BoxShape3D_54nh1")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/LadderFix"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/LadderFix"]
 transform = Transform3D(1, 0, 0, 0, 0.9723903, 0.2333605, 0, -0.2333605, 0.9723903, 6.8272624, 1.0985837, 0.09515038)
 shape = SubResource("BoxShape3D_n0rtk")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/LadderFix"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CollisionFixes/LadderFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.066955, 0.6405945, -0.8082127)
 shape = SubResource("BoxShape3D_1blye")
 
-[node name="BoueyFix" type="StaticBody3D" parent="Environment"]
+[node name="BoueyFix" type="StaticBody3D" parent="CollisionFixes"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/BoueyFix"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/BoueyFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.320745, 3.1328907, 2.221166)
 shape = SubResource("BoxShape3D_3q2eb")
 
-[node name="BoxBathroomFix" type="StaticBody3D" parent="Environment"]
+[node name="BoxBathroomFix" type="StaticBody3D" parent="CollisionFixes"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/BoxBathroomFix"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/BoxBathroomFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.475829, 0.521698, 13.468858)
 shape = SubResource("BoxShape3D_ym1f1")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/BoxBathroomFix"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/BoxBathroomFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.150263, 1.5050924, 12.473172)
 shape = SubResource("BoxShape3D_5a4kx")
 
-[node name="BackBoxFix" type="StaticBody3D" parent="Environment"]
+[node name="BackBoxFix" type="StaticBody3D" parent="CollisionFixes"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/BackBoxFix"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/BackBoxFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.04557, 0.7926327, -13.949622)
 shape = SubResource("BoxShape3D_5rhhb")
 
-[node name="RampCornerFix" type="StaticBody3D" parent="Environment"]
+[node name="RampCornerFix" type="StaticBody3D" parent="CollisionFixes"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/RampCornerFix"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/RampCornerFix"]
 transform = Transform3D(1, 0, 0, 0, 0.8540779, -0.52014536, 0, 0.52014536, 0.8540779, 12.130722, 1.9749833, -3.9885278)
 shape = SubResource("BoxShape3D_3gyea")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/RampCornerFix"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/RampCornerFix"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 12.288622, 3.6439593, -5.453771)
 shape = SubResource("CylinderShape3D_54nh1")
+
+[node name="DDFix" type="StaticBody3D" parent="CollisionFixes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/DDFix"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25341, 4.6166043, -7.624839)
+shape = SubResource("BoxShape3D_p3or2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/DDFix"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.161791, 6.367914, -10.399579)
+shape = SubResource("CylinderShape3D_n0rtk")
+
+[node name="LifePreserversFix" type="StaticBody3D" parent="CollisionFixes"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/LifePreserversFix"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 12.288622, 3.6439593, 4.402343)
+shape = SubResource("CylinderShape3D_54nh1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CollisionFixes/LifePreserversFix"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -10.764055, 3.6668546, 4.5539823)
+shape = SubResource("CylinderShape3D_54nh1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="CollisionFixes/LifePreserversFix"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -10.764055, 3.6948502, -5.2840323)
+shape = SubResource("CylinderShape3D_54nh1")
+
+[node name="ShopTreesFix" type="StaticBody3D" parent="CollisionFixes"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/ShopTreesFix"]
+transform = Transform3D(0.8896636, 0.43313906, 0.14453134, -0.45661664, 0.8439203, 0.28160223, 0, -0.31652665, 0.9485836, -6.0447197, 1.5096211, 13.258975)
+shape = SubResource("BoxShape3D_avx5u")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CollisionFixes/ShopTreesFix"]
+transform = Transform3D(0.27441946, 0.1630917, 0.94767874, -0.4232882, 0.90538514, -0.03324145, -0.86343586, -0.39201906, 0.31749007, -8.396459, 1.5096211, 11.832632)
+shape = SubResource("BoxShape3D_avx5u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/ShopTreesFix"]
+transform = Transform3D(0.8327376, 0, -0.5536677, 0, 1, 0, 0.5536677, 0, 0.8327376, -6.96731, 1.9019377, 12.403343)
+shape = SubResource("BoxShape3D_felpv")
+
+[node name="BoomboxFix" type="StaticBody3D" parent="CollisionFixes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/BoomboxFix"]
+transform = Transform3D(0.94802415, 0, -0.3181983, 0, 1, 0, 0.3181983, 0, 0.94802415, -4.582182, 0.6086426, 13.187902)
+shape = SubResource("BoxShape3D_uym4a")
+
+[node name="FalmingoNoodlesFix" type="StaticBody3D" parent="CollisionFixes"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollisionFixes/FalmingoNoodlesFix"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.176348, 1.07349, 10.053047)
+shape = SubResource("BoxShape3D_hxyhn")
+
+[connection signal="body_entered" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_exited"]

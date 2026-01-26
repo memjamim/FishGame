@@ -101,6 +101,8 @@ var IS_HOLDING_WEAPON: bool = false
 signal water_state_changed(is_in_water: bool)
 
 # --- Movement ---
+var PAUSE_MOVEMENT: bool = false
+
 @export var land_speed := 5.0
 @export var swim_speed := 3.0
 
@@ -383,7 +385,6 @@ func _physics_process(delta: float) -> void:
 	
 	if wish_dir.length() > 0.001:
 		wish_dir = wish_dir.normalized()
-		# TODO increase underwaterEffect strength, frequency, wave_speed A BIT
 	
 	# --- Underwater sprint (held) ---
 	is_sprinting_underwater = IS_IN_WATER and Input.is_action_pressed("sprint") and wish_dir.length() > 0.001
@@ -396,6 +397,7 @@ func _physics_process(delta: float) -> void:
 	# --- Interaction ---
 	if player_raycast.is_colliding() and Input.is_action_just_pressed("interact"):
 		var collider = player_raycast.get_collider()
+		print(collider)
 		if collider and collider.has_method("_on_interact"):
 			collider._on_interact(self)
 			return
@@ -451,6 +453,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
+	if PAUSE_MOVEMENT:
+		return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

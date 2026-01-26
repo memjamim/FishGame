@@ -24,7 +24,7 @@ shader = ExtResource("3_ur7pv")
 shader_parameter/wave_strength = 0.005
 shader_parameter/wave_frequency = 10.0
 shader_parameter/wave_speed = 0.5
-shader_parameter/water_color = Color(0.10980392, 0.2901961, 0.41960785, 1)
+shader_parameter/water_color = Color(0.1, 0.29, 0.41, 1)
 shader_parameter/tint_strength = 0.5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_smehm"]

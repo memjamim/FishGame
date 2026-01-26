@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, alpha_to_coverage_and_one;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
@@ -7,7 +7,7 @@ uniform float wave_strength = 0.005;
 uniform float wave_frequency = 10.0;
 uniform float wave_speed = 0.5;
 
-uniform vec3 water_color : source_color = vec3(0.3, 0.68, 0.92);
+uniform vec3 water_color : source_color = vec3(0.1, 0.29, 0.41);
 uniform float tint_strength = 0.5;
 
 void fragment() {
