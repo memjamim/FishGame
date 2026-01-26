@@ -1,4 +1,5 @@
 shader_type spatial;
+
 uniform float strength;
 
 void vertex() {
