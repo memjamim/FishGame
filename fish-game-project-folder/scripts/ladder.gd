@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 func _on_interact(player: CharacterBody3D = null) -> void:
 	if player.IS_IN_WATER:
 		if CAN_INTERACT:
-			player.velocity.y += 10
+			player.velocity.y = 8
 			CAN_INTERACT = false
 			cooldown_timer.start()
 

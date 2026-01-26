@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://byeyt03501m7h"]
+
+[ext_resource type="Shader" uid="uid://p2vnxg52i78j" path="res://art/shaders/US.gdshader" id="1_rw5jv"]
+
+[resource]
+shader = ExtResource("1_rw5jv")
+shader_parameter/wave_strength = 0.005
+shader_parameter/wave_frequency = 10.0
+shader_parameter/wave_speed = 0.5
+shader_parameter/water_color = Color(0.26, 0.39866665, 0.52, 1)
+shader_parameter/tint_strength = 0.5
+shader_parameter/darkness = 0.82
+shader_parameter/edge_fade = 0.04

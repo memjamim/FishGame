@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ta1rtoa3opt5"]
+
+[ext_resource type="Script" uid="uid://bu6u344rx41ep" path="res://scripts/test_weapon.gd" id="1_jlu05"]
+[ext_resource type="PackedScene" uid="uid://ju2rcpdgwdve" path="res://shop/models/Oysterknife.fbx" id="2_ncvo3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ncvo3"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d44m1"]
+size = Vector3(0.44866943, 0.9708595, 0.43041992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpn5d"]
+size = Vector3(0.23474121, 0.6885071, 0.20690918)
+
+[node name="T1Weapon" type="RigidBody3D" groups=["holdable", "weapon"]]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_jlu05")
+
+[node name="Oysterknife" parent="." instance=ExtResource("2_ncvo3")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.16877162, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.13092476, 0, 0, 0, 1.1897305, 0, 0, 0, 0.15391153, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_ncvo3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.29591113, 0, 0, 0, 0.7796265, 0, 0, 0, 0.34722432, 0.00044870377, 0.052975077, -0.0028076163)
+shape = SubResource("BoxShape3D_d44m1")
+
+[node name="Hitbox" type="Area3D" parent="."]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 0.9999625, 0, 0, 0, 0.9999625, 0.006164551, 0.047407936, 0.0038454125)
+shape = SubResource("BoxShape3D_fpn5d")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

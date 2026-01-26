@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://7i0xh0e1jfv"]
+
+[ext_resource type="Script" path="res://scripts/bubble_coral.gd" id="1_fys8p"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2y83j"]
+height = 0.5
+is_hemisphere = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_fys8p"]
+radius = 0.2
+height = 0.2
+is_hemisphere = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ka185"]
+radius = 0.6
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2y83j"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = 1.0728835e-05
+angle_max = 488.7
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 573.38995
+radial_velocity_min = 0.99997765
+radial_velocity_max = 1.9999776
+linear_accel_min = -2.7200022
+linear_accel_max = -2.7200022
+scale_max = 4.52
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y83j"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(0.54901963, 0.85882354, 1, 0.2784314)
+roughness = 0.0
+rim_enabled = true
+rim_tint = 0.0
+refraction_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ka185"]
+material = SubResource("StandardMaterial3D_2y83j")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i5qu8"]
+height = 3.8985596
+radius = 0.8208008
+
+[node name="BubbleCoral" type="StaticBody3D"]
+script = ExtResource("1_fys8p")
+
+[node name="CoralMesh" type="Node3D" parent="."]
+
+[node name="MainCoral" type="MeshInstance3D" parent="CoralMesh"]
+mesh = SubResource("SphereMesh_2y83j")
+skeleton = NodePath("../..")
+
+[node name="MiniCoral" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39674318, 0)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral2" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(0.87723833, 0.4800551, 0, -0.4800551, 0.87723833, 0, 0, 0, 1, 0.20308578, 0.38797945, 0)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral3" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(0.5451706, 0.29833618, 0.78344405, -0.4800551, 0.87723833, 0, -0.6872671, -0.3760963, 0.62146235, 0.1429627, 0.1856587, -0.27389085)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral4" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(-0.012851834, -0.2760811, 0.96104825, -0.7573855, 0.63020355, 0.17091084, -0.65284145, -0.7256875, -0.2171993, -0.1701802, 0.1856587, -0.27389085)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral5" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(-0.012851834, -0.2760811, 0.96104825, -0.7573855, 0.63020355, 0.17091084, -0.65284145, -0.7256875, -0.2171993, -0.024355888, 0.27158946, -0.21902835)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral6" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(-0.55162907, -0.7575883, 0.34894884, -0.7573856, 0.6302036, 0.17091087, -0.349389, -0.17000957, -0.9214251, -0.2626717, 0.27158946, 0.031883)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral7" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(-0.6205225, -0.61317706, -0.4888415, -0.75738555, 0.63020355, 0.17091084, 0.20327105, 0.4762953, -0.85546696, -0.12757254, 0.27158946, 0.19439745)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral8" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(-0.16630435, 0.066939324, -0.98379993, -0.75738555, 0.63020355, 0.17091082, 0.6314349, 0.7735388, -0.054106563, 0.12616432, 0.27158946, 0.19439745)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral9" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(-0.16630435, 0.066939324, -0.98379993, -0.75738555, 0.63020355, 0.17091082, 0.6314349, 0.7735388, -0.054106563, 0.029718041, 0.2644183, 0.31887877)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral10" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(0.6315711, 0.77348363, -0.05329951, -0.75738555, 0.63020355, 0.17091082, 0.16578628, -0.06757383, 0.983844, 0.2184701, 0.2644183, 0.19017243)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="MiniCoral11" type="MeshInstance3D" parent="CoralMesh"]
+transform = Transform3D(0.6315711, 0.77348363, -0.05329951, -0.75738555, 0.63020355, 0.17091082, 0.16578628, -0.06757383, 0.983844, 0.33176255, 0.19332653, -0.025188744)
+mesh = SubResource("SphereMesh_fys8p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ka185")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0.23496306, 0)
+randomness = 0.81
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_2y83j")
+draw_pass_1 = SubResource("SphereMesh_ka185")
+
+[node name="BreathRefillArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreathRefillArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0486293, 0)
+shape = SubResource("CylinderShape3D_i5qu8")
+
+[connection signal="body_entered" from="BreathRefillArea" to="." method="_on_breath_refill_area_body_entered"]
+[connection signal="body_exited" from="BreathRefillArea" to="." method="_on_breath_refill_area_body_exited"]

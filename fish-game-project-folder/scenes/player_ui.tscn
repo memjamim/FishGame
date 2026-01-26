@@ -1,33 +1,175 @@
-[gd_scene load_steps=2 format=3 uid="uid://ng2dtmkeo6dv"]
+[gd_scene load_steps=10 format=3 uid="uid://ng2dtmkeo6dv"]
 
-[ext_resource type="Script" uid="uid://3ird8rnbhrh2" path="res://scripts/BreathUI.gd" id="1_jkj6h"]
+[ext_resource type="Texture2D" uid="uid://yt5qqty5gvy3" path="res://art/UI/hp_bottom_new.png" id="1_bkx2g"]
+[ext_resource type="Texture2D" uid="uid://byhrwsx4dxlgk" path="res://art/UI/hp_top_new.png" id="2_n31oh"]
+[ext_resource type="Texture2D" uid="uid://bp3d5jue4hinm" path="res://art/UI/hp_fill_new.png" id="3_wsb5h"]
+[ext_resource type="Texture2D" uid="uid://bpcqnctcupbyv" path="res://art/UI/coin_ccounter.png" id="4_n31oh"]
+[ext_resource type="Texture2D" uid="uid://ch2vya3jguyv3" path="res://art/UI/label_bg.png" id="4_wsb5h"]
+[ext_resource type="Texture2D" uid="uid://ojhrx7oqs1kn" path="res://art/UI/breath_bottom_2.png" id="5_wsb5h"]
+[ext_resource type="Texture2D" uid="uid://chl152xioek3b" path="res://art/UI/breath_top.png" id="6_g4s8q"]
+[ext_resource type="Texture2D" uid="uid://codx1h5pddtvw" path="res://art/UI/breath_fill.png" id="7_17uas"]
 
-[node name="PlayerUI" type="CanvasLayer"]
-script = ExtResource("1_jkj6h")
-panel_path = NodePath("VBoxContainer")
-breath_label_path = NodePath("VBoxContainer/BreathLabel")
-coin_label_path = NodePath("VBoxContainer/CoinLabel")
+[sub_resource type="FontFile" id="FontFile_wsb5h"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/150/0/ascent = 0.0
+cache/0/150/0/descent = 0.0
+cache/0/150/0/underline_position = 0.0
+cache/0/150/0/underline_thickness = 0.0
+cache/0/150/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 60.0
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BreathLabel" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.35635865, 0.70198804, 0.96429056, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Hp" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("1_bkx2g")
+texture_over = ExtResource("2_n31oh")
+texture_progress = ExtResource("3_wsb5h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="CoinsCounter" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_wsb5h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CoinsCounter"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CoinsCounter/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_n31oh")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CoinsCounter/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="Breath" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_wsb5h")
+texture_over = ExtResource("6_g4s8q")
+texture_progress = ExtResource("7_17uas")
+
+[node name="ItemBar" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Crosshair" type="ColorRect" parent="."]
+process_mode = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractPrompt" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = 96.0
+offset_right = 24.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0.19215687, 0.24705882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 2
-text = ":3 hi"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CoinLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 0.23137255, 1)
-theme_override_constants/outline_size = 2
-text = ":D hi"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_fonts/font = SubResource("FontFile_wsb5h")
+theme_override_font_sizes/font_size = 26
+text = "hi :3"

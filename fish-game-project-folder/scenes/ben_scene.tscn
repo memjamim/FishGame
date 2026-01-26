@@ -1,11 +1,30 @@
-[gd_scene load_steps=19 format=3 uid="uid://ju5geapqatfg"]
+[gd_scene load_steps=34 format=3 uid="uid://ju5geapqatfg"]
 
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="2_x8l0j"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="3_fkl8m"]
-[ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="3_gr04e"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="4_mmbh7"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="5_gr04e"]
-[ext_resource type="PackedScene" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
+[ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="6_7vjy0"]
+[ext_resource type="AudioStream" uid="uid://doxu2oca1ukc4" path="res://assets/Sounds/radio.mp3" id="6_hcgr2"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="8_npq7a"]
+[ext_resource type="Resource" uid="uid://d2nimdmapemae" path="res://shop/items/wetsuit_t1.tres" id="9_0bpjt"]
+[ext_resource type="PackedScene" uid="uid://3aatsb485j8g" path="res://shop/Shop.tscn" id="9_npq7a"]
+[ext_resource type="Resource" uid="uid://2n4gt3j8fg7t" path="res://shop/items/wetsuit_t2.tres" id="10_7hbbf"]
+[ext_resource type="Resource" uid="uid://d357lhsekacxs" path="res://shop/items/wetsuit_t3.tres" id="11_fjv0l"]
+[ext_resource type="Resource" uid="uid://clf43o61nd1ni" path="res://shop/items/headlamp.tres" id="12_qp50l"]
+[ext_resource type="Resource" uid="uid://kcnr5ngxcuyi" path="res://shop/items/snorkel_t1.tres" id="13_am5ua"]
+[ext_resource type="Resource" uid="uid://bf4jj3ni8vxdh" path="res://shop/items/snorkel_t2.tres" id="14_thtum"]
+[ext_resource type="Resource" uid="uid://bgqv4j4lett83" path="res://shop/items/snorkel_t3.tres" id="15_qfykf"]
+[ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="16_7hbbf"]
+[ext_resource type="Resource" uid="uid://cuhck57fcrmqk" path="res://shop/items/weapon_t1.tres" id="16_thtum"]
+[ext_resource type="Resource" uid="uid://cc7nxghhovib7" path="res://shop/items/weapon_t2.tres" id="17_qfykf"]
+[ext_resource type="Resource" uid="uid://btuxlr8iiv3k0" path="res://shop/items/weapon_t3.tres" id="18_8hh26"]
+[ext_resource type="Resource" uid="uid://dm4qmre5ts445" path="res://shop/items/mini_radio.tres" id="20_8hh26"]
+[ext_resource type="Resource" uid="uid://bc0501jo8jm3h" path="res://shop/items/flipper_t1.tres" id="21_3i0dj"]
+[ext_resource type="PackedScene" uid="uid://0cuyy330tk6l" path="res://shop/models/radio.fbx" id="21_qfykf"]
+[ext_resource type="Resource" uid="uid://dlpsymwy6dwo8" path="res://shop/items/flipper_t2.tres" id="22_rahrv"]
+[ext_resource type="Resource" uid="uid://ck6skxyrnv4w5" path="res://shop/items/flipper_t3.tres" id="23_y2ptl"]
+[ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="26_rahrv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4pro5"]
 size = Vector2(30, 30)
@@ -28,26 +47,6 @@ outer_radius = 6.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8l0j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8l0j"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x8l0j"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mmbh7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8l0j"]
-transparency = 1
-depth_draw_mode = 1
-albedo_color = Color(0.047058824, 0.31764707, 0.53333336, 0.5058824)
-roughness = 0.0
-normal_texture = SubResource("NoiseTexture2D_x8l0j")
-refraction_enabled = true
-refraction_texture = SubResource("NoiseTexture2D_mmbh7")
-uv1_scale = Vector3(0.04, 0.04, 0.04)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_x8l0j"]
-material = SubResource("StandardMaterial3D_x8l0j")
-size = Vector3(4, 4, 4)
 
 [node name="Ben" type="Node3D"]
 
@@ -72,23 +71,8 @@ shape = SubResource("SphereShape3D_4vypp")
 
 [node name="Player" parent="." instance=ExtResource("2_x8l0j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8105135, 0.9833269, 5.1511974)
-buoyancy = null
-land_speed = null
 swim_speed = 4.0
-land_accel = null
 swim_accel = 8.0
-jump_velocity = null
-mouse_sensitivity = null
-max_pitch_deg = null
-breath_max = null
-breath_recover_rate = null
-breath_ui_path = null
-head_node_path = null
-water_collision_mask = null
-water_state_smooth_time = null
-underwater_bob_amplitude = null
-underwater_bob_frequency = null
-underwater_bob_smoothing = null
 
 [node name="Water" type="Area3D" parent="."]
 script = ExtResource("3_fkl8m")
@@ -96,8 +80,6 @@ script = ExtResource("3_fkl8m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.052421, 0, -7.446967)
 shape = SubResource("CylinderShape3D_x8l0j")
-
-[node name="PlayerUI" parent="." instance=ExtResource("3_gr04e")]
 
 [node name="PoolSide" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.110241, 2.9528008, -7.4290648)
@@ -113,24 +95,83 @@ shape = SubResource("BoxShape3D_x8l0j")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.41469327, 0.78404915, -0.46184027, 0, 0.5075384, 0.8616291, 0.9099613, -0.3573118, 0.21047275, 0, 4.928076, 6.533126)
 
-[node name="WaterMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7589846, 1.8488703, 0)
-mesh = SubResource("BoxMesh_x8l0j")
-
 [node name="PauseManager" type="Node" parent="."]
 script = ExtResource("4_mmbh7")
 
-[node name="TestCollectable" parent="." instance=ExtResource("5_gr04e")]
+[node name="coins" type="Node" parent="."]
+
+[node name="TestCollectable" parent="coins" instance=ExtResource("5_gr04e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 4.9804173)
+
+[node name="TestCollectable2" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 6.2825403)
+
+[node name="TestCollectable3" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91187, -0.31903505, 4.7733936)
+
+[node name="TestCollectable4" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.367805, -0.39591622, 7.675935)
+
+[node name="TestCollectable5" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7254138, -0.35977912, 4.9804173)
+
+[node name="TestCollectable6" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7254138, -0.35977912, 6.2825403)
+
+[node name="TestCollectable7" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.181349, -0.31903505, 4.7733936)
+
+[node name="TestCollectable8" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.637283, -0.39591622, 7.675935)
+
+[node name="TestCollectable9" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3902526, -0.35977912, 4.9804173)
+
+[node name="TestCollectable10" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3902526, -0.35977912, 6.2825403)
+
+[node name="TestCollectable11" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.846188, -0.31903505, 4.7733936)
+
+[node name="TestCollectable12" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.302122, -0.39591622, 7.675935)
+
+[node name="TestCollectable13" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.659731, -0.35977912, 4.9804173)
+
+[node name="TestCollectable14" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.659731, -0.35977912, 6.2825403)
+
+[node name="TestCollectable15" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.115666, -0.31903505, 4.7733936)
+
+[node name="TestCollectable16" parent="coins" instance=ExtResource("5_gr04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.571601, -0.39591622, 7.675935)
 
 [node name="TestHoldable" parent="." instance=ExtResource("6_7vjy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3167062, -0.35977912, 9.927605)
 
-[node name="TestCollectable2" parent="." instance=ExtResource("5_gr04e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.455935, -0.35977912, 6.2825403)
+[node name="Speaker2" parent="." instance=ExtResource("21_qfykf")]
+transform = Transform3D(-0.9847805, 0, -0.1738028, -7.450581e-09, 1, 0, 0.1738028, 0, -0.9847805, 12.322617, 0.1279628, -11.686353)
 
-[node name="TestCollectable3" parent="." instance=ExtResource("5_gr04e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91187, -0.31903505, 4.7733936)
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Speaker2"]
+transform = Transform3D(-0.9847805, -0.15827936, -0.07179871, -7.3371864e-09, -0.41310447, 0.91068363, -0.1738028, 0.89682347, 0.40681723, 0, 0, 0)
+stream = ExtResource("6_hcgr2")
+autoplay = true
+max_distance = 20.0
 
-[node name="TestCollectable4" parent="." instance=ExtResource("5_gr04e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.367805, -0.39591622, 7.675935)
+[node name="Shop" parent="." instance=ExtResource("9_npq7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53987503, -0.32824588, -2.238573)
+shop_items = Array[ExtResource("8_npq7a")]([ExtResource("9_0bpjt"), ExtResource("10_7hbbf"), ExtResource("11_fjv0l"), ExtResource("12_qp50l"), ExtResource("13_am5ua"), ExtResource("14_thtum"), ExtResource("15_qfykf"), ExtResource("16_thtum"), ExtResource("17_qfykf"), ExtResource("18_8hh26"), ExtResource("20_8hh26"), ExtResource("21_3i0dj"), ExtResource("22_rahrv"), ExtResource("23_y2ptl")])
+
+[node name="Enemy" parent="." instance=ExtResource("16_7hbbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.924171, 2.0911832, 8.723286)
+player_path = NodePath("../Player")
+
+[node name="Enemy2" parent="." instance=ExtResource("16_7hbbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.997135, 2.0911832, 8.723286)
+player_path = NodePath("../Player")
+
+[node name="DenayrouzeNPC" parent="." groups=["NPC"] instance=ExtResource("26_rahrv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9502883, -0.21432972, 3.0338674)
+player_path = NodePath("../Player")

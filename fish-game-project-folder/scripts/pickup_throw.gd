@@ -1,7 +1,9 @@
 extends Node
 
 @onready var player: CharacterBody3D = $".."
-@onready var hold_point: Node3D = $"../CameraPivot/Camera3D/HoldPoint"
+@onready var main_hand: Node3D = $"../CameraPivot/Camera3D/HoldPoint"
+@onready var off_hand: Node3D = $"../CameraPivot/Camera3D/Offhand"
+
 
 # --- Throw ---
 @export var min_throw_strength: float = 0
@@ -24,16 +26,26 @@ func _process(delta: float) -> void:
 
 
 func _pick_up(holdable: RigidBody3D) -> void:
-	holdable.get_parent().remove_child(holdable)
-	hold_point.add_child(holdable)
-	
-	holdable.get_node("CollisionShape3D").disabled = true
+	var p := holdable.get_parent()
+	if p != null:
+		p.remove_child(holdable)
+
+	if holdable.is_in_group("weapon"):
+		main_hand.add_child(holdable)
+	else:
+		off_hand.add_child(holdable)
+
+	var cs := holdable.get_node_or_null("CollisionShape3D") as CollisionShape3D
+	if cs:
+		cs.disabled = true
+
 	holdable.freeze = true
 	holdable.linear_velocity = Vector3.ZERO
 	holdable.angular_velocity = Vector3.ZERO
 	holdable.transform = Transform3D.IDENTITY
 
-	print("picked up:", holdable.name)
+	print("picked up:", holdable.name, " scene=", holdable.scene_file_path)
+
 
 
 func _charge_throw(delta: float) -> void:
@@ -42,7 +54,9 @@ func _charge_throw(delta: float) -> void:
 
 
 func _throw(holdable: RigidBody3D) -> void:
-	holdable.get_parent().remove_child(holdable)
+	var p := holdable.get_parent()
+	if p != null:
+		p.remove_child(holdable)
 	var world := player.get_parent_node_3d()
 	world.add_child(holdable)
 
@@ -65,4 +79,4 @@ func _throw(holdable: RigidBody3D) -> void:
 	if holdable.is_in_group('weapon'):
 		holdable.find_child('Hitbox').monitoring = true
 	
-	print("throwing:", holdable.name)
+	print("throwing:", holdable.name, " scene=", holdable.scene_file_path, " parent_before=", holdable.get_parent())
