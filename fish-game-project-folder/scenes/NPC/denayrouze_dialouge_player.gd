@@ -130,6 +130,9 @@ func load_dialogue():
 	return content["generic"]
 
 func _unhandled_input(event: InputEvent):
+	
+	if get_tree().paused:
+		return
 
 	if !d_active:
 		return
@@ -173,14 +176,14 @@ func type_text() -> void:
 		current_text += full_text[text_index]
 		$NinePatchRect/Text.text = current_text
 		text_index += 1
-		await get_tree().create_timer(typewriter_speed).timeout
+		await get_tree().create_timer(typewriter_speed, false).timeout
 
 	# Finish line instantly if skipped
 	$NinePatchRect/Text.text = full_text
 	state = DialogueState.WAITING
 
 	if auto_play:
-		await get_tree().create_timer(auto_advance_delay).timeout
+		await get_tree().create_timer(auto_advance_delay, false).timeout
 		next_script()
 
 
