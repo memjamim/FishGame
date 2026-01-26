@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://bgqv4j4lett83"]
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://bgqv4j4lett83"]
 
-[ext_resource type="Texture2D" uid="uid://cl5mckcssq54v" path="res://shop/icons/snorkelt1.png" id="1_e0wmj"]
+[ext_resource type="PackedScene" uid="uid://chex2yd1i8b4x" path="res://shop/item scenes/snorkel_t3.tscn" id="1_6goxj"]
+[ext_resource type="Texture2D" uid="uid://btxv13wgl3o6y" path="res://shop/icons/FamiliarScubaMask.png" id="1_e0wmj"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_6goxj"]
 
 [resource]
 script = ExtResource("2_6goxj")
+display_scene = ExtResource("1_6goxj")
 item_id = "snorkel_t3"
 family_id = "snorkel"
 tier = 3
 cost = 700
-display_name = "Scuba Gear"
+display_name = "Familiar Scuba Set"
 icon = ExtResource("1_e0wmj")
 effect_type = 2
 breath_bonus_seconds = 60.0

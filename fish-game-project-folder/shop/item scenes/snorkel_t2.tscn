@@ -8,4 +8,4 @@
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25153905, 0, 0)
 
 [node name="SharkMask" parent="MeshInstance3D" instance=ExtResource("1_57457")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36969256, -0.27010977, -0.15736699)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.73600185, -0.23261023, 0.121583045)

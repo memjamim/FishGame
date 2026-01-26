@@ -30,7 +30,7 @@ func set_flashlight_unlocked(unlocked: bool) -> void:
 # --- Currency / Collectables ---
 signal collectables_changed(count: int)
 
-var _collectables: int = 100 #TODO: testing
+var _collectables: int = 10000 #TODO: testing
 var collectables: int:
 	get:
 		return _collectables
