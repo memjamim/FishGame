@@ -66,6 +66,7 @@ func _ready() -> void:
 	_refresh_controls_ui()
 
 func _build_controls_ui() -> void:
+
 	if controls_list == null:
 		push_warning("OptionsMenu: ControlsList not found. Add ControlsScroll/ControlsList.")
 		return
@@ -96,6 +97,8 @@ func _build_controls_ui() -> void:
 		controls_list.add_child(h)
 
 		_action_to_button[action] = btn
+		btn.mouse_filter = Control.MOUSE_FILTER_STOP
+
 
 func _refresh_controls_ui() -> void:
 	for row in REMAPPABLE_ACTIONS:
@@ -108,6 +111,19 @@ func _begin_rebind(action: StringName, btn: Button) -> void:
 	_waiting_action = action
 	_waiting_button = btn
 	btn.text = "Press a key..."
+
+	# Ensure the button forwards mouse button events while waiting
+	btn.gui_input.connect(func(ev: InputEvent):
+		if _waiting_action != action:
+			return
+		if ev is InputEventMouseButton:
+			var mb := ev as InputEventMouseButton
+			if not mb.pressed:
+				return
+			_set_action_single_event(_waiting_action, mb)
+			_finish_rebind()
+	)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _waiting_action == &"":
