@@ -18,7 +18,7 @@ var _drowning_sfx_on := false
 @onready var offhand: Node3D = get_node(offhand_path) as Node3D
 
 func play_purchase_fail_sfx() -> void:
-	_play_sfx(sfx_purchase_fail, 6.0, 0.98, 1.02)
+	_play_sfx(sfx_purchase_fail, 8.0, 0.98, 1.02)
 
 func _play_sfx(p: AudioStreamPlayer, vol_db := -6.0, pitch_min := 0.97, pitch_max := 1.03) -> void:
 	if p == null:
