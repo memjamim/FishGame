@@ -225,9 +225,6 @@ var weapon_tier := 1
 @export var footstep_speed_threshold := 0.25
 #var _footstep_timer := 0.0
 
-# --- Visual ---
-@onready var underwater_effect: MeshInstance3D = $CameraPivot/Camera3D/UnderwaterEffect
-
 
 
 func _ready() -> void:
@@ -737,9 +734,12 @@ func _build_prompt_for_collider(collider: Object) -> String:
 		var n := collider as Node
 		if n.is_in_group("collectable") or n.is_in_group("weapon") or n.is_in_group("holdable"):
 			return "Pick up  %s" % key_hint
-
+		
+		if n.name == 'SlideInteract' and n.CAN_SLIDE:
+			return "Interact  %s" % key_hint
+		
 		# Generic interactables
-		if n.is_in_group("interactable") or collider.has_method("_on_interact"):
+		if (n.is_in_group("interactable") or collider.has_method("_on_interact")) and n.name != 'SlideInteract':
 			return "Interact  %s" % key_hint
 
 	# Default: no prompt
