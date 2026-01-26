@@ -289,6 +289,7 @@ var weapon_tier := 1
 @onready var sfx_stab: AudioStreamPlayer = $Audio/Stab
 @onready var sfx_oof: AudioStreamPlayer = $Audio/Oof
 @onready var sfx_underwater_amb: AudioStreamPlayer = $Audio/UnderwaterAmbiance
+@onready var sfx_overwater_amb: AudioStreamPlayer = $Audio/OverwaterAmbiance
 @onready var sfx_footsteps: AudioStreamPlayer = $Audio/Footsteps
 
 @export var footstep_interval_walk := 0.45
@@ -340,9 +341,11 @@ func _ready() -> void:
 	if IS_IN_WATER:
 		if not sfx_underwater_amb.playing:
 			sfx_underwater_amb.play()
+			sfx_overwater_amb.stop()
 	else:
 		if sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
+			sfx_overwater_amb.play()
 	
 	interact_prompt = player_ui.find_child("InteractPrompt", true, true) as Label
 	if interact_prompt == null:
@@ -394,11 +397,13 @@ func set_in_water(v: bool) -> void:
 		# Start underwater ambiance
 		if sfx_underwater_amb and not sfx_underwater_amb.playing:
 			sfx_underwater_amb.play()
+			sfx_overwater_amb.stop()
 	else:
 		is_sprinting_underwater = false
 		_drown_tick_timer = 0.0
 		if sfx_underwater_amb and sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
+			sfx_overwater_amb.play()
 
 
 func _unhandled_input(event: InputEvent) -> void:
