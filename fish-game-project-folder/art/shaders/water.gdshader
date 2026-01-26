@@ -1,5 +1,6 @@
 shader_type spatial;
 render_mode blend_mix, depth_prepass_alpha;
+
 uniform vec2 amplitude = vec2(0.001, 0.001);
 uniform vec2 frequency = vec2(10.0, 10.0);
 uniform vec2 time_factor = vec2(1.0, 2.0);
@@ -14,7 +15,7 @@ uniform float uv_offset_amplitude = 0.05;
 
 uniform sampler2D normalmap : hint_normal;
 
-uniform float refraction = 0.005;
+uniform float refraction = 0.05;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 float height(vec2 pos, float time) {
