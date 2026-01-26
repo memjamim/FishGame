@@ -27,6 +27,7 @@ pickup_scene = ExtResource("2_fppc6")
 shop_items = Array[ExtResource("2_nxcqm")]([ExtResource("11_rovg2"), ExtResource("12_l8eaw"), ExtResource("13_27fgn"), ExtResource("3_fppc6"), ExtResource("4_5h4pd"), ExtResource("5_foht7"), ExtResource("7_5h4pd"), ExtResource("8_2vo1b"), ExtResource("9_4660x"), ExtResource("10_fhtem"), ExtResource("14_4660x"), ExtResource("15_l8eaw"), ExtResource("16_27fgn"), ExtResource("17_el58o")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_e2ga4")
 
 [node name="Slots" type="Node3D" parent="."]
@@ -35,7 +36,7 @@ mesh = SubResource("BoxMesh_e2ga4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.25)
 
 [node name="Slot2" type="Node3D" parent="Slots"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 
 [node name="Slot3" type="Node3D" parent="Slots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.25)
