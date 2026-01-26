@@ -1,14 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8v7kcsljbcru"]
+[gd_scene load_steps=21 format=3 uid="uid://c8v7kcsljbcru"]
 
 [ext_resource type="Script" uid="uid://db0vh5tiik48j" path="res://scripts/player.gd" id="1_067cb"]
 [ext_resource type="Script" uid="uid://ctmkxp74vlma0" path="res://scripts/pickup_throw.gd" id="2_g2els"]
-[ext_resource type="Script" uid="uid://2wh7swcis7wf" path="res://scripts/player_raycast.gd" id="2_qhqgy"]
+[ext_resource type="Script" path="res://scripts/player_raycast.gd" id="2_qhqgy"]
 [ext_resource type="Shader" uid="uid://dyhkqanmlww7w" path="res://art/shaders/underwater.gdshader" id="3_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://c28f3lttpycnx" path="res://assets/Sounds/oof.mp3" id="5_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ng2dtmkeo6dv" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
-[ext_resource type="AudioStream" uid="uid://cbhj7uwsid5yv" path="res://assets/Sounds/stab.wav" id="5_smehm"]
+[ext_resource type="AudioStream" uid="uid://cbhj7uwsid5yv" path="res://assets/Sounds/Hit.wav" id="5_smehm"]
+[ext_resource type="Material" uid="uid://byeyt03501m7h" path="res://art/shaders/UnderwaterShader.tres" id="6_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://bxnx58okin8dl" path="res://assets/Sounds/UnderwaterAmbiance.wav" id="6_smehm"]
+[ext_resource type="AudioStream" uid="uid://b6mwr0letu8f7" path="res://assets/Sounds/Slash.mp3" id="6_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://clxqj32ax1t53" path="res://assets/Sounds/water footsteps.mp3" id="7_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://doxu2oca1ukc4" path="res://assets/Sounds/radio.mp3" id="11_d2wvv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_quwqr"]
 
@@ -155,6 +158,7 @@ spot_angle = 37.34233
 
 [node name="UnderwaterEffect" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(-0.9200894, -8.742277e-08, -2.430854e-15, 0, -4.3711385e-08, 0.6361209, -8.043677e-08, 0.99999994, 2.7805727e-08, 0, 0, -0.22232974)
+visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_smehm")
 
@@ -170,9 +174,23 @@ autoplay = "idle"
 
 [node name="PlayerUI" parent="." instance=ExtResource("5_qlg0r")]
 process_mode = 4
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="UnderwaterPost" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="UnderwaterRect" type="ColorRect" parent="UnderwaterPost"]
+material = ExtResource("6_3v2ag")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Audio" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_smehm")
+stream = ExtResource("6_y4r1p")
 
 [node name="Stab" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_smehm")
@@ -185,6 +203,15 @@ stream = ExtResource("6_smehm")
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_ur7pv")
+
+[node name="Slash" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_y4r1p")
+
+[node name="MiniRadioPlayer" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("11_d2wvv")
+
+[node name="Radio" type="AudioStreamPlayer" parent="Audio/MiniRadioPlayer"]
+stream = ExtResource("11_d2wvv")
 
 [node name="RegenCooldown" type="Timer" parent="."]
 autostart = true

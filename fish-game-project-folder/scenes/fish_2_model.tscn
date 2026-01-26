@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5xw1j4nr5pyf"]
+
+[ext_resource type="PackedScene" uid="uid://cwx6im35ip2k2" path="res://assets/fishFixedMouth2.fbx" id="1_4gr5b"]
+
+[node name="Fish2" instance=ExtResource("1_4gr5b")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -4.3711384e-06, 99.99999, 0, -99.99999, -4.3711384e-06, 0, 0, -1.4340634)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0.9963193, 0.08572023, -3.239008e-08, 1.3643663e-07)
+bones/1/rotation = Quaternion(7.376502e-08, 1.6039662e-08, 0.22144283, 0.97517335)
+bones/2/rotation = Quaternion(3.2811366e-17, -2.781221e-17, 0.18697022, 0.98236567)
+bones/3/rotation = Quaternion(-0.23213917, 0.017389387, -0.07264737, 0.96981007)

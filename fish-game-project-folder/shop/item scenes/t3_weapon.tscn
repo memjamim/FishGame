@@ -33,9 +33,6 @@ transform = Transform3D(1, 0, 2.682209e-07, 0, 0.99996823, 0, 0, 0, 0.99996793, 
 shape = SubResource("BoxShape3D_fpn5d")
 
 [node name="Trident" parent="." instance=ExtResource("2_v1151")]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
 transform = Transform3D(0.13611329, 0, 0.9906931, 0, 0.9999997, 0, -0.99069315, 0, 0.1361132, 0, 0.8822526, 0)
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

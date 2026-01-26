@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2td7c2d17p1f"]
+[gd_scene load_steps=15 format=3 uid="uid://c2td7c2d17p1f"]
 
-[ext_resource type="Script" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
+[ext_resource type="Script" uid="uid://dcebr74oxfy27" path="res://scenes/enemy/stealth_test.gd" id="1_5vawu"]
 [ext_resource type="PackedScene" uid="uid://c8v7kcsljbcru" path="res://scenes/player.tscn" id="1_ijls6"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="1_wassk"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="2_b0xup"]
 [ext_resource type="PackedScene" uid="uid://chi4l65p4y4ud" path="res://scenes/test_weapon.tscn" id="3_u545m"]
 [ext_resource type="PackedScene" uid="uid://c5tmxh58ogg14" path="res://scenes/test_collectable.tscn" id="6_qig1i"]
 [ext_resource type="PackedScene" uid="uid://bfj5quwh7togt" path="res://scenes/test_holdable.tscn" id="7_kvqo1"]
-[ext_resource type="PackedScene" path="res://scenes/collection_point.tscn" id="8_kvqo1"]
+[ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="8_kvqo1"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="9_5vawu"]
+[ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="10_gns3y"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ijls6"]
 size = Vector2(20, 20)
@@ -43,6 +44,10 @@ shape = SubResource("ConcavePolygonShape3D_piw3f")
 transform = Transform3D(0.33975595, 0, 0.94051373, 0, 1, 0, -0.94051373, 0, 0.33975595, 6.679449, 2.0841365, -6.6499596)
 player_path = NodePath("../Player")
 
+[node name="FishPerson2" parent="." instance=ExtResource("10_gns3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.862742, 2.9342887, 4.9682107)
+player_path = NodePath("../Player")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 2, 0, 1.9005148, 0)
 mesh = SubResource("BoxMesh_b0xup")
@@ -68,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7240286, 0.4833276, -1.182
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5782394, 0.4833276, -5.7147436)
 
 [node name="CollectionPoint" parent="." instance=ExtResource("8_kvqo1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.235715, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.687381, 0.3625158, 0.17330927)
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 
@@ -100,5 +105,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, 0.00
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.321884, 0.090275764, -1.5743427)
 
 [node name="DenayrouzeNPC" parent="." instance=ExtResource("9_5vawu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.930851, 0.32627904, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7304807, 0.57425404, 2.8453996)
 player_path = NodePath("../Player")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://lm3jddqmrp01"]
+
+[ext_resource type="PackedScene" uid="uid://f5x6quh10fnu" path="res://shop/models/SharkMask.fbx" id="1_57457"]
+
+[node name="SnorkelT2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.25153905, 0, 0)
+
+[node name="SharkMask" parent="MeshInstance3D" instance=ExtResource("1_57457")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36969256, -0.27010977, -0.15736699)

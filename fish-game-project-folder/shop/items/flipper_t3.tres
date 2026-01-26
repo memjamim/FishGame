@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://ck6skxyrnv4w5"]
+
+[ext_resource type="Texture2D" uid="uid://ccfcdl3kk5g8l" path="res://shop/icons/flippers.png" id="1_naoya"]
+[ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="2_6n347"]
+
+[resource]
+script = ExtResource("2_6n347")
+flipper_speed_multiplier = 2.0
+item_id = "flipper_t3"
+family_id = "flipper"
+tier = 3
+cost = 7
+display_name = "Power Flippers"
+icon = ExtResource("1_naoya")
+effect_type = 5
+metadata/_custom_type_script = "uid://dp30l0sce605q"
