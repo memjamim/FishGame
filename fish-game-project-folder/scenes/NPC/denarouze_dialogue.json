@@ -57,13 +57,21 @@
 	],
 	"post-game-1": [
 		{"name": "Daft Denayrouze:", "text": "When I die, cast me back into the deep."},
-		{"name": "Daft Denayrouze:", "text": "If I die, I ain’t quite sure that’s in the cards for me."}
+		{"name": "Daft Denayrouze:", "text": "If I die. I ain’t quite sure that’s in the cards for me."}
 	],
 	"post-game-2": [
 		{"name": "Daft Denayrouze:", "text": "The souls of the ones you’ve slain, you think they can rest now?"}
 	],
 	"post-game-3": [
 		{"name": "Daft Denayrouze:", "text": "*scream*"}
+	],
+	"post-game-4": [
+		{"name": "Daft Denayrouze:", "text": "Welp. That's it."},
+		{"name": "Daft Denayrouze:", "text": "Seriously."},
+		{"name": "Daft Denayrouze:", "text": "Ain't nothing left for you to do."},
+		{"name": "Daft Denayrouze:", "text": "...I think."},
+		{"name": "Daft Denayrouze:", "text": "Guess you can go on along and close the game now."},
+		{"name": "Eelbert:", "text": "And leave us to rot in the darkness until we're forgotten."},
 	],
 	"generic": [
 		{"name": "Daft Denayrouze:", "text": "Well, scram. My toys ain't going to collect themselves."}
