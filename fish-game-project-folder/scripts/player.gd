@@ -312,7 +312,6 @@ func set_in_water(v: bool) -> void:
 
 	if IS_IN_WATER:
 		velocity.y = min(velocity.y, 0.0)
-		self.underwater_effect.visible = true
 
 		# Start underwater ambiance
 		if sfx_underwater_amb and not sfx_underwater_amb.playing:
@@ -322,7 +321,6 @@ func set_in_water(v: bool) -> void:
 		_drown_tick_timer = 0.0
 		if sfx_underwater_amb and sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
-		self.underwater_effect.visible = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -532,8 +530,10 @@ func _update_water_state(delta: float) -> void:
 
 	var rate := delta / water_state_smooth_time
 	if head_in_water:
+		self.underwater_effect.visible = true
 		_water_blend = min(1.0, _water_blend + rate)
 	else:
+		self.underwater_effect.visible = false
 		_water_blend = max(0.0, _water_blend - rate)
 
 	set_in_water(_water_blend >= 0.5)
