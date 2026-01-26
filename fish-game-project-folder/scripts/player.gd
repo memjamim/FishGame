@@ -7,10 +7,12 @@ extends CharacterBody3D
 
 # --- UI ---
 @onready var player_ui: Control = $PlayerUI
+var interact_prompt: Label
+
 var hp_bar: Range
 var breath_bar: Range
 var coin_counter: Control
-var item_bar: HBoxContainer
+var item_bar: VBoxContainer
 
 # --- Flashlight (Headlamp unlock) ---
 @onready var flashlight: SpotLight3D = $CameraPivot/Camera3D/Flashlight
@@ -99,6 +101,8 @@ var IS_HOLDING_WEAPON: bool = false
 signal water_state_changed(is_in_water: bool)
 
 # --- Movement ---
+var PAUSE_MOVEMENT: bool = false
+
 @export var land_speed := 5.0
 @export var swim_speed := 3.0
 
@@ -122,6 +126,7 @@ signal breath_updated(current: float, max_value: float)
 signal drowned
 
 @onready var camera_pivot: Node3D = $CameraPivot
+@onready var underwater_rect: ColorRect = $UnderwaterPost/UnderwaterRect
 
 # --- Head-based water detection ---
 @export var head_node_path: NodePath = NodePath("CameraPivot/Camera3D")
@@ -152,6 +157,10 @@ var _bottom_marker: Node3D
 # --- Drowning damage / respawn ---
 @export var drown_damage_amount: int = 1
 @export var drown_tick_interval: float = 0.1
+
+@export var base_swim_speed := 3.0
+
+var flipper_speed_mult := 1.0
 
 var _drown_tick_timer: float = 0.0
 var _spawn_transform: Transform3D
@@ -214,7 +223,7 @@ var weapon_tier := 1
 @export var footstep_interval_walk := 0.45
 @export var footstep_interval_run := 0.30
 @export var footstep_speed_threshold := 0.25
-var _footstep_timer := 0.0
+#var _footstep_timer := 0.0
 
 # --- Visual ---
 @onready var underwater_effect: MeshInstance3D = $CameraPivot/Camera3D/UnderwaterEffect
@@ -226,11 +235,11 @@ func _ready() -> void:
 	health = max_health
 	add_to_group("player")
 	_spawn_transform = global_transform
-
+	randomize()
 	breath_max = base_breath_max
 	breath = breath_max
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	swim_speed = base_swim_speed
 	emit_signal("breath_updated", breath, breath_max)
 	emit_signal("collectables_changed", collectables)
 
@@ -248,7 +257,7 @@ func _ready() -> void:
 	hp_bar = player_ui.find_child("Hp", true, true) as Range
 	breath_bar = player_ui.find_child("Breath", true, true) as Range
 	coin_counter = player_ui.find_child("CoinsCounter", true, true) as Control
-	item_bar = player_ui.find_child("ItemBar", true, true) as HBoxContainer
+	item_bar = player_ui.find_child("ItemBar", true, true) as VBoxContainer
 
 
 
@@ -267,7 +276,12 @@ func _ready() -> void:
 		if sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
 	
-	
+	interact_prompt = player_ui.find_child("InteractPrompt", true, true) as Label
+	if interact_prompt == null:
+		push_warning("PlayerUI: InteractPrompt Label not found. Prompts will not display.")
+	else:
+		interact_prompt.visible = false
+
 
 	# Flashlight starts hidden until unlocked and toggled
 	flashlight.visible = false
@@ -294,7 +308,7 @@ func _rebuild_item_bar() -> void:
 		tex.texture = icon
 		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		tex.custom_minimum_size = Vector2(80, 80)
+		tex.custom_minimum_size = Vector2(60, 60)
 		tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		item_bar.add_child(tex)
 
@@ -308,7 +322,6 @@ func set_in_water(v: bool) -> void:
 
 	if IS_IN_WATER:
 		velocity.y = min(velocity.y, 0.0)
-		self.underwater_effect.visible = true
 
 		# Start underwater ambiance
 		if sfx_underwater_amb and not sfx_underwater_amb.playing:
@@ -318,7 +331,6 @@ func set_in_water(v: bool) -> void:
 		_drown_tick_timer = 0.0
 		if sfx_underwater_amb and sfx_underwater_amb.playing:
 			sfx_underwater_amb.stop()
-		self.underwater_effect.visible = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -350,6 +362,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_update_interact_prompt()
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
@@ -372,7 +385,6 @@ func _physics_process(delta: float) -> void:
 	
 	if wish_dir.length() > 0.001:
 		wish_dir = wish_dir.normalized()
-		# TODO increase underwaterEffect strength, frequency, wave_speed A BIT
 	
 	# --- Underwater sprint (held) ---
 	is_sprinting_underwater = IS_IN_WATER and Input.is_action_pressed("sprint") and wish_dir.length() > 0.001
@@ -385,6 +397,7 @@ func _physics_process(delta: float) -> void:
 	# --- Interaction ---
 	if player_raycast.is_colliding() and Input.is_action_just_pressed("interact"):
 		var collider = player_raycast.get_collider()
+		print(collider)
 		if collider and collider.has_method("_on_interact"):
 			collider._on_interact(self)
 			return
@@ -440,6 +453,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _land_move(wish_dir: Vector3, delta: float) -> void:
+	if PAUSE_MOVEMENT:
+		return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -528,9 +544,12 @@ func _update_water_state(delta: float) -> void:
 
 	var rate := delta / water_state_smooth_time
 	if head_in_water:
+		underwater_rect.visible = true
 		_water_blend = min(1.0, _water_blend + rate)
 	else:
+		underwater_rect.visible = false
 		_water_blend = max(0.0, _water_blend - rate)
+
 
 	set_in_water(_water_blend >= 0.5)
 
@@ -572,6 +591,28 @@ func _apply_underwater_bob(delta: float) -> void:
 		#_footstep_timer = 0.0
 		#return
 
+@onready var mini_radio: AudioStreamPlayer3D = $Audio/MiniRadioPlayer
+var mini_radio_unlocked := false
+
+func unlock_mini_radio() -> void:
+	if mini_radio_unlocked:
+		return
+	print("mini_radio=", mini_radio, " stream=", mini_radio.stream, " bus=", mini_radio.bus)
+	mini_radio_unlocked = true
+
+	if mini_radio == null or mini_radio.stream == null:
+		push_warning("MiniRadioPlayer missing or stream not assigned.")
+		return
+
+	var leng := mini_radio.stream.get_length()
+	if leng > 0.05:
+		mini_radio.play(randf() * leng) # play(from_position_seconds)
+	else:
+		mini_radio.play()
+
+func apply_flipper_multiplier(mult: float) -> void:
+	flipper_speed_mult = maxf(1.0, mult)
+	swim_speed = base_swim_speed * flipper_speed_mult
 
 
 func _on_weapon_enemy_hit(body: Node3D, dmg: int) -> void:
@@ -632,6 +673,74 @@ func _update_ui() -> void:
 		var lbl := coin_counter.find_child("Label", true, false) as Label
 		if lbl:
 			lbl.text = str(_collectables)
+
+func _get_action_key_text(action: StringName) -> String:
+	# Returns something like "E" based on current InputMap binding.
+	var events := InputMap.action_get_events(action)
+	for ev in events:
+		if ev is InputEventKey:
+			var k := ev as InputEventKey
+			# Prefer physical so "E" stays E across keyboard layouts; fallback to keycode
+			var code := k.physical_keycode if k.physical_keycode != 0 else k.keycode
+			return OS.get_keycode_string(code)
+		elif ev is InputEventJoypadButton:
+			var jb := ev as InputEventJoypadButton
+			return "Pad %d" % jb.button_index
+		elif ev is InputEventMouseButton:
+			var mb := ev as InputEventMouseButton
+			return "Mouse%d" % mb.button_index
+
+	# Fallback if unbound
+	return "?"
+
+func _set_interact_prompt(text: String) -> void:
+	if interact_prompt == null:
+		return
+	interact_prompt.text = text
+	interact_prompt.visible = (text != "")
+
+func _build_prompt_for_collider(collider: Object) -> String:
+	if collider == null:
+		return ""
+
+	var key := _get_action_key_text(&"interact")
+	var key_hint := "[%s]" % key
+
+	# SHOP PICKUP (your class_name ShopPickup)
+	if collider is ShopPickup:
+		var sp := collider as ShopPickup
+		if sp.item_data != null:
+			var name := sp.item_data.display_name if sp.item_data.display_name != "" else sp.item_data.item_id
+			return "Buy %s  $%d  %s" % [name, sp.item_data.cost, key_hint]
+		return "Buy  %s" % key_hint
+
+	# NPC (choose one: group "npc" OR method "talk")
+	if collider is Node and ((collider as Node).is_in_group("npc") or collider.has_method("talk")):
+		return "Talk  %s" % key_hint
+
+	# Coins / dropped weapons / pool toys (holdables)
+	if collider is Node:
+		var n := collider as Node
+		if n.is_in_group("collectable") or n.is_in_group("weapon") or n.is_in_group("holdable"):
+			return "Pick up  %s" % key_hint
+
+		# Generic interactables
+		if n.is_in_group("interactable") or collider.has_method("_on_interact"):
+			return "Interact  %s" % key_hint
+
+	# Default: no prompt
+	return ""
+
+func _update_interact_prompt() -> void:
+	if interact_prompt == null:
+		return
+
+	if player_raycast == null or not player_raycast.is_colliding():
+		_set_interact_prompt("")
+		return
+
+	var collider := player_raycast.get_collider()
+	_set_interact_prompt(_build_prompt_for_collider(collider))
 
 
 func _set_taking_damage() -> void:

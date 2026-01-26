@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://btuxlr8iiv3k0"]
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=4 format=3 uid="uid://btuxlr8iiv3k0"]
 
 [ext_resource type="PackedScene" uid="uid://de6aau884ebv6" path="res://shop/item scenes/t3_weapon.tscn" id="2_k1p8u"]
+[ext_resource type="Texture2D" uid="uid://bng6ka6pammqe" path="res://shop/icons/Trident.png" id="2_wysq2"]
 [ext_resource type="Script" uid="uid://dp30l0sce605q" path="res://shop/ShopItemData.gd" id="3_k1p8u"]
 
 [resource]
@@ -13,4 +14,5 @@ family_id = "weapon"
 tier = 3
 cost = 7
 display_name = "Trident"
+icon = ExtResource("2_wysq2")
 metadata/_custom_type_script = "uid://dp30l0sce605q"
