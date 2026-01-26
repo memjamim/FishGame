@@ -295,8 +295,12 @@ var weapon_tier := 1
 @export var footstep_interval_walk := 0.45
 @export var footstep_interval_run := 0.30
 @export var footstep_speed_threshold := 0.25
-#var _footstep_timer := 0.0
-
+var _footstep_timer := 0.0
+var _footstep_was_moving := false
+@export var footstep_pitch_min := 0.96
+@export var footstep_pitch_max := 1.04
+@export var footstep_vol_min_db := -9.0
+@export var footstep_vol_max_db := -6.0
 
 
 func _ready() -> void:
@@ -327,7 +331,7 @@ func _ready() -> void:
 	breath_bar = player_ui.find_child("Breath", true, true) as Range
 	coin_counter = player_ui.find_child("CoinsCounter", true, true) as Control
 	item_bar = player_ui.find_child("ItemBar", true, true) as VBoxContainer
-
+	sfx_overwater_amb.play()
 
 
 	if item_bar == null:
@@ -439,7 +443,7 @@ func _physics_process(delta: float) -> void:
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
-	#_update_footsteps(delta)
+	_update_footsteps(delta)
 	_update_ui()
 	_update_health_regen(delta)
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
@@ -656,15 +660,31 @@ func _apply_underwater_bob(delta: float) -> void:
 	camera_pivot.position = camera_pivot.position.lerp(desired, t)
 
 
-#func _update_footsteps(delta: float) -> void:
-	#if IS_IN_WATER or not is_on_floor():
-		#_footstep_timer = 0.0
-		#return
-#
-	#var horizontal_speed := Vector2(velocity.x, velocity.z).length()
-	#if horizontal_speed < footstep_speed_threshold:
-		#_footstep_timer = 0.0
-		#return
+func _update_footsteps(delta: float) -> void:
+	if sfx_footsteps == null:
+		return
+
+	if IS_IN_WATER or not is_on_floor():
+		if sfx_footsteps.playing:
+			sfx_footsteps.stop()
+		return
+
+	var horizontal_speed := Vector2(velocity.x, velocity.z).length()
+	if horizontal_speed < footstep_speed_threshold:
+		if sfx_footsteps.playing:
+			sfx_footsteps.stop()
+		return
+
+	# Start loop if needed
+	if not sfx_footsteps.playing:
+		sfx_footsteps.play()
+
+	# Modulate with speed (makes it feel less canned)
+	var t := clampf(horizontal_speed / land_speed, 0.0, 1.0)
+	sfx_footsteps.pitch_scale = lerpf(0.95, 1.12, t)
+	sfx_footsteps.volume_db = lerpf(-14.0, -6.0, t)
+
+
 
 @onready var mini_radio: AudioStreamPlayer3D = $Audio/MiniRadioPlayer
 var mini_radio_unlocked := false
