@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dveqwxxqqn10k"]
+
+[ext_resource type="PackedScene" uid="uid://l5sokyvfwyn1" path="res://assets/HangingLight.fbx" id="1_2uwad"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7iek"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dpuw1"]
+material = SubResource("StandardMaterial3D_y7iek")
+radius = 0.11
+height = 0.2
+
+[node name="HangingLight" instance=ExtResource("1_2uwad")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40721172, 0)
+mesh = SubResource("SphereMesh_dpuw1")
