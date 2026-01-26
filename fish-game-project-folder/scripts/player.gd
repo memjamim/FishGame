@@ -5,6 +5,33 @@ extends CharacterBody3D
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
+@onready var sfx_purchase: AudioStreamPlayer = $Audio/Purchase
+@onready var sfx_pickup_toy: AudioStreamPlayer = $Audio/PickupToy
+@onready var sfx_pickup_coin: AudioStreamPlayer = $Audio/PickupCoin
+@onready var sfx_purchase_fail: AudioStreamPlayer = $Audio/PurchaseFail
+
+func play_purchase_fail_sfx() -> void:
+	_play_sfx(sfx_purchase_fail, -6.0, 0.98, 1.02)
+
+func _play_sfx(p: AudioStreamPlayer, vol_db := -6.0, pitch_min := 0.97, pitch_max := 1.03) -> void:
+	if p == null:
+		return
+	p.volume_db = vol_db
+	p.pitch_scale = randf_range(pitch_min, pitch_max)
+	if p.playing:
+		p.stop()
+	p.play()
+
+func play_purchase_sfx() -> void:
+	_play_sfx(sfx_purchase, -6.0)
+
+func play_pickup_toy_sfx() -> void:
+	_play_sfx(sfx_pickup_toy, -6.0)
+
+func play_pickup_coin_sfx() -> void:
+	_play_sfx(sfx_pickup_coin, -6.0)
+
+
 # --- UI ---
 @onready var player_ui: Control = $PlayerUI
 var interact_prompt: Label
@@ -38,8 +65,15 @@ var collectables: int:
 		value = max(0, value)
 		if value == _collectables:
 			return
+
+		var gained := value > _collectables
 		_collectables = value
+
+		if gained:
+			play_pickup_coin_sfx()
+
 		emit_signal("collectables_changed", _collectables)
+
 
 func can_afford(cost: int) -> bool:
 	return collectables >= cost
@@ -519,6 +553,7 @@ func _physics_process(delta: float) -> void:
 			if IS_HOLDING_ITEM == false:
 				IS_HOLDING_ITEM = true
 				pickup_throw._pick_up(collider)
+				play_pickup_toy_sfx()
 
 	if Input.is_action_pressed("throw") and (IS_HOLDING_ITEM or IS_HOLDING_WEAPON):
 		pickup_throw._charge_throw(delta)

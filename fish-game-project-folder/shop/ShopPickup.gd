@@ -78,6 +78,7 @@ func _on_interact(player) -> void:
 		return
 	if not player.can_afford(item_data.cost):
 		print("Not enough coins.")
+		player.play_purchase_fail_sfx()
 		return
 
 	if player.spend_coins(item_data.cost):
@@ -92,7 +93,7 @@ func _on_interact(player) -> void:
 		_grant_item_to_player(player)
 
 		print("Bought: ", item_data.display_name)
-
+		player.play_purchase_sfx()
 		if shop != null:
 			shop.on_item_bought(player, slot) if shop.has_method("on_item_bought") else shop.refresh(player)
 
