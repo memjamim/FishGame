@@ -470,7 +470,7 @@ shape = SubResource("BoxShape3D_1blye")
 [node name="BoueyFix" type="StaticBody3D" parent="CollisionFixes"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionFixes/BoueyFix"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.320745, 3.1328907, 2.221166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0510807, -9.320745, 3.1328907, 2.2394295)
 shape = SubResource("BoxShape3D_3q2eb")
 
 [node name="BoxBathroomFix" type="StaticBody3D" parent="CollisionFixes"]
@@ -558,7 +558,11 @@ transform = Transform3D(0.8027501, 0, 0, 0, 4.711403, 0, 0, 0, 1, -2.306855, 1.0
 shape = SubResource("BoxShape3D_hxyhn")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="CollisionFixes/FalmingoNoodlesFix"]
-transform = Transform3D(0.42203295, 0, 0.90658057, 0, 1.5918816, 0, -0.90658057, 0, 0.42203295, -6.710195, 1.07349, 13.076217)
+transform = Transform3D(-0.6823175, 0, -0.7310559, 0, 1.5918814, 0, 0.7310559, 0, -0.6823175, -5.4050603, 1.07349, 13.949444)
+shape = SubResource("BoxShape3D_hxyhn")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="CollisionFixes/FalmingoNoodlesFix"]
+transform = Transform3D(0.8027501, 0, 0, 0, 1.645723, 0, 0, 0, 1, -3.4016333, 1.07349, 15.3069)
 shape = SubResource("BoxShape3D_hxyhn")
 
 [node name="GamblingFix" type="StaticBody3D" parent="CollisionFixes"]
