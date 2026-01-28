@@ -551,7 +551,7 @@ func _physics_process(delta: float) -> void:
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
-	_update_underwater_music(delta) # NEW
+	_update_underwater_music(delta)
 	_update_footsteps(delta)
 	_update_ui()
 	_update_health_regen(delta)

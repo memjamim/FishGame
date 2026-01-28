@@ -20,6 +20,10 @@ config/icon="uid://bhaufyqb3kwfv"
 
 Settings="*res://scripts/Settings.gd"
 
+[debug]
+
+settings/profiler/max_timestamp_query_elements=20000
+
 [display]
 
 window/stretch/mode="canvas_items"
