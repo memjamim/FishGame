@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://badidqiivrhpx"
-path.s3tc="res://.godot/imported/fish_0.png-78ded01bb520699423cb18da6161db8e.s3tc.ctex"
+uid="uid://brdvf0wdfmpvg"
+path.s3tc="res://.godot/imported/poolnoodlesfixed_1.png-c7e0530b6a091ea577f74b6ee4447eb6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "15159f6deefd46be5b6b53d18c9f17d0"
+"md5": "48ccb993ea32017973ffa6819f4d0212"
 }
 
 [deps]
 
-source_file="res://assets/fish_0.png"
-dest_files=["res://.godot/imported/fish_0.png-78ded01bb520699423cb18da6161db8e.s3tc.ctex"]
+source_file="res://assets/fbx files/poolnoodlesfixed_1.png"
+dest_files=["res://.godot/imported/poolnoodlesfixed_1.png-c7e0530b6a091ea577f74b6ee4447eb6.s3tc.ctex"]
 
 [params]
 

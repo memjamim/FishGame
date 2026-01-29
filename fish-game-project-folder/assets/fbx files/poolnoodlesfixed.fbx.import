@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cdrwywd1uvgf6"
-path="res://.godot/imported/lifepreserversfixed.fbx-e481270c748c623e3d55845dfbe797ae.scn"
+uid="uid://bav4f1b32mrfv"
+path="res://.godot/imported/poolnoodlesfixed.fbx-0830365c5394dfd43306575d5ba82284.scn"
 
 [deps]
 
-source_file="res://assets/lifepreserversfixed.fbx"
-dest_files=["res://.godot/imported/lifepreserversfixed.fbx-e481270c748c623e3d55845dfbe797ae.scn"]
+source_file="res://assets/fbx files/poolnoodlesfixed.fbx"
+dest_files=["res://.godot/imported/poolnoodlesfixed.fbx-0830365c5394dfd43306575d5ba82284.scn"]
 
 [params]
 
@@ -39,38 +39,10 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:BeachChair2": {
+"PATH:NoodleRed": {
 "generate/physics": true
 },
-"PATH:BeachChair2_001": {
-"generate/physics": true
-},
-"PATH:BeachChair2_002": {
-"generate/physics": true
-},
-"PATH:BeachChair2_003": {
-"generate/physics": true
-},
-"PATH:BeachChair2_004": {
-"generate/physics": true
-},
-"PATH:Cube_009": {
-"generate/physics": true,
-"node/script": null
-},
-"PATH:Life Buoy": {
-"generate/physics": true
-},
-"PATH:Life Buoy_001": {
-"generate/physics": true
-},
-"PATH:Life Buoy_002": {
-"generate/physics": true
-},
-"PATH:Life Buoy_003": {
-"generate/physics": true
-},
-"PATH:Life Buoy_004": {
+"PATH:Plane_043": {
 "generate/physics": true
 }
 }

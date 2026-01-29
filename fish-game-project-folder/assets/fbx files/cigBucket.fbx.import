@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://l5sokyvfwyn1"
-path="res://.godot/imported/HangingLight.fbx-6c2d36ac2638e66ad8e2867d2ecfb0dd.scn"
+uid="uid://drt8ray8qv055"
+path="res://.godot/imported/cigBucket.fbx-43af073db2816387cb1893fdc0f5e9e1.scn"
 
 [deps]
 
-source_file="res://assets/HangingLight.fbx"
-dest_files=["res://.godot/imported/HangingLight.fbx-6c2d36ac2638e66ad8e2867d2ecfb0dd.scn"]
+source_file="res://assets/fbx files/cigBucket.fbx"
+dest_files=["res://.godot/imported/cigBucket.fbx-43af073db2816387cb1893fdc0f5e9e1.scn"]
 
 [params]
 

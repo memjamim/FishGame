@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4kohgdaxjebr"
-path.s3tc="res://.godot/imported/cigBucket_1.png-52710eb1f962736b8548046d33d05acd.s3tc.ctex"
+path.s3tc="res://.godot/imported/cigBucket_1.png-4e393e183a4c26dd0dbf1e854f5bbd90.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/cigBucket_1.png"
-dest_files=["res://.godot/imported/cigBucket_1.png-52710eb1f962736b8548046d33d05acd.s3tc.ctex"]
+source_file="res://assets/fbx files/cigBucket_1.png"
+dest_files=["res://.godot/imported/cigBucket_1.png-4e393e183a4c26dd0dbf1e854f5bbd90.s3tc.ctex"]
 
 [params]
 

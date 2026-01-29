@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://7i0xh0e1jfv"]
 
-[ext_resource type="Script" uid="uid://4t8x24xm7lmm" path="res://scripts/bubble_coral.gd" id="1_fys8p"]
-[ext_resource type="PackedScene" uid="uid://blbp3vts82ypj" path="res://assets/coral.fbx" id="2_ka185"]
+[ext_resource type="Script" path="res://scripts/bubble_coral.gd" id="1_fys8p"]
+[ext_resource type="PackedScene" uid="uid://blbp3vts82ypj" path="res://assets/fbx files/coral.fbx" id="2_ka185"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ka185"]
 radius = 0.8952278

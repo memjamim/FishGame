@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckm1i02k3t6p5"
-path.s3tc="res://.godot/imported/wallsfixed_8.png-406b94d7d5b94729ecd305f5f90b83c1.s3tc.ctex"
+uid="uid://cspphhsjjkeoc"
+path.s3tc="res://.godot/imported/coral_0.png-780620860bbb242164a2968e95613b95.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "13f0564be041695b756f8a570757db91"
+"md5": "8cfa8efb5b673c1bf383692de5ab6b3d"
 }
 
 [deps]
 
-source_file="res://assets/wallsfixed_8.png"
-dest_files=["res://.godot/imported/wallsfixed_8.png-406b94d7d5b94729ecd305f5f90b83c1.s3tc.ctex"]
+source_file="res://assets/fbx files/coral_0.png"
+dest_files=["res://.godot/imported/coral_0.png-780620860bbb242164a2968e95613b95.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7wlq5li5tu3p"
-path.s3tc="res://.godot/imported/Fish2_0.png-10e99b91a2a729bed9c312f9043c82a6.s3tc.ctex"
+uid="uid://n542ar0ws1i1"
+path.s3tc="res://.godot/imported/lifepreserversfixed_0.png-836a0372c30f766b281f8c18af2cc4a1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2a91a22af377572dc19769e4a49ac2a3"
+"md5": "5e2ce3522a46f120f2a45ec400f458cf"
 }
 
 [deps]
 
-source_file="res://assets/Fish2_0.png"
-dest_files=["res://.godot/imported/Fish2_0.png-10e99b91a2a729bed9c312f9043c82a6.s3tc.ctex"]
+source_file="res://assets/fbx files/lifepreserversfixed_0.png"
+dest_files=["res://.godot/imported/lifepreserversfixed_0.png-836a0372c30f766b281f8c18af2cc4a1.s3tc.ctex"]
 
 [params]
 

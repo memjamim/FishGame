@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dppmijpf8otw4"
-path.s3tc="res://.godot/imported/poolnoodlesfixed_0.png-0ce6e3fc0e04d693780d5453dd8186ed.s3tc.ctex"
+uid="uid://b3pmfgk7vroba"
+path.s3tc="res://.godot/imported/HangingLight_1.png-df11ac12e6299cb2b0ebfc4dfffdcdfb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5e2ce3522a46f120f2a45ec400f458cf"
+"md5": "d0bb7eead04d3c60e21d5df1b0f11b72"
 }
 
 [deps]
 
-source_file="res://assets/poolnoodlesfixed_0.png"
-dest_files=["res://.godot/imported/poolnoodlesfixed_0.png-0ce6e3fc0e04d693780d5453dd8186ed.s3tc.ctex"]
+source_file="res://assets/fbx files/HangingLight_1.png"
+dest_files=["res://.godot/imported/HangingLight_1.png-df11ac12e6299cb2b0ebfc4dfffdcdfb.s3tc.ctex"]
 
 [params]
 

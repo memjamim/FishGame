@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3der55ke7epa"
-path.s3tc="res://.godot/imported/wallsfixed_6.png-a208deeacad059837b81aab0b6e0a9ca.s3tc.ctex"
+uid="uid://dppmijpf8otw4"
+path.s3tc="res://.godot/imported/poolnoodlesfixed_0.png-d432b1be7a56aca983955c4772aef4fa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "48ccb993ea32017973ffa6819f4d0212"
+"md5": "5e2ce3522a46f120f2a45ec400f458cf"
 }
 
 [deps]
 
-source_file="res://assets/wallsfixed_6.png"
-dest_files=["res://.godot/imported/wallsfixed_6.png-a208deeacad059837b81aab0b6e0a9ca.s3tc.ctex"]
+source_file="res://assets/fbx files/poolnoodlesfixed_0.png"
+dest_files=["res://.godot/imported/poolnoodlesfixed_0.png-d432b1be7a56aca983955c4772aef4fa.s3tc.ctex"]
 
 [params]
 

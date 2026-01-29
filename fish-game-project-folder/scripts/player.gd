@@ -5,14 +5,9 @@ extends CharacterBody3D
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
-@onready var sfx_purchase: AudioStreamPlayer = $Audio/Purchase
-@onready var sfx_pickup_toy: AudioStreamPlayer = $Audio/PickupToy
-@onready var sfx_pickup_coin: AudioStreamPlayer = $Audio/PickupCoin
-@onready var sfx_purchase_fail: AudioStreamPlayer = $Audio/PurchaseFail
 @export var offhand_path: NodePath = NodePath("CameraPivot/Camera3D/Offhand")
 @export var drop_forward_distance := 1.0
 @export var drop_up_offset := 0.2
-@onready var sfx_drowning: AudioStreamPlayer = $Audio/DrowningLoop
 var _drowning_sfx_on := false
 
 @onready var offhand: Node3D = get_node(offhand_path) as Node3D
@@ -80,13 +75,14 @@ func has_flashlight() -> bool:
 
 func set_flashlight_unlocked(unlocked: bool) -> void:
 	flashlight_unlocked = unlocked
+	flashlight_enabled = true
 	flashlight.visible = flashlight_unlocked and flashlight_enabled
 
 
 # --- Currency / Collectables ---
 signal collectables_changed(count: int)
 
-var _collectables: int = 0 #TODO: testing
+var _collectables: int = 0 # Starting currency
 var collectables: int:
 	get:
 		return _collectables
@@ -287,7 +283,7 @@ func _notify_damage_taken() -> void:
 	_regen_interval = regen_start_interval
 
 func _update_health_regen(delta: float) -> void:
-	# No regen if already full or "dead"
+	# No regen if already full or dead
 	if health <= 0 or health >= max_health:
 		return
 
@@ -296,7 +292,7 @@ func _update_health_regen(delta: float) -> void:
 		return
 
 	_regen_tick_timer += delta
-	while _regen_tick_timer >= _regen_interval and health < max_health:
+	while _regen_tick_timer >= _regen_interval and health < max_health and breath:
 		_regen_tick_timer -= _regen_interval
 		health = min(max_health, health + regen_hp_per_tick)
 
@@ -353,6 +349,7 @@ func _set_ui_params(type: String, bonus: float) -> void:
 
 const PUSHBACK = 8.0
 
+# Weapon damage based on tier
 const WEAPON_DAMAGE := {
 	1: 20,
 	2: 25,
@@ -363,6 +360,11 @@ var weapon_tier := 1
 
 # --- Audio ---
 @onready var audio_root: Node = $Audio
+@onready var sfx_drowning: AudioStreamPlayer = $Audio/DrowningLoop
+@onready var sfx_purchase: AudioStreamPlayer = $Audio/Purchase
+@onready var sfx_pickup_toy: AudioStreamPlayer = $Audio/PickupToy
+@onready var sfx_pickup_coin: AudioStreamPlayer = $Audio/PickupCoin
+@onready var sfx_purchase_fail: AudioStreamPlayer = $Audio/PurchaseFail
 @onready var sfx_slash: AudioStreamPlayer = $Audio/Slash
 @onready var sfx_stab: AudioStreamPlayer = $Audio/Stab
 @onready var sfx_oof: AudioStreamPlayer = $Audio/Oof
@@ -370,7 +372,7 @@ var weapon_tier := 1
 @onready var sfx_overwater_amb: AudioStreamPlayer = $Audio/OverwaterAmbiance
 @onready var sfx_footsteps: AudioStreamPlayer = $Audio/Footsteps
 
-# NEW: Underwater music layers (create these as AudioStreamPlayer nodes under $Audio)
+# Underwater music layers
 @onready var uw_music_1: AudioStreamPlayer = $Audio/UnderwaterMusic1
 @onready var uw_music_2: AudioStreamPlayer = $Audio/UnderwaterMusic2
 @onready var uw_music_3: AudioStreamPlayer = $Audio/UnderwaterMusic3

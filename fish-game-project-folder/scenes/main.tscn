@@ -1,7 +1,7 @@
 [gd_scene load_steps=49 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
-[ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
+[ext_resource type="Script" path="res://scripts/main_script.gd" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_gqmmt"]

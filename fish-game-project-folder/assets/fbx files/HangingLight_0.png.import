@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr0uavis1fkex"
-path.s3tc="res://.godot/imported/cigBucket_0.png-f22af6bffd63ed2498f3e0fa2f3a2dde.s3tc.ctex"
+uid="uid://bhmq2jxrgxa2i"
+path.s3tc="res://.godot/imported/HangingLight_0.png-e3a7a3850823504bd86dc1aca42a7e4f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "26e5ae9080c8a3eeb39c371d90b3b0a7"
-}
 
 [deps]
 
-source_file="res://assets/cigBucket_0.png"
-dest_files=["res://.godot/imported/cigBucket_0.png-f22af6bffd63ed2498f3e0fa2f3a2dde.s3tc.ctex"]
+source_file="res://assets/fbx files/HangingLight_0.png"
+dest_files=["res://.godot/imported/HangingLight_0.png-e3a7a3850823504bd86dc1aca42a7e4f.s3tc.ctex"]
 
 [params]
 

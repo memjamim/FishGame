@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dirk5fovbrvic"
-path="res://.godot/imported/wallsfixed.fbx-477af7f147c66c897ae32d5261d64527.scn"
+path="res://.godot/imported/wallsfixed.fbx-7846a4eff1d61cd06b3da30410f5351e.scn"
 
 [deps]
 
-source_file="res://assets/wallsfixed.fbx"
-dest_files=["res://.godot/imported/wallsfixed.fbx-477af7f147c66c897ae32d5261d64527.scn"]
+source_file="res://assets/fbx files/wallsfixed.fbx"
+dest_files=["res://.godot/imported/wallsfixed.fbx-7846a4eff1d61cd06b3da30410f5351e.scn"]
 
 [params]
 

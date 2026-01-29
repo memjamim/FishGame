@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b467gmej6fef5"
-path="res://.godot/imported/wallsfixed_4.png-d0806476451db10ff573e3eff021be18.ctex"
+uid="uid://c0x3byp8shfn4"
+path.s3tc="res://.godot/imported/wallsfixed_7.png-18007cb5dba088dade8dcea5f2745de0.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "60bcf623616453b82b92738724ebedc2"
+"md5": "cc94706bf23599835e77e1677ce11eb3"
 }
 
 [deps]
 
-source_file="res://assets/wallsfixed_4.png"
-dest_files=["res://.godot/imported/wallsfixed_4.png-d0806476451db10ff573e3eff021be18.ctex"]
+source_file="res://assets/fbx files/wallsfixed_7.png"
+dest_files=["res://.godot/imported/wallsfixed_7.png-18007cb5dba088dade8dcea5f2745de0.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

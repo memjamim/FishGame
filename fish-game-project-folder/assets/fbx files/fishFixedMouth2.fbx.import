@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cwx6im35ip2k2"
-path="res://.godot/imported/fishFixedMouth2.fbx-a06c4ae9eef09f5c268f4f0282349368.scn"
+path="res://.godot/imported/fishFixedMouth2.fbx-9dc1213c7944390c0d990a35f4d2b685.scn"
 
 [deps]
 
-source_file="res://assets/fishFixedMouth2.fbx"
-dest_files=["res://.godot/imported/fishFixedMouth2.fbx-a06c4ae9eef09f5c268f4f0282349368.scn"]
+source_file="res://assets/fbx files/fishFixedMouth2.fbx"
+dest_files=["res://.godot/imported/fishFixedMouth2.fbx-9dc1213c7944390c0d990a35f4d2b685.scn"]
 
 [params]
 

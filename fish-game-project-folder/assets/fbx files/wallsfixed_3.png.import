@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drfev30aaitkj"
-path.s3tc="res://.godot/imported/HangingLight_2.png-41263976f5139fa005b36bf75382af71.s3tc.ctex"
+uid="uid://bdrwjynsx6wqf"
+path.s3tc="res://.godot/imported/wallsfixed_3.png-85db165452f11d28a590bd6d44d012d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "60bcf623616453b82b92738724ebedc2"
+"md5": "d0bb7eead04d3c60e21d5df1b0f11b72"
 }
 
 [deps]
 
-source_file="res://assets/HangingLight_2.png"
-dest_files=["res://.godot/imported/HangingLight_2.png-41263976f5139fa005b36bf75382af71.s3tc.ctex"]
+source_file="res://assets/fbx files/wallsfixed_3.png"
+dest_files=["res://.godot/imported/wallsfixed_3.png-85db165452f11d28a590bd6d44d012d0.s3tc.ctex"]
 
 [params]
 

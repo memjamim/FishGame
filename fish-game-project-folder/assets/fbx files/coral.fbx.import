@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://drt8ray8qv055"
-path="res://.godot/imported/cigBucket.fbx-59fc1bb80af46746b879a966254b472d.scn"
+uid="uid://blbp3vts82ypj"
+path="res://.godot/imported/coral.fbx-b2eb6cdeba1d78b61a01c28585382787.scn"
 
 [deps]
 
-source_file="res://assets/cigBucket.fbx"
-dest_files=["res://.godot/imported/cigBucket.fbx-59fc1bb80af46746b879a966254b472d.scn"]
+source_file="res://assets/fbx files/coral.fbx"
+dest_files=["res://.godot/imported/coral.fbx-b2eb6cdeba1d78b61a01c28585382787.scn"]
 
 [params]
 

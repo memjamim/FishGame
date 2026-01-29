@@ -19,10 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://clk2d0db05881" path="res://scenes/levels/MallLevel/MallExport_15.png" id="16_0gxak"]
 [ext_resource type="Texture2D" uid="uid://cpebsipkktkfe" path="res://scenes/levels/MallLevel/MallExport_16.png" id="17_x77ge"]
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="18_5ot4w"]
-[ext_resource type="PackedScene" path="res://scenes/bubble_coral.tscn" id="20_du3xi"]
+[ext_resource type="PackedScene" uid="uid://7i0xh0e1jfv" path="res://scenes/bubble_coral.tscn" id="20_du3xi"]
 [ext_resource type="PackedScene" uid="uid://dveqwxxqqn10k" path="res://scenes/HangingLightForMain.tscn" id="20_o8c6t"]
 [ext_resource type="VoxelGIData" uid="uid://cxr74p3t3kpc0" path="res://scenes/levels/MallLevel/mall_export.VoxelGI_data.res" id="20_ov6l3"]
-[ext_resource type="PackedScene" uid="uid://blbp3vts82ypj" path="res://assets/coral.fbx" id="21_axg5l"]
+[ext_resource type="PackedScene" uid="uid://blbp3vts82ypj" path="res://assets/fbx files/coral.fbx" id="21_axg5l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3vra"]
 

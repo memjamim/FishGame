@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5xw1j4nr5pyf"]
 
-[ext_resource type="PackedScene" uid="uid://cwx6im35ip2k2" path="res://assets/fishFixedMouth2.fbx" id="1_4gr5b"]
+[ext_resource type="PackedScene" uid="uid://cwx6im35ip2k2" path="res://assets/fbx files/fishFixedMouth2.fbx" id="1_4gr5b"]
 
 [node name="Fish2" instance=ExtResource("1_4gr5b")]
 

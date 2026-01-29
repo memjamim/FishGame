@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://dmh27hgpfokyi" path="res://scenes/NPC/dd_model.tscn" id="2_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://cr0uavis1fkex" path="res://assets/cigBucket_0.png" id="3_wu84c"]
-[ext_resource type="Texture2D" uid="uid://d4kohgdaxjebr" path="res://assets/cigBucket_1.png" id="4_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cr0uavis1fkex" path="res://assets/fbx files/cigBucket_0.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://d4kohgdaxjebr" path="res://assets/fbx files/cigBucket_1.png" id="4_8ln24"]
 [ext_resource type="PackedScene" uid="uid://c3d36r6wvdgmm" path="res://scenes/main_menu_ui.tscn" id="5_8ln24"]
 [ext_resource type="Theme" uid="uid://bbxq3huxritnu" path="res://art/UI/menu_theme.tres" id="6_rtw2f"]
 

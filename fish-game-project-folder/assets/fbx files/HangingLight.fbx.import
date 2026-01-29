@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bav4f1b32mrfv"
-path="res://.godot/imported/poolnoodlesfixed.fbx-59feab0f1e0affd6e52d8b02b3a9855b.scn"
+uid="uid://l5sokyvfwyn1"
+path="res://.godot/imported/HangingLight.fbx-c638f6be1e8eed8c36ae1b4f83d284ef.scn"
 
 [deps]
 
-source_file="res://assets/poolnoodlesfixed.fbx"
-dest_files=["res://.godot/imported/poolnoodlesfixed.fbx-59feab0f1e0affd6e52d8b02b3a9855b.scn"]
+source_file="res://assets/fbx files/HangingLight.fbx"
+dest_files=["res://.godot/imported/HangingLight.fbx-c638f6be1e8eed8c36ae1b4f83d284ef.scn"]
 
 [params]
 
@@ -37,16 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:NoodleRed": {
-"generate/physics": true
-},
-"PATH:Plane_043": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

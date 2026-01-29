@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpndf2vs4u8g8"
-path.s3tc="res://.godot/imported/fishFixedMouth2_0.png-40dccaff22e178115121783f6c7151ed.s3tc.ctex"
+uid="uid://badidqiivrhpx"
+path.s3tc="res://.godot/imported/fish_0.png-00c4bed8e82ab98d4ef489734429c137.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2a91a22af377572dc19769e4a49ac2a3"
+"md5": "15159f6deefd46be5b6b53d18c9f17d0"
 }
 
 [deps]
 
-source_file="res://assets/fishFixedMouth2_0.png"
-dest_files=["res://.godot/imported/fishFixedMouth2_0.png-40dccaff22e178115121783f6c7151ed.s3tc.ctex"]
+source_file="res://assets/fbx files/fish_0.png"
+dest_files=["res://.godot/imported/fish_0.png-00c4bed8e82ab98d4ef489734429c137.s3tc.ctex"]
 
 [params]
 

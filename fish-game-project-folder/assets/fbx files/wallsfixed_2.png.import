@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0x3byp8shfn4"
-path.s3tc="res://.godot/imported/wallsfixed_7.png-b0016a6716c0b51dc7c7a95e1552d4a4.s3tc.ctex"
+uid="uid://cpfg51bq7rvcg"
+path.s3tc="res://.godot/imported/wallsfixed_2.png-5f606258dad29e02bcf675e37186dada.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "cc94706bf23599835e77e1677ce11eb3"
+"md5": "f3862f43bdda47230203f17d7a8d66a8"
 }
 
 [deps]
 
-source_file="res://assets/wallsfixed_7.png"
-dest_files=["res://.godot/imported/wallsfixed_7.png-b0016a6716c0b51dc7c7a95e1552d4a4.s3tc.ctex"]
+source_file="res://assets/fbx files/wallsfixed_2.png"
+dest_files=["res://.godot/imported/wallsfixed_2.png-5f606258dad29e02bcf675e37186dada.s3tc.ctex"]
 
 [params]
 

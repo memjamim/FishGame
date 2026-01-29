@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cu3jk3s5sfoxw"
-path="res://.godot/imported/fish.fbx-3d212973df8b3415c62091507ed0f195.scn"
+path="res://.godot/imported/fish.fbx-3bdf3dbd69c444db71d8ebfe939721fb.scn"
 
 [deps]
 
-source_file="res://assets/fish.fbx"
-dest_files=["res://.godot/imported/fish.fbx-3d212973df8b3415c62091507ed0f195.scn"]
+source_file="res://assets/fbx files/fish.fbx"
+dest_files=["res://.godot/imported/fish.fbx-3bdf3dbd69c444db71d8ebfe939721fb.scn"]
 
 [params]
 
