@@ -270,7 +270,7 @@ var health: int = 100
 @export var regen_delay_after_damage: float = 5.0        # wait this long after last damage
 @export var regen_hp_per_tick: int = 1                   # 1 hp per tick
 @export var regen_start_interval: float = 0.5            # starts at 1 hp / 0.5s
-@export var regen_min_interval: float = 0.08             # ramps up to ~12.5 hp/s
+@export var regen_min_interval: float = 0.1             # ramps up to 10 hp/s
 @export var regen_interval_decay: float = 0.06           # how fast interval shrinks per tick
 
 var _time_since_damage: float = 9999.0

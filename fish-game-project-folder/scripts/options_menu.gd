@@ -15,12 +15,13 @@ signal back_requested
 
 @onready var controls_list: VBoxContainer = $Panel/VBoxContainer2
 
-# Actions in your project (based on your player code + described controls)
+@onready var quality_slider: HSlider = $Panel/VBoxContainer/QualitySlider
+# Actions
 const REMAPPABLE_ACTIONS := [
-	{ "action": &"foward",           "label": "Move Foward" }, 
-	{ "action": &"back",             "label": "Move Back" },
-	{ "action": &"left",             "label": "Move Left" },
-	{ "action": &"right",            "label": "Move Right" },
+	{ "action": &"foward",           "label": "Move Foward" },  # W
+	{ "action": &"back",             "label": "Move Back" },    # S
+	{ "action": &"left",             "label": "Move Left" },    # A
+	{ "action": &"right",            "label": "Move Right" },   # D
 
 	{ "action": &"jump",             "label": "Up / Jump" },     # space (water up + land jump)
 	{ "action": &"down",             "label": "Down" },          # shift (water down)
@@ -61,6 +62,13 @@ func _ready() -> void:
 	# Load previously saved bindings (if you add Settings.apply_keybinds below)
 	if Settings.has_method("apply_keybinds"):
 		Settings.apply_keybinds()
+	
+	quality_slider.min_value = 0
+	quality_slider.max_value = 2
+	quality_slider.step = 1
+
+	quality_slider.value = Settings.graphics_preset
+	quality_slider.value_changed.connect(_on_quality_changed)
 
 	_build_controls_ui()
 	_refresh_controls_ui()
@@ -234,6 +242,12 @@ func _on_sens_slider_value_changed(value: float) -> void:
 	Settings.mouse_sensitivity = value
 	Settings.emit_signal("changed")
 	Settings.save_settings()
+	
+func _on_quality_changed(v: float) -> void:
+	Settings.graphics_preset = int(v)
+	Settings.apply_video()
+	Settings.save_settings()
+
 
 func _on_back_button_pressed() -> void:
 	emit_signal("back_requested")

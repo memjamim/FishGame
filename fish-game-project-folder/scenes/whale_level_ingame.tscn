@@ -158,7 +158,6 @@ points = PackedVector3Array(-0.0019159552, -0.0016149646, 0.02203229, -0.0066295
 transform = Transform3D(0.99999994, 3.7252903e-09, 0, 0, 1, 0, 0, 0, 1, -0.026035555, 0.12929535, 0.2975877)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_391/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_391" index="1"]
@@ -171,7 +170,6 @@ transform = Transform3D(1, 0, -3.7252903e-09, -1.1175871e-08, 1.0000001, 2.98023
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_392/StaticBody3D" index="0"]
 transform = Transform3D(1.0000001, 0, 1.1175871e-08, -3.7252903e-09, 0.99999994, 5.9604645e-08, -3.7252903e-09, 0, 1, -0.07864453, -1.1383076, 0.8989113)
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_392" index="1"]
@@ -184,7 +182,6 @@ transform = Transform3D(0.9999997, -1.1175871e-08, -2.2351742e-08, 1.4901161e-08
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_394/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0064680614, 0.03212124, 0.0739305)
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_394" index="1"]
@@ -196,7 +193,6 @@ shape = SubResource("ConvexPolygonShape3D_p5qew")
 transform = Transform3D(0.9999999, 2.9802322e-08, -7.450581e-09, 2.9802322e-08, 0.9999999, -7.450581e-09, 1.4901161e-08, 3.7252903e-09, 0.99999994, 3.331565, -2.791522, -0.34514362)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_395/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_395" index="1"]
@@ -209,7 +205,6 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 3.7252903e-09, 0, -3.725
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_397/StaticBody3D" index="0"]
 transform = Transform3D(1, -2.3283064e-10, 0, 4.656613e-10, 0.99999994, -3.7252903e-09, 0, -3.7252903e-09, 0.99999994, 0.013236001, 0.0063804537, -0.15128815)
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_397" index="1"]
@@ -221,7 +216,6 @@ shape = SubResource("ConvexPolygonShape3D_wl33w")
 transform = Transform3D(1, 0, -1.8626451e-09, -2.9802322e-08, 1, -3.7252903e-09, 1.8626451e-09, 5.5879354e-09, 1, 2.114955, 2.4981427, 0.12327075)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_398/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_398" index="1"]
@@ -233,7 +227,6 @@ shape = SubResource("ConvexPolygonShape3D_bvwy5")
 transform = Transform3D(0.9999999, 2.9802322e-08, 3.7252903e-09, -2.9802322e-08, 0.99999994, 3.7252903e-09, 3.7252903e-09, 0, 0.9999999, -2.466361, -3.691472, -0.26974845)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_399/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_399" index="1"]
@@ -246,7 +239,6 @@ transform = Transform3D(0.9999999, 0, -7.450581e-09, 0, 1.0000001, 5.9604645e-08
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_400/StaticBody3D" index="0"]
 transform = Transform3D(0.9999997, -7.450581e-09, -1.1175871e-08, 3.7252903e-09, 1, -2.9802322e-08, 0, 1.7881393e-07, 0.99999964, -0.15107375, 1.9526327, 1.726779)
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_400" index="1"]
@@ -264,7 +256,6 @@ shape = SubResource("ConvexPolygonShape3D_fnfad")
 transform = Transform3D(1.0000001, -7.450581e-09, 1.8626451e-09, 0, 1, 0, -7.450581e-09, 2.9802322e-08, 1, 0.0056431107, 0.09817895, -0.06450102)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_528/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_528" index="1"]
@@ -292,14 +283,12 @@ transform = Transform3D(1, -3.7252903e-09, 3.5527137e-15, -3.7252903e-09, 1.0000
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_531/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.04360964e-14, 0, 1.3322676e-15, 0.99999994, 0.12905055, 0.0076363385, -4.8894435e-09)
-shape = null
 disabled = true
 
 [node name="StaticBody3D" parent="Cube_393/Cube_549" index="0"]
 transform = Transform3D(1, -2.9802322e-08, -3.5527137e-15, 0, 1, 1.3322676e-14, 0, -5.3290705e-15, 1.0000001, 0.72857475, -0.48307335, 4.0978193e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_549/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_549" index="1"]
@@ -311,7 +300,6 @@ shape = SubResource("ConvexPolygonShape3D_6gfye")
 transform = Transform3D(1, -2.9802322e-08, -3.5527137e-15, 0, 1, 1.3322676e-14, 0, -5.3290705e-15, 1.0000001, 0.8371055, -0.5550337, 5.2154064e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_551/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_551" index="1"]
@@ -323,7 +311,6 @@ shape = SubResource("ConvexPolygonShape3D_576vw")
 transform = Transform3D(1, -5.9604645e-08, 8.526513e-14, 0, 1, -5.684342e-14, 9.947598e-14, -1.1368684e-13, 1, 0.2163775, 0.74608874, -3.799796e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_552/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_552" index="1"]
@@ -335,7 +322,6 @@ shape = SubResource("ConvexPolygonShape3D_qic68")
 transform = Transform3D(1.0000001, 0, 1.2434498e-14, 1.8626451e-09, 1, 0, 1.5099033e-14, 0, 1, -0.033029318, 1.185581, -3.0733645e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_557/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_557" index="1"]
@@ -347,7 +333,6 @@ shape = SubResource("ConvexPolygonShape3D_31gcu")
 transform = Transform3D(1.0000001, 0, 1.2434498e-14, 1.8626451e-09, 1, 0, 1.5099033e-14, 0, 1, -0.033029288, 1.185581, -3.091991e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_558/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_558" index="1"]
@@ -359,7 +344,6 @@ shape = SubResource("ConvexPolygonShape3D_ngthj")
 transform = Transform3D(0.99999994, 1.8626451e-09, -2.842171e-14, 0, 0.99999994, 4.3520743e-14, 0, 1.4654944e-14, 0.9999999, -0.78564763, -0.021887809, -1.6391277e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_559/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_559" index="1"]
@@ -371,7 +355,6 @@ shape = SubResource("ConvexPolygonShape3D_1ou41")
 transform = Transform3D(1, 1.8626451e-09, -1.7763568e-15, 0, 1, -2.842171e-14, -2.6645353e-15, 2.842171e-14, 1, -0.05613649, 2.0150223, -7.003546e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_560/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_560" index="1"]
@@ -383,7 +366,6 @@ shape = SubResource("ConvexPolygonShape3D_qsluh")
 transform = Transform3D(1, 1.8626451e-09, -1.7763568e-15, 0, 1, -2.842171e-14, -2.6645353e-15, 2.842171e-14, 1, -0.0709039, 2.5450974, -8.940697e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_561/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_561" index="1"]
@@ -395,7 +377,6 @@ shape = SubResource("ConvexPolygonShape3D_em5lb")
 transform = Transform3D(1, -2.9802322e-08, -1.2434498e-14, 2.9802322e-08, 1, 1.0658141e-14, -2.842171e-14, -2.1316282e-14, 1.0000001, -1.102242, 0.8947172, -1.8626451e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_562/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_562" index="1"]
@@ -407,7 +388,6 @@ shape = SubResource("ConvexPolygonShape3D_5mxbe")
 transform = Transform3D(1, 2.9802322e-08, 1.4210855e-14, 2.9802322e-08, 1, 5.684342e-14, -1.976197e-14, -3.355649e-14, 1.0000001, -0.9749267, 0.7728338, 0)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_563/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_563" index="1"]
@@ -419,7 +399,6 @@ shape = SubResource("ConvexPolygonShape3D_40ytk")
 transform = Transform3D(1, 2.9802322e-08, 1.4210855e-14, 2.9802322e-08, 1, 5.684342e-14, -1.976197e-14, -3.355649e-14, 1.0000001, -0.9749265, 0.7728343, 0)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_564/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_564" index="1"]
@@ -431,7 +410,6 @@ shape = SubResource("ConvexPolygonShape3D_y28v3")
 transform = Transform3D(1, 0, -5.684342e-14, -1.4901161e-08, 1, 1.4210855e-14, 0, -7.1054274e-15, 1, -1.4876232, 0.35451746, -5.066395e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_565/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_565" index="1"]
@@ -443,7 +421,6 @@ shape = SubResource("ConvexPolygonShape3D_oxpnu")
 transform = Transform3D(0.99999994, 0, -1.7763568e-15, 0, 0.9999999, -1.3877788e-14, 0, -1.5543122e-15, 0.99999994, -2.2357845, 0.096885204, -7.4505806e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_566/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_566" index="1"]
@@ -455,7 +432,6 @@ shape = SubResource("ConvexPolygonShape3D_frebi")
 transform = Transform3D(1, 2.9802322e-08, 1.7763568e-15, 0, 1.0000001, 1.0658141e-14, 6.217249e-15, 0, 1.0000001, 0.32559752, 0.81565523, -3.3527613e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_567/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_567" index="1"]
@@ -467,7 +443,6 @@ shape = SubResource("ConvexPolygonShape3D_03np7")
 transform = Transform3D(0.9999996, 7.450581e-09, 1.169974e-08, 0, 0.9999996, -1.8626451e-09, 1.5163096e-08, -2.7939677e-09, 0.99999946, 0.6194398, -7.654479, -0.14092895)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_568/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_568" index="1"]
@@ -490,7 +465,6 @@ shape = SubResource("ConvexPolygonShape3D_g6qbn")
 transform = Transform3D(1, 0, -1.4210855e-14, 1.4901161e-08, 1, 2.842171e-14, -1.4210855e-14, 0, 1, 1.3090191, 7.679558, 2.861023e-06)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_570/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_570" index="1"]
@@ -502,7 +476,6 @@ shape = SubResource("ConvexPolygonShape3D_oa4y3")
 transform = Transform3D(1.0000001, 2.9802322e-08, -7.1054274e-15, 2.9802322e-08, 1, 1.4210855e-14, -7.1054274e-15, 2.842171e-14, 1.0000001, 4.7534485, 4.0323515, -5.364418e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_571/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_571" index="1"]
@@ -514,7 +487,6 @@ shape = SubResource("ConvexPolygonShape3D_y5ylw")
 transform = Transform3D(0.99999994, 0, -8.881784e-15, 0, 0.99999994, 0, -1.7763568e-15, 0, 1, 2.4441662, 14.339096, 1.6093254e-06)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_572/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_572" index="1"]
@@ -526,7 +498,6 @@ shape = SubResource("ConvexPolygonShape3D_of271")
 transform = Transform3D(1, 0, 1.7763568e-15, 0, 1, 1.04360964e-14, 0, 5.107026e-15, 1, 0.18567371, 0.055336982, 3.7252903e-09)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_573/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_573" index="1"]
@@ -538,7 +509,6 @@ shape = SubResource("ConvexPolygonShape3D_c3fwx")
 transform = Transform3D(1, -2.9802322e-08, 2.1316282e-14, 2.9802322e-08, 1, -7.1054274e-15, 2.842171e-14, -1.4210855e-14, 1.0000001, 10.490562, -10.0762825, -2.3245811e-06)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_574/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_574" index="1"]
@@ -550,7 +520,6 @@ shape = SubResource("ConvexPolygonShape3D_6pd35")
 transform = Transform3D(1, -3.7252903e-09, -1.4901161e-08, 3.7252903e-09, 1, 5.5879354e-09, -1.4901161e-08, -1.3969839e-08, 1, 6.1031513, -0.29842186, -1.2319064)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_575/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_575" index="1"]
@@ -562,7 +531,6 @@ shape = SubResource("ConvexPolygonShape3D_y2coh")
 transform = Transform3D(1.0000001, -2.9802322e-08, -1.4901161e-08, 0, 1, -1.4901161e-08, -1.4901161e-08, -1.4901161e-08, 0.99999994, 5.6520443, -1.5423546, -0.90929127)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_576/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_576" index="1"]
@@ -574,7 +542,6 @@ shape = SubResource("ConvexPolygonShape3D_gawav")
 transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, 0, 0, 0.99999994, 2.669876, -3.8532276, -0.7275648)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_577/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_577" index="1"]
@@ -586,7 +553,6 @@ shape = SubResource("ConvexPolygonShape3D_at442")
 transform = Transform3D(1, 3.7252903e-09, 0, -3.7252903e-09, 1, 1.1641532e-08, 0, 1.0244548e-08, 1.0000001, -5.897209, 0.35190845, -0.5003686)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_578/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_578" index="1"]
@@ -598,7 +564,6 @@ shape = SubResource("ConvexPolygonShape3D_nbbw5")
 transform = Transform3D(1.0000001, 0, 1.2805685e-09, 0, 1, 0, -1.6298145e-09, 3.7252903e-09, 1, 0.06653237, -1.7985272, -0.057336763)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_579/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_579" index="1"]
@@ -610,7 +575,6 @@ shape = SubResource("ConvexPolygonShape3D_gc5ea")
 transform = Transform3D(1, 0, 0, 8.881784e-16, 1, 6.938894e-17, 1.9073486e-06, 6.82121e-13, 1, -0.039864615, 4.620233e-10, -1.5800514)
 
 [node name="CollisionShape3D" parent="Cube_393/Cube_580/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cube_580" index="1"]
@@ -622,7 +586,6 @@ shape = SubResource("ConvexPolygonShape3D_4855m")
 transform = Transform3D(1, 0, -1.0658141e-14, 0, 1, 2.842171e-14, -2.1316282e-14, -3.5527137e-14, 1, -0.22556993, 0.17881137, -2.2351742e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cylinder_118/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cylinder_118" index="1"]
@@ -635,7 +598,6 @@ shape = SubResource("ConvexPolygonShape3D_qvvda")
 transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, -4.8849813e-15, 0, -8.881784e-15, 1, -0.34355462, -0.122047395, -3.0733645e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cylinder_131/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cylinder_131" index="1"]
@@ -647,7 +609,6 @@ shape = SubResource("ConvexPolygonShape3D_7mwvn")
 transform = Transform3D(1.0000001, 2.9802322e-08, 3.5527137e-15, 0, 1.0000001, 1.0658141e-14, -7.1054274e-15, -1.4210855e-14, 1, -0.33256245, -0.15196066, 2.7939677e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cylinder_133/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cylinder_133" index="1"]
@@ -659,7 +620,6 @@ shape = SubResource("ConvexPolygonShape3D_a2sit")
 transform = Transform3D(1, 0, -3.1086245e-14, 0, 1, 3.5527137e-15, 7.993606e-15, -7.1054274e-15, 1, -0.04955311, 0.3175534, 2.2351742e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cylinder_134/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cylinder_134" index="1"]
@@ -671,7 +631,6 @@ shape = SubResource("ConvexPolygonShape3D_wfd2m")
 transform = Transform3D(1, 0, -2.842171e-14, 0, 1.0000001, 0, 2.6645353e-15, 0, 1.0000001, 0.14414763, 0.50685847, 2.6077032e-08)
 
 [node name="CollisionShape3D" parent="Cube_393/Cylinder_135/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cylinder_135" index="1"]
@@ -683,7 +642,6 @@ shape = SubResource("ConvexPolygonShape3D_h6v6d")
 transform = Transform3D(1, 1.4901161e-08, -1.4210855e-14, 0, 0.99999994, 0, 2.4868996e-14, 0, 0.9999999, -0.11037734, 0.70733786, 1.2665987e-07)
 
 [node name="CollisionShape3D" parent="Cube_393/Cylinder_136/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_393/Cylinder_136" index="1"]
@@ -695,14 +653,12 @@ shape = SubResource("ConvexPolygonShape3D_5o2au")
 transform = Transform3D(0.99999976, 3.7252903e-09, -7.450581e-09, -3.7252903e-09, 0.9999999, 8.940697e-08, 0, -8.940697e-08, 0.99999976, 0.00094871223, 0.09614685, -0.010843873)
 
 [node name="CollisionShape3D" parent="Cube_393/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D" parent="Icosphere_002" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, -2.842171e-14, 0, 2.842171e-14, 0.99999994, 0, -0.56622696, -1.3504177e-07)
 
 [node name="CollisionShape3D" parent="Icosphere_002/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Icosphere_002" index="1"]
@@ -714,7 +670,6 @@ shape = SubResource("ConvexPolygonShape3D_sgg0u")
 transform = Transform3D(1, 0, 0, 0, 1, 2.842171e-14, 0, -2.842171e-14, 1, 0, -0.31401807, -7.497147e-08)
 
 [node name="CollisionShape3D" parent="Icosphere_003/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Icosphere_003" index="1"]
@@ -726,7 +681,6 @@ shape = SubResource("ConvexPolygonShape3D_b4yij")
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390633, -9.313226e-08)
 
 [node name="CollisionShape3D" parent="Icosphere_004/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Icosphere_004" index="1"]
@@ -738,7 +692,6 @@ shape = SubResource("ConvexPolygonShape3D_tdnxc")
 transform = Transform3D(1, 0, 0, 0, 0.99999994, -2.842171e-14, 0, 2.842171e-14, 0.99999994, 0, -0.56622696, -1.3504177e-07)
 
 [node name="CollisionShape3D" parent="Icosphere_005/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Icosphere_005" index="1"]
@@ -750,7 +703,6 @@ shape = SubResource("ConvexPolygonShape3D_nkycs")
 transform = Transform3D(1, 0, 0, 0, 0.99999994, -2.842171e-14, 0, 2.842171e-14, 0.99999994, 0, -0.56622696, -1.3504177e-07)
 
 [node name="CollisionShape3D" parent="Icosphere_006/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Icosphere_006" index="1"]
@@ -762,7 +714,6 @@ shape = SubResource("ConvexPolygonShape3D_4xoa5")
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.88147044, -2.104789e-07)
 
 [node name="CollisionShape3D" parent="Icosphere_007/StaticBody3D" index="0"]
-shape = null
 disabled = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Icosphere_007" index="1"]
