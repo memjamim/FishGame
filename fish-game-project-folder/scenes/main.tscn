@@ -1,7 +1,7 @@
 [gd_scene load_steps=49 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
-[ext_resource type="Script" path="res://scripts/main_script.gd" id="1_muem4"]
+[ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://c53ufef68kwh" path="res://main_pool.tscn" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://djd3u5j42nbl2" path="res://scenes/NPC/denayrouze_npc.tscn" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0aemg5n6foxd" path="res://assets/toys/toy_holdable.tscn" id="2_gqmmt"]
@@ -643,7 +643,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7371297, 1.016344, -90.613
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.824577, -14.9116335, -74.83956)
 
 [node name="L2_Item_Spawn_10" type="Marker3D" parent="ItemSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.545126, -10.386219, -63.71117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.544558, -10.75947, -64.3293)
 
 [node name="L3_Item_Spawn_1" type="Marker3D" parent="ItemSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.909497, 1.0232182, -108.6823)
