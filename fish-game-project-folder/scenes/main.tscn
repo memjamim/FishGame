@@ -943,5 +943,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.990498, -15.20512, -56.25
 [node name="large_coin_collectable26" parent="Coins" instance=ExtResource("22_jscy8")]
 transform = Transform3D(0.9473054, 0, -0.32033193, 0, 1, 0, 0.32033193, 0, 0.9473054, -1.2823372, -15.028449, -77.58929)
 
+[node name="large_coin_collectable" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5781727, -7.363933, -84.74036)
+
+[node name="large_coin_collectable2" parent="." instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.898947, -4.016163, -100.60589)
+
+[node name="small_coin_collectable" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.76414, -4.0670767, -100.10323)
+
+[node name="medium_coin_collectable" parent="." instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.662064, -15.115572, -47.271675)
+
 [connection signal="body_entered" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="Environment/SlideInteract/InteractArea" to="Environment/SlideInteract" method="_on_interact_area_body_exited"]
