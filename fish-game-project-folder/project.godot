@@ -36,6 +36,7 @@ interactable="things the player can interact with and will perform an action"
 holdable="a type of collectable that is held by the player when interacted with"
 weapon="things the player can use to attack"
 npc="non-player character"
+bucket=""
 
 [input]
 

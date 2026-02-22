@@ -1024,8 +1024,11 @@ func _build_prompt_for_collider(collider: Object) -> String:
 	if collider == null:
 		return ""
 
-	var key := _get_action_key_text(&"interact")
-	var key_hint := "[%s]" % key
+	var interact_key := _get_action_key_text(&"interact")
+	var interact_hint := "[%s]" % interact_key
+
+	var drop_key := _get_action_key_text(&"throw")
+	var drop_hint := "[%s]" % drop_key
 
 	if collider is ShopPickup:
 		var sp := collider as ShopPickup
@@ -1037,22 +1040,25 @@ func _build_prompt_for_collider(collider: Object) -> String:
 			var rem_cents := cents % 100
 			var price_text := "$%d.%02d" % [dollars, rem_cents]
 
-			return "Buy %s  %s  %s" % [Sname, price_text, key_hint]
-		return "Buy  %s" % key_hint
+			return "Buy %s  %s  %s" % [Sname, price_text, interact_hint]
+		return "Buy  %s" % interact_hint
 
 	if collider is Node and ((collider as Node).is_in_group("npc") or collider.has_method("talk")):
-		return "Talk  %s" % key_hint
+		return "Talk  %s" % interact_hint
+		
+	if collider is Node and ((collider as Node).is_in_group("bucket")):
+		return "Drop Toy In Bucket  %s" % drop_hint
 
 	if collider is Node:
 		var n := collider as Node
 		if n.is_in_group("collectable") or n.is_in_group("weapon") or n.is_in_group("holdable"):
-			return "Pick up  %s" % key_hint
+			return "Pick up  %s" % interact_hint
 
 		if n.name == "SlideInteract" and n.CAN_SLIDE:
-			return "Interact  %s" % key_hint
+			return "Interact  %s" % interact_hint
 
 		if (n.is_in_group("interactable") or collider.has_method("_on_interact")) and n.name != "SlideInteract":
-			return "Interact  %s" % key_hint
+			return "Interact  %s" % interact_hint
 
 	return ""
 
