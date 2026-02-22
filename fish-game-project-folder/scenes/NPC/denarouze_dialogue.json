@@ -21,7 +21,10 @@
 		{"name": "Daft Denayrouze:", "text": "He’s a sweetheart, he’ll warm up to ya."}
 	],
 	"first-level-1-toy-sold": [
-		{"name": "Daft Denayrouze:", "text": "Well you got one- theres a start."}
+		{"name": "Daft Denayrouze:", "text": "Well you got one- theres a start."},
+		{"name": "Daft Denayrouze:", "text": "Three toys lie in this here pool..."},
+		{"name": "Daft Denayrouze:", "text": "Three are in the depths..."},
+		{"name": "Daft Denayrouze:", "text": "And three toys lie in the gullet of that beast."},
 	],
 	"last-level-1-toy-sold": [
 		{"name": "Daft Denayrouze:", "text": "Good work kid, but you’ll have to dive deeper still."}
