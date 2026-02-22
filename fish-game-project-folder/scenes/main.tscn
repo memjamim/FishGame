@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://boq60tw26s0p0"]
+[gd_scene load_steps=51 format=3 uid="uid://boq60tw26s0p0"]
 
 [ext_resource type="VoxelGIData" uid="uid://dha5wlfund017" path="res://art/andreas_scene.VoxelGI_data.res" id="1_jkv2x"]
 [ext_resource type="Script" uid="uid://b5s4ac3x12fny" path="res://scripts/main_script.gd" id="1_muem4"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://caucihx4lukcl" path="res://scripts/water.gd" id="5_eb6dy"]
 [ext_resource type="Material" uid="uid://drsyd51qqotu8" path="res://art/water_material.tres" id="6_trceg"]
 [ext_resource type="PackedScene" uid="uid://c6qhy7s6th1a1" path="res://scenes/collection_point.tscn" id="7_a8y0u"]
-[ext_resource type="Script" path="res://scripts/slide_interact.gd" id="8_jkv2x"]
+[ext_resource type="Script" uid="uid://c0t2vuven0b2p" path="res://scripts/slide_interact.gd" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://3aatsb485j8g" path="res://shop/Shop.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dnn5wdnto4sn0" path="res://assets/coins/medium_coin_collectable.tscn" id="11_trceg"]
 [ext_resource type="Script" uid="uid://ctmaqjr1aucgn" path="res://scripts/PauseManager.gd" id="12_eb6dy"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://comqb21scj5cw" path="res://scenes/levels/MallLevel/mall_export.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://br70m6u84hw2k" path="res://scenes/enemy/fishPerson.tscn" id="18_0ld40"]
 [ext_resource type="PackedScene" uid="uid://dhvfjq8n061lt" path="res://scenes/enemy/fishPerson2.tscn" id="19_gqmmt"]
-[ext_resource type="PackedScene" uid="uid://x351w3a2iqi7" path="res://scenes/whale_level_ingame.tscn" id="19_pm3ni"]
+[ext_resource type="PackedScene" path="res://scenes/whale_level_ingame.tscn" id="19_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://d0ubr3mdbmqpv" path="res://scenes/levels/PoolCorner/PoolCorner.fbx" id="21_yc10j"]
 [ext_resource type="PackedScene" uid="uid://cdme4fjrubni4" path="res://assets/coins/large_coin_collectable.tscn" id="22_jscy8"]
 
@@ -52,6 +52,9 @@ up_vector_enabled = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5kb3n"]
 size = Vector3(0.822937, 0.7524414, 1.9268188)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pm3ni"]
+size = Vector3(1.8392334, 2.9206543, 1.0655212)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ac37y"]
 size = Vector3(3.598877, 1, 2.0688477)
@@ -447,6 +450,34 @@ mesh = SubResource("BoxMesh_rb8pp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Mall_Water"]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -1.8457068, -3.5319152, -2.2607765)
 shape = SubResource("BoxShape3D_0ragw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.627375, -61.535038)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.691338, 0.89800644, -11.170811)
+shape = SubResource("BoxShape3D_pm3ni")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.627375, -61.535038)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.691338, 0.89800644, -14.648846)
+shape = SubResource("BoxShape3D_pm3ni")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.627375, -61.535038)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.104815, 0.89800644, -14.817966)
+shape = SubResource("BoxShape3D_pm3ni")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.627375, -61.535038)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.124063, 0.89800644, -11.420719)
+shape = SubResource("BoxShape3D_pm3ni")
 
 [node name="CollisionFixes" type="Node" parent="."]
 
