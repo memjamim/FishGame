@@ -1,0 +1,230 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bnslll1t0vtpt"
+path="res://.godot/imported/WhaleCum.fbx-8a021ac64adb07d3453382dd89825d68.scn"
+
+[deps]
+
+source_file="res://scenes/levels/WhaleLevel/WhaleCum.fbx"
+dest_files=["res://.godot/imported/WhaleCum.fbx-8a021ac64adb07d3453382dd89825d68.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Cube_393": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_083": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_270": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_390": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_391": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_392": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_394": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_395": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_397": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_398": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_399": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_400": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_447": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_528": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_529": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_531": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_549": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_551": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_552": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_557": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_558": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_559": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_560": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_561": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_562": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_563": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_564": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_565": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_566": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_567": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_568": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_569": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_570": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_571": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_572": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_573": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_574": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_575": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_576": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_577": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_578": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_579": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cube_580": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cylinder_118": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cylinder_127": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cylinder_131": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cylinder_133": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cylinder_134": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cylinder_135": {
+"generate/physics": true
+},
+"PATH:Cube_393/Cylinder_136": {
+"generate/physics": true
+},
+"PATH:Cube_393/bone_arch32_001": {
+"generate/physics": true
+},
+"PATH:Cube_393/bone_arch42_001": {
+"generate/physics": true
+},
+"PATH:Cube_393/bone_arch52_001": {
+"generate/physics": true
+},
+"PATH:Cube_393/bone_arch62_001": {
+"generate/physics": true
+},
+"PATH:Cube_393/bone_arch72_001": {
+"generate/physics": true
+},
+"PATH:Icosphere_002": {
+"generate/physics": true
+},
+"PATH:Icosphere_003": {
+"generate/physics": true
+},
+"PATH:Icosphere_004": {
+"generate/physics": true
+},
+"PATH:Icosphere_005": {
+"generate/physics": true
+},
+"PATH:Icosphere_006": {
+"generate/physics": true
+},
+"PATH:Icosphere_007": {
+"generate/physics": true
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

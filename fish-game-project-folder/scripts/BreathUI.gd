@@ -58,9 +58,9 @@ func _on_water_state_changed(in_water: bool) -> void:
 	_tint_target_alpha = underwater_tint_color.a if in_water else 0.0
 
 func set_breath(current: float, max_value: float) -> void:
-	var secs := int(ceil(clamp(current, 0.0, max_value)))
-	var mins := int(secs / 60)
-	breath_label.text = "Breath: %d:%02d" % [mins, secs % 60]
+	var seconds := int(ceil(clamp(current, 0.0, max_value)))
+	var minutes := int(seconds / 60)
+	breath_label.text = "Breath: %d:%02d" % [minutes, seconds % 60]
 	panel.visible = true
 
 func _on_collectables_changed(count: int) -> void:

@@ -5,18 +5,15 @@ extends CharacterBody3D
 @onready var pickup_throw: Node = $PickupThrow
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
-@onready var sfx_purchase: AudioStreamPlayer = $Audio/Purchase
-@onready var sfx_pickup_toy: AudioStreamPlayer = $Audio/PickupToy
-@onready var sfx_pickup_coin: AudioStreamPlayer = $Audio/PickupCoin
-@onready var sfx_purchase_fail: AudioStreamPlayer = $Audio/PurchaseFail
 @export var offhand_path: NodePath = NodePath("CameraPivot/Camera3D/Offhand")
 @export var drop_forward_distance := 1.0
 @export var drop_up_offset := 0.2
+var _drowning_sfx_on := false
 
 @onready var offhand: Node3D = get_node(offhand_path) as Node3D
 
 func play_purchase_fail_sfx() -> void:
-	_play_sfx(sfx_purchase_fail, 6.0, 0.98, 1.02)
+	_play_sfx(sfx_purchase_fail, 8.0, 0.98, 1.02)
 
 func _play_sfx(p: AudioStreamPlayer, vol_db := -6.0, pitch_min := 0.97, pitch_max := 1.03) -> void:
 	if p == null:
@@ -35,6 +32,28 @@ func play_pickup_toy_sfx() -> void:
 
 func play_pickup_coin_sfx() -> void:
 	_play_sfx(sfx_pickup_coin, -6.0)
+
+func _set_drowning_sfx(active: bool) -> void:
+	if sfx_drowning == null:
+		return
+	if active == _drowning_sfx_on:
+		return
+	_drowning_sfx_on = active
+
+	if active:
+		sfx_drowning.volume_db = 6.0
+		if sfx_drowning.playing:
+			sfx_drowning.stop()
+		sfx_drowning.play()
+	else:
+		if sfx_drowning.playing:
+			var tw := create_tween()
+			tw.tween_property(sfx_drowning, "volume_db", -80.0, 0.25)
+			tw.tween_callback(func():
+				if is_instance_valid(sfx_drowning):
+					sfx_drowning.stop()
+					sfx_drowning.volume_db = 6.0
+			)
 
 
 # --- UI ---
@@ -56,13 +75,14 @@ func has_flashlight() -> bool:
 
 func set_flashlight_unlocked(unlocked: bool) -> void:
 	flashlight_unlocked = unlocked
+	flashlight_enabled = true
 	flashlight.visible = flashlight_unlocked and flashlight_enabled
 
 
 # --- Currency / Collectables ---
 signal collectables_changed(count: int)
 
-var _collectables: int = 0 #TODO: testing
+var _collectables: int = 0 # Starting currency
 var collectables: int:
 	get:
 		return _collectables
@@ -250,7 +270,7 @@ var health: int = 100
 @export var regen_delay_after_damage: float = 5.0        # wait this long after last damage
 @export var regen_hp_per_tick: int = 1                   # 1 hp per tick
 @export var regen_start_interval: float = 0.5            # starts at 1 hp / 0.5s
-@export var regen_min_interval: float = 0.08             # ramps up to ~12.5 hp/s
+@export var regen_min_interval: float = 0.1             # ramps up to 10 hp/s
 @export var regen_interval_decay: float = 0.06           # how fast interval shrinks per tick
 
 var _time_since_damage: float = 9999.0
@@ -263,7 +283,7 @@ func _notify_damage_taken() -> void:
 	_regen_interval = regen_start_interval
 
 func _update_health_regen(delta: float) -> void:
-	# No regen if already full or "dead"
+	# No regen if already full or dead
 	if health <= 0 or health >= max_health:
 		return
 
@@ -272,7 +292,7 @@ func _update_health_regen(delta: float) -> void:
 		return
 
 	_regen_tick_timer += delta
-	while _regen_tick_timer >= _regen_interval and health < max_health:
+	while _regen_tick_timer >= _regen_interval and health < max_health and breath:
 		_regen_tick_timer -= _regen_interval
 		health = min(max_health, health + regen_hp_per_tick)
 
@@ -329,6 +349,7 @@ func _set_ui_params(type: String, bonus: float) -> void:
 
 const PUSHBACK = 8.0
 
+# Weapon damage based on tier
 const WEAPON_DAMAGE := {
 	1: 20,
 	2: 25,
@@ -339,6 +360,11 @@ var weapon_tier := 1
 
 # --- Audio ---
 @onready var audio_root: Node = $Audio
+@onready var sfx_drowning: AudioStreamPlayer = $Audio/DrowningLoop
+@onready var sfx_purchase: AudioStreamPlayer = $Audio/Purchase
+@onready var sfx_pickup_toy: AudioStreamPlayer = $Audio/PickupToy
+@onready var sfx_pickup_coin: AudioStreamPlayer = $Audio/PickupCoin
+@onready var sfx_purchase_fail: AudioStreamPlayer = $Audio/PurchaseFail
 @onready var sfx_slash: AudioStreamPlayer = $Audio/Slash
 @onready var sfx_stab: AudioStreamPlayer = $Audio/Stab
 @onready var sfx_oof: AudioStreamPlayer = $Audio/Oof
@@ -346,7 +372,7 @@ var weapon_tier := 1
 @onready var sfx_overwater_amb: AudioStreamPlayer = $Audio/OverwaterAmbiance
 @onready var sfx_footsteps: AudioStreamPlayer = $Audio/Footsteps
 
-# NEW: Underwater music layers (create these as AudioStreamPlayer nodes under $Audio)
+# Underwater music layers
 @onready var uw_music_1: AudioStreamPlayer = $Audio/UnderwaterMusic1
 @onready var uw_music_2: AudioStreamPlayer = $Audio/UnderwaterMusic2
 @onready var uw_music_3: AudioStreamPlayer = $Audio/UnderwaterMusic3
@@ -527,7 +553,7 @@ func _physics_process(delta: float) -> void:
 	_update_water_state(delta)
 	_update_breath(delta)
 	_update_drowning_damage(delta)
-	_update_underwater_music(delta) # NEW
+	_update_underwater_music(delta)
 	_update_footsteps(delta)
 	_update_ui()
 	_update_health_regen(delta)
@@ -666,7 +692,11 @@ func _update_breath(delta: float) -> void:
 	emit_signal("breath_updated", breath, breath_max)
 
 func _update_drowning_damage(delta: float) -> void:
-	if IS_IN_WATER and breath <= 0.0 and health > 0:
+	var is_actively_drowning := IS_IN_WATER and breath <= 0.0 and health > 0
+
+	_set_drowning_sfx(is_actively_drowning)
+
+	if is_actively_drowning:
 		_drown_tick_timer += delta
 		while _drown_tick_timer >= drown_tick_interval and health > 0:
 			_drown_tick_timer -= drown_tick_interval
@@ -680,8 +710,10 @@ func _update_drowning_damage(delta: float) -> void:
 	else:
 		_drown_tick_timer = 0.0
 
+
 func _respawn() -> void:
 	_drop_non_weapon_holdable_on_death()
+	_set_drowning_sfx(false)
 	health = max_health
 	breath = breath_max
 	_drown_tick_timer = 0.0
@@ -992,8 +1024,11 @@ func _build_prompt_for_collider(collider: Object) -> String:
 	if collider == null:
 		return ""
 
-	var key := _get_action_key_text(&"interact")
-	var key_hint := "[%s]" % key
+	var interact_key := _get_action_key_text(&"interact")
+	var interact_hint := "[%s]" % interact_key
+
+	var drop_key := _get_action_key_text(&"throw")
+	var drop_hint := "[%s]" % drop_key
 
 	if collider is ShopPickup:
 		var sp := collider as ShopPickup
@@ -1005,22 +1040,25 @@ func _build_prompt_for_collider(collider: Object) -> String:
 			var rem_cents := cents % 100
 			var price_text := "$%d.%02d" % [dollars, rem_cents]
 
-			return "Buy %s  %s  %s" % [Sname, price_text, key_hint]
-		return "Buy  %s" % key_hint
+			return "Buy %s  %s  %s" % [Sname, price_text, interact_hint]
+		return "Buy  %s" % interact_hint
 
 	if collider is Node and ((collider as Node).is_in_group("npc") or collider.has_method("talk")):
-		return "Talk  %s" % key_hint
+		return "Talk  %s" % interact_hint
+		
+	if collider is Node and ((collider as Node).is_in_group("bucket")):
+		return "Drop Toy In Bucket  %s" % drop_hint
 
 	if collider is Node:
 		var n := collider as Node
 		if n.is_in_group("collectable") or n.is_in_group("weapon") or n.is_in_group("holdable"):
-			return "Pick up  %s" % key_hint
+			return "Pick up  %s" % interact_hint
 
 		if n.name == "SlideInteract" and n.CAN_SLIDE:
-			return "Interact  %s" % key_hint
+			return "Interact  %s" % interact_hint
 
 		if (n.is_in_group("interactable") or collider.has_method("_on_interact")) and n.name != "SlideInteract":
-			return "Interact  %s" % key_hint
+			return "Interact  %s" % interact_hint
 
 	return ""
 

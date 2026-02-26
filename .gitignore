@@ -15,3 +15,5 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+fish-game-project-folder/builds/TheDeepEnd.exe
+fish-game-project-folder/export_presets.cfg

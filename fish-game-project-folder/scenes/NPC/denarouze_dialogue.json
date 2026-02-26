@@ -21,7 +21,10 @@
 		{"name": "Daft Denayrouze:", "text": "He’s a sweetheart, he’ll warm up to ya."}
 	],
 	"first-level-1-toy-sold": [
-		{"name": "Daft Denayrouze:", "text": "Well you got one- theres a start."}
+		{"name": "Daft Denayrouze:", "text": "Well you got one- theres a start."},
+		{"name": "Daft Denayrouze:", "text": "Three toys lie in this here pool..."},
+		{"name": "Daft Denayrouze:", "text": "Three are in the depths..."},
+		{"name": "Daft Denayrouze:", "text": "And three toys lie in the gullet of that beast."},
 	],
 	"last-level-1-toy-sold": [
 		{"name": "Daft Denayrouze:", "text": "Good work kid, but you’ll have to dive deeper still."}
@@ -33,6 +36,9 @@
 	],
 	"last-level-2-toy-sold": [
 		{"name": "Daft Denayrouze:", "text": "You’ll be headed to The Husk next…"},
+		{"name": "Daft Denayrouze:", "text": "I never liked that diner. Always a fishy smell coming from that fridge."},
+		{"name": "Daft Denayrouze:", "text": "I tried checking back there once. Was too dark to see."},
+		{"name": "Daft Denayrouze:", "text": "You might need a flashlight if your curiosity gets the best of you."},
 		{"name": "Eelbert:", "text": "Say a prayer to whatever god you hold dear, not that he can hear you down there–"},
 		{"name": "Eelbert:", "text": "He didn’t hear my prayer, and certainly didn’t hear theirs."}
 	],
@@ -74,6 +80,7 @@
 		{"name": "Eelbert:", "text": "And leave us to rot in the darkness until we're forgotten."},
 	],
 	"generic": [
-		{"name": "Daft Denayrouze:", "text": "Well, scram. My toys ain't going to collect themselves."}
+		{"name": "Daft Denayrouze:", "text": "Well, scram. My toys ain't going to collect themselves."},
+		{"name": "Daft Denayrouze:", "text": "Once you find the toys you can drop ‘em in my bucket here."}
 	]
 }

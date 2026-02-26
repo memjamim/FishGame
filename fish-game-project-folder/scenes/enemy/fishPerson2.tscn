@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://dhvfjq8n061lt"]
 
 [ext_resource type="Script" uid="uid://85kxr4s8f2dm" path="res://scenes/enemy/fish_person_2.gd" id="1_1gvjs"]
-[ext_resource type="Texture2D" uid="uid://dpndf2vs4u8g8" path="res://assets/fishFixedMouth2_0.png" id="3_b750a"]
+[ext_resource type="Texture2D" uid="uid://dpndf2vs4u8g8" path="res://assets/fbx files/fishFixedMouth2_0.png" id="3_b750a"]
 
 [sub_resource type="Animation" id="Animation_oxncd"]
 resource_name = "Armature_009|Armature_009|Armature|ArmatureAction"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://dpnt286g17g37"]
 
-[ext_resource type="Texture2D" uid="uid://n542ar0ws1i1" path="res://assets/lifepreserversfixed_0.png" id="1_w8qth"]
+[ext_resource type="Texture2D" uid="uid://n542ar0ws1i1" path="res://assets/fbx files/lifepreserversfixed_0.png" id="1_w8qth"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enxtb"]
 resource_name = "FixedBeachChair"
